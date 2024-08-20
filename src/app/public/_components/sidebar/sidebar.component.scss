@@ -1,0 +1,13 @@
+.submenu {
+  display: none;
+  list-style: none;
+  // padding-left: 20px;
+}
+
+.submenu.open {
+  display: block;
+}
+
+.sidebar-item.has-sub.open > .submenu {
+  display: block;
+}

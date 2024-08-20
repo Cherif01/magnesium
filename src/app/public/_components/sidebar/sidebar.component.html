@@ -1,0 +1,343 @@
+<div id="sidebar" class="active">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-header pb-0">
+      <div class="d-flex justify-content-center flex-wrap">
+        <div class="toggler">
+          <a routerLink="#" class="sidebar-hide d-xl-none d-block"><i
+              class="bi bi-x bi-middle"></i></a>
+          <div class="logo w-100 pb-0 text-center">
+            <div class="text- p-">
+              <img src="assets/image/cherif.png" id="profile" alt="Logo" srcset>
+              <h5 class="text-center pb-0 py-2">S.P.A - Technology</h5>
+              <a routerLink="home/login"
+                class="btn btn-outline-danger p-0 px-2">Deconnexoin</a>
+            </div>
+            <!-- <hr> -->
+          </div>
+        </div>
+        <div class="sidebar-menu">
+          <ul class="menu">
+            <!-- Home -->
+            <li class="sidebar-title">Accueil</li>
+            <li class="sidebar-item">
+              <a routerLink="home/dashboard" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="home/magasin" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Magasin</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="home/entrepot" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Entr&#233;p&#244;t</span>
+              </a>
+            </li>
+
+            <!-- Contact -->
+            <li class="sidebar-title">Mes contacts</li>
+            <li class="sidebar-item">
+              <a routerLink="contact/fournisseur" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Fournisseur</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="contact/client" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Client</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="contact/groupe" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Groupes</span>
+              </a>
+            </li>
+
+            <!-- PRODUCT -->
+            <li class="sidebar-title">Gestion des products</li>
+            <li class="sidebar-item">
+              <a routerLink="product/add" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouveau</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="product/list" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="product/etiquette" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Etiquettes</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="product/perte" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Perte</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="product/perumption" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Perim&#233;s</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="product/rupture" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Rupture stock</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="product/classification" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Classification</span>
+              </a>
+            </li>
+
+            <!-- ACHATS -->
+            <li class="sidebar-title">Gestion des achats</li>
+            <li class="sidebar-item">
+              <a routerLink="achat/bon" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Bon de commande</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="achat/list" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste achats</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="achat/retour" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Retour achats</span>
+              </a>
+            </li>
+
+            <!-- VENTES -->
+            <li class="sidebar-title">Gestion des ventes</li>
+            <li class="sidebar-item">
+              <a routerLink="vente/list" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste vente</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="vente/add-sale" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouvelle vente</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="vente/list-pdv" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste (PDV)</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="vente/add-brouillon" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouveau Brouillons</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="vente/list-brouillon" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste Brouillon</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="vente/retour-vente" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Retour vente</span>
+              </a>
+            </li>
+
+            <!-- Transfert -->
+            <li class="sidebar-title">Transfert de stock</li>
+            <li class="sidebar-item">
+              <a routerLink="transfert/new-transfert" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouveau</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="transfert/list" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste des transferts</span>
+              </a>
+            </li>
+
+            <!-- Ajustement -->
+            <li class="sidebar-title">Ajustement des stocks</li>
+            <li class="sidebar-item">
+              <a routerLink="ajustement/add" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouveau</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="ajustement/list" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste des ajust...</span>
+              </a>
+            </li>
+
+            <!-- Depenses -->
+            <li class="sidebar-title">D&#233;penses</li>
+            <li class="sidebar-item">
+              <a routerLink="charge/add-new" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouveau</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="charge/list" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste des depenses</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="charge/categorie" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Cat&#233;gorie</span>
+              </a>
+            </li>
+
+            <!-- Comptes de paiement -->
+            <li class="sidebar-title">Comptes de paiement</li>
+            <li class="sidebar-item">
+              <a routerLink="compte/add-account" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouveau</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="compte/account-list" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Liste des comptes</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="compte/bilan-account" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Bilan</span>
+              </a>
+            </li>
+
+            <!-- Utilisateur -->
+            <li class="sidebar-title">Utilisateurs</li>
+            <li class="sidebar-item">
+              <a routerLink="home/add-user" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Nouveau</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="home/list-user" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Listes</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="home/role-user" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Les Roles</span>
+              </a>
+            </li>
+
+            <!-- Rapport -->
+            <li class="sidebar-title">Rapport</li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-stock" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Stock</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/rapport" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Pertes de products</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-achat" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Achats</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-vente" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Ventes</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-client" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Clients</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-fournisseur" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Fournisseurs</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Caisse</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-depenses" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">D&#233;pense</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-paiement-achat" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Paiement des achats</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/journal-articles" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Les Articles</span>
+              </a>
+            </li>
+            <!-- Settings -->
+            <li class="sidebar-item">
+              <a routerLink="/settings" class='sidebar-link' routerLinkActive="active-sidebar">
+                <i class="bi bi-grid-fill" id="icons"></i>
+                <span id="text">Param&#232;tres</span>
+              </a>
+            </li>
+            <div class="mb-5"></div>
+          </ul>
+        </div>
+        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #profile {
+      width: auto;
+      height: 100px;
+      border-radius: 50%;
+    }
+  </style>
