@@ -25,27 +25,6 @@ const AppRouting: Routes = [
           )
       },
       {
-        path: 'vente',
-        loadChildren: () =>
-          import('../app/pages/_vente/vente.module').then(
-            m => m.VenteModule
-          )
-      },
-      {
-        path: 'compte',
-        loadChildren: () =>
-          import('../app/pages/_comptesPaiement/compte-paiement.module').then(
-            m => m.ComptePaiementModule
-          )
-      },
-      {
-        path: 'charge',
-        loadChildren: () =>
-          import('../app/pages/_depense/charge.module').then(
-            m => m.ChargeModule
-          )
-      },
-      {
         path: '**',
         // redirectTo: '/home',
         component: NotfoundComponent,
