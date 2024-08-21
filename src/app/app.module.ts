@@ -25,6 +25,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DemoMaterialModule } from 'src/demo-material-module';
 import { AddComponent } from './pages/_produit/_components/add/add.component';
 import { ListComponent } from './pages/_produit/_components/list/list.component';
+import { AddNewComponent } from './pages/_depense/_components/add-new/add-new.component';
+import { CategorieComponent } from './pages/_depense/_components/categorie/categorie.component';
+
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { ListComponent } from './pages/_produit/_components/list/list.component'
     ClientComponent,
     GroupeComponent,
     AddComponent,
-    ListComponent
+    ListComponent,
+    AddNewComponent,
+    CategorieComponent,
+  
   ],
   imports: [
     BrowserModule,
