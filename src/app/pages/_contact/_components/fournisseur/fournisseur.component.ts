@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
+import { ContactServiceService } from '../../_services/contact-service.service'
 
 @Component({
   selector: 'app-fournisseur',
@@ -15,16 +16,15 @@ export class FournisseurComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = [
-    'id',
-    'name',
-    'Action'
-  ]
+  displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
-  constructor (public location: Location) {}
+  constructor (
+    public location: Location,
+    private service: ContactServiceService
+  ) {}
 
   ngOnInit (): void {
     this.getList()
@@ -44,17 +44,16 @@ export class FournisseurComponent implements OnInit {
     }
   }
 
-  getList() {
-    let objet: any = [
-      {
-        id: 1,
-        name: 'Cherif'
+  getList () {
+    this.service.getall('client', 'list').subscribe({
+      next: (reponse: any) => {
+        console.log('REPONSE SUCCESS : ', reponse)
+        this.dataSource.data = reponse
       },
-      {
-        id: 2,
-        name: 'Imran'
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
       }
-    ]
-    this.dataSource.data = objet
+    })
+    // this.dataSource.data = objet
   }
 }

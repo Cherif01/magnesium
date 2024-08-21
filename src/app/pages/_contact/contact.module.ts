@@ -6,11 +6,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DemoMaterialModule } from 'src/demo-material-module';
+import { AddFournisseurComponent } from './_modal/fournisseur/add-fournisseur/add-fournisseur.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AddFournisseurComponent
+  ],
   imports: [
     CommonModule,
     DemoMaterialModule,
