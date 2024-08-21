@@ -19,5 +19,6 @@ export const homeRouting: Routes = [
   {
     path: 'entrepot',
     component: EntrepotComponent
-  }
+  },
+ 
 ]
