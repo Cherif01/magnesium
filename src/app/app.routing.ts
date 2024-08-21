@@ -25,6 +25,34 @@ const AppRouting: Routes = [
           )
       },
       {
+        path: 'achat',
+        loadChildren: () =>
+          import('../app/pages/_achats/achats.module').then(
+            m => m.AchatsModule
+          )
+      },
+      {
+        path: 'transfert',
+        loadChildren: () =>
+          import('../app/pages/_transfertStock/transfert-stock.module').then(
+            m => m.TransfertStockModule
+          )
+      },
+      {
+        path: 'ajustement',
+        loadChildren: () =>
+          import('../app/pages/_ajustementStock/ajustement-stock.module').then(
+            m => m.AjustementStockModule
+          )
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('../app/pages/_rapport/rapport.module').then(
+            m => m.RapportModule
+          )
+      },
+      {
         path: '**',
         // redirectTo: '/home',
         component: NotfoundComponent,
