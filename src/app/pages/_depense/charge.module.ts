@@ -9,6 +9,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DemoMaterialModule } from 'src/demo-material-module';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -24,6 +26,8 @@ import { DemoMaterialModule } from 'src/demo-material-module';
     MatDialogModule,
     MatFormFieldModule,
     MatTabsModule,
+    MatCardModule,
+    MatMenuModule,
     RouterModule.forChild(chargeRouting)
   ]
 })
