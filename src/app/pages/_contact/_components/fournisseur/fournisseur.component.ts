@@ -6,13 +6,6 @@ import { MatTableDataSource } from '@angular/material/table'
 import { ContactServiceService } from '../../_services/contact-service.service'
 import { MatDialog } from '@angular/material/dialog'
 import { MatSnackBar } from '@angular/material/snack-bar'
-<<<<<<< HEAD
-import { convertObjectInFormData } from 'src/app/app.component'
-import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
-=======
-import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
-import { convertObjectInFormData } from 'src/app/app.component'
->>>>>>> origin/diallo
 
 @Component({
   selector: 'app-fournisseur',
@@ -32,23 +25,12 @@ export class FournisseurComponent implements OnInit {
 
   constructor (
     public location: Location,
-<<<<<<< HEAD
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private service: ContactServiceService
   ) {}
 
   ngOnInit (): void {
-    this.getFournisseur()
-=======
-    private service: ContactServiceService,
-    private dialog: MatDialog,
-    private snackBar: MatSnackBar,
-  ) {}
-
-  ngOnInit (): void {
-   
->>>>>>> origin/diallo
   }
 
   ngAfterViewInit () {
@@ -64,65 +46,4 @@ export class FournisseurComponent implements OnInit {
       this.dataSource.paginator.firstPage()
     }
   }
-
-<<<<<<< HEAD
-  getFournisseur () {
-=======
-  getList () {
->>>>>>> origin/diallo
-    this.service.getall('fournisseur', 'list').subscribe({
-      next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
-        this.dataSource.data = reponse
-      },
-      error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
-      }
-    })
-    // this.dataSource.data = objet
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/diallo
-  openDialog() {
-    this.dialog.open(AddFournisseurComponent, {
-    }).afterClosed()
-      .subscribe((result) => {
-        if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('fournisseur', 'add', formData).subscribe({
-            next: (response) => {
-              this.snackBar.open("Fournisseur enregistre avec succès !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-success', 'text-white']
-
-              })
-<<<<<<< HEAD
-              this.getFournisseur()
-=======
-              this.getList()
->>>>>>> origin/diallo
-            },
-            error: (err) => {
-              this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
-                duration: 3000,
-                horizontalPosition: "left",
-                verticalPosition: "top",
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
-        }
-      })
-  }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/diallo
-}

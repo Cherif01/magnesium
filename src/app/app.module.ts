@@ -33,17 +33,7 @@ import { LoginComponent } from './core/components/login/login.component';
     FooterComponent,
     SidebarComponent,
     TopbarComponent,
-<<<<<<< HEAD
-    LoginComponent
-=======
-    FournisseurComponent,
-    ClientComponent,
-    GroupeComponent,
-    AddComponent,
-    ListComponent,
-    AddClientComponent,
- 
->>>>>>> origin/diallo
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
