@@ -16,8 +16,8 @@ import { AddComponent } from './_components/add/add.component';
 @NgModule({
   declarations: [
     CategorieComponent,
-    AddNewComponent,
-    ListComponent
+    AddComponent,
+    ListComponent,
     AddCaisseComponent,
     CategorieComponent,
     CategorieComponent,

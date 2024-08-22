@@ -21,7 +21,7 @@ import { GroupeComponent } from './_components/groupe/groupe.component';
     AddClientComponent,
     GroupeComponent,
     ClientComponent
-    
+
   ],
   imports: [
     CommonModule,

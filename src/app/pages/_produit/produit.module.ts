@@ -19,11 +19,11 @@ import { AddPerteComponent } from './_modal/add-perte/add-perte.component';
 
 @NgModule({
   declarations: [
-    
     PerteComponent,
     PerimeComponent,
     RuptureStockComponent,
-    ClassificationComponent,    AddComponent,
+    ClassificationComponent,
+    AddComponent,
     ListComponent,
     ProduitComponent,
     EtiquetteComponent,
