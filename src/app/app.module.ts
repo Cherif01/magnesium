@@ -28,6 +28,7 @@ import { ListComponent } from './pages/_produit/_components/list/list.component'
 import { AddClientComponent } from './pages/_contact/_modal/client/add-client/add-client.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { AddClientComponent } from './pages/_contact/_modal/client/add-client/ad
     GroupeComponent,
     AddComponent,
     ListComponent,
-    AddClientComponent
+    AddClientComponent,
+ 
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,10 @@ import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import { ContactServiceService } from '../../_services/contact-service.service'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
+import { convertObjectInFormData } from 'src/app/app.component'
 
 @Component({
   selector: 'app-fournisseur',
@@ -23,11 +27,13 @@ export class FournisseurComponent implements OnInit {
 
   constructor (
     public location: Location,
-    private service: ContactServiceService
+    private service: ContactServiceService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit (): void {
-    this.getList()
+   
   }
 
   ngAfterViewInit () {
@@ -45,7 +51,7 @@ export class FournisseurComponent implements OnInit {
   }
 
   getList () {
-    this.service.getall('client', 'list').subscribe({
+    this.service.getall('fournisseur', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -56,4 +62,37 @@ export class FournisseurComponent implements OnInit {
     })
     // this.dataSource.data = objet
   }
+  openDialog() {
+    this.dialog.open(AddFournisseurComponent, {
+    }).afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          // console.log(result.data);
+          const formData = convertObjectInFormData(result.data);
+          this.dataSource.data.splice(0, this.dataSource.data.length);
+          //Envoyer dans la Base
+          this.service.create('fournisseur', 'add', formData).subscribe({
+            next: (response) => {
+              this.snackBar.open("Fournisseur enregistre avec succès !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
+
+              })
+              this.getList()
+            },
+            error: (err) => {
+              this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+                duration: 3000,
+                horizontalPosition: "left",
+                verticalPosition: "top",
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        }
+      })
+  }
+
 }

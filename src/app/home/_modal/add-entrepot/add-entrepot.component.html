@@ -1,0 +1,39 @@
+<h1 matDialogTitle>Ajouter un nouveau entrepot</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="Entrepot">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>NOM</mat-label>
+        <input type="text" matInput placeholder="Ex : Cherif"
+          formControlName="nom">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>STATUS </mat-label>
+        <input type="text" matInput placeholder="Ex : Actif"
+          formControlName="status ">
+      </mat-form-field>
+    </div>
+
+    <!-- Adresse  -->
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>ADRESSE ENTREPOT</mat-label>
+        <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
+          formControlName="adresse">
+      </mat-form-field>
+    </div>
+
+    
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataEntrepot()">Enregistrer l'Entrepot</button>
+</mat-dialog-actions>

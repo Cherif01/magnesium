@@ -1,1 +1,46 @@
-<p>add-fournisseur works!</p>
+<h1 matDialogTitle>Ajouter un nouveau fournisseur</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="Fournisseur">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>NOM</mat-label>
+        <input type="text" matInput placeholder="Ex : Cherif"
+          formControlName="nom">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>PRENOM</mat-label>
+        <input type="text" matInput placeholder="Ex : Imran"
+          formControlName="prenom">
+      </mat-form-field>
+    </div>
+
+    <!-- Adresse et Telephone -->
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>ADRESSE CLENT</mat-label>
+        <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
+          formControlName="adresse">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>TELEPHONE</mat-label>
+        <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
+          formControlName="telephone">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataFournisseur()">Enregistrer le fournisseur</button>
+</mat-dialog-actions>
+

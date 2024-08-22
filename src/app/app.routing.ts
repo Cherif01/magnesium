@@ -52,6 +52,12 @@ const AppRouting: Routes = [
             m => m.RapportModule
           )
       },
+     { path: 'compte',
+      loadChildren: () =>
+        import('../app/pages/_comptePaiement/compte-paiment.module').then(
+          m => m.ComptePaimentModule
+        )
+    },
       {
         path: '**',
         // redirectTo: '/home',

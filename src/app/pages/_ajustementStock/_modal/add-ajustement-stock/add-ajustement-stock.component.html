@@ -1,0 +1,85 @@
+<h1 matDialogTitle>Ajouter un nouveau Ajustement de Stock</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="AjustementStock">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>STATUS</mat-label>
+        <input type="text" matInput placeholder="Ex : En cours"
+          formControlName="status">
+      </mat-form-field>
+    </div>
+     	
+     	
+     	
+     	
+   
+  
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>FOURNISSEUR</mat-label>
+        <input type="text" matInput placeholder="Ex : Imran"
+          formControlName="fournisseur">
+      </mat-form-field>
+    </div>
+
+    <!-- Adresse et Telephone -->
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>PRODUIT </mat-label>
+        <input type="text" matInput placeholder="Ex :Mangue"
+          formControlName="produit">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>ENTREPOT</mat-label>
+        <input type="text" matInput placeholder="Ex :Madina"
+          formControlName="entrepot">
+      </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>MONTANT TOTAL</mat-label>
+          <input type="number" matInput placeholder="Ex :50000"
+            formControlName="montanttotal">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>QUANTITE </mat-label>
+          <input type="number" matInput placeholder="Ex :100"
+            formControlName="quantite">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>PRIX D'ACHAT</mat-label>
+          <input type="number" matInput placeholder="Ex :5000"
+            formControlName="prixachat">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>PRIX DE VENTE </mat-label>
+          <input type="number" matInput placeholder="Ex :5000"
+            formControlName="prixvente">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>DATE PEREMPTION</mat-label>
+          <input type="text" matInput placeholder="Ex :20/05/2030"
+            formControlName="dateperemtion">
+        </mat-form-field>
+      </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataAjustementStock()">Enregistrer  l'Ajustement de Stock</button>
+</mat-dialog-actions>

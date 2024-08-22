@@ -5,13 +5,15 @@ import { ListAjustementComponent } from './_component/list-ajustement/list-ajust
 import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from 'src/demo-material-module';
 import { ajustementRouting } from './ajustementStock.routing';
+import {  AddAjustementStockComponent } from './_modal/add-ajustement-stock/add-ajustement-stock.component';
 
 
 
 @NgModule({
   declarations: [
     AddAjustementComponent,
-    ListAjustementComponent
+    ListAjustementComponent,
+    AddAjustementStockComponent
   ],
   imports: [
     CommonModule,
