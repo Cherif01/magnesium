@@ -14,7 +14,7 @@
                     <div class="col text-end">
                         <div class="text-right">
                             <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><span
-                                    class="mdi mdi-plus-thick"></span> Nouveau produit</button>
+                                    class="mdi mdi-plus-thick"></span> Nouvelle Etiquette</button>
                         </div>
                     </div>
                 </div>
@@ -38,52 +38,23 @@
                                 <ng-container matColumnDef="id">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                         ID </th>
-                                    <td mat-cell *matCellDef="let row; let i = index"> {{row.idProduit}}
+                                    <td mat-cell *matCellDef="let row; let i = index"> {{row.idEtiquette}}
                                     </td>
                                 </ng-container>
                                 <!-- ID -->
-                                <ng-container matColumnDef="designation">
+                                <ng-container matColumnDef="idProduit">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                        DESIGNATION </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.designation}}
+                                        PRODUIT </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.idEtiquette}}
                                     </td>
                                 </ng-container>
-                                <ng-container matColumnDef="reference">
+                                <ng-container matColumnDef="code">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                        REFERENCE </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.reference}}
+                                        CODE </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.code}}
                                     </td>
                                 </ng-container>
-                                <ng-container matColumnDef="seuil">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                        SEUIL </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.seuil}}
-                                    </td>
-                                </ng-container>
-                                <ng-container matColumnDef="adresse">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                        ADRESSE </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.adresse}}
-                                    </td>
-                                </ng-container>
-                                <ng-container matColumnDef="description">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                        DESCRIPTION </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.description}}
-                                    </td>
-                                </ng-container>
-                                <ng-container matColumnDef="image">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                        IMAGE </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.image}}
-                                    </td>
-                                </ng-container>
-                                <ng-container matColumnDef="id_sousCategorie">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                        SOUSCATEGORIE </th>
-                                    <td mat-cell *matCellDef="let row"> {{row.id_sousCategorie}}
-                                    </td>
-                                </ng-container>
+                                
 
                                 <!-- Action -->
                                 <ng-container matColumnDef="Action">

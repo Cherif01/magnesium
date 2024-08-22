@@ -24,6 +24,14 @@ const AppRouting: Routes = [
             m => m.ProduitModule
           )
       },
+      
+      {
+        path: 'charge',
+        loadChildren: () =>
+          import('../app/pages/_caisse/charge.module').then(
+            m => m.ChargeModule
+          )
+      },
       {
         path: '**',
         // redirectTo: '/home',

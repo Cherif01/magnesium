@@ -1,0 +1,51 @@
+<h1 matDialogTitle>Ajouter une nouvelle caisse</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="Caisse">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>TYPEOPERATION</mat-label>
+        <input type="text" matInput placeholder="Ex : ......"
+          formControlName="typeOperation">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>TYPEPAIEMENT</mat-label>
+        <input type="text" matInput placeholder="Ex : ...."
+          formControlName="typePaiement">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>MONTANT</mat-label>
+          <input type="number" matInput placeholder="Ex : 1"
+            formControlName="montant">
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>MOTIF</mat-label>
+          <input type="text" matInput placeholder="Ex : ...."
+            formControlName="motif">
+        </mat-form-field>
+      </div>
+
+    
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataCaisse()">Enregistrer la Caisse</button>
+</mat-dialog-actions>
+
+
+
+
+

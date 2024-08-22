@@ -6,7 +6,7 @@ import { BASE_URL } from 'src/app/config';
 @Injectable({
   providedIn: 'root'
 })
-export class ProduitService {
+export class CompteService {
 
   httpOptions = {
     headers: new HttpHeaders({

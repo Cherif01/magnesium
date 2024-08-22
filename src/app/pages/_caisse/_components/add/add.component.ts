@@ -1,27 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Location } from '@angular/common'
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
-import { AddPerteComponent } from '../../_modal/add-perte/add-perte.component';
+import { AddCaisseComponent } from '../../_modal/add-caisse/add-caisse.component';
+import { Location } from '@angular/common'
 
 @Component({
-  selector: 'app-perte',
-  templateUrl: './perte.component.html',
-  styleUrls: ['./perte.component.scss']
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.scss']
 })
-export class PerteComponent implements OnInit {
+export class AddComponent implements OnInit {
 
-  title = 'Liste des Pertes'
+  title = 'Liste des nouvelles depense'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'qtePerdu', 'description', 'Action']
+  displayedColumns: string[] = ['id', 'typePaiement', 'typeOperation', 'montant', 'motif','Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -34,7 +34,7 @@ export class PerteComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.getPerte()
+    this.getCaisse()
   }
 
   ngAfterViewInit () {
@@ -51,8 +51,8 @@ export class PerteComponent implements OnInit {
     }
   }
 
-  getPerte () {
-    this.service.getall('product', 'perte').subscribe({
+  getCaisse() {
+    this.service.getall('charge', 'add-new').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -65,7 +65,7 @@ export class PerteComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(AddPerteComponent, {
+    this.dialog.open(AddCaisseComponent, {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
@@ -73,16 +73,16 @@ export class PerteComponent implements OnInit {
           const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('product', 'perte', formData).subscribe({
+          this.service.create('charge', 'add-new', formData).subscribe({
             next: (response) => {
-              this.snackBar.open("Perte enregistre avec succès !", "Okay", {
+              this.snackBar.open("Caisse enregistre avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getPerte()
+              this.getCaisse()
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
@@ -96,5 +96,7 @@ export class PerteComponent implements OnInit {
         }
       })
   }
+
+
 
 }

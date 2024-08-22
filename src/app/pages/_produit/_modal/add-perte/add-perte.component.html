@@ -1,0 +1,34 @@
+<h1 matDialogTitle>Ajouter une nouvelle perte</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="Perte">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>QUANTITE_PERDU</mat-label>
+        <input type="number" matInput placeholder="Ex : 1"
+          formControlName="qtePerdu">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>DESCRIPTION</mat-label>
+        <input type="text" matInput placeholder="Ex : ...."
+          formControlName="description">
+      </mat-form-field>
+    </div>
+
+    
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataPerte()">Enregistrer la Perte</button>
+</mat-dialog-actions>
+
+
+
+

@@ -4,6 +4,10 @@ import { MatPaginator } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import { ContactServiceService } from '../../_services/contact-service.service'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { convertObjectInFormData } from 'src/app/app.component'
+import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
 
 @Component({
   selector: 'app-fournisseur',
@@ -11,23 +15,25 @@ import { ContactServiceService } from '../../_services/contact-service.service'
   styleUrls: ['./fournisseur.component.scss']
 })
 export class FournisseurComponent implements OnInit {
-  title = 'Liste des fournisseurs'
+  title = 'Liste des nouveaux Fournisseurs'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse', 'Action']
+  displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse','societe','email', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
   constructor (
     public location: Location,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private service: ContactServiceService
   ) {}
 
   ngOnInit (): void {
-    this.getList()
+    this.getFournisseur()
   }
 
   ngAfterViewInit () {
@@ -44,8 +50,8 @@ export class FournisseurComponent implements OnInit {
     }
   }
 
-  getList () {
-    this.service.getall('client', 'list').subscribe({
+  getFournisseur () {
+    this.service.getall('fournisseur', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -55,5 +61,38 @@ export class FournisseurComponent implements OnInit {
       }
     })
     // this.dataSource.data = objet
+  }
+
+  openDialog() {
+    this.dialog.open(AddFournisseurComponent, {
+    }).afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          // console.log(result.data);
+          const formData = convertObjectInFormData(result.data);
+          this.dataSource.data.splice(0, this.dataSource.data.length);
+          //Envoyer dans la Base
+          this.service.create('fournisseur', 'add', formData).subscribe({
+            next: (response) => {
+              this.snackBar.open("Fournisseur enregistre avec succès !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
+
+              })
+              this.getFournisseur()
+            },
+            error: (err) => {
+              this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+                duration: 3000,
+                horizontalPosition: "left",
+                verticalPosition: "top",
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        }
+      })
   }
 }

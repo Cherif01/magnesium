@@ -23,8 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DemoMaterialModule } from 'src/demo-material-module';
-import { AddComponent } from './pages/_produit/_components/add/add.component';
-import { ListComponent } from './pages/_produit/_components/list/list.component';
+
+
 
 
 @NgModule({
@@ -34,11 +34,10 @@ import { ListComponent } from './pages/_produit/_components/list/list.component'
     FooterComponent,
     SidebarComponent,
     TopbarComponent,
-    FournisseurComponent,
-    ClientComponent,
-    GroupeComponent,
-    AddComponent,
-    ListComponent
+   
+   
+  
+   
   ],
   imports: [
     BrowserModule,
