@@ -1,109 +1,125 @@
-<div class="container-fluid" id="main-pos">
-  <div class="col">
-    <div class="p-3 product">
-      <div class="row">
-        <!-- Boucle sur le tableau des produits -->
-        <div class="col-md-3 mb-4" *ngFor="let product of products">
-          <div class="card product-card shadow">
-            <!-- Badge catégorie -->
-            <div class="card-header text-end">
-              <span class="badge text-primary">{{ product.category }}</span>
-            </div>
-            <img [src]="product.image" class="card-img-top"
-              [alt]="product.name">
-            <div class="card-body">
-              <h5 class="card-title">{{ product.name }}</h5>
-              <p class="card-text fw-bold">{{ product.price | currency: ' ' }} | <strong>GNF</strong></p>
-              <div class="d-flex align-items-center">
-                <input type="number" min="1" value="1"
-                  class="form-control quantity-input me-2">
-                <button class="btn btn-primary add-to-cart">Add</button>
+<div class="container-fluid">
+  <div class="search-container d-flex justify-content-between align-items-center flex-wrap">
+    <div class="col-md-8">
+      <div class="search-container">
+        <input type="text" class="form-control search-input" placeholder="Rechercher...">
+      </div>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end text-end">
+      <button class="me-2 w-100 btn btn-outline-success p-3 btn-top" (click)="openDialog()">Paiement</button>
+      <button class="me-2 w-100 btn btn-outline-primary p-3 btn-top">Brouillon</button>
+      <button class="me-2 w-100 btn btn-outline-danger p-3 btn-top">Annuler</button>
+     </div>
+  </div>
+  <!-- <hr> -->
+  <div class id="main-pos">
+    <div class="col">
+      <div class="p-3 product">
+        <div class="row">
+          <!-- Boucle sur le tableau des produits -->
+          <div class="col-md-3 mb-4" *ngFor="let product of products">
+            <div class="card product-card shadow">
+              <!-- Badge catégorie -->
+              <div class="card-header text-end">
+                <span class="badge">{{ product.category }}</span>
+              </div>
+              <img [src]="product.image" class="card-img-top"
+                [alt]="product.name">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text fw-bold">{{ product.price | currency: ' ' }}
+                  | <strong>GNF</strong></p>
+                <div class="d-flex align-items-center">
+                  <input type="number" min="1" value="1"
+                    class="form-control quantity-input me-2">
+                  <button class="btn btn-primary add-to-cart">Add</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <div class="d-flex justify-content-start flex-wrap">
-      <div class="col_" id="col_">
-        <div class="facture">
-          <div class="facture-content">
-            <div class="facture-header">
-              <!-- <div>Qte</div>
+    <div class="col-md-3">
+      <div class="d-flex justify-content-start flex-wrap">
+        <div class="col_" id="col_">
+          <div class="facture">
+            <div class="facture-content">
+              <div class="facture-header">
+                <!-- <div>Qte</div>
               <div>Désignation</div>
               <div>PU (GNF)</div> -->
-              <table class="table table-light p-2">
-                <thead class="text-primary text-dark">
-                  <th>Qte</th>
-                  <th>Désignation</th>
-                  <th>PU (GNF)</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Article 1</td>
-                    <td>10 000</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Article 2</td>
-                    <td>15 000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Article 3</td>
-                    <td>25 000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Article 4</td>
-                    <td>15 000</td>
-                  </tr>
-                </tbody>
-              </table>
+                <table class="table table-light p-2">
+                  <thead class="text-primary text-dark">
+                    <th>Qte</th>
+                    <th>Désignation</th>
+                    <th>PU (GNF)</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Article 1</td>
+                      <td>10 000</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Article 2</td>
+                      <td>15 000</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Article 3</td>
+                      <td>25 000</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Article 4</td>
+                      <td>15 000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- Ajoutez d'autres lignes ici -->
             </div>
-            <!-- Ajoutez d'autres lignes ici -->
+            <!-- <hr> -->
+            <div class="total text-end bg-transparent">
+              <h4>Total : 80 000.00 | GNF</h4>
+              <h6>Remise : 0</h6>
+            </div>
           </div>
-          <!-- <hr> -->
-          <div class="total text-end bg-transparent">
-            <h4>Total : 80 000.00 | GNF</h4>
-            <h6>Remise : 0</h6>
+          <div class="number">
+            <!-- Section 1 -->
+            <div class="section">
+              <button value="1">1</button>
+              <button value="2">2</button>
+              <button value="3">3</button>
+              <button value="4">Qte</button>
+            </div>
+            <!-- Section 2 -->
+            <div class="section">
+              <button value="1">4</button>
+              <button value="2">5</button>
+              <button value="3">6</button>
+              <button value="4">%</button>
+            </div>
+            <!-- Section 3 -->
+            <div class="section">
+              <button value="1">7</button>
+              <button value="2">8</button>
+              <button value="3">9</button>
+              <button value="4">Prix</button>
+            </div>
+            <!-- Section 4 -->
+            <div class="section">
+              <button value="1">+/-</button>
+              <button value="2">0</button>
+              <button value="3">.</button>
+              <button value="4">-</button>
+            </div>
           </div>
         </div>
-        <div class="number">
-          <!-- Section 1 -->
-          <div class="section">
-            <button value="1">1</button>
-            <button value="2">2</button>
-            <button value="3">3</button>
-            <button value="4">Qte</button>
-          </div>
-          <!-- Section 2 -->
-          <div class="section">
-            <button value="1">4</button>
-            <button value="2">5</button>
-            <button value="3">6</button>
-            <button value="4">%</button>
-          </div>
-          <!-- Section 3 -->
-          <div class="section">
-            <button value="1">7</button>
-            <button value="2">8</button>
-            <button value="3">9</button>
-            <button value="4">Prix</button>
-          </div>
-          <!-- Section 4 -->
-          <div class="section">
-            <button value="1">+/-</button>
-            <button value="2">0</button>
-            <button value="3">.</button>
-            <button value="4">-</button>
-          </div>
-        </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </div>

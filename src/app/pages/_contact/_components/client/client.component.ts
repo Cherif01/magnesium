@@ -69,11 +69,11 @@ export class ClientComponent implements OnInit {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
+          console.log(result.data);
+          // const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('client', 'add', formData).subscribe({
+          this.service.create('client', 'add', result.data).subscribe({
             next: (response) => {
               this.snackBar.open("Client enregistre avec succès !", "Okay", {
                 duration: 3000,

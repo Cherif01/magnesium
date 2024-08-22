@@ -1,0 +1,79 @@
+.ticket-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.ticket {
+  width: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto slab", sans-serif;
+}
+
+.restaurant-header {
+  margin-bottom: 10px;
+}
+
+.restaurant-logo {
+  max-width: 100px;
+  margin-bottom: 5px;
+}
+
+.restaurant-name {
+  font-size: 22px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.restaurant-info {
+  font-size: 12px;
+  margin: 2px 0;
+  color: #666;
+}
+
+.order-details {
+  margin-bottom: 10px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.table th,
+.table td {
+  padding: 6px;
+  font-size: 13px;
+  border-color: #d3d1d1;
+}
+
+.text-end {
+  text-align: right;
+}
+
+.payment-section {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: rgb(8, 33, 194);
+}
+
+.payment-instructions {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.payment-qr-code {
+  max-width: 100px;
+  border: 1px solid #e0e0e0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.thank-you {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+}

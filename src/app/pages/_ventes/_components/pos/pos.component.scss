@@ -2,12 +2,11 @@
   display: flex;
   justify-content: space-between;
   margin: 0;
-  height: 100%;
+  height: 90vh;
   .col {
     flex: 1; // Chaque colonne prend tout l'espace disponible de manière égale
     display: flex;
     flex-direction: column;
-
     .product,
     .facture {
       flex: 1; // Prend tout l'espace vertical disponible dans la colonne
@@ -54,8 +53,8 @@
 .facture-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-bottom: 5%;
+  // gap: 1rem;
+  // padding-bottom: 1%;
 }
 
 .facture-header {
@@ -63,8 +62,8 @@
   justify-content: space-between;
   font-weight: bold;
   border-bottom: 2px solid #ccc;
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
+  // padding-bottom: 0.5rem;
+  // margin-bottom: 0.5rem;
 }
 
 .facture-row {
@@ -85,11 +84,12 @@
 
 .section button {
   flex: 1;
-  padding: 1rem 0;
+  padding: 1.2rem 0;
   background-color: #fefefe;
   color: rgb(36, 34, 34);
   border: 1px solid rgb(104, 102, 102);
   font-size: 1.7rem;
+  font-weight: bolder;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 0; /* Enlève les marges pour une largeur complète */
@@ -100,7 +100,7 @@
 }
 
 .section button:hover {
-  background-color: #ece6e6;
+  background-color: #7dcbef;
 }
 
 .section button:active {
@@ -111,9 +111,8 @@ tr td{
   color: rgb(149, 139, 139);
 }
 
-
 .product-card {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.2s;
@@ -125,8 +124,8 @@ tr td{
 }
 
 .card-img-top {
-  width: 100%;
-  height: 150px; /* Hauteur fixe pour toutes les images */
+  width: auto;
+  height: 100px; /* Hauteur fixe pour toutes les images */
   object-fit: contain; /* Couper ou ajuster l'image pour remplir le conteneur */
   object-position: center; /* Centrer l'image dans son conteneur */
 }
@@ -135,11 +134,12 @@ tr td{
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 10px;
+  color: #b0b2b9;
 }
 
 .card-text {
-  font-size: 1.1rem;
-  color: #333;
+  font-size: 1.2rem;
+  color: #000000;
   margin-bottom: 15px;
 }
 
@@ -148,6 +148,7 @@ tr td{
   margin-right: 5px;
   border-radius: 5px;
   text-align: center;
+  outline: none;
 }
 
 .add-to-cart {
@@ -164,12 +165,54 @@ tr td{
 }
 
 .shadow {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
 .badge {
   font-size: 0.9rem;
-  padding: 5px 10px;
+  padding: 5px 5px;
   margin-bottom: 10px;
-  border: 1px solid #333;
+  // border: 1px solid #333;
+  // background-color: rgba(124, 214, 246, 0.786);
+  color: rgb(248, 140, 77);
+}
+
+
+// Search
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  background-color: white;
+
+}
+
+.search-box {
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+}
+
+.search-input {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 50px;
+  outline: none;
+  border: 1px solid black;
+  outline: none;
+  font-size: 25px;
+  font-weight: bold;
+  flex-grow: 2; /* Permet à l'input de prendre plus d'espace */
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.btn-top{
+  border-radius: 50px;
 }

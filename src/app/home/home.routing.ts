@@ -3,11 +3,14 @@ import { DashboardComponent } from './_components/dashboard/dashboard.component'
 import { MagasinComponent } from './_components/magasin/magasin.component'
 import { EntrepotComponent } from './_components/entrepot/entrepot.component'
 import { LoginComponent } from '../core/components/login/login.component'
+import { GuardGuard } from '../core/auth/guard/guard.guard'
 // Les routes du modules
 export const homeRouting: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [GuardGuard]
+
   },
   {
     path: 'login',
@@ -15,14 +18,17 @@ export const homeRouting: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'magasin',
-    component: MagasinComponent
+    component: MagasinComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'entrepot',
-    component: EntrepotComponent
+    component: EntrepotComponent,
+    canActivate: [GuardGuard]
   }
 ]

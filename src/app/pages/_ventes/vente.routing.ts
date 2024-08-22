@@ -4,30 +4,37 @@ import { ListPointOfSaleComponent } from './_components/list-point-of-sale/list-
 import { AddSaleComponent } from './_components/add-sale/add-sale.component'
 import { RetourVenteComponent } from './_components/retour-vente/retour-vente.component'
 import { PosComponent } from './_components/pos/pos.component'
+import { GuardGuard } from 'src/app/core/auth/guard/guard.guard'
 
 export const venteRouting: Routes = [
   {
     path: '',
-    component: ListSaleComponent
+    component: ListSaleComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'list-sale',
-    component: ListSaleComponent
+    component: ListSaleComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'add-sale',
-    component: AddSaleComponent
+    component: AddSaleComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'pos/:id',
-    component: PosComponent
+    component: PosComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'list-pos',
-    component: ListPointOfSaleComponent
+    component: ListPointOfSaleComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'retour-sale',
-    component: RetourVenteComponent
+    component: RetourVenteComponent,
+    canActivate: [GuardGuard]
   }
 ]

@@ -1,7 +1,7 @@
-<div id="sidebar" class="active">
-  <div class="sidebar-wrapper">
-    <div class="sidebar-header pb-0">
-      <div class="d-flex justify-content-center flex-wrap">
+<div id="sidebar" class="active m-0 p-0">
+  <div class="sidebar-wrapper m-0 p-0 bg-transparent">
+    <div class="sidebar-header pb-0 m-0 p-0">
+      <div class="d-flex justify-content-center flex-wrap m-0 p-0 bg-light">
         <div class="toggler">
           <a routerLink="#" class="sidebar-hide d-xl-none d-block"><i
               class="bi bi-x bi-middle"></i></a>
@@ -15,306 +15,44 @@
             <!-- <hr> -->
           </div>
         </div>
-        <div class="sidebar-menu">
-          <ul class="menu">
-            <!-- Home -->
-            <li class="sidebar-title">Accueil</li>
-            <li class="sidebar-item">
-              <a routerLink="home/dashboard" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Dashboard</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="home/magasin" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Magasin</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="home/entrepot" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Entr&#233;p&#244;t</span>
-              </a>
-            </li>
 
-            <!-- Contact -->
-            <li class="sidebar-title">Mes contacts</li>
-            <li class="sidebar-item">
-              <a routerLink="contact/fournisseur" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Fournisseur</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="contact/client" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Client</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="contact/groupe" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Groupes</span>
-              </a>
-            </li>
+        <hr>
 
-            <!-- PRODUCT -->
-            <li class="sidebar-title">Gestion des products</li>
-            <li class="sidebar-item">
-              <a routerLink="product/add" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Nouveau</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="product/list" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Liste</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="product/etiquette" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Etiquettes</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="product/perte" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Perte</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="product/perumption" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Perim&#233;s</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="product/rupture" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Rupture stock</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="product/classification" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Classification</span>
-              </a>
-            </li>
+        <div class="sidebar-menu w-100 mt-3">
 
-            <!-- ACHATS -->
-            <li class="sidebar-title">Gestion des achats</li>
-            <li class="sidebar-item">
-              <a routerLink="achat/bon" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Bon de commande</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="achat/list" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Liste achats</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="achat/retour" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Retour achats</span>
-              </a>
-            </li>
+          <ul class="menu w-100 mb-5 pb-5 mx-0 p-0">
+            <mat-accordion class>
+              <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+                *ngFor="let onglet of listeOnglet">
 
-            <!-- VENTES -->
-            <li class="sidebar-title">Gestion des ventes</li>
-            <li class="sidebar-item">
-              <a routerLink="vente/add-sale" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Nouvelle vente</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="vente/list-sale" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Liste vente</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="vente/list-pos" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">P.O.S</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="vente/retour-sale" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Retour vente</span>
-              </a>
-            </li>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="text-capitalize py-3">
+                    <i class="me-3 {{onglet.icon}}" id="side-icon"></i>
+                    <span id="sidebar-title"> {{onglet.name}}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
 
-            <!-- Transfert -->
-            <li class="sidebar-title">Transfert de stock</li>
-            <li class="sidebar-item">
-              <a routerLink="transfert/new-transfert" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Nouveau</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="transfert/list" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Liste des transferts</span>
-              </a>
-            </li>
-
-            <!-- Ajustement -->
-            <li class="sidebar-title">Ajustement des stocks</li>
-            <li class="sidebar-item">
-              <a routerLink="ajustement/add" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Nouveau</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="ajustement/list" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Liste des ajust...</span>
-              </a>
-            </li>
-
-            <!-- Depenses -->
-            <li class="sidebar-title">D&#233;penses</li>
-            <li class="sidebar-item">
-              <a routerLink="charge/add-new" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Nouveau</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="charge/list" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Liste des depenses</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="charge/categorie" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Cat&#233;gorie</span>
-              </a>
-            </li>
-
-            <!-- Comptes de paiement -->
-            <li class="sidebar-title">Comptes de paiement</li>
-            <li class="sidebar-item">
-              <a routerLink="compte/add-account" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Nouveau</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="compte/account-list" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Liste des comptes</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="compte/bilan-account" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Bilan</span>
-              </a>
-            </li>
-
-            <!-- Utilisateur -->
-            <li class="sidebar-title">Utilisateurs</li>
-            <li class="sidebar-item">
-              <a routerLink="home/add-user" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Nouveau</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="home/list-user" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Listes</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="home/role-user" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Les Roles</span>
-              </a>
-            </li>
-
-            <!-- Rapport -->
-            <li class="sidebar-title">Rapport</li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-stock" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Stock</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/rapport" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Pertes de products</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-achat" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Achats</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-vente" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Ventes</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-client" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Clients</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-fournisseur" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Fournisseurs</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Caisse</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-depenses" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">D&#233;pense</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-paiement-achat" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Paiement des achats</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a routerLink="/journal-articles" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Les Articles</span>
-              </a>
-            </li>
-            <!-- Settings -->
-            <li class="sidebar-item">
-              <a routerLink="/settings" class='sidebar-link' routerLinkActive="active-sidebar">
-                <i class="bi bi-grid-fill" id="icons"></i>
-                <span id="text">Param&#232;tres</span>
-              </a>
-            </li>
-            <div class="mb-5"></div>
+                <!-- Vérification s'il y a un sous-menu -->
+                <div *ngIf="onglet.submenu && onglet.submenu.length > 0"
+                  class="panel p-0 m-0">
+                  <li class="p-0" *ngFor="let menu of onglet.submenu">
+                    <a routerLink="{{menu.url}}"
+                      routerLinkActive="active-sidebar"
+                      class="dropdown-toggle no-arrow sidebar-link">
+                      <i class="micon {{menu.icon}}"></i>
+                      <span>{{menu.title}}</span>
+                    </a>
+                  </li>
+                </div>
+                <!-- Optionnel: Affichage d'un message si aucun sous-menu n'est disponible -->
+                <div *ngIf="!onglet.submenu || onglet.submenu.length === 0"
+                  class="p-2">
+                  Vide...
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
           </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

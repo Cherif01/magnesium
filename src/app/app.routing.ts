@@ -27,9 +27,7 @@ const AppRouting: Routes = [
       {
         path: 'achat',
         loadChildren: () =>
-          import('../app/pages/_achats/achats.module').then(
-            m => m.AchatsModule
-          )
+          import('../app/pages/_achats/achats.module').then(m => m.AchatsModule)
       },
       {
         path: 'transfert',
@@ -48,9 +46,7 @@ const AppRouting: Routes = [
       {
         path: 'vente',
         loadChildren: () =>
-          import('../app/pages/_ventes/vente.module').then(
-            m => m.VenteModule
-          )
+          import('../app/pages/_ventes/vente.module').then(m => m.VenteModule)
       },
       {
         path: '',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../service/auth-service.service';
+import { AuthService } from '../../auth/service/auth-service.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -28,16 +28,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: FormGroup): void {
-    const formData = new FormData()
-    formData.append('telephone', form.value.telephone)
-    formData.append('password', form.value.password)
-    this.authService.login('auth','login', formData).subscribe(
+    // console.log("Formulaire : ", form.value);
+    this.authService.login('auth','login', form.value).subscribe(
       (res) => {
-        // this.router.navigate(['home/home']);
-        console.log(res)
+        // console.log("Token : ", res)
+        this.router.navigate(['home/home']);
       },
       (err) => {
-        console.error(err);
+        console.error("Error : ", err);
       }
     );
   }

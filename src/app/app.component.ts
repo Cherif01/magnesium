@@ -56,6 +56,30 @@ export function convertObjectInFormData (tab: any) {
   return formData
 }
 
+export function convertObjectToJson (tab: any): any {
+  const jsonObject: any = {}
+
+  for (const key in tab) {
+    if (tab.hasOwnProperty(key)) {
+      const value = tab[key]
+
+      if (Array.isArray(value)) {
+        jsonObject[key] = value.map(item =>
+          typeof item === 'object' && item !== null
+            ? convertObjectToJson(item)
+            : item
+        )
+      } else if (typeof value === 'object' && value !== null) {
+        jsonObject[key] = convertObjectToJson(value)
+      } else {
+        jsonObject[key] = value
+      }
+    }
+  }
+
+  return jsonObject
+}
+
 export function imprimerDiv (divToPrint: any): void {
   // let printContents = this.divToPrint.nativeElement.innerHTML;
   let printContents = divToPrint

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pos',
@@ -6,7 +8,8 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./pos.component.scss']
 })
 export class PosComponent implements OnInit {
-  constructor () {}
+
+  constructor (private dialog: MatDialog) {}
 
   ngOnInit (): void {}
 
@@ -16,7 +19,7 @@ export class PosComponent implements OnInit {
       name: 'Riz au gras',
       price: 55000,
       image:
-        'https://i0.wp.com/www.achkid.net/wp-content/uploads/2023/09/AdobeStock_614240849_Preview-removebg-preview.png?fit=576%2C433&ssl=1',
+        'https://lamarmitedafrique.org/wp-content/uploads/2021/05/tiep.png',
       category: 'Plat principal',
       isPromo: false
     },
@@ -100,4 +103,15 @@ export class PosComponent implements OnInit {
       isPromo: true
     }
   ]
+
+
+
+
+  openDialog() {
+    this.dialog.open(RecuPosComponent, {
+    }).afterClosed()
+      .subscribe((result) => {
+
+      })
+  }
 }
