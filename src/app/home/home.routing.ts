@@ -10,7 +10,6 @@ export const homeRouting: Routes = [
     path: '',
     component: DashboardComponent,
     canActivate: [GuardGuard]
-
   },
   {
     path: 'login',
@@ -28,13 +27,7 @@ export const homeRouting: Routes = [
   },
   {
     path: 'entrepot',
-<<<<<<< HEAD
     component: EntrepotComponent,
     canActivate: [GuardGuard]
   }
-=======
-    component: EntrepotComponent
-  },
- 
->>>>>>> imran
 ]

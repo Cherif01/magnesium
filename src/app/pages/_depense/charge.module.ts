@@ -16,8 +16,8 @@ import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
-    
-    
+    CategorieComponent,
+    AddNewComponent,
     ListComponent
   ],
   imports: [

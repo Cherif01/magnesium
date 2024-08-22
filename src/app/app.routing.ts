@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router'
 import { NotfoundComponent } from './core/components/notfound/notfound.component'
 
-const AppRouting: Routes = [
+export const AppRouting: Routes = [
   {
     path: '',
     children: [
@@ -25,16 +25,6 @@ const AppRouting: Routes = [
           )
       },
       {
-<<<<<<< HEAD
-        path: 'vente',
-        loadChildren: () =>
-          import('../app/pages/_vente/vente.module').then(
-=======
-        path: 'achat',
-        loadChildren: () =>
-          import('../app/pages/_achats/achats.module').then(m => m.AchatsModule)
-      },
-      {
         path: 'transfert',
         loadChildren: () =>
           import('../app/pages/_transfertStock/transfert-stock.module').then(
@@ -56,7 +46,6 @@ const AppRouting: Routes = [
           )
       },
       {
-<<<<<<< HEAD
         path: 'compte',
         loadChildren: () =>
           import('../app/pages/_comptesPaiement/compte-paiement.module').then(
@@ -67,14 +56,7 @@ const AppRouting: Routes = [
         path: 'charge',
         loadChildren: () =>
           import('../app/pages/_depense/charge.module').then(
-            m => m.ChargeModule
-=======
-        path: '',
-        loadChildren: () =>
-          import('../app/pages/_rapport/rapport.module').then(
-            m => m.RapportModule
->>>>>>> devs
-          )
+            m => m.ChargeModule)
       },
       {
         path: '**',
@@ -85,4 +67,3 @@ const AppRouting: Routes = [
     ]
   }
 ]
-export default AppRouting

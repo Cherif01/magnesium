@@ -1,41 +1,9 @@
-<<<<<<< HEAD
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './home/_components/dashboard/dashboard.component';
-import { RouterModule, Routes } from '@angular/router';
-import AppRouting from './app.routing';
-import { FooterComponent } from './public/_components/footer/footer.component';
-import { SidebarComponent } from './public/_components/sidebar/sidebar.component';
-import { TopbarComponent } from './public/_components/topbar/topbar.component';
-import { FournisseurComponent } from './pages/_contact/_components/fournisseur/fournisseur.component';
-import { ClientComponent } from './pages/_contact/_components/client/client.component';
-import { GroupeComponent } from './pages/_contact/_components/groupe/groupe.component';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatTabsModule } from '@angular/material/tabs';
-import { DemoMaterialModule } from 'src/demo-material-module';
-import { AddComponent } from './pages/_produit/_components/add/add.component';
-import { ListComponent } from './pages/_produit/_components/list/list.component';
-
-=======
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { DashboardComponent } from './home/_components/dashboard/dashboard.component'
-import { RouterModule, Routes } from '@angular/router'
-import AppRouting from './app.routing'
+import { RouterModule } from '@angular/router'
 import { FooterComponent } from './public/_components/footer/footer.component'
 import { SidebarComponent } from './public/_components/sidebar/sidebar.component'
 import { TopbarComponent } from './public/_components/topbar/topbar.component'
@@ -47,10 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
-import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon'
-import { MatInputModule } from '@angular/material/input'
-import { MatTabsModule } from '@angular/material/tabs'
 import { DemoMaterialModule } from 'src/demo-material-module'
 import { AddComponent } from './pages/_produit/_components/add/add.component'
 import { ListComponent } from './pages/_produit/_components/list/list.component'
@@ -66,7 +31,7 @@ import { AddSaleComponent } from './pages/_ventes/_components/add-sale/add-sale.
 import { ListSaleComponent } from './pages/_ventes/_components/list-sale/list-sale.component';
 import { ListPointOfSaleComponent } from './pages/_ventes/_components/list-point-of-sale/list-point-of-sale.component';
 import { RetourVenteComponent } from './pages/_ventes/_components/retour-vente/retour-vente.component'
->>>>>>> devs
+import { AppRouting } from './app.routing'
 
 @NgModule({
   declarations: [
@@ -79,9 +44,6 @@ import { RetourVenteComponent } from './pages/_ventes/_components/retour-vente/r
     ClientComponent,
     GroupeComponent,
     AddComponent,
-<<<<<<< HEAD
-    ListComponent
-=======
     ListComponent,
     LoginComponent,
     AddClientComponent,
@@ -89,7 +51,6 @@ import { RetourVenteComponent } from './pages/_ventes/_components/retour-vente/r
     ListSaleComponent,
     ListPointOfSaleComponent,
     RetourVenteComponent
->>>>>>> devs
   ],
   imports: [
     BrowserModule,
