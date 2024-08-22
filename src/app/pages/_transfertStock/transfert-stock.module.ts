@@ -5,13 +5,15 @@ import { ListTransfertComponent } from './_component/list-transfert/list-transfe
 import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from 'src/demo-material-module';
 import { transfertRouting } from './transfertStock.routing';
+import { AddTransfertStockComponent } from './_modal/add-transfert-stock/add-transfert-stock.component';
 
 
 
 @NgModule({
   declarations: [
     AddTransfertComponent,
-    ListTransfertComponent
+    ListTransfertComponent,
+    AddTransfertStockComponent
   ],
   imports: [
     CommonModule,

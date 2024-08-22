@@ -20,7 +20,12 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+<<<<<<< HEAD
     "@auth0/angular-jwt": "^5.2.0",
+=======
+    "bootstrap": "^5.3.3",
+    "font-awesome": "^4.7.0",
+>>>>>>> origin/diallo
     "npm": "^10.8.2",
     "particles.js": "^2.0.0",
     "rxjs": "~7.5.0",

@@ -77,8 +77,20 @@
                       Plus d'action <span
                         class="dw dw-down-chevron"></span></button>
                     <mat-menu #menu="matMenu">
+                      <td class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary" >
+                          <li ><mat-icon>update</mat-icon></li>
+                        </button>
+                        <button type="button" class="btn btn-danger" >
+                          <li ><mat-icon>delete</mat-icon></li>
+                        </button>
+                        <button type="button" class="btn btn-info"  style="width: 40px">
+                          <li ><mat-icon>more</mat-icon></li>
+                        </button>
+                      </td> 
                     </mat-menu>
-                  </td>
+                  
+                  
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row

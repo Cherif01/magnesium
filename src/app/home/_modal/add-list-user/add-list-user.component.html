@@ -1,0 +1,60 @@
+<h1 matDialogTitle>Ajouter un nouveau client</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="User">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>fullname</mat-label>
+        <input type="text" matInput placeholder="Ex : Diallo Oumar"
+          formControlName="fullname">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>email</mat-label>
+        <input type="email" matInput placeholder="Ex : Imran@gmail.com"
+          formControlName="email">
+      </mat-form-field>
+    </div>
+
+    <!-- Adresse et Telephone -->
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>password </mat-label>
+        <input type="password" matInput placeholder="Ex : ******"
+          formControlName="password">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>TELEPHONE</mat-label>
+        <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
+          formControlName="telephone">
+      </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>magasin </mat-label>
+          <input type="text" matInput placeholder="Ex : Diallo Oumar"
+            formControlName="magasin">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>role</mat-label>
+          <input type="text" matInput placeholder="Ex : Admin"
+            formControlName="role">
+        </mat-form-field>
+      </div>
+  
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataUser()">Enregistrer le client</button>
+</mat-dialog-actions>

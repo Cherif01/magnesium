@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddClientComponent } from '../../_modal/client/add-client/add-client.component';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Client } from '../../_interfaces/Client';
 
 @Component({
   selector: 'app-client',
@@ -17,12 +18,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ClientComponent implements OnInit {
 
   title = 'Liste des clients'
-
+ 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
   displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse', 'Action']
-
+  tab=[{id:1,  nom:"oumar", prenom:"Diallo", telephone:"2564", adresse:"mat"}]
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
@@ -97,4 +98,13 @@ export class ClientComponent implements OnInit {
       })
   }
 
+  // onDelete(id:number){
+  //   if (confirm("voulez vous supprimer")) {
+  //     this.service.delete('client', 'delete',id).subscribe(data => {
+  //       this.dataa = data;
+  //       this.getClient();
+       
+  //     })
+  //   }
+  // }
 }

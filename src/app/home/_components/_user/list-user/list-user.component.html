@@ -1,0 +1,120 @@
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+      <div class="min-height-200px">
+        <div class="page-header">
+          <div class="d-flex justify-content-between">
+            <div class="col-md-4">
+              <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+                  <li class="breadcrumb-item active"
+                    aria-current="page"> {{title}}</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col text-end">
+              <div class="text-right">
+                <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><span class="mdi mdi-plus-thick"></span> New user</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- List -->
+         <hr>
+        <div class="main-box mb-30">
+          <!-- AJOUT DU DATATABLE.. -->
+          <mat-card class="p-3">
+            <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
+            <hr>
+            <mat-card-content>
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Rechercher...</mat-label>
+                <input matInput (keyup)="applyFilter($event)"
+                  placeholder="Rechercher" #input>
+              </mat-form-field>
+  
+              <div class="mat-elevation">
+                <table mat-table [dataSource]="dataSource" matSort class="w-100" id="matTable">
+                  <!-- ID -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      ID </th>
+                    <td mat-cell *matCellDef="let row; let i = index"> {{row.idClient}}
+                    </td>
+                  </ng-container>
+                  <!-- ID -->
+                  <ng-container matColumnDef="fullname">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      FULL NAME </th>
+                    <td mat-cell *matCellDef="let row"> {{row.fullname}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      E-MAIL </th>
+                    <td mat-cell *matCellDef="let row"> {{row.email}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="telephone">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      PHONE </th>
+                    <td mat-cell *matCellDef="let row"> {{row.telephone}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="magasin">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      MAGASIN </th>
+                    <td mat-cell *matCellDef="let row"> {{row.magasin}}
+                    </td>
+                  </ng-container>
+  
+                  <!-- Action -->
+                  <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef
+                      class="text-center">Action</th>
+                    <td mat-cell *matCellDef="let row" class="text-center">
+                      <button mat-button color="warn" [matMenuTriggerFor]="menu">
+                        <!-- Plus d'action <span
+                          class="dw dw-down-chevron"></span> --></button>
+                      <mat-menu #menu="matMenu">
+                        <td class="d-flex justify-content-between">
+                          <button type="button" class="btn btn-primary" >
+                            <li class="fa fa-pen"></li>
+                          </button>
+                          <button type="button" class="btn btn-danger" >
+                            <li class="fas fa-trash-alt"></li>
+                          </button>
+                          <button type="button" class="btn btn-info"  style="width: 40px">
+                            <li class="fa fa-info-circle"></li>
+                          </button>
+                        </td> 
+                      </mat-menu>
+                    
+                    
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row
+                    *matRowDef="let row; columns: displayedColumns;"></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="5" class="p-3">Aucun element
+                      correspond a cette recherche " {{input.value}} "</td>
+                  </tr>
+                </table>
+  
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                  aria-label="Select page of users"></mat-paginator>
+              </div>
+  
+            </mat-card-content>
+  
+          </mat-card>
+  
+          <!-- FIN -->
+  
+        </div>
+        <!-- Fin list -->
+  
+      </div>
+    </div>
+  </div>
+  

@@ -25,6 +25,7 @@ import { AuthInterceptor } from './core/_interceptor/token.interceptor';
 import { AppRouting } from './app.routing';
 import { LoginComponent } from './core/components/login/login.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,17 @@ import { LoginComponent } from './core/components/login/login.component';
     FooterComponent,
     SidebarComponent,
     TopbarComponent,
+<<<<<<< HEAD
     LoginComponent
+=======
+    FournisseurComponent,
+    ClientComponent,
+    GroupeComponent,
+    AddComponent,
+    ListComponent,
+    AddClientComponent,
+ 
+>>>>>>> origin/diallo
   ],
   imports: [
     BrowserModule,

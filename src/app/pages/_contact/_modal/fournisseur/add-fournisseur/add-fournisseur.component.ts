@@ -1,7 +1,13 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
+<<<<<<< HEAD
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddClientComponent } from '../../client/add-client/add-client.component';
+=======
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+>>>>>>> origin/diallo
 
 @Component({
   selector: 'app-add-fournisseur',
@@ -9,7 +15,20 @@ import { AddClientComponent } from '../../client/add-client/add-client.component
   styleUrls: ['./add-fournisseur.component.scss']
 })
 export class AddFournisseurComponent implements OnInit {
+  // MISE A JOUR FIxiNG
+  Fournisseur = new FormGroup({
+    nom: new FormControl(''),
+    prenom: new FormControl(''),
+    adresse: new FormControl(''),
+    telephone: new FormControl('', Validators.required)
+  })
 
+  constructor(
+    public dialogRef: MatDialogRef<AddFournisseurComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+  ) { }
+
+<<<<<<< HEAD
   // MISE A JOUR FIxiNG
   Fournisseur = new FormGroup({
     nom: new FormControl(''),
@@ -25,6 +44,8 @@ export class AddFournisseurComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
+=======
+>>>>>>> origin/diallo
 
   ngOnInit(): void {
   }

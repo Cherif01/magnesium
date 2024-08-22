@@ -6,8 +6,13 @@ import { MatTableDataSource } from '@angular/material/table'
 import { ContactServiceService } from '../../_services/contact-service.service'
 import { MatDialog } from '@angular/material/dialog'
 import { MatSnackBar } from '@angular/material/snack-bar'
+<<<<<<< HEAD
 import { convertObjectInFormData } from 'src/app/app.component'
 import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
+=======
+import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
+import { convertObjectInFormData } from 'src/app/app.component'
+>>>>>>> origin/diallo
 
 @Component({
   selector: 'app-fournisseur',
@@ -27,6 +32,7 @@ export class FournisseurComponent implements OnInit {
 
   constructor (
     public location: Location,
+<<<<<<< HEAD
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private service: ContactServiceService
@@ -34,6 +40,15 @@ export class FournisseurComponent implements OnInit {
 
   ngOnInit (): void {
     this.getFournisseur()
+=======
+    private service: ContactServiceService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+  ) {}
+
+  ngOnInit (): void {
+   
+>>>>>>> origin/diallo
   }
 
   ngAfterViewInit () {
@@ -50,7 +65,11 @@ export class FournisseurComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   getFournisseur () {
+=======
+  getList () {
+>>>>>>> origin/diallo
     this.service.getall('fournisseur', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
@@ -62,7 +81,10 @@ export class FournisseurComponent implements OnInit {
     })
     // this.dataSource.data = objet
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/diallo
   openDialog() {
     this.dialog.open(AddFournisseurComponent, {
     }).afterClosed()
@@ -81,7 +103,11 @@ export class FournisseurComponent implements OnInit {
                 panelClass: ['bg-success', 'text-white']
 
               })
+<<<<<<< HEAD
               this.getFournisseur()
+=======
+              this.getList()
+>>>>>>> origin/diallo
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
@@ -95,4 +121,8 @@ export class FournisseurComponent implements OnInit {
         }
       })
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/diallo
 }
