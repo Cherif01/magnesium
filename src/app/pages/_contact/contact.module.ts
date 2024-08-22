@@ -20,13 +20,11 @@ import { GroupeComponent } from './_components/groupe/groupe.component';
     FournisseurComponent,
     AddClientComponent,
     GroupeComponent,
-    ClientComponent
-
+    ClientComponent,
   ],
   imports: [
     CommonModule,
     DemoMaterialModule,
-    MatDialogModule,
     MatFormFieldModule,
     MatTabsModule,
     RouterModule.forChild(contactRouting)
