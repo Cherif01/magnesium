@@ -1,7 +1,7 @@
-import { Location } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs';
+import { Location } from '@angular/common'
+import { Component } from '@angular/core'
+import { Router, NavigationEnd } from '@angular/router'
+import { filter } from 'rxjs'
 
 @Component({
   selector: 'app-root',
@@ -9,16 +9,24 @@ import { filter } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Magnus-Gestion';
+  title = 'Magnus-Gestion'
 
   canShowMenu = true
   constructor (public location: Location, private router: Router) {
     this.router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // `event.url` contient l'URL actuelle
-        this.canShowMenu = event.url !== '/home/login'
-        // Vous pouvez effectuer des vérifications supplémentaires ici
+        // Liste des URL à cacher exactement
+        const hiddenUrls = ['/home/login']
+
+        // Vérification si l'URL actuelle est une des URLs exactes à cacher
+        this.canShowMenu = !hiddenUrls.includes(event.url)
+
+        // Vérification si l'URL correspond au modèle /vente/pos/id
+        const ventePosRegex = /^\/vente\/pos\/\d+$/ // Regex pour matcher /vente/pos/id
+        if (ventePosRegex.test(event.url)) {
+          this.canShowMenu = false
+        }
       })
   }
 }
@@ -48,22 +56,29 @@ export function convertObjectInFormData (tab: any) {
   return formData
 }
 
-
-
-export function imprimerDiv(divToPrint: any): void {
+export function imprimerDiv (divToPrint: any): void {
   // let printContents = this.divToPrint.nativeElement.innerHTML;
   let printContents = divToPrint
-  let styles = Array.from(document.querySelectorAll('link[rel="stylesheet"], style')).map((node) => node.outerHTML).join('');
-  let iframe: any = document.createElement('iframe');
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-  let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-  iframeDoc.open();
-  iframeDoc.write('<html><head><title>Impression</title>' + styles + '</head><body>' + printContents + '</body></html>');
-  iframeDoc.close();
+  let styles = Array.from(
+    document.querySelectorAll('link[rel="stylesheet"], style')
+  )
+    .map(node => node.outerHTML)
+    .join('')
+  let iframe: any = document.createElement('iframe')
+  iframe.style.display = 'none'
+  document.body.appendChild(iframe)
+  let iframeDoc = iframe.contentDocument || iframe.contentWindow.document
+  iframeDoc.open()
+  iframeDoc.write(
+    '<html><head><title>Impression</title>' +
+      styles +
+      '</head><body>' +
+      printContents +
+      '</body></html>'
+  )
+  iframeDoc.close()
   iframe.onload = function () {
-    iframe.contentWindow.print();
-    document.body.removeChild(iframe);
-  };
+    iframe.contentWindow.print()
+    document.body.removeChild(iframe)
+  }
 }
-
