@@ -28,7 +28,13 @@ export const homeRouting: Routes = [
   },
   {
     path: 'entrepot',
+<<<<<<< HEAD
     component: EntrepotComponent,
     canActivate: [GuardGuard]
   }
+=======
+    component: EntrepotComponent
+  },
+ 
+>>>>>>> imran
 ]
