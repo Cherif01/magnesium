@@ -13,8 +13,9 @@
             </nav>
           </div>
           <div class="col text-end">
-            <button mat-flat-button color="primary"><mat-icon>add</mat-icon>
-              Ajouter</button>
+            <div class="text-right">
+              <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><span class="mdi mdi-plus-thick"></span> Nouveau fournisseur</button>
+            </div>
           </div>
         </div>
       </div>
@@ -38,7 +39,7 @@
                 <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
                     ID </th>
-                  <td mat-cell *matCellDef="let row; let i = index"> {{row.idClient}}
+                  <td mat-cell *matCellDef="let row; let i = index"> {{row.idFournisseur}}
                   </td>
                 </ng-container>
                 <!-- ID -->
@@ -66,13 +67,25 @@
                   <td mat-cell *matCellDef="let row"> {{row.adresse}}
                   </td>
                 </ng-container>
+                <ng-container matColumnDef="societe">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    SOCIETE </th>
+                  <td mat-cell *matCellDef="let row"> {{row.societe}}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    EMAIL </th>
+                  <td mat-cell *matCellDef="let row"> {{row.email}}
+                  </td>
+                </ng-container>
 
                 <!-- Action -->
                 <ng-container matColumnDef="Action">
                   <th mat-header-cell *matHeaderCellDef
                     class="text-center">Action</th>
                   <td mat-cell *matCellDef="let row" class="text-center">
-                    <button mat-button color="warn" [matMenuTriggerFor]="menu">
+                    <button mat-button color="warn">
                       Plus d'action <span
                         class="dw dw-down-chevron"></span></button>
                     <mat-menu #menu="matMenu">

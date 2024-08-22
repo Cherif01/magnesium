@@ -46,19 +46,6 @@ export const AppRouting: Routes = [
           )
       },
       {
-        path: 'compte',
-        loadChildren: () =>
-          import('../app/pages/_comptesPaiement/compte-paiement.module').then(
-            m => m.ComptePaiementModule
-          )
-      },
-      {
-        path: 'charge',
-        loadChildren: () =>
-          import('../app/pages/_depense/charge.module').then(
-            m => m.ChargeModule)
-      },
-      {
         path: '**',
         // redirectTo: '/home',
         component: NotfoundComponent,

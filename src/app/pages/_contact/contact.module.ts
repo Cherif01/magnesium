@@ -7,12 +7,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DemoMaterialModule } from 'src/demo-material-module';
 import { AddFournisseurComponent } from './_modal/fournisseur/add-fournisseur/add-fournisseur.component';
+import { AddClientComponent } from './_modal/client/add-client/add-client.component';
+import { FournisseurComponent } from './_components/fournisseur/fournisseur.component';
+import { ClientComponent } from './_components/client/client.component';
+import { GroupeComponent } from './_components/groupe/groupe.component';
 
 
 
 @NgModule({
   declarations: [
-    AddFournisseurComponent
+    AddFournisseurComponent,
+    FournisseurComponent,
+    AddClientComponent,
+    GroupeComponent,
+    ClientComponent
+    
   ],
   imports: [
     CommonModule,

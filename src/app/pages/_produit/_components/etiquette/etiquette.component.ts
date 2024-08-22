@@ -1,27 +1,28 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Location } from '@angular/common'
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
-import { AddPerteComponent } from '../../_modal/add-perte/add-perte.component';
+import { Location } from '@angular/common'
+import { AddEtiquetteComponent } from '../../_modal/add-etiquette/add-etiquette.component';
 
 @Component({
-  selector: 'app-perte',
-  templateUrl: './perte.component.html',
-  styleUrls: ['./perte.component.scss']
+  selector: 'app-etiquette',
+  templateUrl: './etiquette.component.html',
+  styleUrls: ['./etiquette.component.scss']
 })
-export class PerteComponent implements OnInit {
+export class EtiquetteComponent implements OnInit {
 
-  title = 'Liste des Pertes'
+ 
+  title = 'Liste des Etiquettes'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'qtePerdu', 'description', 'Action']
+  displayedColumns: string[] = ['id', 'idProduit', 'code', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -34,7 +35,7 @@ export class PerteComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.getPerte()
+    this.getEtiquette()
   }
 
   ngAfterViewInit () {
@@ -51,8 +52,8 @@ export class PerteComponent implements OnInit {
     }
   }
 
-  getPerte () {
-    this.service.getall('product', 'perte').subscribe({
+  getEtiquette () {
+    this.service.getall('product', 'etiquette').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -65,7 +66,7 @@ export class PerteComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(AddPerteComponent, {
+    this.dialog.open(AddEtiquetteComponent, {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
@@ -73,16 +74,16 @@ export class PerteComponent implements OnInit {
           const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('product', 'perte', formData).subscribe({
+          this.service.create('product', 'etiquette', formData).subscribe({
             next: (response) => {
-              this.snackBar.open("Perte enregistre avec succès !", "Okay", {
+              this.snackBar.open("Etiquette enregistre avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getPerte()
+              this.getEtiquette()
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {

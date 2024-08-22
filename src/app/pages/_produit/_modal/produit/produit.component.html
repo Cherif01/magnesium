@@ -1,53 +1,53 @@
-<h1 matDialogTitle>Ajouter un nouveau fournisseur</h1>
+<h1 matDialogTitle>Ajouter un nouveau produit</h1>
 <hr>
 
 <mat-dialog-content>
-  <form [formGroup]="Fournisseur">
+  <form [formGroup]="Produit">
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>NOM</mat-label>
-        <input type="text" matInput placeholder="Ex : Cherif"
-          formControlName="nom">
+        <mat-label>DESIGNATION</mat-label>
+        <input type="text" matInput placeholder="Ex : Mange"
+          formControlName="designation">
       </mat-form-field>
     </div>
 
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>PRENOM</mat-label>
-        <input type="text" matInput placeholder="Ex : Imran"
-          formControlName="prenom">
+        <mat-label>REFERENCE</mat-label>
+        <input type="text" matInput placeholder="Ex : ...."
+          formControlName="reference">
       </mat-form-field>
     </div>
 
     <!-- Adresse et Telephone -->
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>ADRESSE Fournisseur</mat-label>
-        <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
-          formControlName="adresse">
+        <mat-label>SEUIL</mat-label>
+        <input type="number" matInput placeholder="Ex : 10, ..."
+          formControlName="seuil">
       </mat-form-field>
     </div>
 
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>TELEPHONE</mat-label>
-        <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
-          formControlName="telephone">
+        <mat-label>DESCRIPTION</mat-label>
+        <input type="text" matInput placeholder="Ex : Luxe"
+          formControlName="description">
       </mat-form-field>
     </div>
     <!-- Email et Societe -->
     <div class="col">
         <mat-form-field class="w-100" appearance="outline">
-          <mat-label>Email</mat-label>
-          <input type="text" matInput placeholder="Ex : thiernomahmudbah@gmail.com, ..."
-            formControlName="email">
+          <mat-label>IMAGE</mat-label>
+          <input type="text" matInput placeholder="Ex : , ..."
+            formControlName="image">
         </mat-form-field>
       </div>
 
       <div class="col">
         <mat-form-field class="w-100" appearance="outline">
-          <mat-label>Societe</mat-label>
-          <input type="text" matInput placeholder="Ex : SPA_Technologie, ..."
+          <mat-label>SOUSCATEGORIE</mat-label>
+          <input type="number" matInput placeholder="Ex : 1, ..."
             formControlName="societe">
         </mat-form-field>
       </div>
@@ -57,6 +57,7 @@
 <mat-dialog-actions>
   <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
   <button mat-stroked-button color="primary"
-    (click)="saveDataFournisseur()">Enregistrer le Fournisseur</button>
+    (click)="saveDataProduit()">Enregistrer le Produit</button>
 </mat-dialog-actions>
+
 

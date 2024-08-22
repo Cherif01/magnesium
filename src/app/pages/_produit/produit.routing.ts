@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Routes } from '@angular/router'
 import { ListComponent } from './_components/list/list.component'
 import { AddComponent } from './_components/add/add.component'
@@ -7,6 +8,16 @@ import { PerimeComponent } from './_components/perime/perime.component'
 import { RuptureStockComponent } from './_components/rupture-stock/rupture-stock.component'
 import { ClassificationComponent } from './_components/classification/classification.component'
 import { GuardGuard } from 'src/app/core/auth/guard/guard.guard'
+=======
+import { Routes } from "@angular/router";
+import { ListComponent } from "./_components/list/list.component";
+import { AddComponent } from "./_components/add/add.component";
+import { PerteComponent } from "./_components/perte/perte.component";
+import { PerimeComponent } from "./_components/perime/perime.component";
+import { RuptureStockComponent } from "./_components/rupture-stock/rupture-stock.component";
+import { ClassificationComponent } from "./_components/classification/classification.component";
+import { EtiquetteComponent } from "./_components/etiquette/etiquette.component";
+>>>>>>> mojavelly
 
 export const productRouting: Routes = [
   {
@@ -20,15 +31,23 @@ export const productRouting: Routes = [
     canActivate: [GuardGuard]
   },
   {
+    path: 'etiquette',
+    component: EtiquetteComponent
+  },
+  {
     path: 'list',
     component: ListComponent,
     canActivate: [GuardGuard]
   },
+<<<<<<< HEAD
   {
     path: 'etiquette',
     component: EtiquettesComponent,
     canActivate: [GuardGuard]
   },
+=======
+  
+>>>>>>> mojavelly
   {
     path: 'perte',
     component: PerteComponent,
