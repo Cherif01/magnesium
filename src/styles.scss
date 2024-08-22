@@ -46,18 +46,16 @@ body {
 }
 
 #matTable th {
-  color: white;
-  font-size: 16px;
-}
-
-#maTableList th {
+  border: 1px solid #121212;
   background-color: #153448;
   color: #fff;
   font-weight: bold;
 }
-#maTableList td {
+#matTable td {
   color: #121619;
   border: 1px solid #121212;
+  text-transform: capitalize;
+  padding-left: 5px;
 }
 
 /* ENLEVER LE INCREMENT DU L'INPUT NUMBER */

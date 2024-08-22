@@ -1,8 +1,12 @@
-<div id="main">
-  <ng-container *ngIf="canShowMenu">
+<ng-container *ngIf="canShowMenu">
+  <div id="main">
     <app-topbar></app-topbar>
     <app-sidebar></app-sidebar>
     <router-outlet></router-outlet>
-    <app-footer></app-footer>
-  </ng-container>
-</div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!canShowMenu">
+  <app-topbar></app-topbar>
+    <router-outlet></router-outlet>
+</ng-container>
+<app-footer></app-footer>

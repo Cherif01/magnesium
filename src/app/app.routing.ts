@@ -25,13 +25,41 @@ const AppRouting: Routes = [
           )
       },
       {
+<<<<<<< HEAD
         path: 'vente',
         loadChildren: () =>
           import('../app/pages/_vente/vente.module').then(
+=======
+        path: 'achat',
+        loadChildren: () =>
+          import('../app/pages/_achats/achats.module').then(
+            m => m.AchatsModule
+          )
+      },
+      {
+        path: 'transfert',
+        loadChildren: () =>
+          import('../app/pages/_transfertStock/transfert-stock.module').then(
+            m => m.TransfertStockModule
+          )
+      },
+      {
+        path: 'ajustement',
+        loadChildren: () =>
+          import('../app/pages/_ajustementStock/ajustement-stock.module').then(
+            m => m.AjustementStockModule
+          )
+      },
+      {
+        path: 'vente',
+        loadChildren: () =>
+          import('../app/pages/_ventes/vente.module').then(
+>>>>>>> devs
             m => m.VenteModule
           )
       },
       {
+<<<<<<< HEAD
         path: 'compte',
         loadChildren: () =>
           import('../app/pages/_comptesPaiement/compte-paiement.module').then(
@@ -43,6 +71,12 @@ const AppRouting: Routes = [
         loadChildren: () =>
           import('../app/pages/_depense/charge.module').then(
             m => m.ChargeModule
+=======
+        path: '',
+        loadChildren: () =>
+          import('../app/pages/_rapport/rapport.module').then(
+            m => m.RapportModule
+>>>>>>> devs
           )
       },
       {
