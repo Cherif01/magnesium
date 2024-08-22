@@ -104,9 +104,6 @@ export class PosComponent implements OnInit {
     }
   ]
 
-
-
-
   openDialog() {
     this.dialog.open(RecuPosComponent, {
     }).afterClosed()
