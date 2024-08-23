@@ -1,0 +1,120 @@
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+      <div class="page-header">
+        <div class="d-flex justify-content-between">
+          <div class="col-md-4">
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+                <li class="breadcrumb-item active"
+                  aria-current="page"> {{title}}</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col text-end">
+            <button mat-flat-button color="primary">
+              Ajouter un article au bon
+              <mat-icon>arrow_downward</mat-icon></button>
+              <button mat-flat-button color="warn" class="ms-2">
+                Imprimer
+                <mat-icon>printer</mat-icon></button>
+          </div>
+        </div>
+      </div>
+      <!-- List -->
+      <hr>
+      <div class="main-box mb-30">
+        <!-- AJOUT DU DATATABLE.. -->
+        <mat-card class="p-3">
+          <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
+          <hr>
+          <div class="invoice-container">
+            <header class="invoice-header">
+              <h1 class="text-center p-2 shadow mb-2">FACTURE PROFORMA</h1>
+              <div
+                class="row d-flex justify-content-between align-items-center flex-wrap py-3">
+                <div class="col">
+                  <div class="company-details">
+                    <p><strong>YARIE FOOD</strong></p>
+                    <p>C/Matoto - Yimbaya</p>
+                    <p><strong>Téléphone : </strong> +224 620 00 00 00</p>
+                    <p><strong>Email : </strong> yariefood-entreprise.com</p>
+                  </div>
+                </div>
+                <div class="col text-end">
+                  <img src="/assets/logo/logo.png" class="w-50"
+                    alt="Logo entreprise">
+                </div>
+              </div>
+            </header>
+
+            <section class="invoice-info">
+              <div class="invoice-number">
+                <h4>Facture N°: 001234</h4>
+                <p>Date: 22/08/2024</p>
+              </div>
+              <div class="client-details">
+                <h4>Client:</h4>
+                <p>Nom du Client</p>
+                <p>Adresse du Client</p>
+                <p>Téléphone: +224 654 321 112</p>
+                <p>Email: client-exemple.com</p>
+              </div>
+            </section>
+
+            <section class="invoice-items">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Qte</th>
+                    <th>Description</th>
+                    <th>Prix Unitaire (GNF)</th>
+                    <th>Total (GNF)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Produit 1</td>
+                    <td>50 000</td>
+                    <td>50 000</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Produit 2</td>
+                    <td>30 000</td>
+                    <td>60 000</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>Produit 3</td>
+                    <td>25 000</td>
+                    <td>25 000</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"
+                      class="text-right"><strong>Total:</strong></td>
+                    <td><strong>135 000</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <footer class="invoice-footer">
+              <p><strong>Conditions de paiement:</strong> Paiement dû sous 30
+                jours.</p>
+              <p><strong>Merci pour votre confiance!</strong></p>
+            </footer>
+          </div>
+
+        </mat-card>
+
+        <!-- FIN -->
+
+      </div>
+      <!-- Fin list -->
+
+    </div>
+  </div>
+</div>

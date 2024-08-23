@@ -5,6 +5,7 @@ import { AddSaleComponent } from './_components/add-sale/add-sale.component'
 import { RetourVenteComponent } from './_components/retour-vente/retour-vente.component'
 import { PosComponent } from './_components/pos/pos.component'
 import { GuardGuard } from 'src/app/core/auth/guard/guard.guard'
+import { ProformaComponent } from './_components/proforma/proforma.component'
 
 export const venteRouting: Routes = [
   {
@@ -35,6 +36,11 @@ export const venteRouting: Routes = [
   {
     path: 'retour-sale',
     component: RetourVenteComponent,
+    canActivate: [GuardGuard]
+  },
+  {
+    path: 'proforma',
+    component: ProformaComponent,
     canActivate: [GuardGuard]
   }
 ]

@@ -2,60 +2,57 @@
 <hr>
 
 <mat-dialog-content>
-  <form [formGroup]="Produit">
-    <div class="col">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>DESIGNATION</mat-label>
-        <input type="text" matInput placeholder="Ex : Mange"
-          formControlName="designation">
-      </mat-form-field>
-    </div>
+  <form [formGroup]="productForm">
 
-    <div class="col">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>REFERENCE</mat-label>
-        <input type="text" matInput placeholder="Ex : ...."
-          formControlName="reference">
-      </mat-form-field>
-    </div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Référence</mat-label>
+      <input matInput formControlName="reference" required />
+    </mat-form-field>
 
-    <!-- Adresse et Telephone -->
-    <div class="col">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>SEUIL</mat-label>
-        <input type="number" matInput placeholder="Ex : 10, ..."
-          formControlName="seuil">
-      </mat-form-field>
-    </div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Désignation</mat-label>
+      <input matInput formControlName="designation" required />
+    </mat-form-field>
 
-    <div class="col">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>DESCRIPTION</mat-label>
-        <input type="text" matInput placeholder="Ex : Luxe"
-          formControlName="description">
-      </mat-form-field>
-    </div>
-    <!-- Email et Societe -->
-    <div class="col">
-        <mat-form-field class="w-100" appearance="outline">
-          <mat-label>IMAGE</mat-label>
-          <input type="text" matInput placeholder="Ex : , ..."
-            formControlName="image">
+    <div
+      class="d-flex justify-content-between flex-wrap align-items-center">
+      <div class="col me-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Catégorie</mat-label>
+          <mat-select formControlName="id_sousCategorie" required>
+            <mat-option *ngFor="let category of subCategories"
+              [value]="category.id">{{ category.name }}</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
-
-      <div class="col">
-        <mat-form-field class="w-100" appearance="outline">
-          <mat-label>SOUSCATEGORIE</mat-label>
-          <input type="number" matInput placeholder="Ex : 1, ..."
-            formControlName="societe">
+      <div class="col ms-2">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Seuil</mat-label>
+          <input matInput type="number" formControlName="seuil"
+            required />
         </mat-form-field>
       </div>
+    </div>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"
+        maxlength="255"></textarea>
+    </mat-form-field>
+
+    <div class="file-upload-container">
+      <input type="file" (change)="onFileChange($event)"
+        formControlName="image" />
+      <div class="image-preview-container text-end" *ngIf="imagePreview">
+        <img [src]="imagePreview" class="image-preview" />
+      </div>
+    </div>
+
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="warn" matDialogClose (click)="onReset()">Abandonner</button>
   <button mat-stroked-button color="primary"
     (click)="saveDataProduit()">Enregistrer le Produit</button>
 </mat-dialog-actions>

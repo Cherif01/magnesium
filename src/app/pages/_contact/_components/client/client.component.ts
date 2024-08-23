@@ -18,7 +18,7 @@ import { Client } from '../../_interfaces/Client';
 export class ClientComponent implements OnInit {
 
   title = 'Liste des clients'
- 
+
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
@@ -55,14 +55,13 @@ export class ClientComponent implements OnInit {
   getClient () {
     this.service.getall('client', 'list').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+        // console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
       }
     })
-    // this.dataSource.data = objet
   }
 
   openDialog() {
@@ -103,7 +102,7 @@ export class ClientComponent implements OnInit {
   //     this.service.delete('client', 'delete',id).subscribe(data => {
   //       this.dataa = data;
   //       this.getClient();
-       
+
   //     })
   //   }
   // }

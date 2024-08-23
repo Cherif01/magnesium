@@ -66,7 +66,7 @@ export class SidebarComponent implements OnInit {
       ]
     },
     {
-      name: 'Gestion des produits',
+      name: 'Gestion Produits',
       icon: 'bi bi-list',
       submenu: [
         {
@@ -107,7 +107,7 @@ export class SidebarComponent implements OnInit {
       ] // Ajout d'un sous-menu vide si nécessaire
     },
     {
-      name: 'Gestion des achats',
+      name: 'Gestion Achats',
       icon: 'bi bi-truck',
       submenu: [
         {
@@ -128,7 +128,7 @@ export class SidebarComponent implements OnInit {
       ]
     },
     {
-      name: 'Gestion des ventes',
+      name: 'Gestion Ventes',
       icon: 'bi bi-cart2',
       submenu: [
         {
@@ -150,21 +150,26 @@ export class SidebarComponent implements OnInit {
           title: 'Retour vente',
           icon: 'bi bi-grid-fill',
           url: 'vente/retour-sale'
+        },
+        {
+          title: 'Facture Proforma',
+          icon: 'bi bi-grid-fill',
+          url: 'vente/proforma'
         }
       ]
     },
     {
-      name: 'Ajustement de stock',
+      name: 'Ajuster le stock',
       icon: 'bi bi-reply',
       submenu: [
         {
           title: 'Nouvelle ajustement',
-          icon: 'bi bi-add',
+          icon: 'bi bi-pie-chart',
           url: 'ajustement/add'
         },
         {
           title: 'Liste ajustement',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'ajustement/list'
         }
       ]
@@ -191,22 +196,22 @@ export class SidebarComponent implements OnInit {
       ]
     },
     {
-      name: 'Comptes de paiement',
+      name: 'Gestion compte',
       icon: 'bi bi-cash',
       submenu: [
         {
           title: 'Nouveau',
-          icon: 'bi bi-add',
+          icon: 'bi bi-pie-chart',
           url: 'compte/add-account'
         },
         {
           title: 'Liste des comptes',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'compte/account-list'
         },
         {
           title: 'Bilan',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'compte/bilan-account'
         }
       ]
@@ -217,17 +222,17 @@ export class SidebarComponent implements OnInit {
       submenu: [
         {
           title: 'Nouveau',
-          icon: 'bi bi-add',
+          icon: 'bi bi-pie-chart',
           url: 'home/add-user'
         },
         {
           title: 'Listes',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'home/list-user'
         },
         {
           title: 'Les Roles',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'home/role-user'
         }
       ]
@@ -238,52 +243,52 @@ export class SidebarComponent implements OnInit {
       submenu: [
         {
           title: 'Stock',
-          icon: 'bi bi-add',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal-stock'
         },
         {
           title: 'Pertes de products',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/rapport'
         },
         {
           title: 'Achats',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal-achat'
         },
         {
           title: 'Ventes',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal-vente'
         },
         {
           title: 'Clients',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal-client'
         },
         {
           title: 'Fournisseurs',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal-fournisseur'
         },
         {
           title: 'Caisse',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal'
         },
         {
           title: 'D&#233;pense',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal-depenses'
         },
         {
           title: 'Paiement des achats',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/paiement-achat'
         },
         {
           title: 'Les Articles',
-          icon: 'bi bi-menu',
+          icon: 'bi bi-pie-chart',
           url: 'rapport/journal-articles'
         }
       ]
@@ -295,9 +300,9 @@ export class SidebarComponent implements OnInit {
       submenu: [
         {
           title: 'Config',
-          icon: 'bi bi-add',
+          icon: 'bi bi-pie-chart',
           url: 'config/settings'
-        }
+        },
       ]
     }
   ]

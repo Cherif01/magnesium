@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit, Optional } from '@angular/core'
+import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-add-magasin',
@@ -8,31 +8,28 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./add-magasin.component.scss']
 })
 export class AddMagasinComponent implements OnInit {
-// MISE A JOUR FIxiNG
-Magasin = new FormGroup({
-  nom: new FormControl(''),
-  reference: new FormControl(''),
-  adresse: new FormControl(''),
-  
-})
 
-constructor(
-  public dialogRef: MatDialogRef<AddMagasinComponent>,
-  @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-) { }
+  // MISE A JOUR FIxiNG
+  Magasin = new FormGroup({
+    nom: new FormControl(''),
+    adresse: new FormControl(''),
+    reference: new FormControl('')
+  })
 
 
-ngOnInit(): void {
-}
+  constructor (
+    public dialogRef: MatDialogRef<AddMagasinComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
+  ngOnInit (): void {}
 
-saveDataMagasin() {
-  if (this.Magasin.valid) {
-    this.dialogRef.close({
-      event: "insert",
-      data: this.Magasin.value
-    })
+  saveDataMagasin () {
+    if (this.Magasin.valid) {
+      this.dialogRef.close({
+        event: 'insert',
+        data: this.Magasin.value
+      })
+    }
   }
-}
-
 }
