@@ -21,7 +21,7 @@ export class EntrepotComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'nom', 'adresse','status' ,'Action']
+  displayedColumns: string[] = ['id', 'nom', 'adresse' ,'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -70,10 +70,10 @@ export class EntrepotComponent implements OnInit {
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
           // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
+         // const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('entrepot', 'add', formData).subscribe({
+          this.service.create('entrepot', 'add',result.data ).subscribe({
             next: (response) => {
               this.snackBar.open("Entrepot enregistre avec succès !", "Okay", {
                 duration: 3000,
@@ -88,7 +88,7 @@ export class EntrepotComponent implements OnInit {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
                 duration: 3000,
                 horizontalPosition: "left",
-                verticalPosition: "top",
+                verticalPosition: "bottom",
                 panelClass: ['bg-danger', 'text-white']
               })
             }

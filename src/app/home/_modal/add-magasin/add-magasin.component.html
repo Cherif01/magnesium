@@ -11,13 +11,7 @@
       </mat-form-field>
     </div>
 
-    <div class="col">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>GESTIONNAIRE </mat-label>
-        <input type="text" matInput placeholder="Ex : Imran"
-          formControlName="gestionnaire">
-      </mat-form-field>
-    </div>
+   
 
     <!-- Adresse et Telephone -->
     <div class="col">
@@ -28,6 +22,13 @@
       </mat-form-field>
     </div>
 
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>REFERENCE</mat-label>
+        <input type="text" matInput placeholder="Ex : CF-552"
+          formControlName="reference">
+      </mat-form-field>
+    </div>
   
   </form>
 </mat-dialog-content>
@@ -35,5 +36,5 @@
 <mat-dialog-actions>
   <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
   <button mat-stroked-button color="primary"
-    (click)="saveDataMagasin()">Enregistrer l'Magasin</button>
+    (click)="saveDataMagasin()">Enregistrer le Magasin</button>
 </mat-dialog-actions>

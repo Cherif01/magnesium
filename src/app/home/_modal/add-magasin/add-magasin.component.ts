@@ -11,7 +11,7 @@ export class AddMagasinComponent implements OnInit {
 // MISE A JOUR FIxiNG
 Magasin = new FormGroup({
   nom: new FormControl(''),
-  gestionnaire: new FormControl(''),
+  reference: new FormControl(''),
   adresse: new FormControl(''),
   
 })
