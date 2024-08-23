@@ -18,7 +18,7 @@ import { Client } from '../../_interfaces/Client';
 export class ClientComponent implements OnInit {
 
   title = 'Liste des clients'
- 
+
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
@@ -103,7 +103,7 @@ export class ClientComponent implements OnInit {
   //     this.service.delete('client', 'delete',id).subscribe(data => {
   //       this.dataa = data;
   //       this.getClient();
-       
+
   //     })
   //   }
   // }

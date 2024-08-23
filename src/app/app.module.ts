@@ -24,6 +24,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './core/_interceptor/token.interceptor';
 import { AppRouting } from './app.routing';
 import { LoginComponent } from './core/components/login/login.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -33,7 +36,7 @@ import { LoginComponent } from './core/components/login/login.component';
     FooterComponent,
     SidebarComponent,
     TopbarComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,9 @@ import { LoginComponent } from './core/components/login/login.component';
     MatDialogModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatSelectModule,
     RouterModule.forRoot(AppRouting, {relativeLinkResolution:'legacy'})
   ],
   providers: [

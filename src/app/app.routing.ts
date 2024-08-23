@@ -39,6 +39,13 @@ export const AppRouting: Routes = [
           )
       },
       {
+        path: 'achat',
+        loadChildren: () =>
+          import('../app/pages/_achats/achats.module').then(
+            m => m.AchatsModule
+          )
+      },
+      {
         path: 'vente',
         loadChildren: () =>
           import('../app/pages/_ventes/vente.module').then(

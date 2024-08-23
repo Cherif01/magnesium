@@ -13,6 +13,14 @@ export class PosComponent implements OnInit {
 
   ngOnInit (): void {}
 
+  state_overlay: boolean = true; // Initialement l'overlay est affiché
+
+  // Méthode pour initier une nouvelle vente
+  initiateNewSale() {
+    this.state_overlay = false; // Cache l'overlay
+    // Ajoutez ici tout autre code nécessaire pour initialiser une nouvelle vente
+  }
+
   // Tableau des produits
   products = [
     {

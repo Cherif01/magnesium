@@ -11,12 +11,13 @@ export class ProduitComponent implements OnInit {
 
   // MISE A JOUR FIxiNG
   Produit = new FormGroup({
-    designation: new FormControl(''),
     reference: new FormControl(''),
+    designation: new FormControl(''),
+    date_perumption: new FormControl(''),
+    id_sousCategorie: new FormControl('', Validators.required),
     seuil: new FormControl(''),
     description: new FormControl(''),
     image: new FormControl(''),
-    id_sousCategorie: new FormControl('', Validators.required)
   })
 
   constructor(
@@ -31,11 +32,32 @@ export class ProduitComponent implements OnInit {
 
   saveDataProduit() {
     if (this.Produit.valid) {
+      console.log('Envoyer', this.Produit.value)
       this.dialogRef.close({
         event: "insert",
         data: this.Produit.value
       })
     }
+  }
+
+  subCategories = ['Smartphones', 'Laptops', 'Vêtements pour hommes', 'Vêtements pour femmes']; // Remplacez par vos propres sous-catégories
+  imagePreview: string | ArrayBuffer | null = null;
+
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagePreview = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onReset(): void {
+    this.Produit.reset();
+    this.imagePreview = null;
   }
 
 }

@@ -8,6 +8,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
 import { Location } from '@angular/common'
 import { ProduitComponent } from '../../_modal/produit/produit.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add',
@@ -18,83 +19,54 @@ export class AddComponent implements OnInit {
 
   title = 'Liste des nouveaux produits'
 
-  // Assign the data to the data source for the table to render
-  dataSource = new MatTableDataSource([])
+  productForm: FormGroup;
+  categories = ['Électronique', 'Vêtements', 'Alimentation']; // Remplacez par vos propres catégories
+  subCategories = ['Smartphones', 'Laptops', 'Vêtements pour hommes', 'Vêtements pour femmes']; // Remplacez par vos propres sous-catégories
+  imagePreview: string | ArrayBuffer | null = null;
 
-  displayedColumns: string[] = ['id', 'designation', 'reference', 'seuil', 'description','image','id_sousCategorie', 'Action']
-
-  @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
-  @ViewChild(MatSort) sort?: MatSort | any
-
-  constructor (
-    public location: Location,
-    private dialog: MatDialog,
-    private snackBar: MatSnackBar,
-    private service: ContactServiceService
-  ) {}
-
-  ngOnInit (): void {
-    this.getProduit()
+  constructor(private fb: FormBuilder) {
+    this.productForm = this.fb.group({
+      reference: ['', Validators.required],
+      designation: ['', Validators.required],
+      category: ['', Validators.required],
+      subCategory: ['', Validators.required],
+      description: ['', [Validators.required, Validators.maxLength(255)]],
+      expiryDate: ['', Validators.required],
+      threshold: [0, Validators.required],
+      image: ['']
+    });
   }
 
-  ngAfterViewInit () {
-    this.dataSource.paginator = this.paginator
-    this.dataSource.sort = this.sort
-  }
+  ngOnInit(): void {}
 
-  applyFilter (event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase()
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage()
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagePreview = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
 
-  getProduit () {
-    this.service.getall('product', 'add').subscribe({
-      next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
-        this.dataSource.data = reponse
-      },
-      error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
-      }
-    })
-    // this.dataSource.data = objet
+  onSubmit(): void {
+    if (this.productForm.valid) {
+      // Logique pour soumettre le formulaire
+      const formData = new FormData();
+      const file = this.productForm.get('image')?.value;
+      formData.append('image', file);
+
+      // this.apiService.uploadImage(formData).subscribe(response => {
+      //   // Traitez la réponse du serveur
+      //   console.log('Image uploaded successfully', response);
+      // });
+    }
   }
 
-  openDialog() {
-    this.dialog.open(ProduitComponent, {
-    }).afterClosed()
-      .subscribe((result) => {
-        if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('product', 'add', formData).subscribe({
-            next: (response) => {
-              this.snackBar.open("Produit enregistre avec succès !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-success', 'text-white']
-
-              })
-              this.getProduit()
-            },
-            error: (err) => {
-              this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
-                duration: 3000,
-                horizontalPosition: "left",
-                verticalPosition: "top",
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
-        }
-      })
+  onReset(): void {
+    this.productForm.reset();
+    this.imagePreview = null;
   }
 
 }

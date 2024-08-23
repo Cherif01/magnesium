@@ -17,7 +17,7 @@ export class EntrepotComponent implements OnInit {
 
 
   title = 'Liste des Entrepots'
- 
+
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
@@ -87,7 +87,7 @@ export class EntrepotComponent implements OnInit {
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
                 duration: 3000,
-                horizontalPosition: "left",
+                horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-danger', 'text-white']
               })

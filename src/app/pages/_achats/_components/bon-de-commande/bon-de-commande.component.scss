@@ -1,0 +1,113 @@
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.voucher-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  .voucher-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #008080;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+
+    .company-logo {
+      max-width: 150px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .voucher-title {
+      font-size: 26px;
+      font-weight: bold;
+      color: #008080;
+      text-align: right;
+    }
+  }
+
+  .voucher-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .supplier-details,
+    .voucher-details {
+      font-size: 14px;
+      color: #333;
+
+      h4 {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #008080;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .voucher-items {
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background: #008080;
+        color: #fff;
+      }
+
+      td {
+        color: #333;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+    }
+  }
+
+  .voucher-footer {
+    text-align: center;
+    margin-top: 20px;
+
+    p {
+      font-size: 12px;
+      color: #666;
+    }
+  }
+
+  .voucher-signature {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+
+    .signature-box {
+      width: 48%;
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #333;
+      color: #333;
+      font-size: 14px;
+    }
+  }
+}

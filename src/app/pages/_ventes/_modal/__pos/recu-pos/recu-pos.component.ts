@@ -26,19 +26,12 @@ export class RecuPosComponent implements OnInit {
   })
 
   constructor (
-    public dialogRef: MatDialogRef<AddClientComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit (): void {}
 
-  saveData () {
-    if (this.ventePOS.valid) {
-      this.dialogRef.close({
-        event: 'insert',
-        data: this.ventePOS.value
-      })
-    }
+  confirmSale () {
+    console.log("Vente confirmer");
   }
 
   _printer (): void {

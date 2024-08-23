@@ -1,0 +1,298 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(231, 231, 236, 0.956);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  text-align: center;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.arrow_down {
+  font-size: 50px; /* Taille de l'icône */
+  color: white;
+  animation: bounce 1s infinite;
+}
+
+#main-pos {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  height: 90vh;
+  .col {
+    flex: 1; // Chaque colonne prend tout l'espace disponible de manière égale
+    display: flex;
+    flex-direction: column;
+    .product,
+    .facture {
+      flex: 1; // Prend tout l'espace vertical disponible dans la colonne
+      padding: 1rem; // Remplace le p-3 de Bootstrap pour un padding de 1rem
+    }
+
+    .product {
+      background-color: rgb(255, 255, 255);
+    }
+    .facture {
+      background-color: rgb(244, 244, 244);
+    }
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  height: 90vh; /* Assure que la colonne prend toute la hauteur de la fenêtre */
+  padding-bottom: 5px;
+  background-color: rgb(255, 255, 255);
+  overflow-y: scroll;
+}
+
+#col_ {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 80vh; /* Assure que la colonne prend toute la hauteur de la fenêtre */
+  padding-bottom: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  overflow-y: inherit;
+}
+
+.facture {
+  flex: 1; /* Prend tout l'espace disponible en haut */
+  padding: 1rem;
+  background-color: #faf8f8; /* Fond clair pour la facture */
+  border: 1px solid #ccc;
+  overflow-y: auto; /* Permet le défilement si le contenu dépasse */
+}
+
+.facture-content {
+  display: flex;
+  flex-direction: column;
+  // gap: 1rem;
+  // padding-bottom: 1%;
+}
+
+.facture-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  // padding-bottom: 0.5rem;
+  // margin-bottom: 0.5rem;
+}
+
+.facture-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+tr td {
+  color: rgb(149, 139, 139);
+}
+
+.product-card {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  text-align: center; /* Centrer le contenu */
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  width: auto;
+  height: 100px; /* Hauteur fixe pour toutes les images */
+  object-fit: contain; /* Couper ou ajuster l'image pour remplir le conteneur */
+  object-position: center; /* Centrer l'image dans son conteneur */
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #b0b2b9;
+}
+
+.card-text {
+  font-size: 1.2rem;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+.quantity-input {
+  width: 50%;
+  margin-right: 5px;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+}
+
+.add-to-cart {
+  width: 50%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3;
+}
+
+.shadow {
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+    rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 5px 5px;
+  margin-bottom: 10px;
+  // border: 1px solid #333;
+  // background-color: rgba(124, 214, 246, 0.786);
+  color: rgb(248, 140, 77);
+}
+
+// Search
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  background-color: white;
+}
+
+.search-box {
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+}
+
+.search-input {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 50px;
+  outline: none;
+  border: 1px solid black;
+  outline: none;
+  font-size: 25px;
+  font-weight: bold;
+  flex-grow: 2; /* Permet à l'input de prendre plus d'espace */
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+// BTN
+
+.number {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Espace entre les sections */
+  background-color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  display: flex;
+  gap: 1rem; /* Espace entre les boutons */
+}
+
+.section button {
+  flex: 1;
+  padding: 1.2rem 0;
+  background-color: #ffffff;
+  color: #242222;
+  border: 2px solid #d1d5db;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    // background-color: #e0f7fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+  }
+}
+
+.section button:first-child {
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.section button:last-child {
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+
+.section button:focus {
+  outline: none;
+  // box-shadow: 0 0 0 3px rgba(3, 169, 244, 0.5);
+}
+
+#validate-payment-btn {
+  flex: 2; /* Occupe l'espace de deux boutons */
+  padding: 1.2rem;
+  background-color: #0c7946; /* Couleur de fond bleu */
+  color: #ffffff; /* Texte en blanc */
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background-color: #854765; /* Couleur plus foncée au survol */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: #004085; /* Couleur encore plus foncée lors du clic */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+  }
+  #validate-payment-btn mat-icon {
+    font-size: 40px;
+  }
+}
+
+// BTN

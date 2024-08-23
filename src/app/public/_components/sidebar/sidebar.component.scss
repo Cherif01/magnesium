@@ -1,9 +1,9 @@
-#sidebar-title{
+#sidebar-title {
   color: rgb(82, 73, 73);
   font-size: 17px;
 }
 
-#side-icon{
+#side-icon {
   font-size: 20px;
   color: rgb(15, 1, 1);
 }
@@ -20,4 +20,81 @@
 
 .sidebar-item.has-sub.open > .submenu {
   display: block;
+}
+
+// Variables de couleurs
+$sidebar-bg: #ffffff;
+$sidebar-text: #656363;
+$sidebar-hover: #e8edf1;
+$sidebar-active: #1abc9c;
+$border-color: rgba(73, 73, 73, 0.833);
+
+// Style pour le menu de la sidebar
+.sidebar-menu {
+  // background-color: $sidebar-bg;
+  padding: 1rem;
+
+  ul.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0.5rem 0;
+      transition: background-color 0.3s ease;
+
+      a.sidebar-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: $sidebar-text;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $sidebar-hover;
+        }
+
+        &.active-sidebar {
+          background-color: $sidebar-active;
+          color: $sidebar-bg;
+        }
+
+        i.micon {
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+
+  // Style pour les panneaux d'expansion
+  mat-accordion {
+    .mat-expansion-panel {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+
+      &.mat-expanded {
+        background-color: $sidebar-hover;
+      }
+
+      .mat-expansion-panel-header {
+        padding: 0.5rem 1rem;
+        color: $sidebar-text;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $sidebar-hover;
+        }
+      }
+
+      .mat-expansion-panel-body {
+        padding: 0;
+        background-color: $sidebar-bg;
+        border-left: 2px solid $border-color;
+      }
+    }
+  }
 }
