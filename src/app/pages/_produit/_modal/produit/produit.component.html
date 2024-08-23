@@ -20,16 +20,15 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Catégorie</mat-label>
           <mat-select formControlName="id_sousCategorie" required>
-            <mat-option *ngFor="let category of subCategories"
-              [value]="category.id">{{ category.name }}</mat-option>
+            <mat-option *ngFor="let category of ListSousCategory"
+              [value]="category.idSousCategorie">{{ category.libelle }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col ms-2">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Seuil</mat-label>
-          <input matInput type="number" formControlName="seuil"
-            required />
+          <input matInput type="number" formControlName="seuil" />
         </mat-form-field>
       </div>
     </div>
@@ -52,9 +51,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-stroked-button color="warn" matDialogClose (click)="onReset()">Abandonner</button>
+  <button mat-stroked-button color="warn" matDialogClose
+    (click)="onReset()">Abandonner</button>
   <button mat-stroked-button color="primary"
     (click)="saveDataProduit()">Enregistrer le Produit</button>
 </mat-dialog-actions>
-
-

@@ -16,28 +16,12 @@ export class AddComponent implements OnInit {
     reference: ['', Validators.required],
     designation: ['', Validators.required],
     id_sousCategorie: ['', Validators.required],
-    description: ['', [Validators.required, Validators.maxLength(255)]],
-    seuil: [0, Validators.required],
+    description: ['', [Validators.maxLength(255)]],
+    seuil: [0],
     image: ['']
   })
-  subCategories = [
-    {
-      id: 1,
-      name: 'Smartphones'
-    },
-    {
-      id: 2,
-      name: 'Laptops'
-    },
-    {
-      id: 3,
-      name: 'Vêtements pour hommes'
-    },
-    {
-      id: 4,
-      name: 'Vêtements pour femmes'
-    }
-  ] // Remplacez par vos propres sous-catégories
+
+  ListSousCategory: any = []
   imagePreview: string | ArrayBuffer | null = null
 
   constructor (
@@ -46,7 +30,22 @@ export class AddComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  ngOnInit (): void {}
+  ngOnInit (): void {
+    this.getListCategorie()
+  }
+
+  // Categorie
+  getListCategorie () {
+    this.service.getall('sousCategorie', 'list').subscribe({
+      next: (reponse: any) => {
+        console.log('REPONSE SUCCESS : ', reponse)
+        this.ListSousCategory = reponse
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
+      }
+    })
+  }
 
   onFileChange (event: any) {
     const file = event.target.files[0]
@@ -61,24 +60,24 @@ export class AddComponent implements OnInit {
 
   onSubmit (): void {
     if (this.productForm.valid) {
-      // console.log('Formulaire : ', this.productForm.value)
+      console.log('Formulaire : ', this.productForm.value)
       this.service.create('produit', 'add', this.productForm.value).subscribe({
-        next: (response) => {
-          this.snackBar.open("Produit enregistre avec succès !", "Okay", {
+        next: response => {
+          this.snackBar.open('Produit enregistre avec succès !', 'Okay', {
             duration: 3000,
-            horizontalPosition: "right",
-            verticalPosition: "top",
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
             panelClass: ['bg-success', 'text-white']
-
           })
         },
-        error: (err) => {
-          this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+        error: err => {
+          this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {
             duration: 3000,
-            horizontalPosition: "left",
-            verticalPosition: "top",
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
             panelClass: ['bg-danger', 'text-white']
           })
+          console.log("Error : ", err)
         }
       })
     }

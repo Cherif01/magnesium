@@ -14,6 +14,8 @@ import { ProduitComponent } from './_modal/produit/produit.component';
 import { EtiquetteComponent } from './_components/etiquette/etiquette.component';
 import { AddEtiquetteComponent } from './_modal/add-etiquette/add-etiquette.component';
 import { AddPerteComponent } from './_modal/add-perte/add-perte.component';
+import { AddCategoryComponent } from './_modal/add-category/add-category.component';
+import { AddSubCategoryComponent } from './_modal/add-sub-category/add-sub-category.component';
 
 
 
@@ -28,7 +30,9 @@ import { AddPerteComponent } from './_modal/add-perte/add-perte.component';
     ProduitComponent,
     EtiquetteComponent,
     AddEtiquetteComponent,
-    AddPerteComponent
+    AddPerteComponent,
+    AddCategoryComponent,
+    AddSubCategoryComponent
   ],
   imports: [
     CommonModule,

@@ -43,11 +43,13 @@
               <div
                 class="d-flex justify-content-between flex-wrap align-items-center">
                 <div class="col me-2">
-                  <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Catégorie</mat-label>
                     <mat-select formControlName="id_sousCategorie" required>
-                      <mat-option *ngFor="let category of subCategories"
-                        [value]="category.id">{{ category.name }}</mat-option>
+                      <mat-option>-- Choisir une Category --</mat-option>
+                      <mat-option *ngFor="let category of ListSousCategory"
+                        [value]="category.idSousCategorie">{{ category.libelle
+                        }}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -69,13 +71,14 @@
               <div class="file-upload-container">
                 <input type="file" (change)="onFileChange($event)"
                   formControlName="image" />
-                <div class="image-preview-container text-end" *ngIf="imagePreview">
+                <div class="image-preview-container text-end"
+                  *ngIf="imagePreview">
                   <img [src]="imagePreview" class="image-preview" />
                 </div>
               </div>
 
               <div class="form-actions">
-                <button mat-raised-button color="primary"
+                <button [disabled]="productForm.invalid" mat-raised-button color="primary"
                   type="submit">Ajouter</button>
                 <button mat-stroked-button color="warn"
                   (click)="onReset()">Réinitialiser</button>
