@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -10,19 +10,40 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProduitComponent implements OnInit {
 
   // MISE A JOUR FIxiNG
-  Produit = new FormGroup({
-    reference: new FormControl(''),
-    designation: new FormControl(''),
-    date_perumption: new FormControl(''),
-    id_sousCategorie: new FormControl('', Validators.required),
-    seuil: new FormControl(''),
-    description: new FormControl(''),
-    image: new FormControl(''),
+  productForm: FormGroup = this.fb.group({
+    reference: ['', Validators.required],
+    designation: ['', Validators.required],
+    id_sousCategorie: ['', Validators.required],
+    description: ['', [Validators.required, Validators.maxLength(255)]],
+    seuil: [0, Validators.required],
+    image: ['']
   })
+  subCategories = [
+    {
+      id: 1,
+      name: 'Smartphones'
+    },
+    {
+      id: 2,
+      name: 'Laptops'
+    },
+    {
+      id: 3,
+      name: 'Vêtements pour hommes'
+    },
+    {
+      id: 4,
+      name: 'Vêtements pour femmes'
+    }
+  ] // Remplacez par vos propres sous-catégories
+
+  imagePreview: string | ArrayBuffer | null = null;
+
 
   constructor(
     public dialogRef: MatDialogRef<ProduitComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder
   ) { }
 
 
@@ -31,18 +52,14 @@ export class ProduitComponent implements OnInit {
 
 
   saveDataProduit() {
-    if (this.Produit.valid) {
-      console.log('Envoyer', this.Produit.value)
+    if (this.productForm.valid) {
+      console.log('Form save', this.productForm.value)
       this.dialogRef.close({
         event: "insert",
-        data: this.Produit.value
+        data: this.productForm.value
       })
     }
   }
-
-  subCategories = ['Smartphones', 'Laptops', 'Vêtements pour hommes', 'Vêtements pour femmes']; // Remplacez par vos propres sous-catégories
-  imagePreview: string | ArrayBuffer | null = null;
-
 
   onFileChange(event: any) {
     const file = event.target.files[0];
@@ -56,7 +73,7 @@ export class ProduitComponent implements OnInit {
   }
 
   onReset(): void {
-    this.Produit.reset();
+    this.productForm.reset();
     this.imagePreview = null;
   }
 

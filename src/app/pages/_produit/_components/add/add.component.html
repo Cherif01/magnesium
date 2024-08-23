@@ -45,39 +45,16 @@
                 <div class="col me-2">
                   <mat-form-field appearance="outline">
                     <mat-label>Catégorie</mat-label>
-                    <mat-select formControlName="category" required>
-                      <mat-option *ngFor="let category of categories"
-                        [value]="category">{{ category }}</mat-option>
+                    <mat-select formControlName="id_sousCategorie" required>
+                      <mat-option *ngFor="let category of subCategories"
+                        [value]="category.id">{{ category.name }}</mat-option>
                     </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col ms-2">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Sous-catégorie</mat-label>
-                    <mat-select formControlName="subCategory" required>
-                      <mat-option *ngFor="let subCategory of subCategories"
-                        [value]="subCategory">{{ subCategory }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div
-                class="d-flex justify-content-between flex-wrap align-items-center">
-                <div class="col me-2">
-
-                  <mat-form-field appearance="outline">
-                    <mat-label>Date de Péremption</mat-label>
-                    <input matInput [matDatepicker]="picker"
-                      formControlName="expiryDate" required />
-                    <mat-datepicker-toggle matSuffix
-                      [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
                 <div class="col ms-2">
                   <mat-form-field appearance="outline">
                     <mat-label>Seuil</mat-label>
-                    <input matInput type="number" formControlName="threshold"
+                    <input matInput type="number" formControlName="seuil"
                       required />
                   </mat-form-field>
                 </div>

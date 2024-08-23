@@ -55,14 +55,13 @@ export class ClientComponent implements OnInit {
   getClient () {
     this.service.getall('client', 'list').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+        // console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
       }
     })
-    // this.dataSource.data = objet
   }
 
   openDialog() {

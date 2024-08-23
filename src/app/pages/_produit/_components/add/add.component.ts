@@ -1,14 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { convertObjectInFormData } from 'src/app/app.component';
-import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
-import { Location } from '@angular/common'
-import { ProduitComponent } from '../../_modal/produit/produit.component';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { ProduitService } from '../../_service/produit.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-add',
@@ -16,57 +9,83 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-
   title = 'Liste des nouveaux produits'
 
-  productForm: FormGroup;
-  categories = ['Électronique', 'Vêtements', 'Alimentation']; // Remplacez par vos propres catégories
-  subCategories = ['Smartphones', 'Laptops', 'Vêtements pour hommes', 'Vêtements pour femmes']; // Remplacez par vos propres sous-catégories
-  imagePreview: string | ArrayBuffer | null = null;
+  // productForm: FormGroup;
+  productForm: FormGroup = this.fb.group({
+    reference: ['', Validators.required],
+    designation: ['', Validators.required],
+    id_sousCategorie: ['', Validators.required],
+    description: ['', [Validators.required, Validators.maxLength(255)]],
+    seuil: [0, Validators.required],
+    image: ['']
+  })
+  subCategories = [
+    {
+      id: 1,
+      name: 'Smartphones'
+    },
+    {
+      id: 2,
+      name: 'Laptops'
+    },
+    {
+      id: 3,
+      name: 'Vêtements pour hommes'
+    },
+    {
+      id: 4,
+      name: 'Vêtements pour femmes'
+    }
+  ] // Remplacez par vos propres sous-catégories
+  imagePreview: string | ArrayBuffer | null = null
 
-  constructor(private fb: FormBuilder) {
-    this.productForm = this.fb.group({
-      reference: ['', Validators.required],
-      designation: ['', Validators.required],
-      category: ['', Validators.required],
-      subCategory: ['', Validators.required],
-      description: ['', [Validators.required, Validators.maxLength(255)]],
-      expiryDate: ['', Validators.required],
-      threshold: [0, Validators.required],
-      image: ['']
-    });
-  }
+  constructor (
+    private service: ProduitService,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit (): void {}
 
-  onFileChange(event: any) {
-    const file = event.target.files[0];
+  onFileChange (event: any) {
+    const file = event.target.files[0]
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = (e: any) => {
-        this.imagePreview = e.target.result;
-      };
-      reader.readAsDataURL(file);
+        this.imagePreview = e.target.result
+      }
+      reader.readAsDataURL(file)
     }
   }
 
-  onSubmit(): void {
+  onSubmit (): void {
     if (this.productForm.valid) {
-      // Logique pour soumettre le formulaire
-      const formData = new FormData();
-      const file = this.productForm.get('image')?.value;
-      formData.append('image', file);
+      // console.log('Formulaire : ', this.productForm.value)
+      this.service.create('produit', 'add', this.productForm.value).subscribe({
+        next: (response) => {
+          this.snackBar.open("Produit enregistre avec succès !", "Okay", {
+            duration: 3000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ['bg-success', 'text-white']
 
-      // this.apiService.uploadImage(formData).subscribe(response => {
-      //   // Traitez la réponse du serveur
-      //   console.log('Image uploaded successfully', response);
-      // });
+          })
+        },
+        error: (err) => {
+          this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+            duration: 3000,
+            horizontalPosition: "left",
+            verticalPosition: "top",
+            panelClass: ['bg-danger', 'text-white']
+          })
+        }
+      })
     }
   }
 
-  onReset(): void {
-    this.productForm.reset();
-    this.imagePreview = null;
+  onReset (): void {
+    this.productForm.reset()
+    this.imagePreview = null
   }
-
 }

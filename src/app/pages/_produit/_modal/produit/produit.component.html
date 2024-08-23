@@ -2,7 +2,7 @@
 <hr>
 
 <mat-dialog-content>
-  <form [formGroup]="Produit">
+  <form [formGroup]="productForm">
 
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Référence</mat-label>
@@ -14,24 +14,15 @@
       <input matInput formControlName="designation" required />
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Catégorie</mat-label>
-      <mat-select formControlName="id_sousCategorie" required>
-        <mat-option *ngFor="let subCategory of subCategories"
-          [value]="subCategory">{{ subCategory }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
     <div
       class="d-flex justify-content-between flex-wrap align-items-center">
       <div class="col me-2">
         <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Date de Péremption</mat-label>
-          <input matInput [matDatepicker]="picker"
-            formControlName="date_perumption" required />
-          <mat-datepicker-toggle matSuffix
-            [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-label>Catégorie</mat-label>
+          <mat-select formControlName="id_sousCategorie" required>
+            <mat-option *ngFor="let category of subCategories"
+              [value]="category.id">{{ category.name }}</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="col ms-2">
@@ -56,6 +47,7 @@
         <img [src]="imagePreview" class="image-preview" />
       </div>
     </div>
+
   </form>
 </mat-dialog-content>
 
