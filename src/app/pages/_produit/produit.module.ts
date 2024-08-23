@@ -14,11 +14,6 @@ import { ProduitComponent } from './_modal/produit/produit.component';
 import { EtiquetteComponent } from './_components/etiquette/etiquette.component';
 import { AddEtiquetteComponent } from './_modal/add-etiquette/add-etiquette.component';
 import { AddPerteComponent } from './_modal/add-perte/add-perte.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSelectModule } from '@angular/material/select';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
