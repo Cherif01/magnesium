@@ -1,4 +1,4 @@
-<h1 matDialogTitle>Ajouter un nouveau fournisseur</h1>
+<h1 matDialogTitle>Ajouter un nouveau client</h1>
 <hr>
 
 <mat-dialog-content>
@@ -22,7 +22,7 @@
     <!-- Adresse et Telephone -->
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>ADRESSE Fournisseur</mat-label>
+        <mat-label>ADRESSE </mat-label>
         <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
           formControlName="adresse">
       </mat-form-field>
@@ -32,30 +32,33 @@
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>TELEPHONE</mat-label>
         <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
-          formControlName="telephone">
+          formControlName="tel">
       </mat-form-field>
     </div>
-    <!-- Email et Societe -->
-    <div class="col">
-        <mat-form-field class="w-100" appearance="outline">
-          <mat-label>Email</mat-label>
-          <input type="text" matInput placeholder="Ex : thiernomahmudbah@gmail.com, ..."
-            formControlName="email">
-        </mat-form-field>
-      </div>
+    <!-- Societe et Email -->
 
-      <div class="col">
-        <mat-form-field class="w-100" appearance="outline">
-          <mat-label>Societe</mat-label>
-          <input type="text" matInput placeholder="Ex : SPA_Technologie, ..."
-            formControlName="societe">
-        </mat-form-field>
-      </div>
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>SOCIETE</mat-label>
+        <input type="text" matInput placeholder="Ex : SPA"
+          formControlName="societe">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput placeholder="Ex : thiernomahmudbah@gmail.com"
+          formControlName="email">
+      </mat-form-field>
+    </div>
+
+    
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
   <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
-  <button mat-stroked-button color="primary" (click)="saveDataFournisseur()">Enregistrer le Fournisseur</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataFournisseur()">Enregistrer le Fournisseur</button>
 </mat-dialog-actions>
-

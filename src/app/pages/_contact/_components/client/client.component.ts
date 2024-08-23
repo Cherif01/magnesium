@@ -23,7 +23,7 @@ export class ClientComponent implements OnInit {
   dataSource = new MatTableDataSource([])
 
   displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse', 'Action']
-  tab=[{id:1,  nom:"oumar", prenom:"Diallo", telephone:"2564", adresse:"mat"}]
+  
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
