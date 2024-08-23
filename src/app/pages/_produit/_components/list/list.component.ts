@@ -9,6 +9,7 @@ import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-
 
 import { Location } from '@angular/common'
 import { ProduitComponent } from '../../_modal/produit/produit.component'
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component'
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -91,8 +92,8 @@ export class ListComponent implements OnInit {
               console.log("Error : ", err)
               this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {
                 duration: 3000,
-                horizontalPosition: 'left',
-                verticalPosition: 'top',
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
                 panelClass: ['bg-danger', 'text-white']
               })
             }
@@ -100,4 +101,48 @@ export class ListComponent implements OnInit {
         }
       })
   }
+
+ // DELETE
+ deleteFunction (_api: string, id: any) {
+  // console.log('id:', this.Id_achat);
+  this.dialog
+    .open(DeletePopupComponent, {
+      disableClose: true,
+      data: {
+        title: ' Suppression demander! ',
+        message: ' Voulez-vous vraiment supprimer ce locateur ? ',
+        messageNo: 'Non ?',
+        messageYes: 'Oui, Confirmer !'
+      }
+    })
+    .afterClosed()
+    .subscribe(data => {
+      if (data) {
+        // console.log(data);
+        this.dataSource.data = []
+        this.service.delete(_api, 'delete', id).subscribe({
+          next: (reponse: any) => {
+            console.log('res : ', reponse)
+            this.snackBar.open(
+              'Suppression effectuer avec succès !',
+              'Okay',
+              {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+                panelClass: ['bg-success', 'text-white']
+              }
+            )
+          },
+          error: err => {
+            console.error('Error : ', err)
+          }
+        })
+        this.getProduit()
+      }
+    })
+  //Requete suppression sur la DB
+}
+
+
 }

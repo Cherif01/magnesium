@@ -302,7 +302,7 @@ export class SidebarComponent implements OnInit {
           title: 'Config',
           icon: 'bi bi-pie-chart',
           url: 'config/settings'
-        }
+        },
       ]
     }
   ]

@@ -1,0 +1,28 @@
+<h1 matDialogTitle>Ajouter une categorie</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="Cateegory">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Libelle</mat-label>
+        <input type="text" matInput placeholder="Ex : Libelle"
+          formControlName="libelle">
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Ex : Description"
+          formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-flat-button color="primary"
+  (click)="saveData()">Enregistrer</button>
+  <button mat-flat-button color="warn" matDialogClose>Abandonner</button>
+</mat-dialog-actions>
