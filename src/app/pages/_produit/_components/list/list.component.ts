@@ -91,8 +91,8 @@ export class ListComponent implements OnInit {
               console.log("Error : ", err)
               this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {
                 duration: 3000,
-                horizontalPosition: 'left',
-                verticalPosition: 'top',
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
                 panelClass: ['bg-danger', 'text-white']
               })
             }

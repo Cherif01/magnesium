@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProduitService } from '../../_service/produit.service';
 
 @Component({
   selector: 'app-produit',
@@ -43,11 +44,26 @@ export class ProduitComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ProduitComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private service: ProduitService
   ) { }
 
 
   ngOnInit(): void {
+    this.getSubCategory()
+  }
+
+  getSubCategory () {
+    this.service.getall('sousCategorie', 'list').subscribe({
+      next: (reponse: any) => {
+        console.log('REPONSE SUCCESS : ', reponse)
+        this.subCategories = reponse
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
+      }
+    })
+    // this.dataSource.data = objet
   }
 
 

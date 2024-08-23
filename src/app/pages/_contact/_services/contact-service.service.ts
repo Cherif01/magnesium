@@ -44,7 +44,7 @@ export class ContactServiceService {
   }
 
   // GET Unique
-  getUnique (api: string, suffixUrl: string, id_: any) {
+  getOne (api: string, suffixUrl: string, id_: any) {
     const url = `${BASE_URL}${api}/${suffixUrl}/${id_}/`
     let params = {
       params: {

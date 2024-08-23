@@ -74,6 +74,19 @@
                                         <button mat-button color="warn">
                                             Plus d'action <span class="dw dw-down-chevron"></span></button>
                                         <mat-menu #menu="matMenu">
+
+                                        <button routerLink="/{{
+                                            row.idAchat
+                                          }}" mat-stroked-button color="primary"
+                                          class="mx-2">
+                                          <mat-icon class="micon">print</mat-icon>
+                                        </button>
+
+                                        <button mat-stroked-button
+                                           color="warn"
+                                          class="mx-2">
+                                          <mat-icon>delete</mat-icon>
+                                        </button>
                                         </mat-menu>
                                     </td>
                                 </ng-container>
