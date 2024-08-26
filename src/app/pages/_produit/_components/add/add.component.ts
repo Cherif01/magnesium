@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ProduitService } from '../../_service/produit.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http'
 
 @Component({
   selector: 'app-add',
@@ -27,7 +32,8 @@ export class AddComponent implements OnInit {
   constructor (
     private service: ProduitService,
     private snackBar: MatSnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private http: HttpClient
   ) {}
 
   ngOnInit (): void {
@@ -47,20 +53,24 @@ export class AddComponent implements OnInit {
     })
   }
 
+  selectedFile: any
+  uploadResponse: string | null = null
   onFileChange (event: any) {
-    const file = event.target.files[0]
+    const file: File = event.target.files[0]
     if (file) {
       const reader = new FileReader()
       reader.onload = (e: any) => {
         this.imagePreview = e.target.result
       }
       reader.readAsDataURL(file)
+      this.selectedFile = file
     }
   }
 
   onSubmit (): void {
     if (this.productForm.valid) {
       console.log('Formulaire : ', this.productForm.value)
+      // Ajout des variables au BACK_
       this.service.create('produit', 'add', this.productForm.value).subscribe({
         next: response => {
           this.snackBar.open('Produit enregistre avec succès !', 'Okay', {
@@ -77,7 +87,7 @@ export class AddComponent implements OnInit {
             verticalPosition: 'bottom',
             panelClass: ['bg-danger', 'text-white']
           })
-          console.log("Error : ", err)
+          console.log('Error : ', err)
         }
       })
     }

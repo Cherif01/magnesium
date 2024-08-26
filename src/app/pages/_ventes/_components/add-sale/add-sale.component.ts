@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component';
+import { Component, OnInit } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
+import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component'
+import { VenteService } from 'src/app/pages/_vente/_services/vente.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-add-sale',
@@ -8,17 +11,55 @@ import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component
   styleUrls: ['./add-sale.component.scss']
 })
 export class AddSaleComponent implements OnInit {
+  // code auto vente init
+  formInit: FormGroup = this.fb.group({
+    status: [1],
+  })
 
-  constructor (private dialog: MatDialog) {}
+  constructor (
+    private dialog: MatDialog,
+    private service: VenteService,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit (): void {}
+  ngOnInit (): void {
+    this.initVerif()
+  }
 
-  state_overlay: boolean = true; // Initialement l'overlay est affiché
+  initVerif () {}
+
+  state_overlay: boolean = true
 
   // Méthode pour initier une nouvelle vente
-  initiateNewSale() {
-    this.state_overlay = false; // Cache l'overlay
+  initiateNewSale () {
     // Ajoutez ici tout autre code nécessaire pour initialiser une nouvelle vente
+    this.generateAutoSaleCode()
+    console.log(this.formInit.value)
+    this.service.create('vente_init', 'add', this.formInit.value).subscribe({
+      next: (response: any) => {
+        this.snackBar.open('Nouvelle vente placer...', 'Okay', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-success', 'text-white']
+        })
+        this.state_overlay = false // Cache l'overlay
+      },
+      error: (error: any) => {
+        this.snackBar.open(
+          'Une erreur est survenue, connexion impossible',
+          'Error',
+          {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+            panelClass: ['bg-danger', 'text-white']
+          }
+        )
+        this.state_overlay = true // Cache l'overlay
+      }
+    })
   }
 
   // Tableau des produits
@@ -65,8 +106,7 @@ export class AddSaleComponent implements OnInit {
     {
       name: 'Attiéké',
       price: 35000,
-      image:
-        'https://i.ytimg.com/vi/5KjWpS2xnDc/maxresdefault.jpg',
+      image: 'https://i.ytimg.com/vi/5KjWpS2xnDc/maxresdefault.jpg',
       category: 'Accompagnement',
       isPromo: false
     },
@@ -97,8 +137,7 @@ export class AddSaleComponent implements OnInit {
     {
       name: 'Fanta Boite',
       price: 12000,
-      image:
-        'https://m.media-amazon.com/images/I/61EMsb5lGLL.jpg',
+      image: 'https://m.media-amazon.com/images/I/61EMsb5lGLL.jpg',
       category: 'Accompagnement',
       isPromo: false
     },
@@ -112,11 +151,21 @@ export class AddSaleComponent implements OnInit {
     }
   ]
 
-  openDialog() {
-    this.dialog.open(RecuPosComponent, {
-    }).afterClosed()
-      .subscribe((result) => {
-
-      })
+  openDialog () {
+    this.dialog
+      .open(RecuPosComponent, {})
+      .afterClosed()
+      .subscribe(result => {})
   }
+
+  // Fonction pour générer un code de vente à 8 chiffres
+  generateAutoSaleCode (): void {
+    const saleCode = "VENTE - " + Math.floor(10000000 + Math.random() * 90000000).toString() // Génère un nombre à 8 chiffres
+
+    // Mettre à jour le champ 'reference' avec le code généré
+    this.formInit.patchValue({
+      reference: saleCode
+    })
+  }
+
 }

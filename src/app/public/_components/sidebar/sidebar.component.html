@@ -5,18 +5,16 @@
         <div class="toggler">
           <a routerLink="#" class="sidebar-hide d-xl-none d-block"><i
               class="bi bi-x bi-middle"></i></a>
-          <div class="logo w-100 pb-0 text-center">
-            <div class="text- p-">
-              <img src="assets/image/cherif.png" id="profile" alt="Logo" srcset>
-              <h5 class="text-center pb-0 py-2">S.P.A - Technology</h5>
-              <a routerLink="home/login"
-                class="btn btn-outline-danger p-0 px-2">Deconnexoin</a>
+          <div class="logo pb-0 text-center my-4">
+            <div class="text- p-2 d-flex align-items-center justify-content-center">
+              <img src="assets/image/cherif.png" class="shadow" id="profile" alt="Logo" srcset>
             </div>
-            <!-- <hr> -->
+              <h5 class="text-center pb-0 py-2">S.P.A - Technology</h5>
+              <button (click)="logout()"
+                class="btn btn-outline-danger px-2"><span class="me-2">Fermer</span><mat-icon>logout</mat-icon></button>
+            <hr>
           </div>
         </div>
-
-        <hr>
 
         <div class="sidebar-menu w-100 mt-3">
           <ul class="menu w-100 mb-5 pb-5 mx-0 p-2">
@@ -39,7 +37,7 @@
                   <li class="p-0" *ngFor="let menu of onglet.submenu">
                     <a routerLink="{{menu.url}}"
                       routerLinkActive="active-sidebar"
-                      class="dropdown-toggle no-arrow sidebar-link">
+                      class="sidebar-link">
                       <i class="micon {{menu.icon}}"></i>
                       <span>{{menu.title}}</span>
                     </a>
@@ -62,8 +60,8 @@
 
   <style>
     #profile {
-      width: auto;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
     }
   </style>

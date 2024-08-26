@@ -33,7 +33,7 @@ export class AuthService {
   logout (): void {
     localStorage.removeItem('access_token')
     this.isAuthenticatedSubject.next(false)
-    this.router.navigate(['/login'])
+    this.router.navigate(['/home/login'])
   }
 
   isLoggedIn (): boolean {
