@@ -8,7 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddClientComponent } from '../../_modal/client/add-client/add-client.component';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Client } from '../../_interfaces/Client';
+
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
 
 @Component({
   selector: 'app-client',
@@ -21,6 +22,7 @@ export class ClientComponent implements OnInit {
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
+  
 
   displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse', 'Action']
   
@@ -95,6 +97,48 @@ export class ClientComponent implements OnInit {
           })
         }
       })
+  }
+
+   // DELETE
+   deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog
+      .open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce client ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getClient()
+        }
+      })
+    //Requete suppression sur la DB
   }
 
   // onDelete(id:number){

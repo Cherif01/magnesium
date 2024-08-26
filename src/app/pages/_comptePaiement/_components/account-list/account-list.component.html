@@ -14,7 +14,7 @@
             </div>
             <div class="col text-end">
               <div class="text-right">
-                <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><span class="mdi mdi-plus-thick"></span> Nouveau Compte De Paiment</button>
+                <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><mat-icon>add</mat-icon> Nouveau compte</button>
               </div>
             </div>
           </div>
@@ -35,25 +35,24 @@
   
               <div class="mat-elevation">
                 <table mat-table [dataSource]="dataSource" matSort class="w-100" id="matTable">
-                  <!-- ID -->
+                   <!-- ID -->
                   <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       ID </th>
-                    <td mat-cell *matCellDef="let row; let i = index"> {{row.idClient}}
+                    <td mat-cell *matCellDef="let row; let i = index"> {{i+1}}
                     </td>
                   </ng-container>
-                  <!-- ID -->
+                 
                   <ng-container matColumnDef="reference">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                      REFERENCE </th>
+                      Reference" </th>
                     <td mat-cell *matCellDef="let row"> {{row.reference}}
                     </td>
                   </ng-container>
-                  
-                  <ng-container matColumnDef="numero">
+                  <ng-container matColumnDef="apiKey">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                      NUMERO DE COMPTE</th>
-                    <td mat-cell *matCellDef="let row"> {{row.numero}}
+                      ApiKey </th>
+                    <td mat-cell *matCellDef="let row"> {{row.apiKey}}
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="description">
@@ -62,31 +61,40 @@
                     <td mat-cell *matCellDef="let row"> {{row.description}}
                     </td>
                   </ng-container>
-  
-                  <!-- Action -->
-                  <ng-container matColumnDef="Action">
-                    <th mat-header-cell *matHeaderCellDef
-                      class="text-center">Action</th>
-                    <td mat-cell *matCellDef="let row" class="text-center">
-                      <button mat-button color="warn" [matMenuTriggerFor]="menu">
-                        Plus d'action <span
-                          class="dw dw-down-chevron"></span></button>
-                      <mat-menu #menu="matMenu">
-                        <td class="d-flex justify-content-between">
-                          <button type="button" class="btn btn-primary" >
-                            <li ><mat-icon>update</mat-icon></li>
-                          </button>
-                          <button type="button" class="btn btn-danger" >
-                            <li ><mat-icon>delete</mat-icon></li>
-                          </button>
-                          <button type="button" class="btn btn-info"  style="width: 40px">
-                            <li ><mat-icon>more</mat-icon></li>
-                          </button>
-                        </td> 
-                      </mat-menu>
-                    
-                    
+                  <ng-container matColumnDef="numero">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      NUMERO </th>
+                    <td mat-cell *matCellDef="let row"> {{row.numero}}
+                    </td>
                   </ng-container>
+  
+  
+                 <!-- Action -->
+                 <ng-container matColumnDef="Action">
+                  <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
+                  <td mat-cell *matCellDef="let row" class="text-center">
+                    <button mat-button color="warn" [matMenuTriggerFor]="menu">
+                      Voir + <span class="dw dw-down-chevron"></span></button>
+                    <mat-menu #menu="matMenu">
+                      <a mat-menu-item routerLink="/compte/detail-compte/{{row.idCompte}}" class="text-start">
+                        <strong>
+                          <span class="dw dw-user-1 mx-2"></span>
+                          <span>Profile</span>
+                        </strong>
+                      </a>
+  
+                        <a (click)="deleteFunction('compte', row.idCompte)" mat-menu-item class="text-start">
+                          <strong>
+                            <span class="dw dw-delete text-danger mx-2"></span>
+                            <span>Supprimer</span>
+                          </strong>
+                        </a>
+                      </mat-menu>
+  
+                 
+                  </td>
+                </ng-container>
+  
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                   <tr mat-row
                     *matRowDef="let row; columns: displayedColumns;"></tr>

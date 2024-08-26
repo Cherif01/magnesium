@@ -1,26 +1,27 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
+import { AddCompteComponent } from '../../_modal/add-compte/add-compte.component';
+import { ComptePaiementService } from '../../_service/compte-paiement.service';
 import { Location } from '@angular/common'
-import { Component, OnInit, ViewChild } from '@angular/core'
-import { MatPaginator } from '@angular/material/paginator'
-import { MatSort } from '@angular/material/sort'
-import { MatTableDataSource } from '@angular/material/table'
-import { ContactServiceService } from '../../_services/contact-service.service'
-import { MatDialog } from '@angular/material/dialog'
-import { MatSnackBar } from '@angular/material/snack-bar'
-import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
-import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component'
 
 @Component({
-  selector: 'app-fournisseur',
-  templateUrl: './fournisseur.component.html',
-  styleUrls: ['./fournisseur.component.scss']
+  selector: 'app-account-list',
+  templateUrl: './account-list.component.html',
+  styleUrls: ['./account-list.component.scss']
 })
-export class FournisseurComponent implements OnInit {
-  title = 'Liste des nouveaux Fournisseurs'
+export class AccountListComponent implements OnInit {
+
+  title = 'Liste des nouveaux Compte de Paiement'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'tel', 'adresse','societe','email', 'Action']
+  displayedColumns: string[] = ['id', 'reference', 'akiKey', 'description', 'numero', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -29,11 +30,11 @@ export class FournisseurComponent implements OnInit {
     public location: Location,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private service: ContactServiceService
+    private service: ComptePaiementService
   ) {}
 
   ngOnInit (): void {
-    this.getFournisseur()
+    this.getCompte()
   }
 
   ngAfterViewInit () {
@@ -50,8 +51,8 @@ export class FournisseurComponent implements OnInit {
     }
   }
 
-  getFournisseur () {
-    this.service.getall('fournisseur', 'list').subscribe({
+  getCompte () {
+    this.service.getall('compte', 'list').subscribe({
       next: (reponse: any) => {
         // console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -62,7 +63,7 @@ export class FournisseurComponent implements OnInit {
     })
   }
   openDialog() {
-    this.dialog.open(AddFournisseurComponent, {
+    this.dialog.open(AddCompteComponent, {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
@@ -70,16 +71,16 @@ export class FournisseurComponent implements OnInit {
           // const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('fournisseur', 'add', result.data).subscribe({
+          this.service.create('compte', 'add', result.data).subscribe({
             next: (response) => {
-              this.snackBar.open("Fournisseur enregistre avec succès !", "Okay", {
+              this.snackBar.open("Compte de Paiement enregistre avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getFournisseur()
+              this.getCompte()
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
@@ -130,7 +131,7 @@ export class FournisseurComponent implements OnInit {
               console.error('Error : ', err)
             }
           })
-          this.getFournisseur()
+          this.getCompte()
         }
       })
     //Requete suppression sur la DB

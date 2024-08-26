@@ -57,7 +57,7 @@ export const AppRouting: Routes = [
         import('../app/pages/_comptePaiement/compte-paiment.module').then(
           m => m.ComptePaimentModule
         )
-    },
+     },
       {
         path: '**',
         // redirectTo: '/home',
