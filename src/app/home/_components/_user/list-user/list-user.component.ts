@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { convertObjectInFormData } from 'src/app/app.component';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
@@ -20,7 +21,7 @@ export class ListUserComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'fullname', 'email', 'telephone','magasin', 'Action']
+  displayedColumns: string[] = ['id', 'fullName', 'email', 'telephone', 'Action']
   //tab=[{id:1,  nom:"oumar", prenom:"Diallo", telephone:"2564", adresse:"mat"}]
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -69,10 +70,10 @@ export class ListUserComponent implements OnInit {
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
           // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
+          //const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('user', 'add', formData).subscribe({
+          this.service.create('user', 'add', result.data).subscribe({
             next: (response) => {
               this.snackBar.open("Utilisateur enregistré avec succès !", "Okay", {
                 duration: 3000,
@@ -96,14 +97,46 @@ export class ListUserComponent implements OnInit {
       })
   }
 
-  // onDelete(id:number){
-  //   if (confirm("voulez vous supprimer")) {
-  //     this.service.delete('ListUSer', 'delete',id).subscribe(data => {
-  //       this.dataa = data;
-  //       this.getListUSer();
-       
-  //     })
-  //   }
-  // }
+  deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog
+      .open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce utilisateur ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+             parseInt(reponse)
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getListUSer()
+        }
+      })
+    //Requete suppression sur la DB
+  }
 
 }

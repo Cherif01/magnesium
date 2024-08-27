@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router'
 import { DashboardComponent } from './_components/dashboard/dashboard.component'
-import { MagasinComponent } from './_components/magasin/magasin.component'
+ import { MagasinComponent } from './_components/magasin/magasin.component'
 import { EntrepotComponent } from './_components/entrepot/entrepot.component'
 import { LoginComponent } from '../core/components/login/login.component'
 import { GuardGuard } from '../core/auth/guard/guard.guard'

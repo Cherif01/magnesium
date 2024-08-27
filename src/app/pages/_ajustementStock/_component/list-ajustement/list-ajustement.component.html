@@ -12,11 +12,11 @@
                 </ol>
               </nav>
             </div>
-            <div class="col text-end">
+            <!-- <div class="col text-end">
               <div class="text-right">
                 <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><span class="mdi mdi-plus-thick"></span> Nouveau ajustement </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- List -->
@@ -78,23 +78,20 @@
                   <ng-container matColumnDef="Action">
                     <th mat-header-cell *matHeaderCellDef
                       class="text-center">Action</th>
-                    <td mat-cell *matCellDef="let row" class="text-center">
-                      <!-- <button mat-button color="warn" [matMenuTriggerFor]="menu">
-                        Plus d'action <span
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                      <button mat-button color="warn" [matMenuTriggerFor]="menu">
+                        Voir + <span
                           class="dw dw-down-chevron"></span></button>
                       <mat-menu #menu="matMenu">
-                      </mat-menu> -->
-                      <td class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-primary" >
-                          <li class="fa fa-pen"></li>
-                        </button>
-                        <button type="button" class="btn btn-danger" >
-                          <li class="fas fa-trash-alt"></li>
-                        </button>
-                        <button type="button" class="btn btn-info"  style="width: 40px">
-                          <li class="fa fa-info-circle"></li>
-                        </button>
-                      </td>
+                        <a
+                        (click)="deleteFunction('ajustement', element.idAjustement )"
+                        mat-menu-item class="text-start">
+                        <strong>
+                          <span><mat-icon>delete</mat-icon></span>
+                        </strong>             
+                      </a> 
+                      </mat-menu>
+                      
                     
                   </ng-container>
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

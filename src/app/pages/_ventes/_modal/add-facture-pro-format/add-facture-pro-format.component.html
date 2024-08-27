@@ -1,0 +1,48 @@
+<div class="card col-md-3 mt-6 "style="width: 30rem;">
+
+    <div class="card-body">
+      <h5 class="card-title">Facture Pro-Format</h5>
+
+        <form class="card-text" [formGroup]="AjustementStock" >
+    
+
+          <div class="d-flex justify-content-between flex-wrap align-items-center">
+           <div class="col">
+             <mat-form-field class="col-12" appearance="outline">
+               <mat-label>Produit</mat-label>
+               <mat-select formControlName="idProduit" required>
+                   <mat-option *ngFor="let produit of Produit"
+                       [value]="produit.id">{{ produit.name }}</mat-option>  
+               </mat-select>
+             </mat-form-field>
+             
+           </div>
+         
+         
+          </div>
+             
+               <div class="col">
+                 <mat-form-field class="w-100" appearance="outline">
+                   <mat-label>QUANTITE </mat-label>
+                   <input type="number" matInput placeholder="Ex :100"
+                     formControlName="quantite">
+                 </mat-form-field>
+               </div>
+               <div class="col">
+                 <mat-form-field class="w-100" appearance="outline">
+                   <mat-label>PRIX UNITAIRE VENTE  </mat-label>
+                   <input type="number" matInput placeholder="Ex :5000"
+                     formControlName="prixUniteAchat">
+                 </mat-form-field>
+               </div>
+              
+             
+             
+           </form>
+       <div class="card-footer d-flex justify-content-between flex-wrap align-items-between">
+        <button mat-stroked-button color="warn" matDialogClose >Annuler</button>
+      <button mat-stroked-button color="primary"
+      type="submit">Enregistrer Le  bon</button>
+       </div>
+    </div>
+  </div>
