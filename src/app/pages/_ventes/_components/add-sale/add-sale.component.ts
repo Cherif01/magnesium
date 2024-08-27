@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class AddSaleComponent implements OnInit {
   // code auto vente init
   formInit: FormGroup = this.fb.group({
-    status: [1],
+    idClient: [1]
   })
 
   constructor (
@@ -27,9 +27,24 @@ export class AddSaleComponent implements OnInit {
     this.initVerif()
   }
 
-  initVerif () {}
-
   state_overlay: boolean = true
+
+  initVerif () {
+    this.service.getUniqueSansId('vente_init', 'getLastInitVente').subscribe({
+      next: (response: any) => {
+        console.log('Info  Init : ', response)
+        if (response.status == 1) {
+          this.state_overlay = false
+        } else {
+          this.state_overlay = true
+        }
+      },
+      error: (error: any) => {
+        console.log('Error Init : ', error)
+        this.state_overlay = true // Cache l'overlay
+      }
+    })
+  }
 
   // Méthode pour initier une nouvelle vente
   initiateNewSale () {
@@ -70,7 +85,8 @@ export class AddSaleComponent implements OnInit {
       image:
         'https://lamarmitedafrique.org/wp-content/uploads/2021/05/tiep.png',
       category: 'Plat principal',
-      isPromo: false
+      isPromo: false,
+      stockDispo: 10
     },
     {
       name: 'Jus PEPSI',
@@ -86,14 +102,16 @@ export class AddSaleComponent implements OnInit {
       image:
         'https://chez-mimi-pontcharra.fr/wp-content/uploads/2022/07/248_161.png',
       category: 'Plat principal',
-      isPromo: false
+      isPromo: false,
+      stockDispo: 10
     },
     {
       name: 'Vimto',
       price: 10000,
       image: 'https://www.kroger.com/product/images/large/front/0007426500599',
       category: 'Boisson',
-      isPromo: false
+      isPromo: false,
+      stockDispo: 10
     },
     {
       name: 'Poisson Braisé',
@@ -108,7 +126,8 @@ export class AddSaleComponent implements OnInit {
       price: 35000,
       image: 'https://i.ytimg.com/vi/5KjWpS2xnDc/maxresdefault.jpg',
       category: 'Accompagnement',
-      isPromo: false
+      isPromo: false,
+      stockDispo: 10
     },
     {
       name: 'Hamburger',
@@ -116,7 +135,8 @@ export class AddSaleComponent implements OnInit {
       image:
         'https://sbprod-web-assets.s3.us-west-2.amazonaws.com/smashburger_classic_single_167e7ca495.png',
       category: 'Plat principal',
-      isPromo: false
+      isPromo: false,
+      stockDispo: 10
     },
     {
       name: 'Foutou Banane',
@@ -124,7 +144,8 @@ export class AddSaleComponent implements OnInit {
       image:
         'https://www.residenceohinene.net/ca/wp-content/uploads/2017/08/FOUTOU-BANANE.png',
       category: 'Accompagnement',
-      isPromo: false
+      isPromo: false,
+      stockDispo: 10
     },
     {
       name: 'Virgin Winter White',
@@ -139,7 +160,8 @@ export class AddSaleComponent implements OnInit {
       price: 12000,
       image: 'https://m.media-amazon.com/images/I/61EMsb5lGLL.jpg',
       category: 'Accompagnement',
-      isPromo: false
+      isPromo: false,
+      stockDispo: 10
     },
     {
       name: 'Crevettes roses ',
@@ -160,12 +182,11 @@ export class AddSaleComponent implements OnInit {
 
   // Fonction pour générer un code de vente à 8 chiffres
   generateAutoSaleCode (): void {
-    const saleCode = "VENTE - " + Math.floor(10000000 + Math.random() * 90000000).toString() // Génère un nombre à 8 chiffres
-
+    const saleCode =
+      'VENTE - ' + Math.floor(10000000 + Math.random() * 90000000).toString() // Génère un nombre à 8 chiffres
     // Mettre à jour le champ 'reference' avec le code généré
     this.formInit.patchValue({
       reference: saleCode
     })
   }
-
 }

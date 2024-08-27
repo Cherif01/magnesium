@@ -44,6 +44,10 @@ export class VenteService {
     return this.http.get<any[]>(url, params)
   }
 
+  getUniqueSansId (api: string, suffixUrl: string) {
+    return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
+  }
+
   // GET Unique
   getUnique (api: string, suffixUrl: string, id_: any) {
     const url = `${BASE_URL}${api}/${suffixUrl}/${id_}/`
