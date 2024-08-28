@@ -39,7 +39,7 @@
                   <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       ID </th>
-                    <td mat-cell *matCellDef="let row; let i = index"> {{row.i}}
+                    <td mat-cell *matCellDef="let row; let i = index"> {{row.i+1}}
                     </td>
                   </ng-container>
                   <!-- ID -->
@@ -76,9 +76,17 @@
                         (click)="deleteFunction('user', element.id)"
                         mat-menu-item class="text-start">
                         <strong>
-                          <span><mat-icon>delete</mat-icon></span>
+                          <span><mat-icon>delete</mat-icon> supprimer</span>
                         </strong>             
                       </a>
+                      <a
+                      [routerLink]="['/home/user-details']"
+                      mat-menu-item class="text-start">
+                      <strong>
+                        <span><mat-icon>more</mat-icon> </span>
+                        details
+                      </strong>             
+                    </a>
                     </mat-menu>
                     
                     

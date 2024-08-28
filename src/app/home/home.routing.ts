@@ -5,6 +5,9 @@ import { EntrepotComponent } from './_components/entrepot/entrepot.component'
 import { LoginComponent } from '../core/components/login/login.component'
 import { GuardGuard } from '../core/auth/guard/guard.guard'
 import { ListUserComponent } from './_components/_user/list-user/list-user.component'
+import { EntrepotDetailsComponent } from './_details/entrepot-details/entrepot-details.component'
+import { MagasinDetailsComponent } from './_details/magasin-details/magasin-details.component'
+import { UserDetailsComponent } from './_details/user-details/user-details.component'
 // Les routes du modules
 export const homeRouting: Routes = [
   {
@@ -33,6 +36,22 @@ export const homeRouting: Routes = [
   },
   {
     path: 'list-user',
-    component: ListUserComponent
-  }
+    component: ListUserComponent,
+    canActivate: [GuardGuard]
+  },
+  {
+    path: 'entrepot-details',
+    component: EntrepotDetailsComponent,
+    canActivate: [GuardGuard]
+  },
+  {
+    path: 'magasin-details',
+    component: MagasinDetailsComponent,
+    canActivate: [GuardGuard]
+  },
+  {
+    path: 'user-details',
+    component: UserDetailsComponent,
+    canActivate: [GuardGuard]
+  },
 ]

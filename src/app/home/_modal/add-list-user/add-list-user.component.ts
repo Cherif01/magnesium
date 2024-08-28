@@ -30,7 +30,8 @@ export class AddListUSerComponent implements OnInit {
   }
   Magasin = [
     {
-      id: 9,
+      id: 1
+      ,
       name: 'Coyah'
     },
     {

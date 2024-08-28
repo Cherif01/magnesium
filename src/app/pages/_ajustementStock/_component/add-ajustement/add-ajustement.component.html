@@ -5,7 +5,7 @@
     <div class="card-body">
       <h5 class="card-title">Approvisionner</h5>
 
-        <form class="card-text" [formGroup]="AjustementStock" (ngSubmit)="onSubmit()">
+        <form class="card-text" [formGroup]="AjustementStock" >
     
 
           <div class="d-flex justify-content-between flex-wrap align-items-center">
@@ -82,7 +82,7 @@
        <div class="card-footer d-flex justify-content-between flex-wrap align-items-between">
         <button mat-stroked-button color="warn" >Annuler</button>
       <button mat-stroked-button color="primary"
-      type="submit">Enregistrer Stock</button>
+      (click)="onSubmit()">Enregistrer Stock</button>
        </div>
     </div>
   </div>
@@ -152,12 +152,24 @@
                             class="dw dw-down-chevron"></span></button>
                         <mat-menu #menu="matMenu">
                           <a
-                          (click)="deleteFunction('ajustement', element.idAjustement )"
+                          (click)="deleteFunction('approvisionnement', element.id)"
                           mat-menu-item class="text-start">
                           <strong>
                             <span><mat-icon>delete</mat-icon></span>
+                            supprimer
                           </strong>             
                         </a> 
+                        <a
+                        [routerLink]="['/ajustement-details']"
+                        mat-menu-item class="text-start">
+                        <strong>
+                          <span><mat-icon>more</mat-icon> </span>
+                          details 
+                        </strong>   
+                                   
+                      </a>
+
+
                         </mat-menu>
                         
                       

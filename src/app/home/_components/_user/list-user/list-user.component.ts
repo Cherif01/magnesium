@@ -99,8 +99,7 @@ export class ListUserComponent implements OnInit {
 
   deleteFunction (_api: string, id: any) {
     // console.log('id:', this.Id_achat);
-    this.dialog
-      .open(DeletePopupComponent, {
+    this.dialog.open(DeletePopupComponent, {
         disableClose: true,
         data: {
           title: ' Suppression demander! ',

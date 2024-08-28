@@ -13,7 +13,10 @@ import { AddEntrepotComponent } from './_modal/add-entrepot/add-entrepot.compone
 import { AddMagasinComponent } from './_modal/add-magasin/add-magasin.component';
 import { ListUserComponent } from './_components/_user/list-user/list-user.component';
 import { AddListUSerComponent } from './_modal/add-list-user/add-list-user.component';
-import { MagasinComponent } from './_components/magasin/magasin.component'
+import { MagasinComponent } from './_components/magasin/magasin.component';
+import { MagasinDetailsComponent } from './_details/magasin-details/magasin-details.component';
+import { EntrepotDetailsComponent } from './_details/entrepot-details/entrepot-details.component';
+import { UserDetailsComponent } from './_details/user-details/user-details.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { MagasinComponent } from './_components/magasin/magasin.component'
     AddMagasinComponent,
     ListUserComponent,
     AddListUSerComponent,
-    MagasinComponent
+    MagasinComponent,
+    MagasinDetailsComponent,
+    EntrepotDetailsComponent,
+    UserDetailsComponent
   ],
   imports: [
     CommonModule,
