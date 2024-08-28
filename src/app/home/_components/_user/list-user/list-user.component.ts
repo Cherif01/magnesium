@@ -16,7 +16,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
 export class ListUserComponent implements OnInit {
 
   title = 'Liste des Utilisateur'
- 
+
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
@@ -101,7 +101,7 @@ export class ListUserComponent implements OnInit {
   //     this.service.delete('ListUSer', 'delete',id).subscribe(data => {
   //       this.dataa = data;
   //       this.getListUSer();
-       
+
   //     })
   //   }
   // }
