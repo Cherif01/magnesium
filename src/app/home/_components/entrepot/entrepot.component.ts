@@ -8,6 +8,8 @@ import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-
 import { Location } from '@angular/common';
 import { AddEntrepotComponent } from '../../_modal/add-entrepot/add-entrepot.component';
 import { convertObjectInFormData } from 'src/app/app.component';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
+import { HomeService } from '../../_services/home.service';
 @Component({
   selector: 'app-entrepot',
   templateUrl: './entrepot.component.html',
@@ -30,7 +32,7 @@ export class EntrepotComponent implements OnInit {
     public location: Location,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private service: ContactServiceService
+    private service: HomeService
   ) {}
 
 
@@ -61,7 +63,7 @@ export class EntrepotComponent implements OnInit {
         console.log('REPONSE ERROR : ', err)
       }
     })
-    // this.dataSource.data = objet
+  
   }
 
   openDialog() {
@@ -98,5 +100,45 @@ export class EntrepotComponent implements OnInit {
           })
         }
       })
+  }
+  deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog
+      .open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce entrepot ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getEntrepot()
+        }
+      })
+    //Requete suppression sur la DB
   }
 }

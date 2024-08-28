@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { BonDeCommandeComponent } from './_components/bon-de-commande/bon-de-commande.component';
 import { RetourAchatComponent } from './_components/retour-achat/retour-achat.component';
 import { AddAchatComponent } from './_modal/add-achat/add-achat.component';
+import { AddBonCommandeComponent } from './_modal/add-bon-commande/add-bon-commande.component';
 
 
 
@@ -17,6 +18,7 @@ import { AddAchatComponent } from './_modal/add-achat/add-achat.component';
     BonDeCommandeComponent,
     RetourAchatComponent,
     AddAchatComponent,
+    AddBonCommandeComponent,
    
   
     

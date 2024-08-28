@@ -1,10 +1,14 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { AddAjustementStockComponent } from '../../_modal/add-ajustement-stock/add-ajustement-stock.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Location } from '@angular/common';
 import { AjustementStockService } from '../../_service/ajustement-stock.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
 
 @Component({
   selector: 'app-add-ajustement',
@@ -15,25 +19,41 @@ export class AddAjustementComponent implements OnInit {
 title = 'Formulaire Approvisionnement '
  // MISE A JOUR FIxiNG
  AjustementStock = new FormGroup({
-  status: new FormControl(''),
-  id_produit: new FormControl('',Validators.required),
-  id_entrepot: new FormControl(''),
-  id_fournissseur: new FormControl('', Validators.required),
-  montant_total: new FormControl(''),
+   
+  idProduit: new FormControl('',Validators.required),
+  idEntrepot: new FormControl(''),
+  idFournisseur: new FormControl('', Validators.required),
+  montantTotal: new FormControl(''),
   quantite:new FormControl(''),
-  prix_unite_achat	:new FormControl(''),
- prix_unite_vente	:new FormControl(''),
- date_peremption:new FormControl(''),
+   prixUniteAchat	:new FormControl(''),
+ prixUniteVente	:new FormControl(''),
+ datePeremption:new FormControl(''),
 })
 
+titlle = 'Liste des ajustement stocks'
 
+  // Assign the data to the data source for the table to render
+  dataSource = new MatTableDataSource([])
+
+  displayedColumns: string[] = ['id', 'produit', 'fournisseur','quantite','prixachat','prixvente', 'Action']
+ 
+  @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
+  @ViewChild(MatSort) sort?: MatSort | any
+
+  
+  ngOnInit (): void {
+    this.getAjustementAchat()
+  }
 constructor (
   private service: AjustementStockService,
   private snackBar: MatSnackBar,
-  private fb: FormBuilder
+  private fb: FormBuilder,
+  public location:Location ,
+  private dialog: MatDialog,
+ 
 ) {}
 
-ngOnInit (): void {}
+
 
  
 // imagePreview: string | ArrayBuffer | null = null
@@ -94,31 +114,154 @@ Entrepot = [
     name: 'Gbessia'
   }
 ] 
+// onSubmit (): void {
+//   if (this.AjustementStock.valid) {
+//     // console.log('Formulaire : ', this.ajustementForm.value)
+//     this.service.create('approvisionnement', 'add', this.AjustementStock.value).subscribe({
+//       next: (response) => {
+//         this.snackBar.open("Approvisionnement effectuer avec succès !", "Okay", {
+//           duration: 3000,
+//           horizontalPosition: "right",
+//           verticalPosition: "top",
+//           panelClass: ['bg-success', 'text-white']
+
+//         })
+//       },
+//       error: (err) => {
+//         this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+//           duration: 3000,
+//           horizontalPosition: "left",
+//           verticalPosition: "top",
+//           panelClass: ['bg-danger', 'text-white']
+//         })
+//       }
+//     })
+//   }
+// }
+ngAfterViewInit () {
+  this.dataSource.paginator = this.paginator
+  this.dataSource.sort = this.sort
+}
+
+applyFilter (event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value
+  this.dataSource.filter = filterValue.trim().toLowerCase()
+
+  if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage()
+  }
+}
+
+getAjustementAchat () {
+  this.service.getall('approvisionnement', 'list').subscribe({
+    next: (reponse: any) => {
+      console.log('REPONSE SUCCESS : ', reponse)
+      this.dataSource.data = reponse
+    },
+    error: (err: any) => {
+      console.log('REPONSE ERROR : ', err)
+    }
+  })
+  // this.dataSource.data = objet
+}
+
+openDialog() {
+  this.dialog.open(AddAjustementStockComponent, {
+  }).afterClosed()
+    .subscribe((result) => {
+      if (result?.event && result.event === "insert") {
+        console.log(result.data);
+        //const formData = convertObjectInFormData(result.data);
+        this.dataSource.data.splice(0, this.dataSource.data.length);
+        //Envoyer dans la Base
+        this.service.create('approvisionnement', 'add', result.data).subscribe({
+          next: (response) => {
+            this.snackBar.open("Achat enregistre avec succès !", "Okay", {
+              duration: 3000,
+              horizontalPosition: "right",
+              verticalPosition: "top",
+              panelClass: ['bg-success', 'text-white']
+
+            })
+            this.getAjustementAchat()
+          },
+          error: (err) => {
+            this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+              duration: 3000,
+              horizontalPosition: "left",
+              verticalPosition: "top",
+              panelClass: ['bg-danger', 'text-white']
+            })
+          }
+        })
+      }
+    })
+}
+
 onSubmit (): void {
   if (this.AjustementStock.valid) {
-    // console.log('Formulaire : ', this.ajustementForm.value)
+    console.log('Formulaire : ', this.AjustementStock.value)
     this.service.create('approvisionnement', 'add', this.AjustementStock.value).subscribe({
-      next: (response) => {
-        this.snackBar.open("Approvisionnement enregistre avec succès !", "Okay", {
+      next: response => {
+        this.snackBar.open('Produit enregistre avec succès !', 'Okay', {
           duration: 3000,
-          horizontalPosition: "right",
-          verticalPosition: "top",
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
           panelClass: ['bg-success', 'text-white']
-
         })
       },
-      error: (err) => {
-        this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+      error: err => {
+        this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {
           duration: 3000,
-          horizontalPosition: "left",
-          verticalPosition: "top",
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
           panelClass: ['bg-danger', 'text-white']
         })
+        console.log("Error : ", err)
       }
     })
   }
 }
-
+deleteFunction (_api: string, id: any) {
+  // console.log('id:', this.Id_achat);
+  this.dialog
+    .open(DeletePopupComponent, {
+      disableClose: true,
+      data: {
+        title: ' Suppression demander! ',
+        message: ' Voulez-vous vraiment supprimer ce entrepot ? ',
+        messageNo: 'Non ?',
+        messageYes: 'Oui, Confirmer !'
+      }
+    })
+    .afterClosed()
+    .subscribe(data => {
+      if (data) {
+        // console.log(data);
+        this.dataSource.data = []
+        this.service.delete(_api, 'delete', id).subscribe({
+          next: (reponse: any) => {
+            console.log('res : ', reponse)
+            this.snackBar.open(
+              'Suppression effectuer avec succès !',
+              'Okay',
+              {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+                panelClass: ['bg-success', 'text-white']
+              }
+            )
+          },
+          error: err => {
+            console.error('Error : ', err)
+          }
+        })
+        this.getAjustementAchat()
+      }
+    })
+  //Requete suppression sur la DB
+}
 onReset (): void {
   this.AjustementStock.reset()
 
