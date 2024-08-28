@@ -7,6 +7,9 @@ import { BASE_URL } from 'src/app/config';
   providedIn: 'root'
 })
 export class ProduitService {
+  addProduct(formData: FormData) {
+    throw new Error('Method not implemented.');
+  }
 
   httpOptions = {
     headers: new HttpHeaders({

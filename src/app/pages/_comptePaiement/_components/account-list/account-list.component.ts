@@ -21,7 +21,7 @@ export class AccountListComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'reference', 'akiKey', 'description', 'numero', 'Action']
+  displayedColumns: string[] = ['id', 'reference', 'apiKey', 'description', 'numero', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -34,7 +34,7 @@ export class AccountListComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.getCompte()
+    this.getComptePaiement()
   }
 
   ngAfterViewInit () {
@@ -51,10 +51,11 @@ export class AccountListComponent implements OnInit {
     }
   }
 
-  getCompte () {
+
+  getComptePaiement () {
     this.service.getall('compte', 'list').subscribe({
       next: (reponse: any) => {
-        // console.log('REPONSE SUCCESS : ', reponse)
+        console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
       },
       error: (err: any) => {
@@ -62,6 +63,7 @@ export class AccountListComponent implements OnInit {
       }
     })
   }
+
   openDialog() {
     this.dialog.open(AddCompteComponent, {
     }).afterClosed()
@@ -73,14 +75,14 @@ export class AccountListComponent implements OnInit {
           //Envoyer dans la Base
           this.service.create('compte', 'add', result.data).subscribe({
             next: (response) => {
-              this.snackBar.open("Compte de Paiement enregistre avec succès !", "Okay", {
+              this.snackBar.open("Compte Paiement enregistre avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getCompte()
+              this.getComptePaiement()
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
@@ -126,12 +128,13 @@ export class AccountListComponent implements OnInit {
                   panelClass: ['bg-success', 'text-white']
                 }
               )
+              this.getComptePaiement()
             },
             error: err => {
               console.error('Error : ', err)
             }
           })
-          this.getCompte()
+          
         }
       })
     //Requete suppression sur la DB

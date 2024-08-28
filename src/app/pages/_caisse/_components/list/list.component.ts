@@ -4,10 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { convertObjectInFormData } from 'src/app/app.component';
+import { AddFournisseurComponent } from 'src/app/pages/_contact/_modal/fournisseur/add-fournisseur/add-fournisseur.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
-import { AddCaisseComponent } from '../../_modal/add-caisse/add-caisse.component';
-import { Location } from '@angular/common'
+
 
 @Component({
   selector: 'app-list',
@@ -16,12 +15,12 @@ import { Location } from '@angular/common'
 })
 export class ListComponent implements OnInit {
 
-  title = 'Liste des depenses'
+
+  title = 'Liste des nouveaux Fournisseurs'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'typePaiement', 'typeOperation', 'montant', 'motif','Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -34,7 +33,7 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.getCaisse()
+   
   }
 
   ngAfterViewInit () {
@@ -51,38 +50,26 @@ export class ListComponent implements OnInit {
     }
   }
 
-  getCaisse() {
-    this.service.getall('charge', 'list').subscribe({
-      next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
-        this.dataSource.data = reponse
-      },
-      error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
-      }
-    })
-    // this.dataSource.data = objet
-  }
-
+  
   openDialog() {
-    this.dialog.open(AddCaisseComponent, {
+    this.dialog.open(AddFournisseurComponent, {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
+          console.log(result.data);
+          // const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('charge', 'add-new', formData).subscribe({
+          this.service.create('fournisseur', 'add', result.data).subscribe({
             next: (response) => {
-              this.snackBar.open("Caisse enregistre avec succès !", "Okay", {
+              this.snackBar.open("Fournisseur enregistre avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getCaisse()
+              
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
@@ -97,6 +84,6 @@ export class ListComponent implements OnInit {
       })
   }
 
-
+  
 
 }

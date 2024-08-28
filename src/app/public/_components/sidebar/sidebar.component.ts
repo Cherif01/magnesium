@@ -191,7 +191,7 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Type de depense',
           icon: 'bi bi-truck',
-          url: 'charge/list'
+          url: 'charge/type'
         }
       ]
     },
@@ -202,17 +202,17 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Nouveau',
           icon: 'bi bi-pie-chart',
-          url: 'compte/add-account'
+          url: 'comptePaiement/add'
         },
         {
           title: 'Liste des comptes',
           icon: 'bi bi-pie-chart',
-          url: 'compte/account-list'
+          url: 'comptePaiement/list'
         },
         {
           title: 'Bilan',
           icon: 'bi bi-pie-chart',
-          url: 'compte/bilan-account'
+          url: 'comptePaiement/bilan'
         }
       ]
     },
