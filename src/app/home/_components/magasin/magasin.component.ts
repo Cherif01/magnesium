@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
 import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
 import { HomeService } from '../../_services/home.service';
+import { AddTransfertComponent } from 'src/app/pages/_transfertStock/_component/add-transfert/add-transfert.component';
 @Component({
   selector: 'app-magasin',
   templateUrl: './magasin.component.html',
@@ -18,10 +19,12 @@ export class MagasinComponent implements OnInit {
 
   title = 'Liste des Magasins'
 
-  // Assign the data to the data source for the table to render
+  // Magasin Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
-
-  displayedColumns: string[] = ['id', 'nom', 'adresse' , 'reference' ,'Action']
+  magasincol: string[] = ['id', 'nom', 'adresse' , 'reference' ,'Action']
+   // Magasin Assign the data to the data source for the table to render
+   transfertdataSource = new MatTableDataSource([])
+   transfertcol: string[] = ['id',  'magasin' ,'produit', 'quantite' ,'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -36,6 +39,7 @@ export class MagasinComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMagasin()
+
   }
   ngAfterViewInit () {
     this.dataSource.paginator = this.paginator
@@ -56,6 +60,13 @@ export class MagasinComponent implements OnInit {
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data   = reponse
+        this.service.getall('transfert', 'list').subscribe({
+          next: (res: any) => {
+            console.log('REPONSE SUCCESS : ', res);
+            
+            this.transfertdataSource.data = res
+          }
+        })
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
@@ -63,6 +74,8 @@ export class MagasinComponent implements OnInit {
     })
   
   }
+ 
+  
 
   openDialog() {
     this.dialog.open(AddMagasinComponent, {
@@ -138,6 +151,41 @@ export class MagasinComponent implements OnInit {
         }
       })
     //Requete suppression sur la DB
+  }
+  openDialog2() {
+    this.dialog.open(AddTransfertComponent, {
+    }).afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          // console.log(result.data);
+         // const formData = convertObjectInFormData(result.data);
+          this.dataSource.data.splice(0, this.dataSource.data.length);
+          //Envoyer dans la Base
+          this.service.create('transfert', 'add',result.data ).subscribe({
+            next: (response) => {
+              this.snackBar.open("Transfert effectuer avec succès !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
+
+              })
+              this.getMagasin()
+            },
+            error: (err) => {
+              this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+                duration: 3000,
+
+            
+                horizontalPosition : "right",
+                verticalPosition : "bottom",
+ 
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        }
+     })
   }
 
 }

@@ -35,7 +35,7 @@ titlle = 'Liste des ajustement stocks'
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'produit', 'fournisseur','quantite','prixachat','prixvente', 'Action']
+  displayedColumns: string[] = ['id', 'produit', 'fournisseur','quantite','prixUniteAchat','prixUniteVente', 'Action']
  
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any

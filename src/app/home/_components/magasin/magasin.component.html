@@ -17,6 +17,9 @@
               <div class="text-right">
                 <button mat-raised-button color="primary"  class="mx-2" (click)=" openDialog()" ><span class="mdi mdi-plus-thick"></span> Nouveau Magasin</button>
               </div>
+              <div class="text-right">
+                <button mat-raised-button color="primary"  class="mx-2" (click)=" openDialog2()" ><span class="mdi mdi-plus-thick"></span> Transferer un Produit</button>
+              </div>
             </div>
           </div>
         </div>
@@ -27,6 +30,8 @@
           <mat-card class="p-3">
             <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
             <hr>
+            <mat-tab-group>
+          <mat-tab label="Magasin">
             <mat-card-content>
               <mat-form-field class="w-100" appearance="outline">
                 <mat-label>Rechercher...</mat-label>
@@ -96,9 +101,92 @@
                       
                     
                   </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-header-row *matHeaderRowDef="magasincol"></tr>
                   <tr mat-row
-                    *matRowDef="let row; columns: displayedColumns;"></tr>
+                    *matRowDef="let row; columns: magasincol;"></tr>
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="5" class="p-3">Aucun element
+                      correspond a cette recherche " {{input.value}} "</td>
+                  </tr>
+                </table>
+  
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                  aria-label="Select page of users"></mat-paginator>
+              </div>
+              
+            </mat-card-content>
+          </mat-tab>
+          <mat-tab label="Transfert" >
+            <mat-card-content>
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Rechercher...</mat-label>
+                <input matInput (keyup)="applyFilter($event)"
+                  placeholder="Rechercher" #input>
+              </mat-form-field>
+  
+              <div class="mat-elevation">
+                <table mat-table [dataSource]="transfertdataSource" matSort class="w-100" id="matTable">
+                  <!-- ID -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      ID </th>
+                    <td mat-cell *matCellDef="let row; let i = index"> {{row.idTransfert}}
+                    </td>
+                  </ng-container>
+                  <!-- ID -->
+                
+                  <ng-container matColumnDef="magasin">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      MAGASIN </th>
+                    <td mat-cell *matCellDef="let row"> {{row.magasin}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="produit">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      PRODUIT </th>
+                    <td mat-cell *matCellDef="let row"> {{row.produit}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="quantite">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      QUANTITE </th>
+                    <td mat-cell *matCellDef="let row"> {{row.quantite}}
+                    </td>
+                  </ng-container>
+                 
+                  <!-- Action -->
+                  <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef
+                      class="text-center">Action</th>
+                    <td mat-cell *matCellDef="let row" class="text-center">
+                      <button mat-button color="warn" [matMenuTriggerFor]="menu">
+                        Voir + <span
+                          class="dw dw-down-chevron"></span></button>
+                      <mat-menu #menu="matMenu">
+                        <a
+                        (click)="deleteFunction('transfert', row.idTransfert)"
+                        mat-menu-item class="text-start">
+                        <strong>
+                          <span><mat-icon>delete</mat-icon></span>
+                          supprimer
+                        </strong>             
+                      </a>
+                      <a
+                    [routerLink]="['/home/magasin-details']"
+                    mat-menu-item class="text-start">
+                    <strong>
+                      <span><mat-icon>more</mat-icon> </span>
+                      details 
+                    </strong> 
+                               
+                  </a>
+                      </mat-menu>
+                    
+                    
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="transfertcol"></tr>
+                  <tr mat-row
+                    *matRowDef="let row; columns: transfertcol;"></tr>
                   <tr class="mat-row" *matNoDataRow>
                     <td class="mat-cell" colspan="5" class="p-3">Aucun element
                       correspond a cette recherche " {{input.value}} "</td>
@@ -110,7 +198,8 @@
               </div>
   
             </mat-card-content>
-  
+          </mat-tab>
+          </mat-tab-group>
           </mat-card>
   
           <!-- FIN -->

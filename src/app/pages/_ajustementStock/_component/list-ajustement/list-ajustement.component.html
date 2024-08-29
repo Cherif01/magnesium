@@ -39,7 +39,7 @@
                   <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       ID </th>
-                    <td mat-cell *matCellDef="let row; let i = index"> {{row.idAjustement}}
+                    <td mat-cell *matCellDef="let row; let i = index"> {{row.idApprovisionnement}}
                     </td>
                   </ng-container>
                   <!-- ID -->
@@ -61,16 +61,16 @@
                     <td mat-cell *matCellDef="let row"> {{row.quantite}}
                     </td>
                   </ng-container>
-                  <ng-container matColumnDef="prixachat">
+                  <ng-container matColumnDef="prixUniteAchat">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       PRIX D'ACHAT </th>
-                    <td mat-cell *matCellDef="let row"> {{row.prixachat}}
+                    <td mat-cell *matCellDef="let row"> {{row.prixUniteAchat}}
                     </td>
                   </ng-container>
-                  <ng-container matColumnDef="prixvente">
+                  <ng-container matColumnDef="prixUniteVente">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       PRIX DE VENTE </th>
-                    <td mat-cell *matCellDef="let row"> {{row.prixvente}}
+                    <td mat-cell *matCellDef="let row"> {{row.prixUniteVente}}
                     </td>
                   </ng-container>
   

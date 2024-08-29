@@ -22,6 +22,7 @@ export class ListTransfertComponent implements OnInit {
   dataSource = new MatTableDataSource([])
 
   displayedColumns: string[] = ['id', 'produit', 'magasin', 'status',  'Action']
+  
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any

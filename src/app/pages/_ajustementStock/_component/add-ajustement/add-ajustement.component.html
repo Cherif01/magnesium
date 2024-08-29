@@ -114,13 +114,13 @@
                     <ng-container matColumnDef="produit">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>
                         PRODUIT </th>
-                      <td mat-cell *matCellDef="let row"> {{row.produit}}
+                      <td mat-cell *matCellDef="let row"> {{row.idProduit}}
                       </td>
                     </ng-container>
                     <ng-container matColumnDef="fournisseur">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>
                         FOURNISSEUR </th>
-                      <td mat-cell *matCellDef="let row"> {{row.fournisseur}}
+                      <td mat-cell *matCellDef="let row"> {{row.idFournisseur}}
                       </td>
                     </ng-container>
                     <ng-container matColumnDef="quantite">
@@ -129,16 +129,16 @@
                       <td mat-cell *matCellDef="let row"> {{row.quantite}}
                       </td>
                     </ng-container>
-                    <ng-container matColumnDef="prixachat">
+                    <ng-container matColumnDef="prixUniteAchat">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>
                         PRIX D'ACHAT </th>
-                      <td mat-cell *matCellDef="let row"> {{row.prixachat}}
+                      <td mat-cell *matCellDef="let row"> {{row.prixUniteAchat}}
                       </td>
                     </ng-container>
-                    <ng-container matColumnDef="prixvente">
+                    <ng-container matColumnDef="prixUniteVente">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>
                         PRIX DE VENTE </th>
-                      <td mat-cell *matCellDef="let row"> {{row.prixvente}}
+                      <td mat-cell *matCellDef="let row"> {{row.prixUniteVente}}
                       </td>
                     </ng-container>
     
