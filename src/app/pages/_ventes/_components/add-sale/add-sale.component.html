@@ -18,7 +18,7 @@
       <button class="me-2 w-100 btn btn-outline-primary p-3 btn-top">
         Brouillon
       </button>
-      <button class="me-2 w-100 btn btn-outline-danger p-3 btn-top">
+      <button (click)="deleteVenteEnCours()" class="me-2 w-100 btn btn-outline-danger p-3 btn-top">
         Annuler
       </button>
     </div>
@@ -42,23 +42,25 @@
   <!-- <hr> -->
   <div class id="main-pos">
     <div class="col">
-      <div class="p-3 product">
-        <div class="d-flex align-items-center justify-content-between flex-wrap">
+      <div class="p-2 product">
+        <div
+          class="d-flex align-items-center justify-content-start flex-wrap">
           <!-- Boucle sur le tableau des produits -->
-          <div class="col-md-3 mb-4" *ngFor="let product of products">
-            <div class="card product-card shadow">
+          <div class="col-md-4 col-12 col-sm-6 col-lg-4 mb-4" *ngFor="let product of products">
+            <div class="card product-card m-2">
               <!-- Badge catégorie -->
               <div class="card-header text-end">
-                <span class="badge">{{ product.stockDispo }}</span>
+                <span class="badge">{{ product.reference }}</span>
               </div>
-              <img
-                [src]="product.image"
-                class="card-img-top"
-                [alt]="product.name" />
+              <div class="text-center">
+                <img [src]="linkImg+product.image"
+                  style="height: 100px;width: 100px;border-radius: 50%;"
+                  [alt]="product.designation">
+              </div>
               <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
+                <h5 class="card-title">{{ product.designation }}</h5>
                 <p class="card-text fw-bold">
-                  {{ product.price | currency : " " }} | <strong> GNF</strong>
+                  {{ 0 | currency : " " }} | <strong> GNF</strong>
                 </p>
                 <div class="d-flex align-items-center">
                   <input
@@ -74,7 +76,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="d-flex justify-content-start flex-wrap">
         <div class="col_" id="col_">
           <div class="facture">

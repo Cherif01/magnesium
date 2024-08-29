@@ -32,10 +32,22 @@ export class LoginComponent implements OnInit {
     this.authService.login('auth','login', form.value).subscribe(
       (res) => {
         // console.log("Token : ", res)
+        this.snackBar.open("Connecter avec success!", "Valider", {
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ['bg-success', 'text-white']
+        })
         this.router.navigate(['home/dashboard']);
       },
-      (err) => {
-        console.error("Error : ", err);
+      (HttpErrorResponse) => {
+        console.error("Error : ", HttpErrorResponse);
+        this.snackBar.open(HttpErrorResponse.error.detail, "Error", {
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ['bg-danger', 'text-white']
+        })
       }
     );
   }

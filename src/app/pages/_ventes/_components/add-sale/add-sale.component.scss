@@ -116,6 +116,7 @@ tr td {
   overflow: hidden;
   transition: transform 0.2s;
   text-align: center; /* Centrer le contenu */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .product-card:hover {
