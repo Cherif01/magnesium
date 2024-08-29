@@ -2,6 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ProduitService } from '../../_service/produit.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-add',
@@ -27,7 +33,9 @@ export class AddComponent implements OnInit {
   constructor (
     private service: ProduitService,
     private snackBar: MatSnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private http: HttpClient
   ) {}
 
   ngOnInit (): void {
@@ -47,21 +55,49 @@ export class AddComponent implements OnInit {
     })
   }
 
+  selectedFile: any
+  uploadResponse: string | null = null
   onFileChange (event: any) {
-    const file = event.target.files[0]
+    const file: File = event.target.files[0]
     if (file) {
       const reader = new FileReader()
       reader.onload = (e: any) => {
         this.imagePreview = e.target.result
       }
       reader.readAsDataURL(file)
+      this.selectedFile = file
     }
   }
 
   onSubmit (): void {
     if (this.productForm.valid) {
       console.log('Formulaire : ', this.productForm.value)
-      this.service.create('produit', 'add', this.productForm.value).subscribe({
+
+      const formData = new FormData()
+
+      formData.append(
+        'reference',
+        this.productForm.get('reference')?.value || ''
+      )
+      formData.append(
+        'designation',
+        this.productForm.get('designation')?.value || ''
+      )
+      formData.append(
+        'id_sousCategorie',
+        this.productForm.get('id_sousCategorie')?.value || ''
+      )
+      formData.append(
+        'description',
+        this.productForm.get('description')?.value || ''
+      )
+      formData.append('seuil', this.productForm.get('seuil')?.value || '')
+
+      if (this.selectedFile) {
+        formData.append('file', this.selectedFile)
+      }
+      // Ajout des variables au BACK_
+      this.service.create('produit', 'add', formData).subscribe({
         next: response => {
           this.snackBar.open('Produit enregistre avec succès !', 'Okay', {
             duration: 3000,
@@ -69,15 +105,16 @@ export class AddComponent implements OnInit {
             verticalPosition: 'top',
             panelClass: ['bg-success', 'text-white']
           })
+          this.router.navigate(['product/list']);
         },
         error: err => {
-          this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {
-            duration: 3000,
+          this.snackBar.open(err, 'Okay', {
+            duration: 4000,
             horizontalPosition: 'right',
-            verticalPosition: 'bottom',
+            verticalPosition: 'top',
             panelClass: ['bg-danger', 'text-white']
           })
-          console.log("Error : ", err)
+          console.log('Error : ', err)
         }
       })
     }

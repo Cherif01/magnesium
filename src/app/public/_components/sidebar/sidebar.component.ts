@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatAccordion } from '@angular/material/expansion'
-import { ApiServiceService } from '../../_service/api-service.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { AuthService } from 'src/app/core/auth/service/auth-service.service'
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
   panelOpenState = false
 
-  constructor (private service: ApiServiceService) {}
+  constructor (private service: AuthService) {}
 
   ngOnInit (): void {}
 
@@ -179,11 +180,6 @@ export class SidebarComponent implements OnInit {
       icon: 'bi bi-dash-circle',
       submenu: [
         {
-          title: 'Nouveau',
-          icon: 'bi bi-plus',
-          url: 'charge/add'
-        },
-        {
           title: 'Liste des depenses',
           icon: 'bi bi-list',
           url: 'charge/list'
@@ -202,17 +198,17 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Nouveau',
           icon: 'bi bi-pie-chart',
-          url: 'comptePaiement/add'
+          url: 'compte/add-account'
         },
         {
           title: 'Liste des comptes',
           icon: 'bi bi-pie-chart',
-          url: 'comptePaiement/list'
+          url: 'compte/account-list'
         },
         {
           title: 'Bilan',
           icon: 'bi bi-pie-chart',
-          url: 'comptePaiement/bilan'
+          url: 'compte/bilan-account'
         }
       ]
     },
@@ -220,11 +216,6 @@ export class SidebarComponent implements OnInit {
       name: 'Utilisateurs',
       icon: 'bi bi-person',
       submenu: [
-        {
-          title: 'Nouveau',
-          icon: 'bi bi-pie-chart',
-          url: 'home/add-user'
-        },
         {
           title: 'Listes',
           icon: 'bi bi-pie-chart',
@@ -292,8 +283,7 @@ export class SidebarComponent implements OnInit {
           url: 'rapport/journal-articles'
         }
       ]
-    }
-    ,
+    },
     {
       name: 'Configuration',
       icon: 'bi bi-trash',
@@ -302,10 +292,14 @@ export class SidebarComponent implements OnInit {
           title: 'Config',
           icon: 'bi bi-pie-chart',
           url: 'config/settings'
-        },
+        }
       ]
     }
   ]
 
   menuList: any = []
+
+  logout () {
+    this.service.logout()
+  }
 }
