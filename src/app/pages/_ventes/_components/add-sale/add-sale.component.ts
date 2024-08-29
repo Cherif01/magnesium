@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component'
-import { VenteService } from 'src/app/pages/_vente/_services/vente.service'
+import { VenteService } from 'src/app/pages/_ventes/_services/vente.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
