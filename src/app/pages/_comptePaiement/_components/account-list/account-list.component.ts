@@ -1,31 +1,28 @@
-import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ContactServiceService } from '../../_services/contact-service.service';
-import { MatDialog } from '@angular/material/dialog';
-import { AddClientComponent } from '../../_modal/client/add-client/add-client.component';
-import { convertObjectInFormData } from 'src/app/app.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
+import { AddCompteComponent } from '../../_modal/add-compte/add-compte.component';
+import { ComptePaiementService } from '../../_service/compte-paiement.service';
+import { Location } from '@angular/common'
 
 @Component({
-  selector: 'app-client',
-  templateUrl: './client.component.html',
-  styleUrls: ['./client.component.scss']
+  selector: 'app-account-list',
+  templateUrl: './account-list.component.html',
+  styleUrls: ['./account-list.component.scss']
 })
-export class ClientComponent implements OnInit {
+export class AccountListComponent implements OnInit {
 
-  title = 'Liste des clients'
+  title = 'Liste des nouveaux Compte de Paiement'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
-  
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse', 'Action']
-  
+  displayedColumns: string[] = ['id', 'reference', 'apiKey', 'description', 'numero', 'Action']
+
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
@@ -33,11 +30,11 @@ export class ClientComponent implements OnInit {
     public location: Location,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private service: ContactServiceService
+    private service: ComptePaiementService
   ) {}
 
   ngOnInit (): void {
-    this.getClient()
+    this.getComptePaiement()
   }
 
   ngAfterViewInit () {
@@ -54,10 +51,11 @@ export class ClientComponent implements OnInit {
     }
   }
 
-  getClient () {
-    this.service.getall('client', 'list').subscribe({
+
+  getComptePaiement () {
+    this.service.getall('compte', 'list').subscribe({
       next: (reponse: any) => {
-         console.log('REPONSE SUCCESS : ', reponse)
+        console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
       },
       error: (err: any) => {
@@ -67,7 +65,7 @@ export class ClientComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(AddClientComponent, {
+    this.dialog.open(AddCompteComponent, {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
@@ -75,16 +73,16 @@ export class ClientComponent implements OnInit {
           // const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('client', 'add', result.data).subscribe({
+          this.service.create('compte', 'add', result.data).subscribe({
             next: (response) => {
-              this.snackBar.open("Client enregistre avec succès !", "Okay", {
+              this.snackBar.open("Compte Paiement enregistre avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getClient()
+              this.getComptePaiement()
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
@@ -99,15 +97,15 @@ export class ClientComponent implements OnInit {
       })
   }
 
-   // DELETE
-   deleteFunction (_api: string, id: any) {
+  // DELETE
+  deleteFunction (_api: string, id: any) {
     // console.log('id:', this.Id_achat);
     this.dialog
       .open(DeletePopupComponent, {
         disableClose: true,
         data: {
           title: ' Suppression demander! ',
-          message: ' Voulez-vous vraiment supprimer ce client ? ',
+          message: ' Voulez-vous vraiment supprimer ce Fournisseur ? ',
           messageNo: 'Non ?',
           messageYes: 'Oui, Confirmer !'
         }
@@ -130,24 +128,15 @@ export class ClientComponent implements OnInit {
                   panelClass: ['bg-success', 'text-white']
                 }
               )
+              this.getComptePaiement()
             },
             error: err => {
               console.error('Error : ', err)
             }
           })
-          this.getClient()
+          
         }
       })
     //Requete suppression sur la DB
   }
-
-  // onDelete(id:number){
-  //   if (confirm("voulez vous supprimer")) {
-  //     this.service.delete('client', 'delete',id).subscribe(data => {
-  //       this.dataa = data;
-  //       this.getClient();
-
-  //     })
-  //   }
-  // }
-}
+  }
