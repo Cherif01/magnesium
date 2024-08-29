@@ -23,10 +23,11 @@ export class ListComponent implements OnInit {
   dataSource = new MatTableDataSource([])
 
   displayedColumns: string[] = [
-    'id',
-    'designation',
+    'reference',
     'image',
+    'designation',
     'sousCategorie',
+    'stockDispo',
     'Action'
   ]
 
@@ -82,22 +83,10 @@ export class ListComponent implements OnInit {
 
           const formData = new FormData()
 
-          formData.append(
-            'reference',
-            result.data.reference
-          )
-          formData.append(
-            'designation',
-            result.data.designation
-          )
-          formData.append(
-            'id_sousCategorie',
-            result.data.id_sousCategorie
-          )
-          formData.append(
-            'description',
-            result.data.description
-          )
+          formData.append('reference', result.data.reference)
+          formData.append('designation', result.data.designation)
+          formData.append('id_sousCategorie', result.data.id_sousCategorie)
+          formData.append('description', result.data.description)
           formData.append('seuil', result.data.seuil)
           // Ajout des variables au BACK_
           this.service.create('produit', 'add', formData).subscribe({

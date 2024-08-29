@@ -108,10 +108,10 @@ export class AddComponent implements OnInit {
           this.router.navigate(['product/list']);
         },
         error: err => {
-          this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {
-            duration: 3000,
+          this.snackBar.open(err, 'Okay', {
+            duration: 4000,
             horizontalPosition: 'right',
-            verticalPosition: 'bottom',
+            verticalPosition: 'top',
             panelClass: ['bg-danger', 'text-white']
           })
           console.log('Error : ', err)
