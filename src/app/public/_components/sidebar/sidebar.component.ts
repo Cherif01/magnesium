@@ -42,7 +42,7 @@ export class SidebarComponent implements OnInit {
           title: 'Entrepot',
           icon: 'bi bi-grid-fill',
           url: 'home/entrepot'
-        }
+        },
       
       ]
     },
