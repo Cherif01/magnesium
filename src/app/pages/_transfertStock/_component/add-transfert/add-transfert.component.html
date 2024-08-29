@@ -1,1 +1,48 @@
-<p>add-transfert works!</p>
+<h1 matDialogTitle>Ajouter un nouveau Magasin</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="Transfert">
+    
+
+
+
+    <div class="col">
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Produit</mat-label>
+          <mat-select formControlName="idProduit" required>
+              <mat-option *ngFor="let produit of Produit"
+                  [value]="produit.id">{{ produit.name }}</mat-option>  
+          </mat-select>
+        </mat-form-field>
+        
+      </div>
+
+
+      <div class="col">
+        <mat-form-field appearance="outline" class="col-12"  >
+          <mat-label>Magasin</mat-label>
+          <mat-select formControlName="idMagasin" required>
+              <mat-option *ngFor="let magasin of Magasin"
+                  [value]="magasin.id">{{ magasin.name }}</mat-option>  
+          </mat-select>
+        </mat-form-field>
+        
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Quantite</mat-label>
+          <input type="text" matInput placeholder="Ex : Cherif"
+            formControlName="quantite">
+        </mat-form-field>
+      </div>
+  
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataTransfert()">Enregistrer le Transfert</button>
+</mat-dialog-actions>

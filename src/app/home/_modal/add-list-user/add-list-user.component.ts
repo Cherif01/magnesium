@@ -11,12 +11,13 @@ export class AddListUSerComponent implements OnInit {
 
   // MISE A JOUR FIxiNG
   User = new FormGroup({
-    fullname: new FormControl(''),
+    fullName: new FormControl(''),
     email: new FormControl(''),
-    password: new FormControl(''),
     telephone: new FormControl('', Validators.required),
-    magasin : new FormControl(''),
-    role : new FormControl('')
+    password: new FormControl(''),
+    idMagasin: new FormControl('')
+     
+
   })
 
   constructor(
@@ -27,7 +28,21 @@ export class AddListUSerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  Magasin = [
+    {
+      id: 1
+      ,
+      name: 'Coyah'
+    },
+    {
+      id: 2,
+      name: 'Boké'
+    },
+    {
+      id: 3,
+      name: 'Gbessia'
+    }
+  ] 
 
   saveDataUser() {
     if (this.User.valid) {

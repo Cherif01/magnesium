@@ -8,6 +8,8 @@ import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-
 import { Location } from '@angular/common';
 import { AddEntrepotComponent } from '../../_modal/add-entrepot/add-entrepot.component';
 import { convertObjectInFormData } from 'src/app/app.component';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
+import { HomeService } from '../../_services/home.service';
 @Component({
   selector: 'app-entrepot',
   templateUrl: './entrepot.component.html',
@@ -21,7 +23,7 @@ export class EntrepotComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'nom', 'adresse','status' ,'Action']
+  displayedColumns: string[] = ['id', 'nom', 'adresse' ,'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -30,7 +32,7 @@ export class EntrepotComponent implements OnInit {
     public location: Location,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private service: ContactServiceService
+    private service: HomeService
   ) {}
 
 
@@ -61,7 +63,7 @@ export class EntrepotComponent implements OnInit {
         console.log('REPONSE ERROR : ', err)
       }
     })
-    // this.dataSource.data = objet
+  
   }
 
   openDialog() {
@@ -70,10 +72,10 @@ export class EntrepotComponent implements OnInit {
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
           // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
+         // const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('entrepot', 'add', formData).subscribe({
+          this.service.create('entrepot', 'add',result.data ).subscribe({
             next: (response) => {
               this.snackBar.open("Entrepot enregistre avec succès !", "Okay", {
                 duration: 3000,
@@ -87,13 +89,56 @@ export class EntrepotComponent implements OnInit {
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
                 duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
+
+            
+                horizontalPosition : "right",
+                verticalPosition : "bottom",
+ 
                 panelClass: ['bg-danger', 'text-white']
               })
             }
           })
         }
       })
+  }
+  deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog
+      .open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce entrepot ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getEntrepot()
+        }
+      })
+    //Requete suppression sur la DB
   }
 }
