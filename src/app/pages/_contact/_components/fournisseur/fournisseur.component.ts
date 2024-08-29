@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table'
 import { ContactServiceService } from '../../_services/contact-service.service'
 import { MatDialog } from '@angular/material/dialog'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { AddFournisseurComponent } from '../../_modal/fournisseur/add-fournisseur/add-fournisseur.component'
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component'
 
 @Component({
   selector: 'app-fournisseur',
@@ -18,7 +20,7 @@ export class FournisseurComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse','societe','email', 'Action']
+  displayedColumns: string[] = ['id', 'nom', 'prenom', 'tel', 'adresse','societe','email', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -31,6 +33,7 @@ export class FournisseurComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
+    this.getFournisseur()
   }
 
   ngAfterViewInit () {
@@ -45,5 +48,91 @@ export class FournisseurComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage()
     }
+  }
+
+  getFournisseur () {
+    this.service.getall('fournisseur', 'list').subscribe({
+      next: (reponse: any) => {
+        // console.log('REPONSE SUCCESS : ', reponse)
+        this.dataSource.data = reponse
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
+      }
+    })
+  }
+  openDialog() {
+    this.dialog.open(AddFournisseurComponent, {
+    }).afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          console.log(result.data);
+          // const formData = convertObjectInFormData(result.data);
+          this.dataSource.data.splice(0, this.dataSource.data.length);
+          //Envoyer dans la Base
+          this.service.create('fournisseur', 'add', result.data).subscribe({
+            next: (response) => {
+              this.snackBar.open("Fournisseur enregistre avec succès !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
+
+              })
+              this.getFournisseur()
+            },
+            error: (err) => {
+              this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+                duration: 3000,
+                horizontalPosition: "left",
+                verticalPosition: "top",
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        }
+      })
+  }
+
+  // DELETE
+  deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog
+      .open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce Fournisseur ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getFournisseur()
+        }
+      })
+    //Requete suppression sur la DB
   }
   }

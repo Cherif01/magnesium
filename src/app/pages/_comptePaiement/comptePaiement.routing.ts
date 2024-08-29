@@ -1,10 +1,19 @@
 import { Routes } from "@angular/router";
-import { ListComptePaiementComponent } from "./_component/list-compte-paiement/list-compte-paiement.component";
+import { AccountListComponent } from "./_components/account-list/account-list.component";
+import { AccountBilanComponent } from "./_components/account-bilan/account-bilan.component";
+import { GuardGuard } from "src/app/core/auth/guard/guard.guard";
 
-export const comptePaimentRouting: Routes = [
+export const comptePaiementRouting: Routes = [
     {
-      path: 'account-list',
-      component: ListComptePaiementComponent
+      path: 'list',
+      component: AccountListComponent,
+      canActivate: [GuardGuard]
+    },
+ 
+    {
+      path: 'bilan',
+      component: AccountBilanComponent,
+      canActivate: [GuardGuard]
     },
    
   ]
