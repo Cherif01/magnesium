@@ -43,6 +43,7 @@ export class SidebarComponent implements OnInit {
           icon: 'bi bi-grid-fill',
           url: 'home/entrepot'
         }
+      
       ]
     },
     {

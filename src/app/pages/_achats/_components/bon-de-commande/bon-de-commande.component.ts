@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { imprimerDiv } from 'src/app/app.component';
+import { AddBonCommandeComponent } from '../../_modal/add-bon-commande/add-bon-commande.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bon-de-commande',
@@ -28,7 +30,9 @@ export class BonDeCommandeComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -46,5 +50,40 @@ export class BonDeCommandeComponent implements OnInit {
   _printer (): void {
     imprimerDiv(this.divToPrint.nativeElement.innerHTML)
   }
+  openDialog() {
+    this.dialog.open(AddBonCommandeComponent, {
+    // }).afterClosed()
+    //   .subscribe((result) => {
+    //     if (result?.event && result.event === "insert") {
+    //       // console.log(result.data);
+    //      // const formData = convertObjectInFormData(result.data);
+    //       this.dataSource.data.splice(0, this.dataSource.data.length);
+    //       //Envoyer dans la Base
+    //       this.service.create('magasin', 'add',result.data ).subscribe({
+    //         next: (response) => {
+    //           this.snackBar.open("Magasin enregistré avec succès !", "Okay", {
+    //             duration: 3000,
+    //             horizontalPosition: "right",
+    //             verticalPosition: "top",
+    //             panelClass: ['bg-success', 'text-white']
 
+    //           })
+    //           this.getMagasin()
+    //         },
+    //         error: (err) => {
+    //           this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+    //             duration: 3000,
+
+            
+    //             horizontalPosition : "right",
+    //             verticalPosition : "bottom",
+ 
+    //             panelClass: ['bg-danger', 'text-white']
+    //           })
+    //         }
+    //       })
+    //     }
+     })
+  }
+  
 }

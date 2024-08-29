@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from 'src/demo-material-module';
 import { ajustementRouting } from './ajustementStock.routing';
 import {  AddAjustementStockComponent } from './_modal/add-ajustement-stock/add-ajustement-stock.component';
+import { AjustementDetailsComponent } from './_details/ajustement-details/ajustement-details.component';
 
 
 
@@ -13,7 +14,8 @@ import {  AddAjustementStockComponent } from './_modal/add-ajustement-stock/add-
   declarations: [
     AddAjustementComponent,
     ListAjustementComponent,
-    AddAjustementStockComponent
+    AddAjustementStockComponent,
+    AjustementDetailsComponent
   ],
   imports: [
     CommonModule,

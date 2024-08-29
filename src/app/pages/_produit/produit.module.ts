@@ -16,6 +16,7 @@ import { AddEtiquetteComponent } from './_modal/add-etiquette/add-etiquette.comp
 import { AddPerteComponent } from './_modal/add-perte/add-perte.component';
 import { AddCategoryComponent } from './_modal/add-category/add-category.component';
 import { AddSubCategoryComponent } from './_modal/add-sub-category/add-sub-category.component';
+import { AddFactureProFormatComponent } from '../_ventes/_modal/add-facture-pro-format/add-facture-pro-format.component';
 
 
 
@@ -32,7 +33,8 @@ import { AddSubCategoryComponent } from './_modal/add-sub-category/add-sub-categ
     AddEtiquetteComponent,
     AddPerteComponent,
     AddCategoryComponent,
-    AddSubCategoryComponent
+    AddSubCategoryComponent,
+    AddFactureProFormatComponent
   ],
   imports: [
     CommonModule,

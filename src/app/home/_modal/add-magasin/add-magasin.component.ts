@@ -8,12 +8,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
   styleUrls: ['./add-magasin.component.scss']
 })
 export class AddMagasinComponent implements OnInit {
+
   // MISE A JOUR FIxiNG
   Magasin = new FormGroup({
     nom: new FormControl(''),
     adresse: new FormControl(''),
     reference: new FormControl('')
   })
+
 
   constructor (
     public dialogRef: MatDialogRef<AddMagasinComponent>,

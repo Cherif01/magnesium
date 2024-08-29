@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { convertObjectInFormData } from 'src/app/app.component';
 
 import { AjustementStockService } from '../../_service/ajustement-stock.service';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
 
 @Component({
   selector: 'app-list-ajustement',
@@ -22,17 +23,8 @@ export class ListAjustementComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'produit', 'fournisseur','quantite','prixachat','prixvente', 'Action']
-  // status	[...]
-  // idApprovisionnement	[...]
-  // idProduit	[...]
-  // idEntrepot	[...]
-  // idFournisseur	[...]
-  // montantTotal	[...]
-  // quantite	[...]
-  // prixUniteAchat	[...]
-  // prixUniteVente	[...]
-  // datePeremption
+  displayedColumns: string[] = ['id', 'produit', 'fournisseur','quantite','prixUniteAchat','prixUniteVente', 'Action']
+ 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
@@ -62,7 +54,7 @@ export class ListAjustementComponent implements OnInit {
   }
 
   getAjustementAchat () {
-    this.service.getall('ajustement', 'list').subscribe({
+    this.service.getall('approvisionnement', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -79,11 +71,11 @@ export class ListAjustementComponent implements OnInit {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
+          console.log(result.data);
+          //const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('ajustement', 'add', formData).subscribe({
+          this.service.create('approvisionnement', 'add', result.data).subscribe({
             next: (response) => {
               this.snackBar.open("Achat enregistre avec succès !", "Okay", {
                 duration: 3000,
@@ -107,4 +99,44 @@ export class ListAjustementComponent implements OnInit {
       })
   }
 
+  deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog
+      .open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce entrepot ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getAjustementAchat()
+        }
+      })
+    //Requete suppression sur la DB
+  }
 }

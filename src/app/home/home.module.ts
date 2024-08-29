@@ -8,21 +8,28 @@ import { MatInputModule } from '@angular/material/input'
 import { RouterModule } from '@angular/router'
 import { DemoMaterialModule } from 'src/demo-material-module'
 import { homeRouting } from './home.routing';
-import { MagasinComponent } from './_components/magasin/magasin.component';
 import { EntrepotComponent } from './_components/entrepot/entrepot.component';
 import { AddEntrepotComponent } from './_modal/add-entrepot/add-entrepot.component';
 import { AddMagasinComponent } from './_modal/add-magasin/add-magasin.component';
 import { ListUserComponent } from './_components/_user/list-user/list-user.component';
-import { AddListUSerComponent } from './_modal/add-list-user/add-list-user.component'
+import { AddListUSerComponent } from './_modal/add-list-user/add-list-user.component';
+import { MagasinComponent } from './_components/magasin/magasin.component';
+import { MagasinDetailsComponent } from './_details/magasin-details/magasin-details.component';
+import { EntrepotDetailsComponent } from './_details/entrepot-details/entrepot-details.component';
+import { UserDetailsComponent } from './_details/user-details/user-details.component'
 
 @NgModule({
   declarations: [
-    MagasinComponent,
+  
     EntrepotComponent,
     AddEntrepotComponent,
     AddMagasinComponent,
     ListUserComponent,
-    AddListUSerComponent
+    AddListUSerComponent,
+    MagasinComponent,
+    MagasinDetailsComponent,
+    EntrepotDetailsComponent,
+    UserDetailsComponent
   ],
   imports: [
     CommonModule,
