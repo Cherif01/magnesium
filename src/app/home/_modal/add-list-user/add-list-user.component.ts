@@ -15,8 +15,8 @@ export class AddListUSerComponent implements OnInit {
     email: new FormControl(''),
     telephone: new FormControl('', Validators.required),
     password: new FormControl(''),
-    idMagasin: new FormControl('')
-     
+    idMagasin: new FormControl(''),
+    role :new FormControl('')
 
   })
 
@@ -30,7 +30,7 @@ export class AddListUSerComponent implements OnInit {
   }
   Magasin = [
     {
-      id: 1
+      id: 8
       ,
       name: 'Coyah'
     },
@@ -41,6 +41,20 @@ export class AddListUSerComponent implements OnInit {
     {
       id: 3,
       name: 'Gbessia'
+    }
+  ] 
+  Role = [
+    {
+    
+      name: 'ADMIN'
+    },
+    {
+      
+      name: 'ENTREPOT'
+    },
+    {
+    
+      name: 'CUISINE'
     }
   ] 
 

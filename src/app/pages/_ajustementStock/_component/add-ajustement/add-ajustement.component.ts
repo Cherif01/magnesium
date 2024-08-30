@@ -32,7 +32,17 @@ export class AddAjustementComponent implements OnInit {
     datePeremption: new FormControl('')
   })
 
+<<<<<<< HEAD
   titlle = 'Liste des ajustement stocks'
+=======
+
+
+
+
+
+
+titlle = 'Liste des ajustement stocks'
+>>>>>>> 23b6f2d0742d0a0882073dd9956c669bf8cd20f8
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
@@ -52,6 +62,7 @@ export class AddAjustementComponent implements OnInit {
   ngOnInit (): void {
     this.getAjustementAchat()
   }
+<<<<<<< HEAD
   constructor (
     private service: AjustementStockService,
     private snackBar: MatSnackBar,
@@ -66,6 +77,28 @@ export class AddAjustementComponent implements OnInit {
   //   if (file) {
   //     const reader = new FileReader()
   //     reader.onload = (e: any) => {
+=======
+constructor (
+  private service: AjustementStockService,
+  private snackBar: MatSnackBar,
+  private fb: FormBuilder,
+  public location:Location ,
+  private dialog: MatDialog,
+ 
+) {
+  // this.calculateTotal();  // Appel initial pour calculer le montant total
+  // this.AjustementStock.valueChanges.subscribe(() => {
+  //   this.calculateTotal();  // Recalculer le montant total à chaque modification
+  // });
+  
+}
+// calculateTotal(): void {
+//   const quantite = this.AjustementStock.get('quantite')?.value || 0;
+//   const prixUniteAchat = this.AjustementStock.get('prixUniteAchat')?.value || 0;
+//   const total = quantite * prixUniteAchat;
+//   this.AjustementStock.get('montantTotal')?.setValue(total, { emitEvent: false });
+//   }
+>>>>>>> 23b6f2d0742d0a0882073dd9956c669bf8cd20f8
 
   //     }
   //     reader.readAsDataURL(file)
