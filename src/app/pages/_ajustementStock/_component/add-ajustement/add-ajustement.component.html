@@ -1,98 +1,96 @@
-
-<div class="d-flex justify-content-between gap-2 flex-wrap ">
-  <div class="card col-md-3 mt-6 "style="width: 30rem;">
-
-    <div class="card-body">
-      <h5 class="card-title">Approvisionner</h5>
-
-        <form class="card-text" [formGroup]="AjustementStock" >
-    
-
-          <div class="d-flex justify-content-between flex-wrap align-items-center">
-           <div class="col">
-             <mat-form-field appearance="outline">
-               <mat-label>Produit</mat-label>
-               <mat-select formControlName="idProduit" required>
-                   <mat-option *ngFor="let produit of Produit"
-                       [value]="produit.id">{{ produit.name }}</mat-option>  
-               </mat-select>
-             </mat-form-field>
-             
-           </div>
-         
-           <div class="col">
-             <mat-form-field appearance="outline">
-                 <mat-label>Entrepot</mat-label>
-                 <mat-select formControlName="idEntrepot" required>
-                     <mat-option *ngFor="let entrepot of Entrepot"
-                     [value]="entrepot.id">{{ entrepot.name }}</mat-option>
-                 </mat-select>
-               </mat-form-field>
-         </div>
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+      <div class="page-header">
+        <div class="d-flex justify-content-between">
+          <div class="col-md-4">
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  {{title}}</li>
+              </ol>
+            </nav>
           </div>
-               <div class=" col-12 d-flex justify-content-all ">
-                
-                   <mat-form-field  class="col-12" appearance="outline">
-                       <mat-label>Fournisseur</mat-label>
-                       <mat-select  formControlName="idFournisseur" required>
-                           <mat-option *ngFor="let fournisseur of Fournisseur"
-                           [value]="fournisseur.id">{{ fournisseur.name }}</mat-option>
-                       </mat-select>
-                     </mat-form-field>
-               
-               
-                   
-               </div>
-               <div class="col">
-                 <mat-form-field class="w-100" appearance="outline">
-                   <mat-label>QUANTITE </mat-label>
-                   <input type="number" matInput placeholder="Ex :100"
-                     formControlName="quantite">
-                 </mat-form-field>
-               </div>
-               <div class="col">
-                 <mat-form-field class="w-100" appearance="outline">
-                   <mat-label>PRIX D'ACHAT</mat-label>
-                   <input type="number" matInput placeholder="Ex :5000"
-                     formControlName="prixUniteAchat">
-                 </mat-form-field>
-               </div>
-               <div class="col">
-                 <mat-form-field class="w-100" appearance="outline">
-                   <mat-label>PRIX DE VENTE </mat-label>
-                   <input type="number" matInput placeholder="Ex :5000"
-                     formControlName="prixUniteVente">
-                 </mat-form-field>
-               </div>
-               <div class="col">
-                 <mat-form-field class="w-100" appearance="outline">
-                   <mat-label>DATE PEREMPTION</mat-label>
-                   <input type="datetime-local" matInput placeholder="Ex :20/05/2030"
-                     formControlName="datePeremption">
-                 </mat-form-field>
-               </div>
-               <div class="col">
-                       <mat-form-field class="w-100" appearance="outline">
-                         <mat-label>MONTANT TOTAL</mat-label>
-                         <input type="number" matInput placeholder="Ex :50000"
-                           formControlName="montantTotal">
-                       </mat-form-field>
-                     </div>
-           </form>
-       <div class="card-footer d-flex justify-content-between flex-wrap align-items-between">
-        <button mat-stroked-button color="warn" >Annuler</button>
-      <button mat-stroked-button color="primary"
-      (click)="onSubmit()">Enregistrer Stock</button>
-       </div>
-    </div>
-  </div>
-  <div class=" col " style="background-color: ebeef3;">
-    
-          
-          <!-- List -->
+          <!-- <div class="col text-end">
+            <div class="text-right">
+              <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><span class="mdi mdi-plus-thick"></span> Nouveau ajustement </button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <!-- List -->
+      <hr>
+      <div class="main-box mb-30">
+        <div class="d-flex justify-content-between gap-2 flex-wrap ">
+          <div class="card col-md-3">
+            <div class="card-body">
+              <h5 class="card-title">Approvisionner</h5>
+              <form class="card-text" [formGroup]="AjustementStock">
+                <mat-form-field appearance="outline">
+                  <mat-label>Produit</mat-label>
+                  <mat-select formControlName="idProduit" required
+                    class="w-100">
+                    <mat-option *ngFor="let produit of Produit"
+                      [value]="produit.id">{{ produit.name }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Entrepot</mat-label>
+                  <mat-select formControlName="idEntrepot" required
+                    class="w-100">
+                    <mat-option *ngFor="let entrepot of Entrepot"
+                      [value]="entrepot.id">{{ entrepot.name
+                      }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Fournisseur</mat-label>
+                  <mat-select formControlName="idFournisseur" required>
+                    <mat-option *ngFor="let fournisseur of Fournisseur"
+                      [value]="fournisseur.id">{{ fournisseur.name
+                      }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>QUANTITE </mat-label>
+                  <input type="number" matInput placeholder="Ex :100"
+                    formControlName="quantite">
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>PRIX D'ACHAT</mat-label>
+                  <input type="number" matInput placeholder="Ex :5000"
+                    formControlName="prixUniteAchat">
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>PRIX DE VENTE </mat-label>
+                  <input type="number" matInput placeholder="Ex :5000"
+                    formControlName="prixUniteVente">
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>DATE PEREMPTION</mat-label>
+                  <input type="datetime-local" matInput
+                    placeholder="Ex :20/05/2030"
+                    formControlName="datePeremption">
+                </mat-form-field>
+
+                <button mat-flat-button color="primary"
+                  [disabled]="AjustementStock.invalid" class="w-100"
+                  (click)="onSubmit()">Enregistrer Stock</button>
+              </form>
+            </div>
+          </div>
+          <div class=" col " style="background-color: ebeef3;">
             <!-- AJOUT DU DATATABLE.. -->
-            <mat-card class="">
-              <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
+            <mat-card class>
+              <mat-card-title
+                class="text-dark p-2 fw-bold">Liste</mat-card-title>
               <hr>
               <mat-card-content>
                 <mat-form-field class="w-100" appearance="outline">
@@ -101,101 +99,103 @@
                     placeholder="Rechercher" #input>
                 </mat-form-field>
                 <div class="col bg-dark">
-                <div class="mat-elevation " >
-                  <table mat-table [dataSource]="dataSource" matSort class="w-100" id="matTable">
-                    <!-- ID -->
-                    <ng-container matColumnDef="id">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        ID </th>
-                      <td mat-cell *matCellDef="let row; let i = index"> {{row.idAjustement}}
-                      </td>
-                    </ng-container>
-                    <!-- ID -->
-                    <ng-container matColumnDef="produit">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        PRODUIT </th>
-                      <td mat-cell *matCellDef="let row"> {{row.idProduit}}
-                      </td>
-                    </ng-container>
-                    <ng-container matColumnDef="fournisseur">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        FOURNISSEUR </th>
-                      <td mat-cell *matCellDef="let row"> {{row.idFournisseur}}
-                      </td>
-                    </ng-container>
-                    <ng-container matColumnDef="quantite">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        QUANTITE AJUSTER</th>
-                      <td mat-cell *matCellDef="let row"> {{row.quantite}}
-                      </td>
-                    </ng-container>
-                    <ng-container matColumnDef="prixUniteAchat">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        PRIX D'ACHAT </th>
-                      <td mat-cell *matCellDef="let row"> {{row.prixUniteAchat}}
-                      </td>
-                    </ng-container>
-                    <ng-container matColumnDef="prixUniteVente">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        PRIX DE VENTE </th>
-                      <td mat-cell *matCellDef="let row"> {{row.prixUniteVente}}
-                      </td>
-                    </ng-container>
-    
-                    <!-- Action -->
-                    <ng-container matColumnDef="Action">
-                      <th mat-header-cell *matHeaderCellDef
-                        class="text-center">Action</th>
-                      <td mat-cell *matCellDef="let element" class="text-center">
-                        <button mat-button color="warn" [matMenuTriggerFor]="menu">
-                          Voir + <span
-                            class="dw dw-down-chevron"></span></button>
-                        <mat-menu #menu="matMenu">
-                          <a
-                          (click)="deleteFunction('approvisionnement', element.id)"
-                          mat-menu-item class="text-start">
-                          <strong>
-                            <span><mat-icon>delete</mat-icon></span>
-                            supprimer
-                          </strong>             
-                        </a> 
-                        <a
-                        [routerLink]="['/ajustement-details']"
-                        mat-menu-item class="text-start">
-                        <strong>
-                          <span><mat-icon>more</mat-icon> </span>
-                          details 
-                        </strong>   
-                                   
-                      </a>
+                  <div class="mat-elevation-z8 ">
+                    <table mat-table [dataSource]="dataSource" matSort
+                      class="w-100" id="matTable">
+                      <!-- ID -->
+                      <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                          ID </th>
+                        <td mat-cell *matCellDef="let row; let i = index">
+                          {{row.idAjustement}}
+                        </td>
+                      </ng-container>
+                      <!-- ID -->
+                      <ng-container matColumnDef="produit">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                          PRODUIT </th>
+                        <td mat-cell *matCellDef="let row"> {{row.idProduit}}
+                          <br> <i
+                            class="text-primary small">{{row.reference}}</i>
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="quantite">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                          Qte</th>
+                        <td mat-cell *matCellDef="let row"> {{row.quantite}}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="prixUniteAchat">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                          Pu.Achat </th>
+                        <td mat-cell *matCellDef="let row">
+                          {{row.prixUniteAchat}}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="prixUniteVente">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                          Pu.Vente</th>
+                        <td mat-cell *matCellDef="let row">
+                          {{row.prixUniteVente}}
+                        </td>
+                      </ng-container>
 
+                      <!-- Action -->
+                      <ng-container matColumnDef="Action">
+                        <th mat-header-cell *matHeaderCellDef
+                          class="text-center">Action</th>
+                        <td mat-cell *matCellDef="let element"
+                          class="text-center">
+                          <button mat-button color="warn"
+                            [matMenuTriggerFor]="menu">
+                            Voir + <span
+                              class="dw dw-down-chevron"></span></button>
+                          <mat-menu #menu="matMenu">
+                            <a
+                              (click)="deleteFunction('approvisionnement', element.id)"
+                              mat-menu-item
+                              class="text-start">
+                              <strong>
+                                <span><mat-icon>delete</mat-icon></span>
+                                supprimer
+                              </strong>
+                            </a>
+                            <a [routerLink]="['/ajustement-details']"
+                              mat-menu-item class="text-start">
+                              <strong>
+                                <span><mat-icon>more</mat-icon> </span>
+                                details
+                              </strong>
 
-                        </mat-menu>
-                        
-                      
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row
-                      *matRowDef="let row; columns: displayedColumns;"></tr>
-                    <tr class="mat-row" *matNoDataRow>
-                      <td class="mat-cell" colspan="5" class="p-3">Aucun element
-                        correspond a cette recherche " {{input.value}} "</td>
-                    </tr>
-                  </table>
-    
-                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
-                    aria-label="Select page of users"></mat-paginator>
-                </div>
-              </div>
-    
-              </mat-card-content>
-    
-            </mat-card>
-    
-            <!-- FIN -->
-    
+                            </a>
+
+                          </mat-menu>
+
+                        </ng-container>
+                        <tr mat-header-row
+                          *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row
+                          *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                          <td class="mat-cell" colspan="7"
+                            class="p-3 text-center text-danger">Aucun
+                            element
+                            correspond a cette recherche
+                            " {{input.value}} "</td>
+                        </tr>
+                      </table>
+
+                      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                        aria-label="Select page of users"></mat-paginator>
+                    </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+              <!-- FIN -->
+            </div>
+            <!-- Fin list -->
           </div>
-          <!-- Fin list -->
-    
         </div>
-  
+      </div>
+    </div>
+  </div>
