@@ -30,6 +30,12 @@ title = 'Formulaire Approvisionnement '
  datePeremption:new FormControl(''),
 })
 
+
+
+
+
+
+
 titlle = 'Liste des ajustement stocks'
 
   // Assign the data to the data source for the table to render
@@ -51,8 +57,19 @@ constructor (
   public location:Location ,
   private dialog: MatDialog,
  
-) {}
-
+) {
+  // this.calculateTotal();  // Appel initial pour calculer le montant total
+  // this.AjustementStock.valueChanges.subscribe(() => {
+  //   this.calculateTotal();  // Recalculer le montant total à chaque modification
+  // });
+  
+}
+// calculateTotal(): void {
+//   const quantite = this.AjustementStock.get('quantite')?.value || 0;
+//   const prixUniteAchat = this.AjustementStock.get('prixUniteAchat')?.value || 0;
+//   const total = quantite * prixUniteAchat;
+//   this.AjustementStock.get('montantTotal')?.setValue(total, { emitEvent: false });
+//   }
 
 
  
