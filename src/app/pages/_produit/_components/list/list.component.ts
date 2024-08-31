@@ -27,7 +27,8 @@ export class ListComponent implements OnInit {
     'image',
     'designation',
     'sousCategorie',
-    'stockDispo',
+    'prixUnitaire',
+    'quantite',
     'Action'
   ]
 

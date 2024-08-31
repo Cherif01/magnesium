@@ -41,7 +41,7 @@
                 <!-- ID -->
                 <ng-container matColumnDef="reference">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    REFERENCE </th>
+                    Reference </th>
                   <td mat-cell *matCellDef="let row; let i = index">
                     {{row.reference}}
                   </td>
@@ -49,7 +49,7 @@
                 <ng-container matColumnDef="image">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header
                     class="text-center">
-                    IMAGE </th>
+                    Image </th>
                   <td mat-cell *matCellDef="let row" class="text-center">
                     <img [src]="linkImg+row.image"
                       style="height: 70px;width: 70px;border-radius: 50%;"
@@ -59,23 +59,30 @@
                 <!-- ID -->
                 <ng-container matColumnDef="designation">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    DESIGNATION </th>
+                    Produit </th>
                   <td mat-cell *matCellDef="let row">
                     {{row.designation}}
                   </td>
                 </ng-container>
-                <ng-container matColumnDef="stockDispo">
+                <ng-container matColumnDef="quantite">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    STOCK </th>
+                    Stock </th>
                   <td mat-cell *matCellDef="let row">
-                    {{0}}
+                    {{row.quantite}}
                   </td>
                 </ng-container>
 
                 <ng-container matColumnDef="sousCategorie">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    CATEGORY </th>
+                    Cat&#233;gorie </th>
                   <td mat-cell *matCellDef="let row"> {{row.sousCategorie}}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="prixUnitaire">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Prix Unitaire </th>
+                  <td mat-cell *matCellDef="let row"> {{row.prixUnitaire}}
                   </td>
                 </ng-container>
 

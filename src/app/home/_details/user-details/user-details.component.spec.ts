@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 <<<<<<<< HEAD:src/app/home/_details/user-details/user-details.component.spec.ts
@@ -37,3 +39,4 @@ describe('AddCompteComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+>>>>>>> 23b6f2d0742d0a0882073dd9956c669bf8cd20f8

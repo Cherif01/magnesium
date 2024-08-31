@@ -42,8 +42,7 @@ export class SidebarComponent implements OnInit {
           title: 'Entrepot',
           icon: 'bi bi-grid-fill',
           url: 'home/entrepot'
-        },
-      
+        }
       ]
     },
     {
@@ -197,19 +196,24 @@ export class SidebarComponent implements OnInit {
       icon: 'bi bi-cash',
       submenu: [
         {
-          title: 'Nouveau',
-          icon: 'bi bi-pie-chart',
-          url: 'compte/add-account'
-        },
-        {
           title: 'Liste des comptes',
-          icon: 'bi bi-pie-chart',
+          icon: 'bi bi-list',
           url: 'compte/account-list'
         },
         {
           title: 'Bilan',
-          icon: 'bi bi-pie-chart',
+          icon: 'bi bi-cash',
           url: 'compte/bilan-account'
+        },
+        {
+          title: 'Liste des comptes',
+          icon: 'bi bi-pie-chart',
+          url: 'comptePaiement/list'
+        },
+        {
+          title: 'Bilan',
+          icon: 'bi bi-pie-chart',
+          url: 'comptePaiement/bilan'
         }
       ]
     },

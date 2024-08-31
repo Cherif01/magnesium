@@ -6,49 +6,52 @@
     <div class="ticket">
       <!-- Logo et informations du restaurant -->
       <div class="restaurant-header text-center">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnooBc1yDB7LTTqn7HlJryw7C-8QB1ChniKw&s"
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnooBc1yDB7LTTqn7HlJryw7C-8QB1ChniKw&s"
           alt="Logo Restaurant" class="restaurant-logo">
         <h2 class="restaurant-name">YARIE - FOOD</h2>
         <p class="restaurant-info">123, Rue Bonfi, Conakry, Guin&#233;e</p>
         <p class="restaurant-info">+224 627 82 61 28</p>
       </div>
 
+      <style>
+        .border-details{
+          text-align: center;
+        }
+        th{
+          color: rgb(92, 7, 7);
+        }
+        .payment-section, .thank-you, .restaurant-header{
+          text-align: center;
+        }
+        .tt{
+          text-align: right;
+        }
+      </style>
       <!-- Informations sur les articles commandés -->
-      <div class="order-details">
-        <table class="table table-bordered">
+      <div class="border-details">
+        <table class="table table-bordered w-100 text-center">
           <thead>
             <tr>
               <th>Qte</th>
               <th>Article</th>
-              <th class="text-end">P.Unit</th>
-              <th class="text-end">Total</th>
+              <th class="text-center">P.Unit</th>
+              <th class="text-center">Total</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Riz au gras</td>
-              <td class="text-end">55 000</td>
-              <td class="text-end">55 000</td>
+            <tr *ngFor="let data of Facture">
+              <td>{{ data.quantite }}</td>
+              <td style="font-size: 11px">{{ data.designation }}</td>
+              <td style="font-size: 11px">{{ data.prixUnitaire }}</td>
+              <td style="font-size: 11px">{{ (data.prixUnitaire * data.quantite) | number: '2.2-2'
+                }}</td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Jus PEPSI</td>
-              <td class="text-end">15 000</td>
-              <td class="text-end">30 000</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Pizza Calzone</td>
-              <td class="text-end">60 000 </td>
-              <td class="text-end">60 000 </td>
-            </tr>
-            <!-- Ajouter plus d'articles si nécessaire -->
           </tbody>
           <tfoot>
             <tr>
               <th colspan="3" class="text-end">Total Facture</th>
-              <th class="text-end">145 000</th>
+              <th class="text-end tt">{{ TotalFacture | currency: 'GNF: ' }}</th>
             </tr>
           </tfoot>
         </table>
@@ -58,12 +61,13 @@
       <div class="payment-section text-center">
         <p class="payment-instructions">Scannez le QR code pour effectuer le
           paiement</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
           alt="QR Code de Paiement" class="payment-qr-code">
       </div>
 
       <!-- Message de remerciement -->
-      <div class="thank-you text-center">
+      <div class="thank-you">
         <p>Merci pour votre visite!</p>
       </div>
     </div>
@@ -72,7 +76,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-raised-button color="warn" (click)="_printer()" class="border-0">Imprimer</button>
+  <button mat-raised-button color="warn" (click)="_printer()"
+    class="border-0">Imprimer</button>
   <button mat-raised-button color="primary" class="border-0"
     (click)="confirmSale()">Valider le paiement</button>
 </mat-dialog-actions>
