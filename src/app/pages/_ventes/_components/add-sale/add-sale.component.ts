@@ -18,6 +18,14 @@ export class AddSaleComponent implements OnInit {
     idClient: [1]
   })
 
+  // AddPanierForm
+  AddPanierForm: FormGroup = this.fb.group({
+    idProduit: [],
+    venteInitId: [],
+    quantite: [0],
+    prixVente: []
+  })
+
   constructor (
     private dialog: MatDialog,
     private service: VenteService,
@@ -66,6 +74,47 @@ export class AddSaleComponent implements OnInit {
     })
   }
 
+  addPanier (form: FormGroup, produit: any): void {
+    form.value.idProduit = produit.idProduit
+    form.value.venteInitId = this.ID_vente_init_en_cours
+    form.value.prixVente = produit.prixUnitaire
+    // console.log('Panier : ', form.value)
+    this.service.create('vente', 'add', form.value).subscribe({
+      next: response => {
+        this.snackBar.open('Produit ajouter a la facture', 'Okay', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-success', 'text-white']
+        })
+      },
+      error: (err: any) => {
+        console.log('Error : ', err)
+        this.snackBar.open("Erreur d'ajout", 'Error', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-danger', 'text-white']
+        })
+      }
+    })
+  }
+
+  // LISTE FACTURE
+  Facture: any = []
+  TotalFacture = 0
+  NetAPayer = 0
+  ListPanierEnCours (): void {
+    this.service.getall('vente', 'list').subscribe({
+      next: response => {
+        this.Facture = response
+      },
+      error: (err: any) => {
+        console.log('Error : ', err)
+      }
+    })
+  }
+
   // DELETE VENTE EN COURS
   deleteVenteEnCours () {
     // console.log(this.ID_vente_init_en_cours.toString(), ' => ID')
@@ -73,7 +122,7 @@ export class AddSaleComponent implements OnInit {
       .delete('vente_init', 'delete', this.ID_vente_init_en_cours)
       .subscribe({
         next: (response: any) => {
-          console.log('Response : ', response)
+          // console.log('Response : ', response)
           this.snackBar.open('Vente annuler avec success', 'Okay', {
             duration: 3000,
             horizontalPosition: 'right',
@@ -83,7 +132,7 @@ export class AddSaleComponent implements OnInit {
           this.state_overlay = true // Afficher l'overlay
         },
         error: (err: any) => {
-          console.log('Response : ', err)
+          // console.log('Response : ', err)
           this.snackBar.open("Impossible d'annuler la vente", 'Error', {
             duration: 3000,
             horizontalPosition: 'right',

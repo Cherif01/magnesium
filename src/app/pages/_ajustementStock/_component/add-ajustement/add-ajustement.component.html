@@ -23,34 +23,35 @@
       <hr>
       <div class="main-box mb-30">
         <div class="d-flex justify-content-between gap-2 flex-wrap ">
-          <div class="card col-md-3">
+          <div class="card col-md-4 col-lg-3">
             <div class="card-body">
               <h5 class="card-title">Approvisionner</h5>
               <form class="card-text" [formGroup]="AjustementStock">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="w-100">
                   <mat-label>Produit</mat-label>
-                  <mat-select formControlName="idProduit" required
-                    class="w-100">
+                  <mat-select formControlName="produit" required>
+                    <mat-option>-- Liste G&#233;n&#233;rale --</mat-option>
                     <mat-option *ngFor="let produit of Produit"
-                      [value]="produit.id">{{ produit.name }}</mat-option>
+                      [value]="produit.idProduit">{{ produit.designation }}</mat-option>
                   </mat-select>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="w-100">
                   <mat-label>Entrepot</mat-label>
-                  <mat-select formControlName="idEntrepot" required
-                    class="w-100">
+                  <mat-select formControlName="entrepot" required>
+                    <mat-option>-- Liste G&#233;n&#233;rale --</mat-option>
                     <mat-option *ngFor="let entrepot of Entrepot"
-                      [value]="entrepot.id">{{ entrepot.name
+                      [value]="entrepot.id">{{ entrepot.nom
                       }}</mat-option>
                   </mat-select>
                 </mat-form-field>
 
                 <mat-form-field class="w-100" appearance="outline">
                   <mat-label>Fournisseur</mat-label>
-                  <mat-select formControlName="idFournisseur" required>
+                  <mat-select formControlName="fournisseur" required>
+                    <mat-option>-- Liste G&#233;n&#233;rale --</mat-option>
                     <mat-option *ngFor="let fournisseur of Fournisseur"
-                      [value]="fournisseur.id">{{ fournisseur.name
+                      [value]="fournisseur.idFournissseur">{{ fournisseur.prenom +' '+fournisseur.nom
                       }}</mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -75,7 +76,7 @@
 
                 <mat-form-field class="w-100" appearance="outline">
                   <mat-label>DATE PEREMPTION</mat-label>
-                  <input type="datetime-local" matInput
+                  <input type="date" matInput
                     placeholder="Ex :20/05/2030"
                     formControlName="datePeremption">
                 </mat-form-field>
@@ -86,7 +87,7 @@
               </form>
             </div>
           </div>
-          <div class=" col " style="background-color: ebeef3;">
+          <div class="col " style="background-color: ebeef3;">
             <!-- AJOUT DU DATATABLE.. -->
             <mat-card class>
               <mat-card-title
@@ -99,7 +100,7 @@
                     placeholder="Rechercher" #input>
                 </mat-form-field>
                 <div class="col bg-dark">
-                  <div class="mat-elevation-z8 ">
+                  <div class="mat-elevation-z8 table-responsive" >
                     <table mat-table [dataSource]="dataSource" matSort
                       class="w-100" id="matTable">
                       <!-- ID -->
@@ -107,22 +108,24 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>
                           ID </th>
                         <td mat-cell *matCellDef="let row; let i = index">
-                          {{row.idAjustement}}
+                          {{i+1}}
                         </td>
                       </ng-container>
                       <!-- ID -->
                       <ng-container matColumnDef="produit">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>
                           PRODUIT </th>
-                        <td mat-cell *matCellDef="let row"> {{row.idProduit}}
+                        <td mat-cell *matCellDef="let row"> {{row.produit}}
                           <br> <i
-                            class="text-primary small">{{row.reference}}</i>
+                            class="text-primary small">{{row.fournisseur}}</i>
                         </td>
                       </ng-container>
                       <ng-container matColumnDef="quantite">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>
                           Qte</th>
                         <td mat-cell *matCellDef="let row"> {{row.quantite}}
+                          <br> <i
+                            class="text-primary small">{{row.entrepot}}</i>
                         </td>
                       </ng-container>
                       <ng-container matColumnDef="prixUniteAchat">
@@ -151,24 +154,15 @@
                             Voir + <span
                               class="dw dw-down-chevron"></span></button>
                           <mat-menu #menu="matMenu">
-                            <a
-                              (click)="deleteFunction('approvisionnement', element.id)"
+                            <button
+                              (click)="deleteFunction('approvisionnement', element.idApprovisionnement)"
                               mat-menu-item
                               class="text-start">
                               <strong>
                                 <span><mat-icon>delete</mat-icon></span>
                                 supprimer
                               </strong>
-                            </a>
-                            <a [routerLink]="['/ajustement-details']"
-                              mat-menu-item class="text-start">
-                              <strong>
-                                <span><mat-icon>more</mat-icon> </span>
-                                details
-                              </strong>
-
-                            </a>
-
+                            </button>
                           </mat-menu>
 
                         </ng-container>

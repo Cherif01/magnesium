@@ -1,64 +1,67 @@
-<div id="sidebar" class="active m-0 p-0">
-  <div class="sidebar-wrapper m-0 p-0 bg-transparent">
-    <div class="sidebar-header pb-0 m-0 p-0">
-      <div class="d-flex justify-content-center flex-wrap m-0 p-0 bg-light">
-        <div class="toggler">
-          <a routerLink="#" class="sidebar-hide d-xl-none d-block"><i
-              class="bi bi-x bi-middle"></i></a>
-          <div class="logo pb-0 text-center my-4">
-            <div class="text- p-2 d-flex align-items-center justify-content-center">
-              <img src="assets/image/cherif.png" class="shadow" id="profile" alt="Logo" srcset>
-            </div>
-              <h5 class="text-center pb-0 py-2">S.P.A - Technology</h5>
-              <button (click)="logout()"
-                class="btn btn-outline-danger px-2"><span class="me-2">Fermer</span><mat-icon>logout</mat-icon></button>
-            <hr>
+<div id="sidebar" class="active">
+  <div class="sidebar-wrapper active">
+    <div class="sidebar-header">
+      <div class="logo pb-0 text-center my-4">
+        <div class="text- p-2 d-flex align-items-center justify-content-center">
+          <img src="/assets/image/cherif.png" class="shadow" id="profile"
+            alt="Logo"
+            srcset>
+          <div class="toggler">
+            <a href="#" class="sidebar-hide d-xl-none d-block"><i
+                class="bi bi-x bi-middle"></i></a>
           </div>
         </div>
+        <h5 class="text-center pb-0 py-2">S.P.A - Technology</h5>
+        <button (click)="logout()"
+          class="btn btn-outline-danger px-2"><span
+            class="me-2">Fermer</span><mat-icon>logout</mat-icon></button>
+        <hr>
 
-        <div class="sidebar-menu w-100 mt-3">
-          <ul class="menu w-100 mb-5 pb-5 mx-0 p-2">
-            <mat-accordion class>
-              <mat-expansion-panel
-                (opened)="panelOpenState = true"
-                (closed)="panelOpenState = false"
-                *ngFor="let onglet of listeOnglet">
-
-                <mat-expansion-panel-header>
-                  <mat-panel-title class="text-capitalize py-3">
-                    <i class="me-3 {{onglet.icon}}" id="side-icon"></i>
-                    <span id="sidebar-title"> {{onglet.name}}</span>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <!-- Vérification s'il y a un sous-menu -->
-                <div *ngIf="onglet.submenu && onglet.submenu.length > 0"
-                  class="panel p-0 m-0">
-                  <li class="p-0" *ngFor="let menu of onglet.submenu">
-                    <a routerLink="{{menu.url}}"
-                      routerLinkActive="active-sidebar"
-                      class="sidebar-link">
-                      <i class="micon {{menu.icon}}"></i>
-                      <span>{{menu.title}}</span>
-                    </a>
-                  </li>
-                </div>
-                <!-- Optionnel: Affichage d'un message si aucun sous-menu n'est disponible -->
-                <div *ngIf="!onglet.submenu || onglet.submenu.length === 0"
-                  class="p-2">
-                  Vide...
-                </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </ul>
-        </div>
-
-        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
       </div>
     </div>
-  </div>
 
-  <style>
+    <div class="sidebar-menu w-100">
+      <ul class="menu w-100 mb-5 pb-5 mx-0 p-2">
+        <mat-accordion class>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            *ngFor="let onglet of listeOnglet">
+
+            <mat-expansion-panel-header>
+              <mat-panel-title class="text-capitalize py-3">
+                <i class="me-3 {{onglet.icon}}" id="side-icon"></i>
+                <span id="sidebar-title"> {{onglet.name}}</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!-- Vérification s'il y a un sous-menu -->
+            <div *ngIf="onglet.submenu && onglet.submenu.length > 0"
+              class="panel p-0 m-0">
+              <li class="p-0" *ngFor="let menu of onglet.submenu">
+                <a routerLink="{{menu.url}}"
+                  routerLinkActive="active-sidebar"
+                  class="sidebar-link">
+                  <i class="micon {{menu.icon}}"></i>
+                  <span>{{menu.title}}</span>
+                </a>
+              </li>
+            </div>
+            <!-- Optionnel: Affichage d'un message si aucun sous-menu n'est disponible -->
+            <div *ngIf="!onglet.submenu || onglet.submenu.length === 0"
+              class="p-2">
+              Vide...
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ul>
+    </div>
+    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+
+  </div>
+</div>
+
+<style>
     #profile {
       width: 120px;
       height: 120px;

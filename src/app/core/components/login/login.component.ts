@@ -28,10 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: FormGroup): void {
-    // console.log("Formulaire : ", form.value);
     this.authService.login('auth','login', form.value).subscribe(
       (res) => {
-        // console.log("Token : ", res)
+        console.log("Token : ", res)
         this.snackBar.open("Connecter avec success!", "Valider", {
           duration: 4000,
           horizontalPosition: "right",

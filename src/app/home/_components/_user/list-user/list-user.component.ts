@@ -70,7 +70,6 @@ export class ListUserComponent implements OnInit {
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
           // console.log(result.data);
-          //const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
           this.service.create('user', 'add', result.data).subscribe({
@@ -84,10 +83,10 @@ export class ListUserComponent implements OnInit {
               })
               this.getListUSer()
             },
-            error: (err) => {
-              this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
+            error: (err: any) => {
+              this.snackBar.open("Echec de l'ajout !", "Okay", {
                 duration: 3000,
-                horizontalPosition: "left",
+                horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-danger', 'text-white']
               })
