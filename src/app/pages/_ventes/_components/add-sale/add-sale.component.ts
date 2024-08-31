@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component'
-<<<<<<< HEAD
-import { VenteService } from 'src/app/pages/_ventes/_service/vente.service'
-=======
+
+
+
 import { VenteService } from 'src/app/pages/_ventes/_services/vente.service'
->>>>>>> 103ff233464b8b494a9806b450eb455b7661e047
+
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { LINK_STATIC_FILES } from 'src/app/config'
