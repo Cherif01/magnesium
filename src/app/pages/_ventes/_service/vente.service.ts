@@ -29,7 +29,7 @@ export class VenteService {
   }
 
   // READ GLOBAL
-  getall (api: string, suffixUrl: string) {
+  getall (api: string, suffixUrl: any) {
     return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
   }
 

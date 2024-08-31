@@ -33,10 +33,16 @@
       <div class="text-center">
         <mat-icon class="arrow_down">arrow_downward</mat-icon>
       </div>
-      <button class="btn btn-primary p-3 fw-bold w-50 mt-3"
-        (click)="initiateNewSale()">
-        commencer une vente (Admin)
-      </button>
+      <div class="d-flex align-items-center justify-content-center flex-wrap">
+        <button class="btn btn-danger p-3 fw-bold m-2"
+          (click)="location.back()">
+          <mat-icon>reply</mat-icon>| Retour
+        </button>
+        <button class="btn btn-primary p-3 fw-bold m-2"
+          (click)="initiateNewSale()">
+          commencer une vente (Admin)
+        </button>
+      </div>
     </div>
   </div>
 
@@ -47,9 +53,9 @@
         <div
           class="d-flex align-items-center justify-content-start flex-wrap">
           <!-- Boucle sur le tableau des produits -->
-          <div class="col-md-6 col-12 col-sm-6 col-lg-4 mb-4"
+          <div class="col-md-4 col-12 col-sm-6 col-lg-6 mb-4"
             *ngFor="let product of products">
-            <div class="card product-card m-2 w-100">
+            <div class="card product-card m-3">
               <!-- Badge catégorie -->
               <div class="card-header text-end">
                 <span class="badge">QTE : {{ product.quantite }}</span>
@@ -62,13 +68,19 @@
               <div class="card-body">
                 <h5 class="card-title">{{ product.designation }}</h5>
                 <p class="card-text fw-bold">
-                  {{ product.prixUnitaire | currency : " " }} | <strong> GNF</strong>
+                  {{ product.prixUnitaire | currency : " " }} | <strong>
+                    GNF</strong>
                 </p>
-                <div class="d-flex align-items-center" [formGroup]="AddPanierForm">
+                <div class="d-flex align-items-center"
+                  [formGroup]="AddPanierForm">
                   <input
                     type="number" value="1"
-                    class="form-control quantity-input me-2" formControlName="quantite" [readonly]="product.quantite < 1"/>
-                  <button [disabled]="product.quantite < 1" class="btn btn-primary add-to-cart" (click)="addPanier(AddPanierForm, product)">Add</button>
+                    class="form-control quantity-input me-2"
+                    formControlName="quantite" min="1"
+                    [readonly]="product.quantite < 1" />
+                  <button [disabled]="product.quantite < 1"
+                    class="btn btn-primary add-to-cart"
+                    (click)="addPanier(AddPanierForm, product)">Add</button>
                 </div>
               </div>
             </div>
@@ -90,9 +102,9 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let data of Facture">
-                      <td>{{ data.quantite }}</td>
-                      <td>{{ data.idProduit }}</td>
-                      <td>{{ data.prixVente }}</td>
+                      <td (dblclick)="deleteInPanier(data.id)">{{ data.quantite }}</td>
+                      <td (dblclick)="deleteInPanier(data.id)">{{ data.designation }}</td>
+                      <td (dblclick)="deleteInPanier(data.id)">{{ data.prixUnitaire }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -101,8 +113,8 @@
             </div>
             <!-- <hr> -->
             <div class="total text-end bg-transparent">
-              <h4>Total : 00.00 | GNF</h4>
-              <h6>Remise : 0</h6>
+              <h4>{{TotalFacture | currency: ' GNF : '}}</h4>
+              <h6>Remise : 0%</h6>
             </div>
           </div>
           <div class="number">

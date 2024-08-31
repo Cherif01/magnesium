@@ -24,7 +24,7 @@ export class AuthService {
   login (api: string, suffixURL: string, data: any): Observable<any> {
     return this.http.post<any>(`${BASE_URL}${api}/${suffixURL}`, data).pipe(
       tap(response => {
-        // localStorage.setItem('access_token', response.token)
+        localStorage.setItem('access_token', response.token)
         this.isAuthenticatedSubject.next(true)
       })
     )
