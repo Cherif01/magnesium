@@ -1,65 +1,6 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
 
-   <div class="d-flex justify-content-between">
-  <div class=" col-md-3 mt-6  "style="width: 30rem;">
-<div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Modifier l'Utilisateur</h5>
-
-      <form [formGroup]="User">
-        <div class="col">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>fullname</mat-label>
-            <input type="text" matInput placeholder="Ex : Diallo Oumar"
-              formControlName="fullName">
-          </mat-form-field>
-        </div>
-    
-        <div class="col">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>email</mat-label>
-            <input type="email" matInput placeholder="Ex : Imran@gmail.com"
-              formControlName="email">
-          </mat-form-field>
-        </div>
-    
-        <!-- password et Telephone -->
-        <div class="col">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>TELEPHONE</mat-label>
-            <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
-              formControlName="telephone">
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>password </mat-label>
-            <input type="password" matInput placeholder="Ex : ******"
-              formControlName="password">
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field appearance="outline" class="col-12">
-              <mat-label>Magasin</mat-label>
-              <mat-select formControlName="idMagasin" required>
-                  <mat-option *ngFor="let magasin of Magasin"
-                  [value]="magasin.id">{{ magasin.name }}</mat-option>
-              </mat-select> 
-            </mat-form-field>
-      </div>
-        
-       
-      
-      </form>
-       <div class="card-footer d-flex justify-content-between flex-wrap align-items-between">
-        <button mat-stroked-button color="warn" >Annuler</button>
-      <button mat-stroked-button color="primary"
-      type="submit">Enregistrer</button>
-       </div>
-    </div>
-</div>
-  </div>
-  <div class=" col   ">
-  
     <div class="row">
       <div class="col-lg-4">
         <div class="card mb-4">
@@ -220,4 +161,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>
