@@ -37,4 +37,14 @@ export class UserDetailsComponent implements OnInit {
       name: 'Gbessia'
     }
   ] 
+  Role =[
+    {
+      
+      name: 'Gestionnaire'
+    },
+    {
+      
+      name: 'admin'
+    }
+  ]
 }
