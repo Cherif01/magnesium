@@ -23,8 +23,13 @@ export class ContactServiceService {
 
   // UPDATE
   update (api: string, suffixUrl: string, id: any, data: any): Observable<any> {
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`
-    return this.http.put(url, data)
+    const url = `${BASE_URL}${api}/${suffixUrl}/${id}`
+    let params = {
+      params: {
+        data: data
+      },
+    }
+    return this.http.put(url, params)
   }
 
   // READ GLOBAL
@@ -45,13 +50,7 @@ export class ContactServiceService {
 
   // GET Unique
   getOne (api: string, suffixUrl: string, id_: any) {
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id_}/`
-    let params = {
-      params: {
-        id: id_
-      }
-    }
-    return this.http.get<any[]>(url, params)
+    return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}/${id_}`)
   }
 
   delete (api: string, suffixUrl: any, id: any): Observable<boolean> {

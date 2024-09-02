@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddFournisseurComponent } from 'src/app/pages/_contact/_modal/fournisseur/add-fournisseur/add-fournisseur.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
+import { Location } from '@angular/common';
 
 
 @Component({

@@ -8,8 +8,7 @@ import { DemoMaterialModule } from "src/demo-material-module";
 import { AccountBilanComponent } from "./_components/account-bilan/account-bilan.component";
 import { AccountListComponent } from "./_components/account-list/account-list.component";
 import { AddCompteComponent } from "./_modal/add-compte/add-compte.component";
-import { comptePaiementRouting } from "./comptePaiement.routing";
-
+import { compteRouting } from "./compte.routing";
 
 
 @NgModule({
@@ -25,7 +24,7 @@ import { comptePaiementRouting } from "./comptePaiement.routing";
       MatDialogModule,
       MatFormFieldModule,
       MatTabsModule,
-      RouterModule.forChild(comptePaiementRouting)
+      RouterModule.forChild(compteRouting)
     ]
   })
-  export class ComptePaiementModule { }
+  export class CompteModule { }

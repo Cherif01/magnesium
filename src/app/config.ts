@@ -3,13 +3,28 @@ import { environment } from 'src/environments/environment'
 // BASE_URL FOR IMAGES OR MOVIES...
 export const LINK_STATIC_FILES: string = 'http://192.168.1.120:8080/photo/'
 
+<<<<<<< HEAD
 // LIEN POUR LES APIs
 const LINK_PROD: string = 'http://192.168.1.120:8080/api/'
 const LINK_DEVS: string = 'http://192.168.1.120:8080/api/'
 
 
 
+=======
+
+const LINK_PROD: string = 'http://localhost:8085/api/'
+const LINK_DEVS: string = 'http://localhost:8085/api/'
+
+
+
+export const LINK_STATIC_FILES: string = 'http://localhost:8085/photo/'
+
+
+
+// url de base
+>>>>>>> 9f3c223e29dc47bdc965d703f91af9fed2fcfab0
 export const BASE_URL = environment.production ? LINK_PROD : LINK_DEVS
+
 
 // CONSTANTE DANS L'APPLIS
 // http://192.168.1.117:8080/api/

@@ -196,6 +196,7 @@ export class SidebarComponent implements OnInit {
       icon: 'bi bi-cash',
       submenu: [
         {
+<<<<<<< HEAD
           title: 'Liste des comptes',
           icon: 'bi bi-list',
           url: 'compte/account-list'
@@ -204,16 +205,29 @@ export class SidebarComponent implements OnInit {
           title: 'Bilan',
           icon: 'bi bi-cash',
           url: 'compte/bilan-account'
+=======
+          title: 'Nouveau',
+          icon: 'bi bi-pie-chart',
+          url: 'compte/add-account'
+>>>>>>> 9f3c223e29dc47bdc965d703f91af9fed2fcfab0
         },
         {
           title: 'Liste des comptes',
           icon: 'bi bi-pie-chart',
+<<<<<<< HEAD
           url: 'comptePaiement/list'
+=======
+          url: 'compte/account-list'
+>>>>>>> 9f3c223e29dc47bdc965d703f91af9fed2fcfab0
         },
         {
           title: 'Bilan',
           icon: 'bi bi-pie-chart',
+<<<<<<< HEAD
           url: 'comptePaiement/bilan'
+=======
+          url: 'compte/bilan-account'
+>>>>>>> 9f3c223e29dc47bdc965d703f91af9fed2fcfab0
         }
       ]
     },

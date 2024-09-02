@@ -4,13 +4,13 @@ import { MatPaginator } from '@angular/material/paginator'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
-import { convertObjectInFormData } from 'src/app/app.component'
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service'
 
 import { Location } from '@angular/common'
 import { ProduitComponent } from '../../_modal/produit/produit.component'
 import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component'
 import { LINK_STATIC_FILES } from 'src/app/config'
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',

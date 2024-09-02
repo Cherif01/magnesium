@@ -54,8 +54,8 @@ export const AppRouting: Routes = [
       },
      { path: 'comptePaiement',
       loadChildren: () =>
-        import('../app/pages/_comptePaiement/comptePaiement.module').then(
-          m => m.ComptePaiementModule
+        import('../app/pages/_comptePaiement/compte.module').then(
+          m => m.CompteModule
         )
      },
      { path: 'charge',
