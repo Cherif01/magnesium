@@ -21,7 +21,7 @@ export class ListUserComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'fullName', 'email', 'telephone', 'Action']
+  displayedColumns: string[] = ['id', 'fullName', 'email', 'telephone','magasin', 'Action']
   //tab=[{id:1,  nom:"oumar", prenom:"Diallo", telephone:"2564", adresse:"mat"}]
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
