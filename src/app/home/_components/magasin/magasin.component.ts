@@ -123,7 +123,9 @@ export class MagasinComponent implements OnInit {
           messageNo: 'Non ?',
           messageYes: 'Oui, Confirmer !'
         }
+        
       })
+      
       .afterClosed()
       .subscribe(data => {
         if (data) {
