@@ -1,143 +1,203 @@
-
-
-  <!-- <div class="w-25 h-25"></div> -->
-  <div class="row ">
-    <div class="col-5">
-      <div class="card">
-        <div class="row no-gutters">
-          <div class="col-12">
-            <img src="https://via.placeholder.com/150" class="card-img p-2" alt="Image Description">
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="page-header">
+      <div class="d-flex justify-content-between flex-wrap">
+        <div class="col-md-4">
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+              <li class="breadcrumb-item active" aria-current="page"> {{title}}</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="col text-end">
+          <div class="text-start">
+            <button mat-stroked-button class="text-danger btn"
+              (click)="location.back()"><mat-icon>reply</mat-icon></button>
           </div>
-          <div class="col">
-            <form>
-              <div class="form-group d-flex justify-content-between py-3 p-2">
-                <input type="file" class="form-control w-100" id="" placeholder="Entrez votre email">
-                <button  mat-raised-button color="primary" class="btn w-100">Changer </button>
-              </div>
-            </form>
+          <div class="text-right">
+            <!-- <button mat-raised-button color="primary" class="mx-2"><mat-icon>add</mat-icon>
+              Nouveau fournisseur</button> -->
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="col  " >
-      <div class="card p-3">
-        <div class="row">
-          <div class="col-sm-3 ">
-            <p class="mb-0">Full Name</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">Johnatan Smith</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Email</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">exampleexample.com</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Phone</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">(097) 234-5678</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Mobile</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">(098) 765-4321</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Address</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-          </div>
-        </div>
-     
-    </div>
-      
-      <div class="card d-flex justify-content-between">  
-        <div class="card-body">
-          <mat-dialog-content>
-            <form [formGroup]="User">
-              <div class="col">
-                <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>fullname</mat-label>
-                  <input type="text" matInput placeholder="Ex : Diallo Oumar"
-                    formControlName="fullName">
-                </mat-form-field>
+    <!-- List -->
+    <hr>
+    <div class="main-box mb-30">
+      <div class="p-3">
+        <mat-tab-group class="mat-elevation-z6">
+
+          <mat-tab>
+            <ng-template mat-tab-label>MAJ DU PROFILE</ng-template>
+            <div class="row p-4">
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-body text-center">
+                    <h5 class="my-3">{{infoUser.fullName}}</h5>
+                    <p class="text-muted mb-1">{{infoUser.email}}</p>
+                    <p class="text-muted mb-4">{{infoUser.telephone}}</p>
+                    <div class="d-flex justify-content-center mb-2">
+                      <a href="telephone:{{infoUser.telephone}}" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-primary">Appelez</a>
+                      <a href="mailto:{{infoUser.email}}" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-outline-primary ms-1">Message</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-4 mb-lg-0">
+                  <div class="card-body p-0">
+                    <!-- <ul class="list-group list-group-flush rounded-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fas fa-globe fa-lg text-warning"></i>
+                  <p class="mb-0">https://mdbootstrap.com</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-github fa-lg text-body"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+              </ul> -->
+                  </div>
+                </div>
               </div>
-          
-              <div class="col">
-                <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>email</mat-label>
-                  <input type="email" matInput placeholder="Ex : Imran@gmail.com"
-                    formControlName="email">
-                </mat-form-field>
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Nom complet</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{infoUser.fullName}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{infoUser.email}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Phone</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{infoUser.telephone}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                   
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Magasin </p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{infoUser.nomMagasin}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="card mb-4 mb-md-0">
+                      <div class="card-body">
+                        <p class="mb-4"><span class="text-primary font-italic me-1">Utilisateur</span> Modification
+                        </p>
+                        <mat-dialog-content>
+                          <form [formGroup]="User">
+                            <div class="col">
+                              <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>Nom Complet</mat-label>
+                                <input type="text" matInput placeholder="Ex : Diallo Oumar"
+                                [value]="infoUser.fullName" class="text-primary fw-bold" formControlName="fullName" class="form-control">
+                              </mat-form-field>
+                            </div>
+                        
+                            <div class="col">
+                              <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>Adresse email</mat-label>
+                                <input type="email" matInput placeholder="Ex : Imran@gmail.com"
+                                [value]="infoUser.email"   class="text-primary fw-bold"   formControlName="email" class="form-control">
+                              </mat-form-field>
+                            </div>
+                        
+                            <!-- password et Telephone -->
+                            <div class="col">
+                              <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>TELEPHONE</mat-label>
+                                <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
+                               [value]="infoUser.telephone" class="text-primary fw-bold"  formControlName="telephone" class="form-control">
+                              </mat-form-field>
+                            </div>
+                           
+                        
+                            <div class="col">
+                              <mat-form-field appearance="outline" class="col-12">
+                                <mat-label>Privilège</mat-label>
+                                <mat-select formControlName="role" required
+                                  (selectionChange)="getList($event.value)">
+                                  <mat-option>-- Choisir dans la liste --</mat-option>
+                                  <mat-option *ngFor="let role of Role"  [value]="role.name">{{ role.name
+                                    }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                        
+                            <div class="col">
+                              <mat-form-field appearance="outline" class="col-12">
+                                <mat-label>Affecter maintenant</mat-label>
+                                <mat-select formControlName="idMagasin" required>
+                                  <mat-option *ngFor="let magasin of Magasin"
+                                    [value]="magasin.id">{{ magasin.nom }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                        
+                          </form>
+                        </mat-dialog-content>
+                        
+                        <mat-dialog-actions>
+                         <div class="d-flex justify-content-center">
+                         
+                          <button mat-stroked-button color="primary"
+                          (click)="confirmEditing(User)"  >Modifier l'utitisateur</button>
+                         </div>
+                        </mat-dialog-actions>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-          
-              <!-- password et Telephone -->
-              <div class="col">
-                <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>TELEPHONE</mat-label>
-                  <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
-                    formControlName="telephone">
-                </mat-form-field>
-              </div>
-              <div class="col">
-                <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>password </mat-label>
-                  <input type="password" matInput placeholder="Ex : ******"
-                    formControlName="password">
-                </mat-form-field>
-              </div>
-              <div class="col">
-                <mat-form-field appearance="outline" class="col-12">
-                    <mat-label>Magasin</mat-label>
-                    <mat-select formControlName="idMagasin" required>
-                        <mat-option *ngFor="let magasin of Magasin"
-                        [value]="magasin.id">{{ magasin.name }}</mat-option>
-                    </mat-select> 
-                  </mat-form-field>
             </div>
-            <div class="col">
-              <mat-form-field appearance="outline" class="col-12">
-                  <mat-label>Role</mat-label>
-                  <mat-select formControlName="role" required>
-                      <mat-option *ngFor="let role of Role"
-                      [value]="role.name">{{ role.name }}</mat-option>
-                  </mat-select> 
-                </mat-form-field>
-          </div>
-             
-            
-            </form>
-          </mat-dialog-content>
-          
-          <mat-dialog-actions>
-           <div class="d-flex justify-content-between">
-            <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
-            <button mat-stroked-button color="primary"
-             >Enregistrer le client</button>
-           </div>
-          </mat-dialog-actions>
-          
-         
-        </div>
+          </mat-tab>
+
+          <!-- <mat-tab>
+            <ng-template mat-tab-label>GESTION DU COMPTE</ng-template>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>HISTORIQUE DES APPROVISIONNEMENTS</ng-template>
+          </mat-tab>
+          -->
+        </mat-tab-group> 
       </div>
     </div>
   </div>
-
+</div>

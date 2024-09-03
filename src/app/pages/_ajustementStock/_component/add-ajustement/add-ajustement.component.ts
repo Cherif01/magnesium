@@ -232,7 +232,7 @@ titlle = 'Liste des ajustement stocks'
               console.error('Error : ', err)
             }
           })
-
+          this.getAjustementAchat();
         }
       })
     //Requete suppression sur la DB

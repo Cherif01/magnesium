@@ -68,7 +68,7 @@
                   <ng-container matColumnDef="magasin">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       MAGASIN </th>
-                    <td mat-cell *matCellDef="let row"> {{row.magasin}}
+                    <td mat-cell *matCellDef="let row"> {{row.nomMagasin}}
                     </td>
                   </ng-container>
 
@@ -91,7 +91,7 @@
                         </strong>
                       </a>
                       <a
-                      [routerLink]="['/home/user-details']"
+                      routerLink="/home/user-details/{{element.id}}"
                       mat-menu-item class="text-start">
                       <strong>
                         <span><mat-icon>more</mat-icon> </span>

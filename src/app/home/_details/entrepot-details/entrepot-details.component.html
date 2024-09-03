@@ -1,115 +1,154 @@
 
-<div class="container mt-2">
-  <div class="w-25 h-25"></div>
-  <div class="row  w-75 p-2">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="row no-gutters">
-          <div class="col-12">
-            <img src="https://via.placeholder.com/150" class="card-img p-2" alt="Image Description">
+
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="page-header">
+      <div class="d-flex justify-content-between flex-wrap">
+        <div class="col-md-4">
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+              <li class="breadcrumb-item active" aria-current="page"> {{title}}</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="col text-end">
+          <div class="text-start">
+            <button mat-stroked-button class="text-danger btn"
+              (click)="location.back()"><mat-icon>reply</mat-icon></button>
           </div>
-          <div class="col">
-            <form>
-              <div class="form-group d-flex justify-content-between py-3 p-2">
-                <input type="file" class="form-control w-100" id="" placeholder="Entrez votre email">
-                <button  mat-raised-button color="primary" class="btn w-100">Changer </button>
-              </div>
-            </form>
+          <div class="text-right">
+            <!-- <button mat-raised-button color="primary" class="mx-2"><mat-icon>add</mat-icon>
+              Nouveau fournisseur</button> -->
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="col-md-6 justify-content-end ">
-      <div class="card">
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Full Name</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">Johnatan Smith</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Email</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">exampleexample.com</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Phone</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">(097) 234-5678</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Mobile</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">(098) 765-4321</p>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <p class="mb-0">Address</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-          </div>
-        </div>
-     
-    </div>
-      
-      <div class="card">  
-        <div class="card-body">
-          <mat-dialog-content>
-            <form [formGroup]="Entrepot">
-              <div class="col">
-                <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>NOM</mat-label>
-                  <input type="text" matInput placeholder="Ex : Cherif"
-                    formControlName="nom">
-                </mat-form-field>
+    <!-- List -->
+    <hr>
+    <div class="main-box mb-30">
+      <div class="p-3">
+        <mat-tab-group class="mat-elevation-z6">
+
+          <mat-tab>
+            <ng-template mat-tab-label>MAJ DU PROFILE</ng-template>
+            <div class="row p-4">
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-body text-center">
+                    <h5 class="my-3">{{infoEntrepot.nom}}</h5>
+                    <p class="text-muted mb-1">{{infoEntrepot.adresse}}</p>
+                
+                  
+                  </div>
+                </div>
+                <div class="card mb-4 mb-lg-0">
+                  <div class="card-body p-0">
+                    <!-- <ul class="list-group list-group-flush rounded-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fas fa-globe fa-lg text-warning"></i>
+                  <p class="mb-0">https://mdbootstrap.com</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-github fa-lg text-body"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+              </ul> -->
+                  </div>
+                </div>
               </div>
-          
-              <!-- <div class="col">
-                <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>STATUS </mat-label>
-                  <input type="text" matInput placeholder="Ex : Actif"
-                    formControlName="status ">
-                </mat-form-field>
-              </div> -->
-          
-              <!-- Adresse  -->
-              <div class="col">
-                <mat-form-field class="w-100" appearance="outline">
-                  <mat-label>ADRESSE ENTREPOT</mat-label>
-                  <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
-                    formControlName="adresse">
-                </mat-form-field>
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Nom</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{infoEntrepot.nom}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Adresse</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{infoEntrepot.adresse}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                   
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="card mb-4 mb-md-0">
+                      <div class="card-body">
+                        <p class="mb-4"><span class="text-primary font-italic me-1">Magasin</span> Modification
+                        </p>
+                        <mat-dialog-content>
+                          <form [formGroup]="Entrepot">
+                            <div class="col">
+                              <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>NOM</mat-label>
+                                <input type="text" matInput placeholder="Ex : Cherif"
+                                [value]="infoEntrepot.nom"        formControlName="nom">
+                              </mat-form-field>
+                            </div>
+                        
+                        
+                        
+                           
+                            <div class="col">
+                              <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>ADRESSE Entrepot</mat-label>
+                                <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
+                                [value]="infoEntrepot.adresse "  formControlName="adresse">
+                              </mat-form-field>
+                            </div>
+                        
+                        
+                          
+                        
+                          </form>
+                        </mat-dialog-content>
+                        
+                        <mat-dialog-actions>
+                          
+                        <div class="d-flex justify-content-center ">
+                          <button mat-stroked-button color="primary"
+                          (click)="confirmEditing(Entrepot)"    >Modifier l'Entrepot</button>
+                        </div>
+                        </mat-dialog-actions>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-          
-              
-            </form>
-          </mat-dialog-content>
-          <mat-dialog-actions>
-            <div class="d-flex justify-content-between">
-              <button mat-stroked-button color="warn" matDialogClose>Annuler</button>
-            <button mat-stroked-button color="primary"
-              >Modifier l'Entrepot</button>
             </div>
-          </mat-dialog-actions>
-         
-        </div>
+          </mat-tab>
+
+          <!-- <mat-tab>
+            <ng-template mat-tab-label>GESTION DU COMPTE</ng-template>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>HISTORIQUE DES APPROVISIONNEMENTS</ng-template>
+          </mat-tab> -->
+        </mat-tab-group>
       </div>
     </div>
   </div>

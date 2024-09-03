@@ -40,17 +40,17 @@ export const homeRouting: Routes = [
     canActivate: [GuardGuard]
   },
   {
-    path: 'entrepot-details',
+    path: 'entrepot-details/:id',
     component: EntrepotDetailsComponent,
     canActivate: [GuardGuard]
   },
   {
-    path: 'magasin-details',
+    path: 'magasin-details/:id',
     component: MagasinDetailsComponent,
     canActivate: [GuardGuard]
   },
   {
-    path: 'user-details',
+    path: 'user-details/:id',
     component: UserDetailsComponent,
     canActivate: [GuardGuard]
   },

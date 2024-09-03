@@ -24,7 +24,7 @@ export class MagasinComponent implements OnInit {
   magasincol: string[] = ['id', 'nom', 'adresse' , 'reference' ,'Action']
    // Magasin Assign the data to the data source for the table to render
    transfertdataSource = new MatTableDataSource([])
-   transfertcol: string[] = ['id',  'magasin' ,'produit', 'quantite' ,'Action']
+   transfertcol: string[] = ['id',  'magasin' ,'produit', 'quantite' ,'status','Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
