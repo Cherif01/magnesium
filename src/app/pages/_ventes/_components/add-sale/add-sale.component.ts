@@ -102,13 +102,15 @@ export class AddSaleComponent implements OnInit {
   Facture: any = []
   TotalFacture = 0
   NetAPayer = 0
+  idVente_init: any
   ListPanierEnCours (): void {
     this.service.getUniqueSansId('vente_init', 'getLastInitVente').subscribe({
       next: (response: any) => {
         // console.log('Info  Init : ', response)
+        this.idVente_init = response.id
         this.service.getall('vente/venteEnCours', response.id).subscribe({
           next: response => {
-            console.log('Panier : ', response)
+            // console.log('Panier : ', response)
             this.Facture = response[0]
             this.TotalFacture = response[1]
             this.products = []
@@ -126,7 +128,7 @@ export class AddSaleComponent implements OnInit {
   linkImg: string = LINK_STATIC_FILES
   products: any[] = []
   getallProduit () {
-    this.service.getall('produit', 'list').subscribe({
+    this.service.getall('transfert', 'listProduit').subscribe({
       next: (response: any) => {
         // console.log('Produit  List : ', response)
         this.products = response
@@ -228,6 +230,39 @@ export class AddSaleComponent implements OnInit {
         this.state_overlay = true // Cache l'overlay
       }
     })
+  }
+
+  // DELETE VENTE EN COURS
+  confirmVente () {
+    // console.log('VENTE PANIER : ', this.formUpdate.value)
+    this.service
+      .update('vente_init', 'updateStatus', this.idVente_init, 2)
+      .subscribe({
+        next: (response: any) => {
+          // console.log('Response : ', response)
+          this.snackBar.open('Vente terminer avec success', 'Okay', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['bg-success', 'text-white']
+          })
+          this.Facture = []
+          this.ListPanierEnCours()
+          this.state_overlay = true
+        },
+        error: (err: any) => {
+          console.log('Response : ', err)
+          this.snackBar.open('Erreur de reseaux', 'Error', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['bg-danger', 'text-white']
+          })
+        }
+      })
+    this.products = []
+    this.getallProduit()
+    this.initVerif()
   }
 
   openDialog () {

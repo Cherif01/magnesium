@@ -12,8 +12,8 @@
     <div class="col-md-4 d-flex justify-content-end text-end">
       <button
         class="me-2 w-100 btn btn-outline-success p-3 btn-top"
-        (click)="openDialog()">
-        Paiement
+        (click)="confirmVente()">
+        Valider
       </button>
       <button class="me-2 w-100 btn btn-outline-primary p-3 btn-top">
         Brouillon
@@ -35,12 +35,12 @@
       </div>
       <div class="d-flex align-items-center justify-content-center flex-wrap">
         <button class="btn btn-danger p-3 fw-bold m-2"
-          (click)="location.back()">
-          <mat-icon>reply</mat-icon>| Retour
+          (click)="logout()">
+          <mat-icon>reply</mat-icon>| Se deconnecter
         </button>
-        <button class="btn btn-primary p-3 fw-bold m-2"
+        <button class="btn btn-outline-light p-3 fw-bold m-2"
           (click)="initiateNewSale()">
-          commencer une vente (Admin)
+          Nouvelle Vente
         </button>
       </div>
     </div>
@@ -152,7 +152,7 @@
               <button
                 value="validate"
                 id="validate-payment-btn"
-                (click)="openDialog()">
+                (click)="openDialog()"> PAYER |
                 <mat-icon>check</mat-icon>
               </button>
             </div>

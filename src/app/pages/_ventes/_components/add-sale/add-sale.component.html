@@ -12,8 +12,8 @@
     <div class="col-md-4 d-flex justify-content-end text-end">
       <button
         class="me-2 w-100 btn btn-outline-success p-3 btn-top"
-        (click)="openDialog()">
-        Paiement
+        (click)="confirmVente()">
+        Valider
       </button>
       <button class="me-2 w-100 btn btn-outline-primary p-3 btn-top">
         Brouillon
@@ -152,7 +152,7 @@
               <button
                 value="validate"
                 id="validate-payment-btn"
-                (click)="openDialog()">
+                (click)="openDialog()"> PAYER |
                 <mat-icon>check</mat-icon>
               </button>
             </div>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core'
-import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component';
-import { MatDialog } from '@angular/material/dialog';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { LINK_STATIC_FILES } from 'src/app/config';
-import { VenteService } from '../../_service/vente.service';
-import { Location } from '@angular/common';
+import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component'
+import { MatDialog } from '@angular/material/dialog'
+import { FormGroup, FormBuilder } from '@angular/forms'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { LINK_STATIC_FILES } from 'src/app/config'
+import { VenteService } from '../../_service/vente.service'
+import { Location } from '@angular/common'
+import { AuthService } from 'src/app/core/auth/service/auth-service.service'
 
 @Component({
   selector: 'app-pos',
@@ -13,7 +14,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./pos.component.scss']
 })
 export class PosComponent implements OnInit {
-
   // code auto vente init
   formInit: FormGroup = this.fb.group({
     idClient: [1]
@@ -31,6 +31,7 @@ export class PosComponent implements OnInit {
     private dialog: MatDialog,
     public location: Location,
     private service: VenteService,
+    private authS: AuthService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder
   ) {}
@@ -102,10 +103,13 @@ export class PosComponent implements OnInit {
   Facture: any = []
   TotalFacture = 0
   NetAPayer = 0
+  idVente_init: any
   ListPanierEnCours (): void {
     this.service.getUniqueSansId('vente_init', 'getLastInitVente').subscribe({
       next: (response: any) => {
         // console.log('Info  Init : ', response)
+        this.idVente_init = response.id
+        // console.log('Info Init : ', response)
         this.service.getall('vente/venteEnCours', response.id).subscribe({
           next: response => {
             console.log('Panier : ', response)
@@ -126,7 +130,7 @@ export class PosComponent implements OnInit {
   linkImg: string = LINK_STATIC_FILES
   products: any[] = []
   getallProduit () {
-    this.service.getall('produit', 'list').subscribe({
+    this.service.getall('transfert', 'listProduit').subscribe({
       next: (response: any) => {
         // console.log('Produit  List : ', response)
         this.products = response
@@ -197,6 +201,38 @@ export class PosComponent implements OnInit {
     this.getallProduit()
     this.initVerif()
   }
+  // DELETE VENTE EN COURS
+  confirmVente () {
+    // console.log('VENTE PANIER : ', this.formUpdate.value)
+    this.service
+      .update('vente_init', 'updateStatus', this.idVente_init, 2)
+      .subscribe({
+        next: (response: any) => {
+          // console.log('Response : ', response)
+          this.snackBar.open('Vente terminer avec success', 'Okay', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['bg-success', 'text-white']
+          })
+          this.Facture = []
+          this.ListPanierEnCours()
+          this.state_overlay = true
+        },
+        error: (err: any) => {
+          console.log('Response : ', err)
+          this.snackBar.open('Erreur de reseaux', 'Error', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['bg-danger', 'text-white']
+          })
+        }
+      })
+    this.products = []
+    this.getallProduit()
+    this.initVerif()
+  }
 
   // Méthode pour initier une nouvelle vente
   initiateNewSale () {
@@ -245,5 +281,9 @@ export class PosComponent implements OnInit {
     this.formInit.patchValue({
       reference: saleCode
     })
+  }
+
+  logout () {
+    this.authS.logout()
   }
 }
