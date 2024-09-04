@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LINK_STATIC_FILES } from 'src/app/config';
+import { VenteService } from '../../_service/vente.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pos',
@@ -9,114 +14,236 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PosComponent implements OnInit {
 
-  constructor (private dialog: MatDialog) {}
+  // code auto vente init
+  formInit: FormGroup = this.fb.group({
+    idClient: [1]
+  })
 
-  ngOnInit (): void {}
+  // AddPanierForm
+  AddPanierForm: FormGroup = this.fb.group({
+    idProduit: [],
+    venteInitId: [],
+    quantite: [0],
+    prixVente: []
+  })
 
-  state_overlay: boolean = true; // Initialement l'overlay est affiché
+  constructor (
+    private dialog: MatDialog,
+    public location: Location,
+    private service: VenteService,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder
+  ) {}
 
-  // Méthode pour initier une nouvelle vente
-  initiateNewSale() {
-    this.state_overlay = false; // Cache l'overlay
-    // Ajoutez ici tout autre code nécessaire pour initialiser une nouvelle vente
+  ngOnInit (): void {
+    this.initVerif()
+    this.getallProduit()
+    this.ListPanierEnCours()
   }
 
-  // Tableau des produits
-  products = [
-    {
-      name: 'Riz au gras',
-      price: 55000,
-      image:
-        'https://lamarmitedafrique.org/wp-content/uploads/2021/05/tiep.png',
-      category: 'Plat principal',
-      isPromo: false
-    },
-    {
-      name: 'Jus PEPSI',
-      price: 15000,
-      image:
-        'https://www.pepsico.com/images/default-source/products-brands/pepsi_12oz.png?sfvrsn=46c9ae09_3',
-      category: 'Boisson',
-      isPromo: true
-    },
-    {
-      name: 'Pizza Calzone',
-      price: 60000,
-      image:
-        'https://chez-mimi-pontcharra.fr/wp-content/uploads/2022/07/248_161.png',
-      category: 'Plat principal',
-      isPromo: false
-    },
-    {
-      name: 'Vimto',
-      price: 10000,
-      image: 'https://www.kroger.com/product/images/large/front/0007426500599',
-      category: 'Boisson',
-      isPromo: false
-    },
-    {
-      name: 'Poisson Braisé',
-      price: 80000,
-      image:
-        'https://i.pinimg.com/originals/f6/33/9e/f6339e7538fb29db50b6d1cae5fd3773.png',
-      category: 'Poisson',
-      isPromo: true
-    },
-    {
-      name: 'Attiéké',
-      price: 35000,
-      image:
-        'https://i.ytimg.com/vi/5KjWpS2xnDc/maxresdefault.jpg',
-      category: 'Accompagnement',
-      isPromo: false
-    },
-    {
-      name: 'Hamburger',
-      price: 65000,
-      image:
-        'https://sbprod-web-assets.s3.us-west-2.amazonaws.com/smashburger_classic_single_167e7ca495.png',
-      category: 'Plat principal',
-      isPromo: false
-    },
-    {
-      name: 'Foutou Banane',
-      price: 50000,
-      image:
-        'https://www.residenceohinene.net/ca/wp-content/uploads/2017/08/FOUTOU-BANANE.png',
-      category: 'Accompagnement',
-      isPromo: false
-    },
-    {
-      name: 'Virgin Winter White',
-      price: 45000,
-      image:
-        'https://www.lillet.com/wp-content/uploads/Cocktail-drink-Virgin-White-Peach-Lillet.png',
-      category: 'Boisson',
-      isPromo: true
-    },
-    {
-      name: 'Fanta Boite',
-      price: 12000,
-      image:
-        'https://m.media-amazon.com/images/I/61EMsb5lGLL.jpg',
-      category: 'Accompagnement',
-      isPromo: false
-    },
-    {
-      name: 'Crevettes roses ',
-      price: 90000,
-      image:
-        'https://www.academiedugout.fr/images/5435/1200-auto/fotolia_50087349_subscription_xl-copy.jpg?poix=50&poiy=50',
-      category: 'Soupe',
-      isPromo: true
-    }
-  ]
+  state_overlay: boolean = true
+  ID_vente_init_en_cours: any
+  idInit: any
+  state: boolean = true
+  initVerif () {
+    this.service.getUniqueSansId('vente_init', 'getLastInitVente').subscribe({
+      next: (response: any) => {
+        // console.log('Info  Init : ', response)
+        if (response.status == 1) {
+          this.state_overlay = false
+        } else {
+          this.state_overlay = true
+        }
+        this.ID_vente_init_en_cours = response.id
+      },
+      error: (error: any) => {
+        // console.log('Error Init : ', error)
+        this.state_overlay = true // Cache l'overlay
+      }
+    })
+  }
 
-  openDialog() {
-    this.dialog.open(RecuPosComponent, {
-    }).afterClosed()
-      .subscribe((result) => {
-
+  addPanier (form: FormGroup, produit: any): void {
+    form.value.idProduit = produit.idProduit
+    if (this.ID_vente_init_en_cours == undefined)
+      this.snackBar.open('Veillez actualiser pour commencer...', 'Okay', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: ['bg-warning', 'text-white']
       })
+    else form.value.venteInitId = this.ID_vente_init_en_cours
+    form.value.prixVente = produit.prixUnitaire
+    // console.log('Panier : ', form.value)
+    this.service.create('vente', 'add', form.value).subscribe({
+      next: response => {
+        this.snackBar.open('Produit ajouter a la facture', 'Okay', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-success', 'text-white']
+        })
+        this.Facture = []
+        this.ListPanierEnCours()
+      },
+      error: err => {
+        console.log('Error : ', err)
+        this.snackBar.open('erreur de debut...', 'Error', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-danger', 'text-white']
+        })
+      }
+    })
+  }
+
+  // LISTE FACTURE
+  Facture: any = []
+  TotalFacture = 0
+  NetAPayer = 0
+  ListPanierEnCours (): void {
+    this.service.getUniqueSansId('vente_init', 'getLastInitVente').subscribe({
+      next: (response: any) => {
+        // console.log('Info  Init : ', response)
+        this.service.getall('vente/venteEnCours', response.id).subscribe({
+          next: response => {
+            console.log('Panier : ', response)
+            this.Facture = response[0]
+            this.TotalFacture = response[1]
+            this.products = []
+            this.getallProduit()
+          },
+          error: (err: any) => {
+            console.log('Error : ', err)
+          }
+        })
+      }
+    })
+  }
+
+  // GET-ALL-PRODUCT
+  linkImg: string = LINK_STATIC_FILES
+  products: any[] = []
+  getallProduit () {
+    this.service.getall('produit', 'list').subscribe({
+      next: (response: any) => {
+        // console.log('Produit  List : ', response)
+        this.products = response
+      },
+      error: (err: any) => {
+        console.log('Error Init : ', err)
+      }
+    })
+  }
+
+  // DELETE VENTE EN COURS
+  deleteVenteEnCours () {
+    // console.log(this.ID_vente_init_en_cours, ' => ID')
+    this.service
+      .delete('vente_init', 'delete', this.ID_vente_init_en_cours)
+      .subscribe({
+        next: (response: any) => {
+          // console.log('Response : ', response)
+          this.snackBar.open('Vente annuler avec success', 'Okay', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['bg-info', 'text-white']
+          })
+          this.Facture = []
+          this.ListPanierEnCours()
+          this.state_overlay = true // Afficher l'overlay
+        },
+        error: (err: any) => {
+          // console.log('Response : ', err)
+          this.snackBar.open("Impossible d'annuler la vente", 'Error', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['bg-danger', 'text-white']
+          })
+          this.state_overlay = false // Cacher l'overlay
+        }
+      })
+  }
+
+  // DELETE VENTE EN COURS
+  deleteInPanier (id: any) {
+    console.log('VENTE PANIER ID : ', id)
+    this.service.delete('vente', 'delete', id).subscribe({
+      next: (response: any) => {
+        // console.log('Response : ', response)
+        this.snackBar.open('Produit retirer du panier', 'Okay', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+          panelClass: ['bg-warning', 'text-white']
+        })
+        this.Facture = []
+        this.ListPanierEnCours()
+      },
+      error: (err: any) => {
+        // console.log('Response : ', err)
+        this.snackBar.open('Impossible de retirer', 'Error', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-danger', 'text-white']
+        })
+      }
+    })
+    this.products = []
+    this.getallProduit()
+    this.initVerif()
+  }
+
+  // Méthode pour initier une nouvelle vente
+  initiateNewSale () {
+    // Ajoutez ici tout autre code nécessaire pour initialiser une nouvelle vente
+    this.generateAutoSaleCode()
+    // console.log(this.formInit.value)
+    this.service.create('vente_init', 'add', this.formInit.value).subscribe({
+      next: (response: any) => {
+        this.snackBar.open('Nouvelle vente placer...', 'Okay', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-success', 'text-white']
+        })
+        this.state_overlay = false // Cache l'overlay
+        this.initVerif()
+      },
+      error: (error: any) => {
+        this.snackBar.open(
+          'Une erreur est survenue, connexion impossible',
+          'Error',
+          {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+            panelClass: ['bg-danger', 'text-white']
+          }
+        )
+        this.state_overlay = true // Cache l'overlay
+      }
+    })
+  }
+
+  openDialog () {
+    this.dialog
+      .open(RecuPosComponent, {})
+      .afterClosed()
+      .subscribe(result => {})
+  }
+
+  // Fonction pour générer un code de vente à 8 chiffres
+  generateAutoSaleCode (): void {
+    const saleCode =
+      'VENTE - ' + Math.floor(10000000 + Math.random() * 90000000).toString() // Génère un nombre à 8 chiffres
+    // Mettre à jour le champ 'reference' avec le code généré
+    this.formInit.patchValue({
+      reference: saleCode
+    })
   }
 }

@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
   authFunction (form: FormGroup) {
-    console.log('Form : ', form.value)
+    // console.log('Form : ', form.value)
     const formData = new FormData()
     formData.append('telephone', form.value.telephone)
     formData.append('password', form.value.password)
