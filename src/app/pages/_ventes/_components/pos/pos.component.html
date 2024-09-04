@@ -12,19 +12,20 @@
     <div class="col-md-4 d-flex justify-content-end text-end">
       <button
         class="me-2 w-100 btn btn-outline-success p-3 btn-top"
-        (click)="openDialog()">
-        Paiement
+        (click)="confirmVente()">
+        Valider
       </button>
       <button class="me-2 w-100 btn btn-outline-primary p-3 btn-top">
         Brouillon
       </button>
-      <button class="me-2 w-100 btn btn-outline-danger p-3 btn-top">
+      <button (click)="deleteVenteEnCours()"
+        class="me-2 w-100 btn btn-outline-danger p-3 btn-top">
         Annuler
       </button>
     </div>
   </div>
 
-  <div class="overlay" *ngIf="state_overlay">
+  <div class="overlay" *ngIf="state_overlay == true">
     <div class="overlay-content text-center">
       <h2 class="text-light fw-bold mb-3">
         Cliquer sur ce bouton <br> pour commencer une nouvelle vente...
@@ -32,41 +33,54 @@
       <div class="text-center">
         <mat-icon class="arrow_down">arrow_downward</mat-icon>
       </div>
-      <button class="btn btn-danger p-3 fw-bold w-50 mt-3"
-        (click)="initiateNewSale()">
-        Nouvelle vente
-      </button>
+      <div class="d-flex align-items-center justify-content-center flex-wrap">
+        <button class="btn btn-danger p-3 fw-bold m-2"
+          (click)="logout()">
+          <mat-icon>reply</mat-icon>| Se deconnecter
+        </button>
+        <button class="btn btn-outline-light p-3 fw-bold m-2"
+          (click)="initiateNewSale()">
+          Nouvelle Vente
+        </button>
+      </div>
     </div>
   </div>
 
   <!-- <hr> -->
   <div class id="main-pos">
     <div class="col">
-      <div class="p-3 product">
-        <div class="row">
+      <div class="p-2 product">
+        <div
+          class="d-flex align-items-center justify-content-start flex-wrap">
           <!-- Boucle sur le tableau des produits -->
-          <div class="col-md-3 mb-4" *ngFor="let product of products">
-            <div class="card product-card shadow">
+          <div class="col-md-4 col-12 col-sm-6 col-lg-6 mb-4"
+            *ngFor="let product of products">
+            <div class="card product-card m-3">
               <!-- Badge catégorie -->
               <div class="card-header text-end">
-                <span class="badge">{{ product.category }}</span>
+                <span class="badge">QTE : {{ product.quantite }}</span>
               </div>
-              <img
-                [src]="product.image"
-                class="card-img-top"
-                [alt]="product.name" />
+              <div class="text-center">
+                <img [src]="linkImg+product.image"
+                  style="height: 100px;width: 100px;border-radius: 50%;"
+                  [alt]="product.designation">
+              </div>
               <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
+                <h5 class="card-title">{{ product.designation }}</h5>
                 <p class="card-text fw-bold">
-                  {{ product.price | currency : " " }} | <strong>GNF</strong>
+                  {{ product.prixUnitaire | currency : " " }} | <strong>
+                    GNF</strong>
                 </p>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center"
+                  [formGroup]="AddPanierForm">
                   <input
-                    type="number"
-                    min="1"
-                    value="1"
-                    class="form-control quantity-input me-2" />
-                  <button class="btn btn-primary add-to-cart">Add</button>
+                    type="number" value="1"
+                    class="form-control quantity-input me-2"
+                    formControlName="quantite" min="1"
+                    [readonly]="product.quantite < 1" />
+                  <button [disabled]="product.quantite < 1"
+                    class="btn btn-primary add-to-cart"
+                    (click)="addPanier(AddPanierForm, product)">Add</button>
                 </div>
               </div>
             </div>
@@ -74,7 +88,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="d-flex justify-content-start flex-wrap">
         <div class="col_" id="col_">
           <div class="facture">
@@ -87,25 +101,10 @@
                     <th>PU (GNF)</th>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Article 1</td>
-                      <td>10 000</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Article 2</td>
-                      <td>15 000</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Article 3</td>
-                      <td>25 000</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Article 4</td>
-                      <td>15 000</td>
+                    <tr *ngFor="let data of Facture">
+                      <td (dblclick)="deleteInPanier(data.id)">{{ data.quantite }}</td>
+                      <td (dblclick)="deleteInPanier(data.id)">{{ data.designation }}</td>
+                      <td (dblclick)="deleteInPanier(data.id)">{{ data.prixUnitaire }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -114,8 +113,8 @@
             </div>
             <!-- <hr> -->
             <div class="total text-end bg-transparent">
-              <h4>Total : 80 000.00 | GNF</h4>
-              <h6>Remise : 0</h6>
+              <h4>{{TotalFacture | currency: ' GNF : '}}</h4>
+              <h6>Remise : 0%</h6>
             </div>
           </div>
           <div class="number">
@@ -140,7 +139,8 @@
               <button value="1">7</button>
               <button value="2">8</button>
               <button value="3">9</button>
-              <button value="4"><mat-icon
+              <button value="4">
+                <mat-icon
                   class="text-primary">visibility_off</mat-icon></button>
             </div>
             <!-- Section 4 -->
@@ -152,7 +152,7 @@
               <button
                 value="validate"
                 id="validate-payment-btn"
-                (click)="openDialog()">
+                (click)="openDialog()"> PAYER |
                 <mat-icon>check</mat-icon>
               </button>
             </div>

@@ -26,106 +26,210 @@
       <div class="main-box mb-30">
         <!-- AJOUT DU DATATABLE.. -->
         <mat-card class="p-3">
-          <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
+          <mat-card-title class="text-dark p-2 fw-bold text-uppercase">Gestion des produits</mat-card-title>
           <hr>
-          <mat-card-content>
-            <mat-form-field class="w-100" appearance="outline">
-              <mat-label>Rechercher...</mat-label>
-              <input matInput (keyup)="applyFilter($event)"
-                placeholder="Rechercher" #input>
-            </mat-form-field>
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>STOCK PRINCIPALE</ng-template>
+              <div class="py-4"></div>
 
-            <div class="mat-elevation">
-              <table mat-table [dataSource]="dataSource" matSort class="w-100"
-                id="matTable">
-                <!-- ID -->
-                <ng-container matColumnDef="reference">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    REFERENCE </th>
-                  <td mat-cell *matCellDef="let row; let i = index">
-                    {{row.reference}}
-                  </td>
-                </ng-container>
-                <ng-container matColumnDef="image">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header
-                    class="text-center">
-                    IMAGE </th>
-                  <td mat-cell *matCellDef="let row" class="text-center">
-                    <img [src]="linkImg+row.image"
-                      style="height: 70px;width: 70px;border-radius: 50%;"
-                      alt>
-                  </td>
-                </ng-container>
-                <!-- ID -->
-                <ng-container matColumnDef="designation">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    DESIGNATION </th>
-                  <td mat-cell *matCellDef="let row">
-                    {{row.designation}}
-                  </td>
-                </ng-container>
-                <ng-container matColumnDef="stockDispo">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    STOCK </th>
-                  <td mat-cell *matCellDef="let row">
-                    {{0}}
-                  </td>
-                </ng-container>
+              <mat-card-content>
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Rechercher...</mat-label>
+                  <input matInput (keyup)="applyFilter($event)"
+                    placeholder="Rechercher" #input>
+                </mat-form-field>
 
-                <ng-container matColumnDef="sousCategorie">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    CATEGORY </th>
-                  <td mat-cell *matCellDef="let row"> {{row.sousCategorie}}
-                  </td>
-                </ng-container>
+                <div class="mat-elevation">
+                  <table mat-table [dataSource]="dataSource" matSort
+                    class="w-100"
+                    id="matTable">
+                    <!-- ID -->
+                    <ng-container matColumnDef="reference">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Reference </th>
+                      <td mat-cell *matCellDef="let row; let i = index">
+                        {{row.reference}}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="image">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header
+                        class="text-center">
+                        Image </th>
+                      <td mat-cell *matCellDef="let row" class="text-center">
+                        <img [src]="linkImg+row.image"
+                          style="height: 70px;width: 70px;border-radius: 50%;"
+                          alt>
+                      </td>
+                    </ng-container>
+                    <!-- ID -->
+                    <ng-container matColumnDef="designation">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Designation </th>
+                      <td mat-cell *matCellDef="let row">
+                        {{row.designation}}
+                      </td>
+                    </ng-container>
+                    <!-- <ng-container matColumnDef="quantite">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Stock </th>
+                      <td mat-cell *matCellDef="let row">
+                        {{row.quantite}}
+                      </td>
+                    </ng-container> -->
 
-                <!-- Action -->
-                <ng-container matColumnDef="Action">
-                  <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
-                  <td mat-cell *matCellDef="let row" class="text-center">
-                    <button mat-button color="warn" [matMenuTriggerFor]="menu">
-                      Voir + <span class="dw dw-down-chevron"></span></button>
-                    <mat-menu #menu="matMenu">
-                      <a mat-menu-item routerLink="/product/detail-produit/{{row.idProduit}}" class="text-start">
-                        <strong>
-                          <span class="dw dw-user-1 mx-2"></span>
-                          <span>Profile</span>
-                        </strong>
-                      </a>
-                      <!-- Supprimer -->
-                      <a
-                        (click)="deleteFunction('categorie', row.idProduit)"
-                        mat-menu-item class="text-start">
-                        <strong>
-                          <span>Supprimer</span>
-                        </strong>
-                      </a>
-                    </mat-menu>
-                  </td>
-                </ng-container>
+                    <ng-container matColumnDef="sousCategorie">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Cat&#233;gorie </th>
+                      <td mat-cell *matCellDef="let row"> {{row.sousCategorie}}
+                      </td>
+                    </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row
-                  *matRowDef="let row; columns: displayedColumns;"></tr>
-                <tr class="mat-row" *matNoDataRow>
-                  <td class="mat-cell" colspan="5" class="p-3">Aucun element
-                    correspond a cette recherche " {{input.value}} "</td>
-                </tr>
-              </table>
+                    <!-- <ng-container matColumnDef="prixUnitaire">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Prix Unitaire </th>
+                      <td mat-cell *matCellDef="let row"> {{row.prixUnitaire}}
+                      </td>
+                    </ng-container> -->
 
-              <mat-paginator [pageSizeOptions]="[10, 25, 50, 100, 250]"
-                aria-label="Select page of users"></mat-paginator>
-            </div>
+                    <!-- Action -->
+                    <ng-container matColumnDef="Action">
+                      <th mat-header-cell *matHeaderCellDef
+                        class="text-center">Action</th>
+                      <td mat-cell *matCellDef="let row" class="text-center">
+                        <button class="me-2" mat-raised-button color="primary"><mat-icon>add</mat-icon></button>
+                        <!-- <button class="me-2" mat-raised-button color="accent"><mat-icon>phone</mat-icon></button> -->
 
-          </mat-card-content>
+                      </td>
+                    </ng-container>
 
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row
+                      *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="7" class="p-3">Aucun element
+                        correspond a cette recherche " {{input.value}} "</td>
+                    </tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100, 250]"
+                    aria-label="Select page of users"></mat-paginator>
+                </div>
+
+              </mat-card-content>
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>MES PRODUITS</ng-template>
+
+              <mat-card-content>
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Rechercher...</mat-label>
+                  <input matInput (keyup)="applyFilter($event)"
+                    placeholder="Rechercher" #input>
+                </mat-form-field>
+
+                <div class="mat-elevation">
+                  <table mat-table [dataSource]="dataSource2" matSort
+                    class="w-100"
+                    id="matTable">
+                    <!-- ID -->
+                    <ng-container matColumnDef="reference">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Reference </th>
+                      <td mat-cell *matCellDef="let row; let i = index">
+                        {{row.reference}}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="image">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header
+                        class="text-center">
+                        Image </th>
+                      <td mat-cell *matCellDef="let row" class="text-center">
+                        <img [src]="linkImg+row.image"
+                          style="height: 70px;width: 70px;border-radius: 50%;"
+                          alt>
+                      </td>
+                    </ng-container>
+                    <!-- ID -->
+                    <ng-container matColumnDef="designation">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Produit </th>
+                      <td mat-cell *matCellDef="let row">
+                        {{row.designation}}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="quantite">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Stock </th>
+                      <td mat-cell *matCellDef="let row">
+                        {{row.quantite}}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sousCategorie">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Cat&#233;gorie </th>
+                      <td mat-cell *matCellDef="let row"> {{row.sousCategorie}}
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="prixUnitaire">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Prix Unitaire </th>
+                      <td mat-cell *matCellDef="let row"> {{row.prixUnitaire}}
+                      </td>
+                    </ng-container>
+
+                    <!-- Action -->
+                    <ng-container matColumnDef="Action">
+                      <th mat-header-cell *matHeaderCellDef
+                        class="text-center">Action</th>
+                      <td mat-cell *matCellDef="let row" class="text-center">
+                        <button mat-button color="warn"
+                          [matMenuTriggerFor]="menu">
+                          Voir + <span
+                            class="dw dw-down-chevron"></span></button>
+                        <mat-menu #menu="matMenu">
+                          <a mat-menu-item
+                            routerLink="/product/detail-produit/{{row.idProduit}}"
+                            class="text-start">
+                            <strong>
+                              <span class="dw dw-user-1 mx-2"></span>
+                              <span>Profile</span>
+                            </strong>
+                          </a>
+                          <!-- Supprimer -->
+                          <a
+                            (click)="deleteFunction('categorie', row.idProduit)"
+                            mat-menu-item class="text-start">
+                            <strong>
+                              <span>Supprimer</span>
+                            </strong>
+                          </a>
+                        </mat-menu>
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                    <tr mat-row
+                      *matRowDef="let row; columns: displayedColumns2;"></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="7" class="p-3">Aucun element
+                        correspond a cette recherche " {{input.value}} "</td>
+                    </tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100, 250]"
+                    aria-label="Select page of users"></mat-paginator>
+                </div>
+              </mat-card-content>
+            </mat-tab>
+          </mat-tab-group>
         </mat-card>
-
         <!-- FIN -->
-
       </div>
       <!-- Fin list -->
-
     </div>
   </div>
 </div>

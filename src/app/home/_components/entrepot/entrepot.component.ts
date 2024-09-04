@@ -63,7 +63,7 @@ export class EntrepotComponent implements OnInit {
         console.log('REPONSE ERROR : ', err)
       }
     })
-  
+
   }
 
   openDialog() {
@@ -90,10 +90,10 @@ export class EntrepotComponent implements OnInit {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
                 duration: 3000,
 
-            
+
                 horizontalPosition : "right",
                 verticalPosition : "bottom",
- 
+
                 panelClass: ['bg-danger', 'text-white']
               })
             }

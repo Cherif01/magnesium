@@ -24,12 +24,12 @@ export class VenteService {
 
   // UPDATE
   update (api: string, suffixUrl: string, id: any, data: any): Observable<any> {
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`
+    const url = `${BASE_URL}${api}/${suffixUrl}/${id}`
     return this.http.put(url, data)
   }
 
   // READ GLOBAL
-  getall (api: string, suffixUrl: string) {
+  getall (api: string, suffixUrl: any) {
     return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
   }
 
@@ -64,5 +64,6 @@ export class VenteService {
     // const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`
     return this.http.delete<boolean>(`${BASE_URL}${api}/${suffixUrl}/${id}`)
   }
+
 }
 

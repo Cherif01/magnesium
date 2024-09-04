@@ -56,13 +56,7 @@ export class AjustementStockService {
   }
 
   delete (api: string, suffixUrl: any, id: any): Observable<boolean> {
-    // return this.http.delete<boolean>(BASE_URL.concat(LINK_BASE, "/", "achat_items", "/",id))
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`
-    let params = {
-      params: {
-        id: id
-      }
-    }
-    return this.http.delete<boolean>(url, params)
+    // const url = `${BASE_URL}${api}/${suffixUrl}/${id}`
+    return this.http.delete<boolean>(`${BASE_URL}${api}/${suffixUrl}/${id}`)
   }
 }

@@ -10,9 +10,9 @@
     <div class="col">
         <mat-form-field appearance="outline" class="col-12">
           <mat-label>Produit</mat-label>
-          <mat-select formControlName="idProduit" required>
+          <mat-select formControlName="produit" required>
               <mat-option *ngFor="let produit of Produit"
-                  [value]="produit.id">{{ produit.name }}</mat-option>  
+              [value]="produit.idProduit">{{ produit.designation }}</mat-option>  
           </mat-select>
         </mat-form-field>
         
@@ -22,9 +22,9 @@
       <div class="col">
         <mat-form-field appearance="outline" class="col-12"  >
           <mat-label>Magasin</mat-label>
-          <mat-select formControlName="idMagasin" required>
+          <mat-select formControlName="magasin" required>
               <mat-option *ngFor="let magasin of Magasin"
-                  [value]="magasin.id">{{ magasin.name }}</mat-option>  
+                  [value]="magasin.id">{{ magasin.nom }}</mat-option>  
           </mat-select>
         </mat-form-field>
         

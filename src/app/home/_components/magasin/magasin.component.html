@@ -18,7 +18,7 @@
                 <button mat-raised-button color="primary"  class="mx-2" (click)=" openDialog()" ><span class="mdi mdi-plus-thick"></span> Nouveau Magasin</button>
               </div>
               <div class="text-right">
-                <button mat-raised-button color="primary"  class="mx-2" (click)=" openDialog2()" ><span class="mdi mdi-plus-thick"></span> Transferer un Produit</button>
+                <button mat-raised-button color="primary"  class="mx-2" (click)=" openDialog2 ()" ><span class="mdi mdi-plus-thick"></span> Transferer un Produit</button>
               </div>
             </div>
           </div>
@@ -87,9 +87,7 @@
                             supprimer
                           </strong>             
                         </a>
-                        <a
-                      [routerLink]="['/home/magasin-details']"
-                      mat-menu-item class="text-start">
+                        <a mat-menu-item   routerLink="/home/magasin-details/{{element.id}}"class="text-start">
                       <strong>
                         <span><mat-icon>more</mat-icon> </span>
                         details 
@@ -138,7 +136,8 @@
                   <ng-container matColumnDef="magasin">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       MAGASIN </th>
-                    <td mat-cell *matCellDef="let row"> {{row.magasin}}
+                    <td mat-cell *matCellDef="let row"> {{row.magasin}} 
+                      
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="produit">
@@ -151,6 +150,12 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       QUANTITE </th>
                     <td mat-cell *matCellDef="let row"> {{row.quantite}}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                      STATUS </th>
+                    <td mat-cell *matCellDef="let row"> {{row.status}}
                     </td>
                   </ng-container>
                  
@@ -172,7 +177,8 @@
                         </strong>             
                       </a>
                       <a
-                    [routerLink]="['/home/magasin-details']"
+                     
+                    
                     mat-menu-item class="text-start">
                     <strong>
                       <span><mat-icon>more</mat-icon> </span>
@@ -204,8 +210,8 @@
   
           <!-- FIN -->
   
-        </div>
-        <!-- Fin list -->
+        </div> 
+        <!-- Fin list --> 
   
       </div>
     </div>

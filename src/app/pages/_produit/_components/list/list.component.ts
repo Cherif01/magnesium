@@ -27,7 +27,18 @@ export class ListComponent implements OnInit {
     'image',
     'designation',
     'sousCategorie',
-    'stockDispo',
+    // 'prixUnitaire',
+    // 'quantite',
+    'Action'
+  ]
+  dataSource2 = new MatTableDataSource([])
+  displayedColumns2: string[] = [
+    'reference',
+    'image',
+    'designation',
+    'sousCategorie',
+    'prixUnitaire',
+    'quantite',
     'Action'
   ]
 
@@ -43,34 +54,53 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.getProduit()
+    this.getAllProduit()
+    this.getMyProduct()
   }
 
   ngAfterViewInit () {
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
+    // 2e mat-tab
+    this.dataSource2.paginator = this.paginator
+    this.dataSource2.sort = this.sort
   }
 
   applyFilter (event: Event) {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
+    this.dataSource2.filter = filterValue.trim().toLowerCase()
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage()
     }
+    if (this.dataSource2.paginator) {
+      this.dataSource2.paginator.firstPage()
+    }
   }
 
-  getProduit () {
+  getAllProduit () {
     this.service.getall('produit', 'list').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+        // console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
       }
     })
-    // this.dataSource.data = objet
+  }
+
+  getMyProduct () {
+    this.service.getall('transfert', 'listProduit').subscribe({
+      next: (reponse: any) => {
+        console.log('REPONSE SUCCESS : ', reponse)
+        this.dataSource2.data = reponse
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
+      }
+    })
   }
 
   addProduct () {
@@ -82,7 +112,6 @@ export class ListComponent implements OnInit {
           this.dataSource.data = []
 
           const formData = new FormData()
-
           formData.append('reference', result.data.reference)
           formData.append('designation', result.data.designation)
           formData.append('id_sousCategorie', result.data.id_sousCategorie)
@@ -148,7 +177,8 @@ export class ListComponent implements OnInit {
               console.error('Error : ', err)
             }
           })
-          this.getProduit()
+          this.getAllProduit()
+          this.getMyProduct()
         }
       })
     //Requete suppression sur la DB

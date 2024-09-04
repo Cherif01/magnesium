@@ -5,7 +5,7 @@
   <form [formGroup]="User">
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>fullname</mat-label>
+        <mat-label>Nom Complet</mat-label>
         <input type="text" matInput placeholder="Ex : Diallo Oumar"
           formControlName="fullName">
       </mat-form-field>
@@ -13,7 +13,7 @@
 
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>email</mat-label>
+        <mat-label>Adresse email</mat-label>
         <input type="email" matInput placeholder="Ex : Imran@gmail.com"
           formControlName="email">
       </mat-form-field>
@@ -29,23 +29,34 @@
     </div>
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>password </mat-label>
+        <mat-label>Mot de passe </mat-label>
         <input type="password" matInput placeholder="Ex : ******"
           formControlName="password">
       </mat-form-field>
     </div>
+
     <div class="col">
       <mat-form-field appearance="outline" class="col-12">
-          <mat-label>Magasin</mat-label>
-          <mat-select formControlName="idMagasin" required>
-              <mat-option *ngFor="let magasin of Magasin"
-              [value]="magasin.id">{{ magasin.name }}</mat-option>
-          </mat-select> 
-        </mat-form-field>
-  </div>
-    
-   
-  
+        <mat-label>Privilège</mat-label>
+        <mat-select formControlName="role" required
+          (selectionChange)="getList($event.value)">
+          <mat-option>-- Choisir dans la liste --</mat-option>
+          <mat-option *ngFor="let role of Role" [value]="role.name">{{ role.name
+            }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field appearance="outline" class="col-12">
+        <mat-label>Affecter maintenant</mat-label>
+        <mat-select formControlName="idMagasin" required>
+          <mat-option *ngFor="let magasin of Magasin"
+            [value]="magasin.id">{{ magasin.nom }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
   </form>
 </mat-dialog-content>
 
