@@ -84,12 +84,13 @@ export class ListUserComponent implements OnInit {
               this.getListUSer()
             },
             error: (err: any) => {
-              this.snackBar.open("Echec de l'ajout !", "Okay", {
+              this.snackBar.open(" !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-danger', 'text-white']
               })
+              this.getListUSer()
             }
           })
         }
