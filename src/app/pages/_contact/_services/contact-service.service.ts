@@ -22,18 +22,17 @@ export class ContactServiceService {
   }
 
   // UPDATE
-  update (api: string, suffixUrl: string, id: any, data: any): Observable<any> {
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id}`
-    let params = {
-      params: {
-        data: data
-      },
-    }
-    return this.http.put(url, params)
+  update(api: string, suffixUrl: string, id: any, data: any): Observable<any> {
+    const url = `${BASE_URL}${api}/${suffixUrl}/${id}`;
+
+    // Les données doivent être envoyées dans le corps de la requête PUT, pas dans les paramètres
+    return this.http.put(url, data, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
   }
- 
-  
-  
+
 
   // READ GLOBAL
   getall (api: string, suffixUrl: string) {

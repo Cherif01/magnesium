@@ -1,0 +1,338 @@
+[33mcommit 947717ac505ee140240ac181ce6187a2122ec2ba[m[33m ([m[1;36mHEAD -> [m[1;32mmojavelly[m[33m, [m[1;31morigin/mojavelly[m[33m)[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Wed Sep 4 12:01:56 2024 +0000
+
+    Modification en cours
+
+[33mcommit 9f3c223e29dc47bdc965d703f91af9fed2fcfab0[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Mon Sep 2 14:14:05 2024 +0000
+
+    Modification
+
+[33mcommit ab7f1a13edd1feb643f00b6ac1afb8eda569036c[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Sat Aug 31 18:07:04 2024 +0000
+
+    moja changement
+
+[33mcommit 107c3bffb44ff1e51c09ccf8e5668e7859765c56[m
+Merge: c74c38e 103ff23
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Thu Aug 29 17:31:53 2024 +0000
+
+    derniere mise à jour jeudi
+
+[33mcommit c74c38ea232fd591ce276f08a1b6d79af5b91c65[m
+Merge: b26e7e7 f92e2a4
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Thu Aug 29 17:28:14 2024 +0000
+
+     Bah 17h30 jeudi
+
+[33mcommit f92e2a49de9a24c4515923c19b4acfd7719f313d[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 29 16:21:33 2024 +0000
+
+    Vente delete
+
+[33mcommit 103ff233464b8b494a9806b450eb455b7661e047[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Thu Aug 29 16:12:02 2024 +0000
+
+    transfertStock
+
+[33mcommit f1e694245152e96810f69ea173f32503cc331fff[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Thu Aug 29 11:41:54 2024 +0000
+
+    11h41
+
+[33mcommit ef492a7a80016847820946f4f3f94d05e2722152[m
+Merge: 7261928 2780549
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Wed Aug 28 17:32:26 2024 +0000
+
+    diallo sur devs
+
+[33mcommit 7261928f8f0bebd6740895dcde39830b8b0bc540[m
+Merge: 62ae9ac 5c6d66c
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Wed Aug 28 16:48:28 2024 +0000
+
+    diallo sur devs
+
+[33mcommit 278054927bbb44405ab6f87220230be85b57c404[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Wed Aug 28 16:42:15 2024 +0000
+
+    rien
+
+[33mcommit b26e7e73d43333c886d7567e5269841094378fe0[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Wed Aug 28 16:30:21 2024 +0000
+
+     Bah modifie 16h30'
+
+[33mcommit 5c6d66c82668d540856beb5c1bf0a748c08d835b[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Wed Aug 28 16:30:21 2024 +0000
+
+    Produit images...
+
+[33mcommit e4e9f1edeb8d6e6dc98a301a789f54e7498af214[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Wed Aug 28 16:27:07 2024 +0000
+
+    28/08/2024-16-26
+
+[33mcommit 6b12083403feb031b4cf4cab087b5f21ce2cc0d3[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Tue Aug 27 14:41:05 2024 +0000
+
+    list-ajout-suppression
+
+[33mcommit 41044729ab45f50a2f7479056b01207215647de9[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Tue Aug 27 14:18:49 2024 +0000
+
+    Init vente configure
+
+[33mcommit f634010a136559b362bd311609f39318958fe14f[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Mon Aug 26 16:08:45 2024 +0000
+
+    ibrahima
+
+[33mcommit ca65c6580ce9a4ebb8bc4c728f70d644db514853[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Mon Aug 26 15:09:01 2024 +0000
+
+    Arriver de ibrahim
+
+[33mcommit 62ae9aca55983f767473319ad5906fe3a01788af[m
+Merge: 0e5e158 7f1a65b
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Fri Aug 23 16:42:59 2024 +0000
+
+    vendredi 16h45
+
+[33mcommit faca0c9e80757e4cacc94d847a699bed41d95b97[m
+Merge: 18e3946 7f1a65b
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Fri Aug 23 16:35:59 2024 +0000
+
+    Merge branch 'devs' of https://github.com/Cherif01/magnesium into devs
+
+[33mcommit 18e39462cdb664635530f5e80fab9e231fb2e171[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Fri Aug 23 16:31:51 2024 +0000
+
+    mise a jour de quelques  tables
+
+[33mcommit 7f1a65b60be997b393254f9a7be2fff44e491b99[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Fri Aug 23 16:30:21 2024 +0000
+
+    Delete et tant d'autres
+
+[33mcommit 0e5e158c65d4e9ebdfb7490ec6ca3c16aa33cf71[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Fri Aug 23 16:29:57 2024 +0000
+
+    modif 16h30
+
+[33mcommit 38bf78e9d4b8690a65fcf550824b33718df384b6[m
+Merge: df5872e 12cbd0b
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Fri Aug 23 13:05:52 2024 +0000
+
+    resolution conflit magasin
+
+[33mcommit 12cbd0bb226f70d7dc0089ccb0e4d4b94cea083c[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Fri Aug 23 12:51:41 2024 +0000
+
+    Classification/sub-cat
+
+[33mcommit df5872e04bcac82c553a01cc60731cdb0ea22c4c[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Fri Aug 23 12:47:27 2024 +0000
+
+    Ajout Entrepot
+
+[33mcommit 16013c73c595dc9f93198c4f5fd3cc198e2fca63[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Fri Aug 23 11:36:15 2024 +0000
+
+    add product
+
+[33mcommit b3fc9ab541106f4d650f7f0c53897192b7eba44d[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Fri Aug 23 03:41:34 2024 +0000
+
+    Suppression de quelques modules inutiliser
+
+[33mcommit ca56dc0f6a262877bd461c1ea875f72f318e0839[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Fri Aug 23 03:36:54 2024 +0000
+
+    Facture et formulaire sur les produits et les achats
+
+[33mcommit cb46d76c7add2f83ea4471e52e09143088fb055e[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 19:02:02 2024 +0000
+
+    Dernier mise a jour du 22 Aout a 19:00
+
+[33mcommit 3a590d153ce8344c79d413be43bd6cc10de3c491[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 18:48:46 2024 +0000
+
+    HEAD
+
+[33mcommit ba738eda0d349b1b9a0ceefe403a1fc16aaba37b[m
+Merge: d03eed9 3bfc602
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 18:38:36 2024 +0000
+
+    Fusion avec diallo a 18:40 du 22 Aout
+
+[33mcommit d03eed90d7e463c2732024077ed45c5c64eef565[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 18:32:51 2024 +0000
+
+    FUsion terminer du 22
+
+[33mcommit 3bfc602fcadcffec8fc17314facc88a33470b0cf[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Thu Aug 22 18:28:29 2024 +0000
+
+    dashbord2
+
+[33mcommit 93a0c2c7af680a4b56a4d566991cfd3651fefe0e[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Thu Aug 22 18:19:23 2024 +0000
+
+    deuxieme insertion des tableau
+
+[33mcommit b60492f55f8a90b151d79a8819e53c5673686f82[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 18:05:56 2024 +0000
+
+    Fin conflit
+
+[33mcommit a27a88f273579c180c8f19f4e37bf8f9d0577281[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 17:58:46 2024 +0000
+
+    Correction des conflits
+
+[33mcommit 2c7bc35799b572affd50ce0b4770c900aa2eff7a[m
+Merge: 421db04 2bffff0
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 17:53:14 2024 +0000
+
+    Modification sur la partie POS
+
+[33mcommit 2bffff05272c455904671832728745a73bc455a9[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Thu Aug 22 17:33:29 2024 +0000
+
+     gestion des tables
+
+[33mcommit 578372ef05083b714f0561ba7f0bac8e34178622[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Thu Aug 22 17:16:28 2024 +0000
+
+    Deuxieme-commit-des-tables
+
+[33mcommit 421db04c142490e18e4084a2d250a80a0a94ee8f[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 17:05:15 2024 +0000
+
+    Regularisation des conflits
+
+[33mcommit 8d58ae687581169132b39e14fdc7fca4b5c06f10[m
+Merge: 73caa92 fda6eac
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 16:53:57 2024 +0000
+
+    Reglage sidebar
+
+[33mcommit 73caa92ba69fed1234179b2a59ca2774086689ce[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 16:51:21 2024 +0000
+
+    Reglage du sidebar
+
+[33mcommit fda6eac574c65611fecf6c4ebb61d1acb2a2d284[m[33m ([m[1;31morigin/imran[m[33m)[m
+Merge: a6c5268 2e17282
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 01:17:26 2024 +0000
+
+    Modification sur la partie POS
+
+[33mcommit 2e1728255e8dbf73f437ea21a4c540603ab1e4d8[m
+Merge: 0ee02c1 53f250a
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Thu Aug 22 01:07:54 2024 +0000
+
+    Creation du pos
+
+[33mcommit 58b2a928cc1ddb3c3557cc9fe38641518410011c[m
+Merge: a6c5268 53f250a
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Wed Aug 21 15:53:41 2024 +0000
+
+    Merge branch 'diallo' into mojavelly
+
+[33mcommit a6c52681534bd2cb8d5daa8c0cbec2232d98b52e[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Wed Aug 21 15:35:22 2024 +0000
+
+    merge en cours...
+
+[33mcommit 55be5d422e9763c4369a875fb2099c409d2dfb8a[m
+Merge: 721b703 53f250a
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Wed Aug 21 15:26:39 2024 +0000
+
+    premier-merge
+
+[33mcommit 0ee02c167a96ecf2457d4d5ac5181446de521ef7[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Wed Aug 21 15:24:07 2024 +0000
+
+    _dialog/contact
+
+[33mcommit 04119c8935efbd5f0933b218ffb9d4df7a5dc719[m
+Merge: 721b703 46f7414
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Wed Aug 21 15:20:05 2024 +0000
+
+    Merge branch 'mojavelly' into devs
+
+[33mcommit 46f7414663f2ab5f7f7f76385d79bfff229c63f8[m
+Author: Mojavelly <thiernomahmudbah@gmail.com>
+Date:   Wed Aug 21 14:52:54 2024 +0000
+
+    Complements  des tables
+
+[33mcommit 53f250afff7f5375a00954965cfb9aa593b0bd9a[m[33m ([m[1;32mdiallo[m[33m)[m
+Author: MrDiallo13Oumar <do25595@gmail.com>
+Date:   Wed Aug 21 14:50:49 2024 +0000
+
+    Route-Insertion-tableau
+
+[33mcommit 721b703108e76cfeb3e4ef028ecf015218eac4ec[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Wed Aug 21 14:44:01 2024 +0000
+
+    _dialog/contact
+
+[33mcommit 608636eddad762de586c630029dd7f5817876a20[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: cherif01 <imouranacherif01@gmail.com>
+Date:   Tue Aug 20 15:25:55 2024 +0000
+
+    Initial commit

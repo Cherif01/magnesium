@@ -63,7 +63,7 @@ export class MagasinComponent implements OnInit {
         this.service.getall('transfert', 'list').subscribe({
           next: (res: any) => {
             console.log('REPONSE SUCCESS : ', res);
-            
+
             this.transfertdataSource.data = res
           }
         })
@@ -72,10 +72,10 @@ export class MagasinComponent implements OnInit {
         console.log('REPONSE ERROR : ', err)
       }
     })
-  
+
   }
- 
-  
+
+
 
   openDialog() {
     this.dialog.open(AddMagasinComponent, {
@@ -101,10 +101,10 @@ export class MagasinComponent implements OnInit {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
                 duration: 3000,
 
-            
+
                 horizontalPosition : "right",
                 verticalPosition : "bottom",
- 
+
                 panelClass: ['bg-danger', 'text-white']
               })
             }
@@ -123,9 +123,9 @@ export class MagasinComponent implements OnInit {
           messageNo: 'Non ?',
           messageYes: 'Oui, Confirmer !'
         }
-        
+
       })
-      
+
       .afterClosed()
       .subscribe(data => {
         if (data) {
@@ -178,10 +178,10 @@ export class MagasinComponent implements OnInit {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
                 duration: 3000,
 
-            
+
                 horizontalPosition : "right",
                 verticalPosition : "bottom",
- 
+
                 panelClass: ['bg-danger', 'text-white']
               })
             }

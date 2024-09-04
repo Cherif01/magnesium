@@ -8,6 +8,7 @@ import { ListComponent } from './_components/list/list.component';
 import { PerimeComponent } from './_components/perime/perime.component';
 import { PerteComponent } from './_components/perte/perte.component';
 import { RuptureStockComponent } from './_components/rupture-stock/rupture-stock.component';
+import { DetailProduitComponent } from './_components/detail-produit/detail-produit.component';
 
 export const productRouting: Routes = [
   {
@@ -30,11 +31,6 @@ export const productRouting: Routes = [
     canActivate: [GuardGuard]
   },
   {
-    path: 'etiquette',
-    component: EtiquetteComponent,
-    canActivate: [GuardGuard]
-  },
-  {
     path: 'perte',
     component: PerteComponent,
     canActivate: [GuardGuard]
@@ -53,5 +49,10 @@ export const productRouting: Routes = [
     path: 'classification',
     component: ClassificationComponent,
     canActivate: [GuardGuard]
-  }
+  },
+  {
+    path: 'detail-produit/:id',
+    component: DetailProduitComponent,
+    canActivate: [GuardGuard]
+  },
 ]
