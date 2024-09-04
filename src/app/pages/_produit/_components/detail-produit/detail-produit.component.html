@@ -33,15 +33,15 @@
             <div class="row p-4">
               <div class="col-lg-4">
                 <div class="card mb-4">
-                  <div class="card-body text-center">
-                    <h5 class="my-3">{{infoClient.prenom + ' ' + infoClient.nom}}</h5>
-                    <p class="text-muted mb-4">{{infoClient.telephone}}</p>
-                    <div class="d-flex justify-content-center mb-2">
-                      <a href="telephone:{{infoClient.telephone}}" data-mdb-button-init data-mdb-ripple-init
-                        class="btn btn-primary">Appelez</a>
-                      <a href="mailto:{{infoClient.telephone}}" data-mdb-button-init data-mdb-ripple-init
-                        class="btn btn-outline-primary ms-1">Message</a>
+                  <div class="card-body  text-center">
+                    <div  class="col-12">
+                      <img [src]="" class="img-fluid" alt="Aperçu de l'image">
                     </div>
+                    <div class="card-footer d-flex justify-content-between gap-2">
+                    <input type="file" class="form-control" >
+                      <button mat-raised-button color="primary"> changer</button>
+     
+                    </div>  
                   </div>
                 </div>
                 <div class="card mb-4 mb-lg-0">
@@ -76,29 +76,39 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-3">
-                        <p class="mb-0">Nom complet</p>
+                        <p class="mb-0">Reference</p>
                       </div>
                       <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{infoClient.prenom + ' ' + infoClient.nom}}</p>
+                        <p class="text-muted mb-0">{{infoProduit.reference }}</p>
+                      </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Desgination</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="text-muted mb-0">{{infoProduit.designation }}</p>
                       </div>
                     </div>
                     <hr>
                    
                     <div class="row">
                       <div class="col-sm-3">
-                        <p class="mb-0">Phone</p>
+                        <p class="mb-0">Seuil</p>
                       </div>
                       <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{infoClient.telephone}}</p>
+                        <p class="text-muted mb-0">{{infoProduit.seuil}}</p>
                       </div>
                     </div>
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <p class="mb-0">Address</p>
+                        <p class="mb-0">Description</p>
                       </div>
                       <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{infoClient.adresse}}</p>
+                        <p class="text-muted mb-0">{{infoProduit.description}}</p>
                       </div>
                     </div>
                     
@@ -108,39 +118,42 @@
                   <div class="col">
                     <div class="card mb-4 mb-md-0">
                       <div class="card-body">
-                        <p class="mb-4"><span class="text-primary font-italic me-1">Client</span> Modification
+                        <p class="mb-4"><span class="text-primary font-italic me-1">Produit</span> Modification
                         </p>
                         <form [formGroup]="EditForm">
                           <div class="d-flex justify-content-between flex-wrap">
                             <div class="col me-1">
                               <mat-form-field class="w-100" appearance="outline">
-                                <mat-label>NOM</mat-label>
-                                <input type="text" matInput placeholder="Ex : Cherif" [value]="infoClient.nom" class="text-primary fw-bold" formControlName="nom" class="form-control">
+                                <mat-label>Reference</mat-label>
+                                <input type="text" matInput placeholder="Ex : Cherif" [value]="infoProduit.reference" class="text-primary fw-bold" formControlName="reference"class="form-control">
                               </mat-form-field>
                             </div>
 
                             <div class="col ms-1">
                               <mat-form-field class="w-100" appearance="outline">
-                                <mat-label>PRENOM</mat-label>
-                                <input type="text" matInput placeholder="Ex : Imran" [value]="infoClient.prenom" class="text-primary fw-bold" formControlName="prenom" class="form-control">
+                                <mat-label>Designation</mat-label>
+                                <input type="text" matInput placeholder="Ex : Imran" [value]="infoProduit.designation" class="text-primary fw-bold" formControlName="designation"class="form-control">
                               </mat-form-field>
                             </div>
                           </div>
 
-                          <!-- Adresse et Telephone -->
+                          <div class="col ms-1">
+                            <mat-form-field class="w-100" appearance="outline">
+                              <mat-label>Seuil</mat-label>
+                              <input type="text" matInput placeholder="Ex : Imran" [value]="infoProduit.seuil" class="text-primary fw-bold" formControlName="seuil"class="form-control">
+                            </mat-form-field>
+                          </div>
+                        
+
+                          
                           <div class="col">
                             <mat-form-field class="w-100" appearance="outline">
-                              <mat-label>ADRESSE </mat-label>
-                              <input type="text" matInput placeholder="Ex : C/Kaloum, ..." [value]="infoClient.adresse" class="text-primary fw-bold" formControlName="adresse" class="form-control">
+                              <mat-label>Description </mat-label>
+                              <input type="text" matInput placeholder="Ex : C/Kaloum, ..." [value]="infoProduit.description" class="text-primary fw-bold" formControlName="description" class="form-control">
                             </mat-form-field>
                           </div>
 
-                          <div class="col">
-                            <mat-form-field class="w-100" appearance="outline">
-                              <mat-label>TELEPHONE</mat-label>
-                              <input type="number" matInput placeholder="Ex : 224 626 37 01 38" [value]="infoClient.telephone" class="text-primary fw-bold" formControlName="telephone" class="form-control">
-                            </mat-form-field>
-                          </div>
+                        
                           
                           <button mat-raised-button color="primary" (click)="confirmEditing(EditForm)">Terminer</button>
                         </form>
@@ -164,3 +177,21 @@
     </div>
   </div>
 </div>
+    
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        

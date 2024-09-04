@@ -132,14 +132,14 @@
                             <div class="col me-1">
                               <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>NOM</mat-label>
-                                <input type="text" matInput placeholder="Ex : Cherif" [value]="infoFournisseur.nom" class="text-primary fw-bold" formControlName="nom">
+                                <input type="text" matInput placeholder="Ex : Cherif" [value]="infoFournisseur.nom" class="text-primary fw-bold" formControlName="nom"class="form-control">
                               </mat-form-field>
                             </div>
 
                             <div class="col ms-1">
                               <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>PRENOM</mat-label>
-                                <input type="text" matInput placeholder="Ex : Imran" [value]="infoFournisseur.prenom" class="text-primary fw-bold" formControlName="prenom">
+                                <input type="text" matInput placeholder="Ex : Imran" [value]="infoFournisseur.prenom" class="text-primary fw-bold" formControlName="prenom"class="form-control">
                               </mat-form-field>
                             </div>
                           </div>
@@ -148,14 +148,14 @@
                           <div class="col">
                             <mat-form-field class="w-100" appearance="outline">
                               <mat-label>ADRESSE </mat-label>
-                              <input type="text" matInput placeholder="Ex : C/Kaloum, ..." [value]="infoFournisseur.adresse" class="text-primary fw-bold" formControlName="adresse">
+                              <input type="text" matInput placeholder="Ex : C/Kaloum, ..." [value]="infoFournisseur.adresse" class="text-primary fw-bold" formControlName="adresse" class="form-control">
                             </mat-form-field>
                           </div>
 
                           <div class="col">
                             <mat-form-field class="w-100" appearance="outline">
                               <mat-label>TELEPHONE</mat-label>
-                              <input type="number" matInput placeholder="Ex : 224 626 37 01 38" [value]="infoFournisseur.tel" class="text-primary fw-bold" formControlName="tel">
+                              <input type="number" matInput placeholder="Ex : 224 626 37 01 38" [value]="infoFournisseur.tel" class="text-primary fw-bold" formControlName="tel" class="form-control">
                             </mat-form-field>
                           </div>
                           <!-- Societe et Email -->
@@ -163,7 +163,7 @@
                           <div class="col">
                             <mat-form-field class="w-100" appearance="outline">
                               <mat-label>SOCIETE</mat-label>
-                              <input type="text" matInput placeholder="Ex : SPA" [value]="infoFournisseur.societe" class="text-primary fw-bold" formControlName="societe">
+                              <input type="text" matInput placeholder="Ex : SPA" [value]="infoFournisseur.societe" class="text-primary fw-bold" formControlName="societe" class="form-control">
                             </mat-form-field>
                           </div>
 
@@ -171,10 +171,9 @@
                             <mat-form-field class="w-100" appearance="outline">
                               <mat-label>Email</mat-label>
                               <input type="text" matInput placeholder="Ex : thiernomahmudbah@gmail.com" [value]="infoFournisseur.email" class="text-primary fw-bold"
-                                formControlName="email">
+                                formControlName="email" class="form-control">
                             </mat-form-field>
                           </div>
-
                           <button mat-raised-button color="primary" (click)="confirmEditing(EditForm)">Terminer</button>
                         </form>
                       </div>

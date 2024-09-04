@@ -81,15 +81,20 @@
 
                 <!-- Action -->
                 <ng-container matColumnDef="Action">
-                  <th mat-header-cell *matHeaderCellDef
-                    class="text-center">Action</th>
-                  <td mat-cell *matCellDef="let element" class="text-center">
+                  <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
+                  <td mat-cell *matCellDef="let row" class="text-center">
                     <button mat-button color="warn" [matMenuTriggerFor]="menu">
                       Voir + <span class="dw dw-down-chevron"></span></button>
                     <mat-menu #menu="matMenu">
+                      <a mat-menu-item routerLink="/product/detail-produit/{{row.idProduit}}" class="text-start">
+                        <strong>
+                          <span class="dw dw-user-1 mx-2"></span>
+                          <span>Profile</span>
+                        </strong>
+                      </a>
                       <!-- Supprimer -->
                       <a
-                        (click)="deleteFunction('categorie', element.idProduit)"
+                        (click)="deleteFunction('categorie', row.idProduit)"
                         mat-menu-item class="text-start">
                         <strong>
                           <span>Supprimer</span>

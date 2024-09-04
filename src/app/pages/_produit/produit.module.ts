@@ -18,6 +18,10 @@ import { AddCategoryComponent } from './_modal/add-category/add-category.compone
 import { AddSubCategoryComponent } from './_modal/add-sub-category/add-sub-category.component';
 import { AddFactureProFormatComponent } from '../_ventes/_modal/add-facture-pro-format/add-facture-pro-format.component';
 
+import { DetailProduitComponent } from './_components/detail-produit/detail-produit.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 
 @NgModule({
@@ -34,11 +38,14 @@ import { AddFactureProFormatComponent } from '../_ventes/_modal/add-facture-pro-
     AddPerteComponent,
     AddCategoryComponent,
     AddSubCategoryComponent,
-    AddFactureProFormatComponent
+    AddFactureProFormatComponent,
+    DetailProduitComponent
   ],
   imports: [
     CommonModule,
     DemoMaterialModule,
+    MatFormFieldModule,
+    MatTabsModule,
     RouterModule.forChild(productRouting)
   ]
 })
