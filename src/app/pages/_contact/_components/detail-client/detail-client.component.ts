@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { ContactServiceService } from '../../_services/contact-service.service';
 import { Location } from '@angular/common'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-detail-client',
@@ -14,7 +15,8 @@ export class DetailClientComponent implements OnInit {
 
   title: string = 'Profile Client'
   clientGroup!: FormGroup;
-
+   id !: any;
+   dataResponse!: any;
   EditForm = new FormGroup({
     nom: new FormControl('' || null),
     prenom: new FormControl(''|| null),
@@ -26,6 +28,7 @@ export class DetailClientComponent implements OnInit {
   constructor(
     private service: ContactServiceService,
     private activeroute: ActivatedRoute,
+    private httpClient: HttpClient,
     private snackBar: MatSnackBar,
     private ClientBuilder: FormBuilder,
     protected location: Location
@@ -33,7 +36,7 @@ export class DetailClientComponent implements OnInit {
 
   idClient: any
   ngOnInit(): void {
-    const id = +this.activeroute.snapshot.params['id']
+    this.id = +this.activeroute.snapshot.params['id']
     this.getOneClient()
   
     this.clientGroup = this.ClientBuilder.group(
@@ -64,7 +67,24 @@ export class DetailClientComponent implements OnInit {
     })
   }
 
-
+  onSubmit(){
+    this.httpClient.put("http://192.168.1.121:8080/api/client/update/"+this.id, this.clientGroup.value)
+    .subscribe((data)=> {
+      this.dataResponse = data
+      this.snackBar.open(
+        'Modification effectuée avec succès !',
+        'Okay',
+        {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['bg-success', 'text-white']
+        }
+      );
+    },
+    
+  )
+  }
   
   confirmEditing(form: FormGroup): void {
     // Appliquez la transformation
