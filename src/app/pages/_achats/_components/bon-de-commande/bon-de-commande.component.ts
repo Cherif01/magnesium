@@ -74,10 +74,10 @@ export class BonDeCommandeComponent implements OnInit {
     //           this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
     //             duration: 3000,
 
-            
+
     //             horizontalPosition : "right",
     //             verticalPosition : "bottom",
- 
+
     //             panelClass: ['bg-danger', 'text-white']
     //           })
     //         }
@@ -85,5 +85,5 @@ export class BonDeCommandeComponent implements OnInit {
     //     }
      })
   }
-  
+
 }

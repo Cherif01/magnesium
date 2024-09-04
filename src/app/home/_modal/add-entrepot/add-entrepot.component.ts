@@ -14,7 +14,7 @@ export class AddEntrepotComponent implements OnInit {
   nom: new FormControl(''),
   status: new FormControl(''),
   adresse: new FormControl(''),
- 
+
 })
 
 constructor(

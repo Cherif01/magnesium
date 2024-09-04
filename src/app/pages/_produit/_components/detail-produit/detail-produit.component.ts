@@ -1,51 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactServiceService } from '../../_services/contact-service.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Location } from '@angular/common'
+import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { ProduitService } from '../../_service/produit.service';
 
 @Component({
-  selector: 'app-detail-fournisseur',
-  templateUrl: './detail-fournisseur.component.html',
-  styleUrls: ['./detail-fournisseur.component.scss']
+  selector: 'app-detail-produit',
+  templateUrl: './detail-produit.component.html',
+  styleUrls: ['./detail-produit.component.scss']
 })
-export class DetailFournisseurComponent implements OnInit {
-  title: string = 'Profile fournisseur'
+export class DetailProduitComponent implements OnInit {
+
+  title: string = 'Profile Produit'
 
   EditForm = new FormGroup({
-    nom: new FormControl('' || null),
-    prenom: new FormControl(''|| null),
-    adresse: new FormControl('' || null),
-    societe: new FormControl('' || null),
-    email: new FormControl('' || null),
-    tel: new FormControl('' || null)
+    reference: new FormControl('' || null),
+    designation: new FormControl(''|| null),
+    seuil: new FormControl('' || null),
+    description: new FormControl('' || null)
+   
   })
   
 
   constructor(
-    private service: ContactServiceService,
+    private service: ProduitService,
     private activeroute: ActivatedRoute,
     private snackBar: MatSnackBar,
     protected location: Location
   ) { }
 
-  idFournisseur: any
+  idProduit: any
   ngOnInit(): void {
-    this.idFournisseur = this.activeroute.snapshot.params['id']
-    this.getOneFournisseur()
+    this.idProduit = this.activeroute.snapshot.params['id']
+    this.getOneProduit()
   
   }
 
-  infoFournisseur: any = {}
-  getOneFournisseur(): void {
-    // console.log("ID en GET : ", this.idFournisseur)
-    this.service.getOne('fournisseur', 'getOne', this.idFournisseur)
+  infoProduit: any = {}
+  getOneProduit(): void {
+    // console.log("ID en GET : ", this.idProduit)
+    this.service.getOne('product', 'getOne', this.idProduit)
     .subscribe({
       next: (response: any) => {
         console.log('Info : ', response)
-        this.infoFournisseur = response
-        this.EditForm.patchValue(this.infoFournisseur);
+        this.infoProduit = response
+        this.EditForm.patchValue(this.infoProduit);
       },
       error: (error: any) => {
         console.log("Error : ", error);
@@ -62,11 +62,11 @@ export class DetailFournisseurComponent implements OnInit {
   
     console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
   
-    this.service.update('fournisseur', 'update', this.idFournisseur, formData)
+    this.service.update('product', 'update', this.idProduit, formData)
       .subscribe({
         next: (response: any) => {
-          this.infoFournisseur = response;
-          console.log('Modification:', this.infoFournisseur);
+          this.infoProduit = response;
+          console.log('Modification:', this.infoProduit);
           this.snackBar.open(
             'Modification effectuée avec succès !',
             'Okay',
@@ -95,4 +95,5 @@ export class DetailFournisseurComponent implements OnInit {
   }
   
   
+
 }

@@ -47,17 +47,10 @@ export class ProduitService {
     return this.http.get<any[]>(url, params)
   }
 
-  // GET Unique
-  getUnique (api: string, suffixUrl: string, id_: any) {
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id_}/`
-    let params = {
-      params: {
-        id: id_
-      }
-    }
-    return this.http.get<any[]>(url, params)
-  }
-
+// GET Unique
+getOne (api: string, suffixUrl: string, id_: any) {
+  return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}/${id_}`)
+}
   delete (api: string, suffixUrl: any, id: any): Observable<boolean> {
     // return this.http.delete<boolean>(BASE_URL.concat(LINK_BASE, "/", "achat_items", "/",id))
     const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`

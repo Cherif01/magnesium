@@ -16,11 +16,11 @@ export const compteRouting: Routes = [
       component: AccountListComponent,
       canActivate: [GuardGuard]
     },
- 
+
     {
       path: 'bilan',
       component: AccountBilanComponent,
       canActivate: [GuardGuard]
     },
-   
+
   ]
