@@ -15,7 +15,7 @@ export class AddFournisseurComponent implements OnInit {
     adresse: new FormControl(''),
     societe: new FormControl(''),
     email: new FormControl(''),
-    tel: new FormControl('', Validators.required)
+    tel: new FormControl('', )
   })
 
   constructor(

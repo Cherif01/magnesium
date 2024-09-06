@@ -35,7 +35,7 @@ export class ContactServiceService {
 
 
   // READ GLOBAL
-  getall (api: string, suffixUrl: string) {
+   getall (api: string, suffixUrl: string) {
     return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
   }
 

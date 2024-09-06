@@ -5,8 +5,13 @@ export const LINK_STATIC_FILES: string = 'http://192.168.1.121:8080/photo/'
 
 
 // LIEN POUR LES APIs
-const LINK_PROD: string = 'http://192.168.1.121:8080/api/'
-const LINK_DEVS: string = 'http://192.168.1.121:8080/api/'
+ const LINK_PROD: string = 'http://192.168.1.121:8080/api/'
+ const LINK_DEVS: string = 'http://192.168.1.121:8080/api/'
+
+// const LINK_PROD: string = 'http://localhost:8085/api/'
+// const LINK_DEVS: string = 'http://localhost:8085/api/'
+
+
 
 
 // url de base

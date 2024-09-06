@@ -35,12 +35,25 @@
                 <div class="card mb-4">
                   <div class="card-body  text-center">
                     <div  class="col-12">
-                      <img [src]="" class="img-fluid" alt="Aperçu de l'image">
+                      <img [src]="linkImg+infoProduit.image" class="img-fluid" alt="Aperçu de l'image">
                     </div>
                     <div class="card-footer d-flex justify-content-between gap-2">
-                    <input type="file" class="form-control" >
+                      <form [formGroup]="EditForm">
+                        <input type="file" (change)="onFileChange($event)"
+                       class="form-control" />
                       <button mat-raised-button color="primary"> changer</button>
-     
+                      </form>
+                      
+                      <!-- <div class="file-upload-container">
+                        <input type="file" (change)="onFileChange($event)"
+                          formControlName="image" />
+                        <div class="image-preview-container text-end"
+                          *ngIf="imagePreview">
+                          <img [src]="imagePreview" class="image-preview" />
+                        </div>
+                      </div> -->
+                      
+                     
                     </div>  
                   </div>
                 </div>
@@ -143,7 +156,12 @@
                               <input type="text" matInput placeholder="Ex : Imran" [value]="infoProduit.seuil" class="text-primary fw-bold" formControlName="seuil"class="form-control">
                             </mat-form-field>
                           </div>
-                        
+                          <div class="col ms-1">
+                            <mat-form-field class="w-100" appearance="outline">
+                              <mat-label>Sous Categorie</mat-label>
+                              <input type="text" matInput placeholder="Ex : Imran" [value]="infoProduit.sousCategorie" class="text-primary fw-bold" formControlName="sousCategorie"class="form-control">
+                            </mat-form-field>
+                          </div>
 
                           
                           <div class="col">
