@@ -15,13 +15,14 @@ import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/
   styleUrls: ['./fournisseur.component.scss']
 })
 export class FournisseurComponent implements OnInit {
-  title = 'Liste des nouveaux Fournisseurs'
+  title = 'Liste des Fournisseurs'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
+  
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'tel', 'adresse','societe','email', 'Action']
-
+  displayedColumns: string[] = ['id', 'nom', 'prenom', 'tel', 'adresse',"email","societe", 'Action']
+  
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
 
@@ -53,7 +54,7 @@ export class FournisseurComponent implements OnInit {
   getFournisseur () {
     this.service.getall('fournisseur', 'list').subscribe({
       next: (reponse: any) => {
-        // console.log('REPONSE SUCCESS : ', reponse)
+         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
       },
       error: (err: any) => {
@@ -61,6 +62,7 @@ export class FournisseurComponent implements OnInit {
       }
     })
   }
+
   openDialog() {
     this.dialog.open(AddFournisseurComponent, {
     }).afterClosed()
@@ -94,8 +96,8 @@ export class FournisseurComponent implements OnInit {
       })
   }
 
-  // DELETE
-  deleteFunction (_api: string, id: any) {
+   // DELETE
+   deleteFunction (_api: string, id: any) {
     // console.log('id:', this.Id_achat);
     this.dialog
       .open(DeletePopupComponent, {
@@ -135,4 +137,6 @@ export class FournisseurComponent implements OnInit {
       })
     //Requete suppression sur la DB
   }
+
+
   }

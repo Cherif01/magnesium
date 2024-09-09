@@ -1,13 +1,7 @@
 import { Routes } from "@angular/router";
 import { ListComponent } from "./_components/list/list.component";
 
-
-
-
-
-
-
-export const chargeRouting: Routes = [
+export const caisseRouting: Routes = [
     {
         path: '',
         component: ListComponent
@@ -17,7 +11,7 @@ export const chargeRouting: Routes = [
         path: 'list',
         component: ListComponent
     }
+    
    
     
   ]
-  

@@ -209,12 +209,12 @@ export class SidebarComponent implements OnInit {
               {
                 title: 'Liste des depenses',
                 icon: 'bi bi-list',
-                url: 'charge/list'
+                url: 'caisse/list'
               },
               {
                 title: 'Type de depense',
                 icon: 'bi bi-truck',
-                url: 'charge/type'
+                url: 'caisse/type'
               }
             ]
           },

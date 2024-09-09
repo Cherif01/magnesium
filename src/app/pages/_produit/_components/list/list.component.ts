@@ -54,7 +54,7 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.getAllProduit()
+    this.getAllProduct()
     this.getMyProduct()
   }
 
@@ -79,7 +79,7 @@ export class ListComponent implements OnInit {
     }
   }
 
-  getAllProduit () {
+  getAllProduct () {
     this.service.getall('produit', 'list').subscribe({
       next: (reponse: any) => {
         // console.log('REPONSE SUCCESS : ', reponse)
@@ -177,7 +177,7 @@ export class ListComponent implements OnInit {
               console.error('Error : ', err)
             }
           })
-          this.getAllProduit()
+          this.getAllProduct()
           this.getMyProduct()
         }
       })

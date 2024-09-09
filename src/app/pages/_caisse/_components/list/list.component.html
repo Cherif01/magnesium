@@ -1,171 +1,272 @@
 
-      <div class="main-container">
-        <div class="pd-ltr-20 xs-pd-20-10">
-          <div class="min-height-200px">
-            <div class="page-header">
-              <div class="d-flex justify-content-between">
-                <div class="col-md-4">
-                  <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
-                      <li class="breadcrumb-item active" aria-current="page"> {{title}}</li>
-                    </ol>
-                  </nav>
-                </div>
-                <div class="col text-end">
-                  <div class="text-right">
-                    <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><mat-icon>add</mat-icon>
-                      Nouveau Caisse</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- List -->
-            <hr>
-            <div class="main-box mb-30">
-              <mat-card class="p-3">
-                <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
-                <hr>
-                <mat-card-content>
-                  <mat-form-field class="w-100" appearance="outline">
-                    <mat-label>Rechercher...</mat-label>
-                    <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher" #input>
-                  </mat-form-field>
-      
+          <mat-card-content>
 
-                  <div class="container-fluid">
-                    <header class="mb-3">
-                      <a href="#" class="burger-btn d-block d-xl-none">
-                        <i class="bi bi-justify fs-3"></i>
-                      </a>
-                    </header>
-                  
-                    <div class="page-heading">
-                      <h3>La Caisse</h3>
-                    </div>
-                    <div class="page-content">
-                      <section class="row">
-                        <div class="col-12 col-lg-9">
-                          <div class="row">
-                            <div class="col-6 col-lg-4 col-md-6">
-                              <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <div class="stats-icon purple">
-                                        <i class="iconly-boldSend"></i>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                      <h6 class="tw-bold fs-5">Entr&#233;e</h6>
-                                      <h6 class="font-extrabold mb-0">2</h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+           
+
+                  <div class="main-container">
+                    <div class="pd-ltr-20 xs-pd-20-10">
+                      <div class="min-height-200px">
+                        <div class="page-header">
+                          <div class="d-flex justify-content-between">
+                            <div class="col-md-4">
+                              <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                  <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+                                  <li class="breadcrumb-item active" aria-current="page">
+                                    {{title}}</li>
+                                </ol>
+                              </nav>
                             </div>
-                            <div class="col-6 col-lg-4 col-md-6">
-                              <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <div class="stats-icon green">
-                                        <i class="iconly-boldTick-Square"></i>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                      <h6 class="tw-bold fs-5">Sortie</h6>
-                                      <h6 class="font-extrabold mb-0">0</h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-6 col-lg-4 col-md-6">
-                              <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <div class="stats-icon blue">
-                                        <i class="iconly-boldWallet"></i>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                      <h6 class="tw-bold fs-5">Montant</h6>
-                                      <h6 class="font-extrabold mb-0">0</h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-6 col-lg-4 col-md-6">
-                              <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <div class="stats-icon red">
-                                        <i class="iconly-boldLock"></i>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                      <h6 class="tw-bold fs-5">Black</h6>
-                                      <h6 class="font-extrabold mb-0">0</h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-6 col-lg-4 col-md-6">
-                              <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <div class="stats-icon grey">
-                                        <i class="iconly-boldUpload"></i>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                      <h6 class="tw-bold fs-5">Red</h6>
-                                      <h6 class="font-extrabold mb-0">0</h6>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-6 col-lg-4 col-md-6">
-                              <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <div class="stats-icon bg-danger">
-                                        <i class="iconly-boldWork"></i>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                      <h5 class="fw-bold fs-5">yellow</h5>
-                                      <h6 class="fw-bold text-dark">0</h6>
-                                    </div>
-                                  </div>
-                                </div>
+                            <div class="col text-end">
+                              <div class="text-right">
+                                <button mat-raised-button color="primary" (click)="openDialog()"
+                                  class="mx-2"><span
+                                    class="mdi mdi-plus-thick"></span> Nouvelle caisse</button>
                               </div>
                             </div>
                           </div>
-                       
                         </div>
+                         List
+                        <hr>
+                        <div class="main-box mb-30">
+                          <!-- AJOUT DU DATATABLE.. -->
+                          <mat-card class="p-3">
+                           <mat-card-title class="text-dark p-2 fw-bold text-uppercase">Totalite de la caisse</mat-card-title>
+                             <hr>
+                           <mat-tab-group>
+                              <mat-tab>
+                                <ng-template mat-tab-label>Historique</ng-template>
+                                <div class="py-4"></div>
+                                  <div class="mat-elevation">
+                                    <div class="container-fluid">
+                                      <div class="page-content">
+                                        <section class="row">
+                                          <div class="col-12 col-lg-9">
+                                            <div class="row">
+                                              <div class="col-6 col-lg-4 col-md-6">
+                                                <div class="card">
+                                                  <div class="card-body px-3 py-4-5">
+                                                    <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="stats-icon purple">
+                                                          <i class="iconly-boldSend"></i>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-8">
+                                                        <h6 class="tw-bold fs-5">Entr&#233;e</h6>
+                                                        <h6 class="font-extrabold mb-0">2</h6>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-6 col-lg-4 col-md-6">
+                                                <div class="card">
+                                                  <div class="card-body px-3 py-4-5">
+                                                    <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="stats-icon green">
+                                                          <i class="iconly-boldTick-Square"></i>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-8">
+                                                        <h6 class="tw-bold fs-5">Sortie</h6>
+                                                        <h6 class="font-extrabold mb-0">0</h6>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-6 col-lg-4 col-md-6">
+                                                <div class="card">
+                                                  <div class="card-body px-3 py-4-5">
+                                                    <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="stats-icon blue">
+                                                          <i class="iconly-boldWallet"></i>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-8">
+                                                        <h6 class="tw-bold fs-5">Montant</h6>
+                                                        <h6 class="font-extrabold mb-0">0</h6>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-6 col-lg-4 col-md-6">
+                                                <div class="card">
+                                                  <div class="card-body px-3 py-4-5">
+                                                    <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="stats-icon red">
+                                                          <i class="iconly-boldLock"></i>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-8">
+                                                        <h6 class="tw-bold fs-5">Black</h6>
+                                                        <h6 class="font-extrabold mb-0">0</h6>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-6 col-lg-4 col-md-6">
+                                                <div class="card">
+                                                  <div class="card-body px-3 py-4-5">
+                                                    <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="stats-icon grey">
+                                                          <i class="iconly-boldUpload"></i>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-8">
+                                                        <h6 class="tw-bold fs-5">Red</h6>
+                                                        <h6 class="font-extrabold mb-0">0</h6>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-6 col-lg-4 col-md-6">
+                                                <div class="card">
+                                                  <div class="card-body px-3 py-4-5">
+                                                    <div class="row">
+                                                      <div class="col-md-4">
+                                                        <div class="stats-icon bg-danger">
+                                                          <i class="iconly-boldWork"></i>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-8">
+                                                        <h5 class="fw-bold fs-5">yellow</h5>
+                                                        <h6 class="fw-bold text-dark">0</h6>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div> 
+                                        </section> 
+                                        </div> 
+                                      </div> 
+                                    </div> 
+                                  
+                                    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100, 250]"
+                                      aria-label="Select page of users"></mat-paginator>
+                                
+                              </mat-tab>
+                  
+                              <mat-tab>
+                                <ng-template mat-tab-label>HISTORIQUE</ng-template>
+                  
+                                <mat-card-content>
+                                  <mat-form-field class="w-100" appearance="outline">
+                                    <mat-label>Rechercher...</mat-label>
+                                    <input matInput (keyup)="applyFilter($event)"
+                                      placeholder="Rechercher" #input>
+                                  </mat-form-field>
+                  
+                                  <div class="mat-elevation">
+                                    <table mat-table [dataSource]="dataSource2" matSort
+                                      class="w-100"
+                                      id="matTable">
+                                               <!-- ID -->
+                                               <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                  ID </th>
+                                                <td mat-cell *matCellDef="let row; let i = index"> {{i+1}}
+                                                </td>
+                                              </ng-container>
         
-      
-                      
-                   
-      
-                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-                
-            
-      
-              <!-- FIN -->
-      
-            
-            <!-- Fin list -->
-      
-          
-       
-      
+                                              <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label>TYPEOPERATION</mat-label>
+                                                <mat-select formControlName="typeOperation" required>
+                                                  <mat-option value="entree">ENTREE</mat-option>
+                                                  <mat-option value="sortie">SORTIE</mat-option>
+                                                </mat-select>
+                                              </mat-form-field>
+        
+                                              <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label>TYPEOPERATION</mat-label>
+                                                <mat-select formControlName="typeOperation" required>
+                                                  <mat-option value="entree">ENTREE</mat-option>
+                                                  <mat-option value="sortie">SORTIE</mat-option>
+                                                </mat-select>
+                                              </mat-form-field>
+        
+                                              <ng-container matColumnDef="montant">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                  MONTANT </th>
+                                                <td mat-cell *matCellDef="let row">
+                                                  {{row.montant}}
+                                                </td>
+                                              </ng-container>
+                          
+                                              <ng-container matColumnDef="motif">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                  MOTIF </th>
+                                                <td mat-cell *matCellDef="let row"> {{row.motif}}
+                                                </td>
+                                              </ng-container>
+        
+                                              <ng-container matColumnDef="date">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                  DATE </th>
+                                                <td mat-cell *matCellDef="let row"> {{row.date}}
+                                                </td>
+                                              </ng-container>
+                  
+                                      <!-- Action -->
+                                      <ng-container matColumnDef="Action">
+                                        <th mat-header-cell *matHeaderCellDef
+                                          class="text-center">Action</th>
+                                        <td mat-cell *matCellDef="let row" class="text-center">
+                                          <button mat-button color="warn"
+                                            [matMenuTriggerFor]="menu">
+                                            Voir + <span
+                                              class="dw dw-down-chevron"></span></button>
+                                          <mat-menu #menu="matMenu">
+                                            <a mat-menu-item
+                                              routerLink="/product/detail-produit/{{row.idProduit}}"
+                                              class="text-start">
+                                              <strong>
+                                                <span class="dw dw-user-1 mx-2"></span>
+                                                <span>Profile</span>
+                                              </strong>
+                                            </a>
+                                            <!-- Supprimer -->
+                                            <a
+                                              (click)="deleteFunction('categorie', row.idProduit)"
+                                              mat-menu-item class="text-start">
+                                              <strong>
+                                                <span>Supprimer</span>
+                                              </strong>
+                                            </a>
+                                          </mat-menu>
+                                        </td>
+                                      </ng-container>
+                  
+                                      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                                      <tr mat-row
+                                        *matRowDef="let row; columns: displayedColumns2;"></tr>
+                                      <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="7" class="p-3">Aucun element
+                                          correspond a cette recherche " {{input.value}} "</td>
+                                      </tr>
+                                    </table>
+                  
+                                    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100, 250]"
+                                      aria-label="Select page of users"></mat-paginator>
+                                  </div>
+                                </mat-card-content>
+                              </mat-tab>
+                            </mat-tab-group>
+                          </mat-card>
+                          <!-- FIN -->
+                        </div>
+                        <!-- Fin list -->
+                      </div>
+                    </div>
+                  </div>
+                           
