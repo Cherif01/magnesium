@@ -58,10 +58,10 @@ export const AppRouting: Routes = [
           m => m.CompteModule
         )
      },
-     { path: 'charge',
+     { path: 'caisse',
       loadChildren: () =>
-        import('../app/pages/_caisse/charge.module').then(
-          m => m.ChargeModule
+        import('../app/pages/_caisse/caisse.module').then(
+          m => m.CaisseModule
         )
      },
      {
