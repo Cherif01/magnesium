@@ -27,7 +27,7 @@ export class ProduitService {
 
   // UPDATE
   update (api: string, suffixUrl: string, id: any, data: any): Observable<any> {
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`
+    const url = `${BASE_URL}${api}/${suffixUrl}/${id}`
     return this.http.put(url, data)
   }
 

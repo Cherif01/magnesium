@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EtiquetteComponent } from '../../_components/etiquette/etiquette.component';
+import { ProduitService } from '../../_service/produit.service';
 
 @Component({
   selector: 'app-add-etiquette',
@@ -20,12 +21,26 @@ export class AddEtiquetteComponent implements OnInit {
 constructor(
   public dialogRef: MatDialogRef<EtiquetteComponent>,
   @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+  private service :ProduitService
 ) { }
 
 
 ngOnInit(): void {
+  this.getProduit()
 }
-
+Produit: any = []
+ // Liste des produits
+ getProduit () {
+  this.service.getall('produit', 'list').subscribe({
+    next: (reponse: any) => {
+      // console.log('LISTE PRODUIT : ', reponse)
+      this.Produit = reponse
+    },
+    error: (err: any) => {
+      console.log('REPONSE ERROR : ', err)
+    }
+  })
+}
 
 saveDataEtiquette() {
   if (this.Etiquette.valid) {

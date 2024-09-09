@@ -22,7 +22,7 @@ export class EtiquetteComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'idProduit', 'code', 'Action']
+  displayedColumns: string[] = ['id', 'designation','code', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -51,12 +51,12 @@ export class EtiquetteComponent implements OnInit {
       this.dataSource.paginator.firstPage()
     }
   }
-
+  Produit:any=[]
   getEtiquette () {
-    this.service.getall('product', 'etiquette').subscribe({
+    this.service.getall('produit', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
-        this.dataSource.data = reponse
+        this.Produit = reponse
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
