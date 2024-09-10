@@ -203,7 +203,7 @@ export class SidebarComponent implements OnInit {
             ]
           },
           {
-            name: 'Depenses',
+            name: 'Comptablite',
             icon: 'bi bi-dash-circle',
             submenu: [
               {
