@@ -111,3 +111,20 @@ body {
     }
   }
 }
+
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.arrow_down {
+  font-size: 50px; /* Taille de l'icône */
+  color: rgb(15, 13, 106);
+  animation: bounce 1s infinite;
+}
