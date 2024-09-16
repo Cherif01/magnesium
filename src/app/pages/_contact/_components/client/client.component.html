@@ -75,12 +75,14 @@
                     <button mat-button color="warn" [matMenuTriggerFor]="menu">
                       Voir + <span class="dw dw-down-chevron"></span></button>
                     <mat-menu #menu="matMenu">
+                      <!-- details -->
                       <a mat-menu-item routerLink="/contact/detail-client/{{row.idClient}}" class="text-start">
                         <strong>
                           <span class="dw dw-user-1 mx-2"></span>
                           <span>Profile</span>
                         </strong>
                       </a>
+                  
 
                         <!-- Supprimer -->
                         <a (click)="deleteFunction('client', row.idClient)" mat-menu-item class="text-start">

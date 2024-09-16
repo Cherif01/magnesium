@@ -4,12 +4,28 @@
 <mat-dialog-content>
   <form [formGroup]="Perte">
     <div class="col">
+      <!-- <mat-form-field class="w-100" appearance="outline">
+        <mat-label>PRODUIT</mat-label>
+        <input type="number" matInput placeholder="Ex : 1"
+          formControlName="idProduit">
+      </mat-form-field> -->
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Approvisionnement </mat-label>
+        <mat-select formControlName="idApprovisionnement" required>
+          <mat-option>-- Liste G&#233;n&#233;rale --</mat-option>
+          <mat-option *ngFor="let approvisionnement of Approvisionnement"
+            [value]="approvisionnement.idApprovisionnement">{{ approvisionnement.produit }} -{{approvisionnement.entrepot}}- {{approvisionnement.fournisseur }} </mat-option>
+        </mat-select> 
+      </mat-form-field>
+    </div>
+    <div class="col">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>QUANTITE_PERDU</mat-label>
         <input type="number" matInput placeholder="Ex : 1"
-          formControlName="qtePerdu">
+          formControlName="quantitePerdu">
       </mat-form-field>
     </div>
+    
 
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">

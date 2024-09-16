@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContactServiceService } from '../../_services/contact-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-detail-fournisseur',
@@ -21,7 +24,20 @@ export class DetailFournisseurComponent implements OnInit {
     email: new FormControl('' || null),
     tel: new FormControl('' || null)
   })
-  
+  dataSource = new MatTableDataSource([])
+
+  displayedColumns: string[] = [
+
+    'reference',
+    'createdAt',
+    'montant',
+    'regler',
+    'reste'
+
+  ]
+
+  @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
+  @ViewChild(MatSort) sort?: MatSort | any
 
   constructor(
     private service: ContactServiceService,

@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
 import { AddPerteComponent } from '../../_modal/add-perte/add-perte.component';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
 
 @Component({
   selector: 'app-perte',
@@ -21,7 +22,7 @@ export class PerteComponent implements OnInit {
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'qtePerdu', 'description', 'Action']
+  displayedColumns: string[] = ['id', 'quantitePerdu', 'description','produit','entrepot', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -52,7 +53,7 @@ export class PerteComponent implements OnInit {
   }
 
   getPerte () {
-    this.service.getall('product', 'perte').subscribe({
+    this.service.getall('perte', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -70,10 +71,10 @@ export class PerteComponent implements OnInit {
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
           // console.log(result.data);
-          const formData = convertObjectInFormData(result.data);
+          //const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('product', 'perte', formData).subscribe({
+          this.service.create('perte', 'add', result.data).subscribe({
             next: (response) => {
               this.snackBar.open("Perte enregistre avec succès !", "Okay", {
                 duration: 3000,
@@ -95,6 +96,46 @@ export class PerteComponent implements OnInit {
           })
         }
       })
+  }
+  deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog.open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce utilisateur ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+             parseInt(reponse)
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getPerte()
+        }
+      })
+    //Requete suppression sur la DB
   }
 
 }

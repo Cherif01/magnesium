@@ -6,6 +6,7 @@ import { GuardGuard } from 'src/app/core/auth/guard/guard.guard'
 import { DetailClientComponent } from './_components/detail-client/detail-client.component'
 import { DetailFournisseurComponent } from './_components/detail-fournisseur/detail-fournisseur.component'
 
+
 // Les routes du modules
 export const contactRouting: Routes = [
   {
@@ -29,6 +30,7 @@ export const contactRouting: Routes = [
     component: DetailFournisseurComponent,
     canActivate: [GuardGuard]
   },
+ 
   {
     path: 'groupe',
     component: GroupeComponent,

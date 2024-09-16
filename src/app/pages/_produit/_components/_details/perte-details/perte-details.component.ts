@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { HomeService } from '../../_services/home.service';
+import { ProduitService } from '../../../_service/produit.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { HomeService } from 'src/app/home/_services/home.service';
 
 @Component({
-  selector: 'app-magasin-details',
-  templateUrl: './magasin-details.component.html',
-  styleUrls: ['./magasin-details.component.scss']
+  selector: 'app-perte-details',
+  templateUrl: './perte-details.component.html',
+  styleUrls: ['./perte-details.component.scss']
 })
-export class MagasinDetailsComponent implements OnInit {
+export class PerteDetailsComponent implements OnInit {
+
   // MISE A JOUR FIxiNG
-  Magasin = new FormGroup({
-    nom: new FormControl('' || null),
-    adresse: new FormControl('' || null ),
-    reference: new FormControl(''|| null )
+  Perte = new FormGroup({
+    idApprovisionnement :new FormControl(''||null),
+    quantitePerdu: new FormControl(''||null, Validators.required),
+    description: new FormControl(''||null),
+   
   })
-  title :string = ' Details Magasin '
+  title :string = ' Details Perte '
   constructor(
     private service : HomeService ,
     private activeroute: ActivatedRoute,
@@ -25,20 +28,22 @@ export class MagasinDetailsComponent implements OnInit {
     protected location : Location
     
   ) { }
-  idMagasin :any
+  idPerte :any
   
   ngOnInit(): void {
-    this.idMagasin = this.activeroute.snapshot.params['id']
-    this.getOneMagasin()
+    this.idPerte = this.activeroute.snapshot.params['id']
+    this.getOnePerte()
+    
   }
-  infoMagasin: any = {}
-  getOneMagasin(): void {
-    // console.log("ID en GET : ", this.idMagasin)
-    this.service.getOne('magasin', 'getOne', this.idMagasin)
+ 
+  infoPerte: any = {}
+  getOnePerte(): void {
+    // console.log("ID en GET : ", this.idPerte)
+    this.service.getOne('perte', 'getOne', this.idPerte)
     .subscribe({
       next: (response: any) => {
         console.log('Info : ', response)
-        this.infoMagasin = response
+        this.infoPerte = response
       },
       error: (error: any) => {
         console.log("Error : ", error);
@@ -56,12 +61,12 @@ export class MagasinDetailsComponent implements OnInit {
   }
   confirmEditing(form: FormGroup): void {
     //console.log('form : ', form.value)
-    let formData = this.transformNullValues(this.Magasin.value)
+    let formData = this.transformNullValues(this.Perte.value)
     console.log('formData',formData)
-    this.service.update('magasin', 'update', this.idMagasin, formData)
+    this.service.update('perte', 'update', this.idPerte, formData)
     .subscribe({
       next: (response: any) => {
-        this.infoMagasin = response;
+        this.infoPerte = response;
         console.log('Reponse:',response)
         this.snackBar.open(
           'Modification effectuer avec succès !',
@@ -87,7 +92,7 @@ export class MagasinDetailsComponent implements OnInit {
           }
         )
       },
-      
     })
   }
+
 }

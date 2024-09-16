@@ -13,6 +13,8 @@ import { ClientComponent } from './_components/client/client.component';
 import { GroupeComponent } from './_components/groupe/groupe.component';
 import { DetailClientComponent } from './_components/detail-client/detail-client.component';
 import { DetailFournisseurComponent } from './_components/detail-fournisseur/detail-fournisseur.component';
+import { DetailsFacturesComponent } from './_modal/details-factures/details-factures.component';
+
 
 
 
@@ -25,6 +27,8 @@ import { DetailFournisseurComponent } from './_components/detail-fournisseur/det
     ClientComponent,
     DetailClientComponent,
     DetailFournisseurComponent,
+    DetailsFacturesComponent,
+ 
   ],
   imports: [
     CommonModule,

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PerteComponent } from '../../_components/perte/perte.component';
+import { ProduitService } from '../../_service/produit.service';
 
 @Component({
   selector: 'app-add-perte',
@@ -13,7 +14,8 @@ export class AddPerteComponent implements OnInit {
   
  // MISE A JOUR FIxiNG
  Perte = new FormGroup({
-  qtePerdu: new FormControl('', Validators.required),
+  idApprovisionnement :new FormControl(''),
+  quantitePerdu: new FormControl('', Validators.required),
   description: new FormControl(''),
  
 })
@@ -21,12 +23,26 @@ export class AddPerteComponent implements OnInit {
 constructor(
   public dialogRef: MatDialogRef<PerteComponent>,
   @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+  private service :ProduitService,
 ) { }
 
 
 ngOnInit(): void {
+  this.getApprovisionnement()
 }
-
+Approvisionnement: any = []
+ // Liste des Approvisionnements
+ getApprovisionnement () {
+  this.service.getall('approvisionnement', 'list').subscribe({
+    next: (reponse: any) => {
+       console.log('LISTE Approvisionnement : ', reponse)
+      this.Approvisionnement = reponse
+    },
+    error: (err: any) => {
+      console.log('REPONSE ERROR : ', err)
+    }
+  })
+}
 
 saveDataPerte() {
   if (this.Perte.valid) {

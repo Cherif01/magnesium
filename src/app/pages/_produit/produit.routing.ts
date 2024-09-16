@@ -9,6 +9,7 @@ import { PerimeComponent } from './_components/perime/perime.component';
 import { PerteComponent } from './_components/perte/perte.component';
 import { RuptureStockComponent } from './_components/rupture-stock/rupture-stock.component';
 import { DetailProduitComponent } from './_components/detail-produit/detail-produit.component';
+import { PerteDetailsComponent } from './_components/_details/perte-details/perte-details.component';
 
 export const productRouting: Routes = [
   {
@@ -53,6 +54,11 @@ export const productRouting: Routes = [
   {
     path: 'detail-produit/:id',
     component: DetailProduitComponent,
+    canActivate: [GuardGuard]
+  },
+  {
+    path: 'detail-perte/:id',
+    component: PerteDetailsComponent,
     canActivate: [GuardGuard]
   },
 ]

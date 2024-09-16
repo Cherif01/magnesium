@@ -21,6 +21,7 @@ import { AddFactureProFormatComponent } from '../_ventes/_modal/add-facture-pro-
 import { DetailProduitComponent } from './_components/detail-produit/detail-produit.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
+import { PerteDetailsComponent } from './_components/_details/perte-details/perte-details.component';
 
 
 
@@ -39,7 +40,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     AddCategoryComponent,
     AddSubCategoryComponent,
     AddFactureProFormatComponent,
-    DetailProduitComponent
+    DetailProduitComponent,
+    PerteDetailsComponent
   ],
   imports: [
     CommonModule,
