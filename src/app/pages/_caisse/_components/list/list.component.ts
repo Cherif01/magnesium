@@ -22,12 +22,12 @@ export class ListComponent implements OnInit {
 
   title = 'La Comptabilite'
 
-  // Magasin Assign the data to the data source for the table to render
+  // 
   dataSource = new MatTableDataSource([])
-  magasincol: string[] = ['id', 'nom', 'adresse' , 'reference' ,'Action']
-   // Magasin Assign the data to the data source for the table to render
+  dashboard: any =['entree', 'sortie', 'vente' , 'depense' ,'credit','montant'] 
+   // 
    historiquedataSource = new MatTableDataSource([])
-   transfertcol: string[] = ['id',  'typeOperation' ,'typePaiement', 'montant' ,'motif','Action']
+   caisse: string[] = ['id',  'typeOperation' ,'typePaiement', 'montant' ,'motif','Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -42,6 +42,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCaisse()
+    this.getDashboard()
 
   }
   ngAfterViewInit () {
@@ -58,18 +59,12 @@ export class ListComponent implements OnInit {
     }
   }
 
+
   getCaisse () {
     this.service.getall('caisse', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
-        this.dataSource.data   = reponse
-        this.service.getall('caisse', 'list').subscribe({
-          next: (res: any) => {
-            console.log('REPONSE SUCCESS : ', res);
-
-            this.historiquedataSource.data = res
-          }
-        })
+        this.historiquedataSource.data   = reponse
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
@@ -77,11 +72,36 @@ export class ListComponent implements OnInit {
     })
 
   }
+  depense: any
+  credit: any
+  vente: any
+  entree: any
+  sortie :any
+  montantTotal :any
+  dashbord : any 
 
+  getDashboard(){
+    this.service.getall('caisse', 'dashboard').subscribe({
+      next: (reponse: any) => {
+       
+        this.dashboard = reponse [0] 
+        this.sortie = reponse [0] ['sortie']
+        this.depense = reponse [0] ['depense']
+        this.credit = reponse [0] ['credit']
+        this.vente = reponse [0] ['vente']
+        this.entree = reponse [0] ['entree']
+        this.montantTotal =reponse [0]['montantTotal']
+        console.log('Info dashbord: ', this.dashboard )
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
+      }
+    })
+  }
 
 
   openDialog() {
-    this.dialog.open(AddCompteComponent, {
+    this.dialog.open(AddCaisseComponent, {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {

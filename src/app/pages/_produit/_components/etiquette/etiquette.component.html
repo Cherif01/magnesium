@@ -31,7 +31,7 @@
                             <mat-label>Rechercher...</mat-label>
                             <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher" #input>
                         </mat-form-field>
-                       <div  class=" row cols-lg-6 cols-md-4 cols-2">
+                       <div  class=" row cols-lg-8² cols-md-6 cols-sm-4">
                         <div  class="card" style="width: 18rem;" *ngFor="let produit of Produit"  > 
                             <div class="card-body">
                               <h5 class="card-title"> {{produit.designation}}   </h5>
