@@ -5,7 +5,7 @@ import { GroupeComponent } from './_components/groupe/groupe.component'
 import { GuardGuard } from 'src/app/core/auth/guard/guard.guard'
 import { DetailClientComponent } from './_components/detail-client/detail-client.component'
 import { DetailFournisseurComponent } from './_components/detail-fournisseur/detail-fournisseur.component'
-import { FactureClientComponent } from './_components/facture-client/facture-client.component'
+
 
 // Les routes du modules
 export const contactRouting: Routes = [
@@ -30,11 +30,7 @@ export const contactRouting: Routes = [
     component: DetailFournisseurComponent,
     canActivate: [GuardGuard]
   },
-  {
-    path: 'facture-client/:id',
-    component: FactureClientComponent,
-    canActivate: [GuardGuard]
-  },
+ 
   {
     path: 'groupe',
     component: GroupeComponent,

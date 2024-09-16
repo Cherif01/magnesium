@@ -30,10 +30,10 @@
 
           <mat-tab>
             <ng-template mat-tab-label>MAJ DU PROFILE</ng-template>
-            <div class="row p-4">
+            <div class="row p-4" *ngIf="infoClient">
               <div class="col-lg-4">
                 <div class="card mb-4">
-                  <div class="card-body text-center">
+                  <div class="card-body text-center" >
                     <h5 class="my-3">{{infoClient.prenom + ' ' + infoClient.nom}}</h5>
                     <p class="text-muted mb-4">{{infoClient.telephone}}</p>
                     <div class="d-flex justify-content-center mb-2">
@@ -42,6 +42,7 @@
                       <a href="mailto:{{infoClient.telephone}}" data-mdb-button-init data-mdb-ripple-init
                         class="btn btn-outline-primary ms-1">Message</a>
                     </div>
+                    
                   </div>
                 </div>
                 <div class="card mb-4 mb-lg-0">
@@ -153,12 +154,119 @@
             </div>
           </mat-tab>
 
-          <!-- <mat-tab>
-            <ng-template mat-tab-label>GESTION DU COMPTE</ng-template>
+          <mat-tab>
+            <ng-template mat-tab-label>FACTURE CLIENT </ng-template>
+            
+<div class="main-container"   >
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+      <div class="page-header">
+        <div class="d-flex justify-content-between">
+          <div class="col-md-4">
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+                <li class="breadcrumb-item active"
+                  aria-current="page"> {{title2}}</li>
+              </ol>
+            </nav>
+          </div>
+          <!-- <div class="col text-end">
+            <button mat-flat-button color="primary"><mat-icon>add</mat-icon>
+              Ajouter</button>
+          </div> -->
+        </div>
+      </div>
+      <!-- List -->
+       <hr>
+      <div class="main-box mb-30">
+        <!-- AJOUT DU DATATABLE.. -->
+        <mat-card class="p-3">
+          <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
+          <hr>
+          <mat-card-content>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Rechercher...</mat-label>
+              <input matInput (keyup)="applyFilter($event)"
+                placeholder="Rechercher" #input>
+            </mat-form-field>
+
+            <div class="mat-elevation">
+              <table mat-table [dataSource]="dataSource" matSort class="w-100" id="matTable">
+              
+                <ng-container matColumnDef="reference">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                   REFERENCE  </th>
+                  <td mat-cell *matCellDef="let row"> {{row.reference}}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="createdAt">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    DATE </th>
+                  <td mat-cell *matCellDef="let row"> {{row.createdAt}}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="montant">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  MONTANT   </th>
+                  <td mat-cell *matCellDef="let row"> {{row.montant}}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="regler">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                   PAYER  </th>
+                  <td mat-cell *matCellDef="let row"> {{row.regler}}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="reste">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  RESTE   </th>
+                  <td mat-cell *matCellDef="let row"> {{row.reste}}
+                  </td>
+                </ng-container>
+
+                <!-- Action -->
+                <ng-container matColumnDef="Action">
+                  <th mat-header-cell *matHeaderCellDef
+                    class="text-center">Action</th>
+                  <td mat-cell *matCellDef="let row" class="text-center">
+                    <button (click)="openDialog(row.id)" mat-button color="warn" >
+                      <mat-icon>visibility</mat-icon> <span
+                        class="dw dw-down-chevron"></span></button>
+                  
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row
+                  *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="5" class="p-3">Aucun element
+                    correspond a cette recherche " {{input.value}} "</td>
+                </tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page of users"></mat-paginator>
+            </div>
+
+          </mat-card-content>
+
+        </mat-card>
+
+        <!-- FIN -->
+
+      </div>
+      <!-- Fin list -->
+
+    </div>
+  </div>
+</div>
+
+
           </mat-tab>
 
-          <mat-tab>
-            <ng-template mat-tab-label>HISTORIQUE DES APPROVISIONNEMENTS</ng-template>
+          <!-- <mat-tab>
+            <ng-template mat-tab-label> PAIEMENT CLIENT </ng-template>
           </mat-tab> -->
         </mat-tab-group>
       </div>

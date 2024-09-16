@@ -20,6 +20,7 @@ export class ContactServiceService {
     // console.log(data);
     return this.http.post(`${BASE_URL}${api}/${suffixURL}`, data)
   }
+ 
 
   // UPDATE
   update(api: string, suffixUrl: string, id: any, data: any): Observable<any> {
@@ -40,11 +41,13 @@ export class ContactServiceService {
   }
 
   // GET
-  getallParams(api: string, suffixUrl: string, id_: any) {
+  
+  getallParams(api: string, suffixUrl: string, id_: any,idFacture :any) {
     const url = `${BASE_URL}${api}/${suffixUrl}/${id_}/`;
     let params = {
       params: {
-        id: id_
+        id: id_,
+        idFacture :idFacture
       },
     }
     return this.http.get<any[]>(url, params)
@@ -53,6 +56,12 @@ export class ContactServiceService {
   // GET Unique
   getOne (api: string, suffixUrl: string, id_: any) {
     return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}/${id_}`)
+  }
+
+  // GET Unique
+  getOneByID (api: string, suffixUrl: string, id_: any) {
+    const url = `${BASE_URL}${api}/${suffixUrl}/`+id_
+    return this.http.get<any[]>(url)
   }
 
   delete (api: string, suffixUrl: any, id: any): Observable<boolean> {
