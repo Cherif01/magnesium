@@ -28,6 +28,11 @@ export class AchatsService {
     return this.http.put(url, data)
   }
 
+
+  getUniqueSansId (api: string, suffixUrl: string) {
+    return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
+  }
+
   // READ GLOBAL
   getall (api: string, suffixUrl: string) {
     return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
@@ -35,13 +40,8 @@ export class AchatsService {
 
   // GET
   getallParams(api: string, suffixUrl: string, id_: any) {
-    const url = `${BASE_URL}${api}/${suffixUrl}/${id_}/`;
-    let params = {
-      params: {
-        id: id_
-      },
-    }
-    return this.http.get<any[]>(url, params)
+    const url = `${BASE_URL}${api}/${suffixUrl}/${id_}`;
+    return this.http.get<any[]>(url)
   }
 
   // GET Unique

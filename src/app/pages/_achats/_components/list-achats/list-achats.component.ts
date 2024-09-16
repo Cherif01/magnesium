@@ -15,12 +15,12 @@ import { AddAchatComponent } from '../../_modal/add-achat/add-achat.component';
   styleUrls: ['./list-achats.component.scss']
 })
 export class ListAchatsComponent implements OnInit {
-  title = 'Liste des retour achats'
+  title = 'Les achats'
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'telephone', 'adresse', 'Action']
+  displayedColumns: string[] = ['createdAt', 'reference', 'status', 'Action']
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
   @ViewChild(MatSort) sort?: MatSort | any
@@ -51,7 +51,7 @@ export class ListAchatsComponent implements OnInit {
   }
 
   getAchat () {
-    this.service.getall('achat', 'list').subscribe({
+    this.service.getall('achatInit', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
