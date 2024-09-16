@@ -1,0 +1,107 @@
+<div class="card">
+    <div class="card-header">
+       
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <!-- Première partie de la carte -->
+        <div class="col-md-3 ">
+            <h5 class="card-title text-primary" >Information de La Facture</h5>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-light">REF : {{detailsFacture.reference}} </li>
+                <li class="list-group-item list-group-item-light">MONTANT : {{detailsFacture.montant}} </li>
+                <li class="list-group-item list-group-item-light">REGLER : {{detailsFacture.regler}} </li>
+                <li class="list-group-item list-group-item-light">RESTE : {{detailsFacture.reste}} </li>
+                <li class="list-group-item list-group-item-light">STATUS : {{detailsFacture.status}} </li>
+              </ul>
+       
+        </div>
+  
+        <!-- Deuxième partie de la carte -->
+        <div class="col">
+          <!-- <h5 class="card-title">Partie 2</h5> -->
+          <form [formGroup]="form">
+            <label for="">MONTANT</label>
+           <div class="d-flex justify-content-between" >
+           <div class="col-10" >
+            <input type="hidden" class="form-control" formControlName="idVenteInit" >
+            <input type="number" class="form-control" formControlName="montant" >
+           </div>
+           <button mat-flat-button color="primary" (click)="paiementFacture()"><mat-icon>add</mat-icon>
+             Payer</button>
+           </div>
+          </form>
+         
+            
+<div class="main-container"   >
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+     
+      <!-- List -->
+       <hr>
+      <div class="main-box mb-30">
+        <!-- AJOUT DU DATATABLE.. -->
+        <mat-card class="p-3">
+          <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
+          <hr>
+          <mat-card-content>
+            <!-- <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Rechercher...</mat-label>
+              <input matInput (keyup)="applyFilter($event)"
+                placeholder="Rechercher" #input>
+            </mat-form-field> -->
+
+            <div class="mat-elevation">
+              <table mat-table [dataSource]="dataSource" matSort class="w-100" id="matTable">
+              
+                <ng-container matColumnDef="referenceVenteInit">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                   REFERENCE  </th>
+                  <td mat-cell *matCellDef="let row"> {{row.referenceVenteInit}}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="createdAt">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    DATE </th>
+                  <td mat-cell *matCellDef="let row"> {{row.createdAt}}
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="montant">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  MONTANT   </th>
+                  <td mat-cell *matCellDef="let row"> {{row.montant}}
+                  </td>
+                </ng-container>
+               
+
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row
+                  *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr class="mat-row" *matNoDataRow>
+
+                </tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page of users"></mat-paginator>
+            </div>
+
+          </mat-card-content>
+
+        </mat-card>
+
+        <!-- FIN -->
+
+      </div>
+      <!-- Fin list -->
+
+    </div>
+  </div>
+    </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
