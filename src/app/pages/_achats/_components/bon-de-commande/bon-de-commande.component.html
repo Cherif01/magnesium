@@ -13,7 +13,8 @@
             </nav>
           </div>
           <div class="col text-end">
-            <button mat-flat-button color="primary" class="me-2"(click)=" openDialog()">
+            <button mat-flat-button color="primary" class="me-2"
+              (click)=" openDialog()">
               Ajouter un article au bon
               <mat-icon>arrow_downward</mat-icon></button>
             <button mat-flat-button color="warn" (click)="_printer()">
@@ -26,10 +27,10 @@
       <hr>
       <div class="main-box mb-30">
         <!-- AJOUT DU DATATABLE.. -->
-        <mat-card class="p-3">
-          <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
+        <mat-card class="p-3" *ngIf="stateBon == false">
+          <mat-card-title class="text-dark p-2 fw-bold">Bon
+            d'achat</mat-card-title>
           <hr>
-
           <div class="voucher-container" #divToPrint>
             <!-- En-tête du bon d'achat -->
             <div class="voucher-header">
@@ -43,16 +44,15 @@
             <div class="voucher-info">
               <div class="supplier-details">
                 <h4>Détails du Fournisseur</h4>
-                <p>Nom: Fournisseur XYZ</p>
-                <p>Adresse: 123 Rue Exemple, Ville</p>
-                <p>Téléphone: +224 123 456 789</p>
-                <p>Email: fournisseur-example.com</p>
+                <p>Nom: </p>
+                <p>Adresse: </p>
+                <p>Téléphone: </p>
               </div>
               <div class="voucher-details">
                 <h4>Détails du Bon d'Achat</h4>
-                <p>Date: 22 août 2024</p>
-                <p>Numéro du Bon: BA-2024-001</p>
-                <p>Montant Total: 500 000 GNF</p>
+                <p>Date: {{InfoEntete.createdAt | date: 'dd/mm/yyyy'}}</p>
+                <p>Numéro du Bon: {{(InfoEntete.reference).toUpperCase()}}</p>
+                <p>Montant Total: {{0 | currency: 'GNF: '}}</p>
               </div>
             </div>
 
@@ -61,31 +61,27 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Qte</th>
+                    <th>N<sup>o</sup></th>
                     <th>Désignation</th>
+                    <th>Quantit&#233;</th>
                     <th>PU (GNF)</th>
                     <th class="text-end">Total (GNF)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>2</td>
-                    <td>Article A</td>
-                    <td>100 000</td>
-                    <td class="text-right">200 000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Article B</td>
-                    <td>300 000</td>
-                    <td class="text-right">300 000</td>
+                  <tr *ngFor="let data of listPanier; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td class="text-capitalize">{{data.designation}}</td>
+                    <td>{{ data.quantite }}</td>
+                    <td>{{ data.prixUnitaire | currency: ' ' }}</td>
+                    <td class="text-right">{{ (data.prixUnitaire*data.quantite) | currency: ' ' }}</td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colspan="3"
+                    <td colspan="4"
                       class="text-right"><strong>Total:</strong></td>
-                    <td class="text-right"><strong>500 000 GNF</strong></td>
+                    <td class="text-right"><strong>{{Montant | currency: 'GNF: '}}</strong></td>
                   </tr>
                 </tfoot>
               </table>
@@ -103,8 +99,28 @@
                 à fournisseur-example.com.</p>
             </div>
           </div>
-
         </mat-card>
+
+        <div class="d-flex justify-content-center flex-wrap align-items-center"
+          style="height: 75vh" *ngIf="stateBon == true">
+          <div class="overlay">
+            <div class="overlay-content text-center">
+              <h2 class="text-dark fw-bold mb-3">
+                Cliquer sur ce bouton pour d&#233;marrer
+              </h2>
+              <div class="text-center">
+                <mat-icon class="arrow_down">arrow_downward</mat-icon>
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-center flex-wrap">
+                <button class="btn btn-primary p-3 fw-bold m-2"
+                  (click)="initBonDocs()">
+                  Ouvrir un document d'achat
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- FIN -->
 
