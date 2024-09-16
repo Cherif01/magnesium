@@ -23,7 +23,7 @@
         <mat-card-title class="text-dark p-2 fw-bold">Liste</mat-card-title>
         <hr>
         <mat-tab-group>
-          <mat-tab label="Caisse">
+          <mat-tab label="Dashboard"   matSort class="w-100" id="matTable">
             <mat-card-content>
               <div class="py-4"></div>
               <div class="mat-elevation">
@@ -43,8 +43,10 @@
                                     </div>
                                   </div>
                                   <div class="col-md-8">
-                                    <h6 class="tw-bold fs-5">Entrée</h6>
-                                    <h6 class="font-extrabold mb-0">2</h6>
+                                    <ng-container >
+                                      <h6 class="tw-bold fs-5">SORTIE</h6>
+                                      <h6 class="font-extrabold mb-0" >{{sortie}} </h6>
+                                    </ng-container>
                                   </div>
                                 </div>
                               </div>
@@ -60,8 +62,10 @@
                                     </div>
                                   </div>
                                   <div class="col-md-8">
-                                    <h6 class="tw-bold fs-5">Sortie</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <ng-container >
+                                      <h6 class="tw-bold fs-5">ENTREE</h6>
+                                      <h6 class="font-extrabold mb-0">{{entree}}</h6>
+                                    </ng-container>
                                   </div>
                                 </div>
                               </div>
@@ -77,8 +81,10 @@
                                     </div>
                                   </div>
                                   <div class="col-md-8">
-                                    <h6 class="tw-bold fs-5">Montant</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <ng-container >
+                                      <h6 class="tw-bold fs-5">MONTANT</h6>
+                                      <h6 class="font-extrabold mb-0" >{{montantTotal}}</h6>
+                                    </ng-container>
                                   </div>
                                 </div>
                               </div>
@@ -94,8 +100,10 @@
                                     </div>
                                   </div>
                                   <div class="col-md-8">
-                                    <h6 class="tw-bold fs-5">Depenses</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <ng-container matColumnDef="depense">
+                                      <h6 class="tw-bold fs-5">DEPENSE</h6>
+                                      <h6 class="font-extrabold mb-0">{{depense}}</h6>
+                                    </ng-container>
                                   </div>
                                 </div>
                               </div>
@@ -111,8 +119,10 @@
                                     </div>
                                   </div>
                                   <div class="col-md-8">
-                                    <h6 class="tw-bold fs-5">Vente</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <ng-container matColumnDef="vente">
+                                      <h6 class="tw-bold fs-5">VENTE</h6>
+                                      <h6 class="font-extrabold mb-0">{{vente}}</h6>
+                                    </ng-container>
                                   </div>
                                 </div>
                               </div>
@@ -128,8 +138,10 @@
                                     </div>
                                   </div>
                                   <div class="col-md-8">
-                                    <h5 class="fw-bold fs-5">Credit</h5>
-                                    <h6 class="fw-bold text-dark">0</h6>
+                                    <ng-container matColumnDef="credit">
+                                      <h6 class="tw-bold fs-5">CREDIT</h6>
+                                      <h6 class="font-extrabold mb-0">{{credit}}</h6>
+                                    </ng-container>
                                   </div>
                                 </div>
                               </div>
@@ -148,6 +160,11 @@
             </mat-card-content>
           </mat-tab>
           <mat-tab label="Historique">
+            <div class="col text-end">
+              <div class="text-right">
+                <button mat-raised-button color="primary" (click)="openDialog()" class="mx-2"><mat-icon>add</mat-icon> Nouvelle caisse</button>
+              </div>
+            </div>
             <mat-card-content>
               <mat-form-field class="w-100" appearance="outline">
                 <mat-label>Rechercher...</mat-label>
@@ -160,17 +177,7 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
                     <td mat-cell *matCellDef="let row; let i = index">{{i + 1}}</td>
                   </ng-container>
-                  <!-- <div class="col">
-                    <mat-form-field appearance="outline" class="col-12">
-                      <mat-label>TYPEOPERATION</mat-label>
-                      <mat-select formControlName="role" required
-                        (selectionChange)="getList($event.value)">
-                        <mat-option>-- Choisir dans la liste --</mat-option>
-                        <mat-option *ngFor="let operation of Operation" [value]="operation.name">{{ operation.name
-                          }}</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div> -->
+                 
                   <ng-container matColumnDef="montant">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>MONTANT</th>
                     <td mat-cell *matCellDef="let row">{{row.montant}}</td>
@@ -191,13 +198,8 @@
                     <td mat-cell *matCellDef="let row">{{row.motif}}</td>
                   </ng-container>
 
-                  <ng-container matColumnDef="date">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>DATE</th>
-                    <td mat-cell *matCellDef="let row">{{row.date}}</td>
-                  </ng-container>
-
-                  <tr mat-header-row *matHeaderRowDef="['id', 'montant', 'motif', 'date','typeOperation','typePaiement']"></tr>
-                  <tr mat-row *matRowDef="let row; columns: ['id', 'montant', 'motif', 'date','typeOperation','typePaiement']"></tr>
+                  <tr mat-header-row *matHeaderRowDef="['id', 'montant', 'motif','typeOperation','typePaiement']"></tr>
+                  <tr mat-row *matRowDef="let row; columns: ['id', 'montant', 'motif','typeOperation','typePaiement']"></tr>
                   <tr class="mat-row" *matNoDataRow>
                     <td class="mat-cell" colspan="4" class="p-3">Aucun élément correspond à cette recherche "{{input.value}}"</td>
                   </tr>

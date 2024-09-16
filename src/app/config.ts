@@ -1,7 +1,7 @@
 // Environnement de developpement
 import { environment } from 'src/environments/environment'
 // BASE_URL FOR IMAGES OR MOVIES...
- export const LINK_STATIC_FILES: string = 'http://192.168.1.117:8080/photo/'
+  export const LINK_STATIC_FILES: string = 'http://192.168.1.117:8080/photo/'
 //  export const LINK_STATIC_FILES: string = 'http://localhost:8085/photo/'
 
 

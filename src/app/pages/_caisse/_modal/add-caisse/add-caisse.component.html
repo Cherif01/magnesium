@@ -4,18 +4,24 @@
 <mat-dialog-content>
   <form [formGroup]="Caisse">
     <div class="col">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>TYPEOPERATION</mat-label>
-        <input type="text" matInput placeholder="Ex : ......"
-          formControlName="typeOperation">
+      <mat-form-field appearance="outline" class="col-12">
+        <mat-label>TypeOperation</mat-label>
+        <mat-select formControlName="typeOperation" required>
+          <mat-option>-- Choisir dans la liste --</mat-option>
+          <mat-option *ngFor="let typeOperation of TypeOperation" [value]="typeOperation.name">{{ typeOperation.name
+            }}</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
     <div class="col">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>TYPEPAIEMENT</mat-label>
-        <input type="text" matInput placeholder="Ex : ...."
-          formControlName="typePaiement">
+      <mat-form-field appearance="outline" class="col-12">
+        <mat-label>TypePaiement</mat-label>
+        <mat-select formControlName="typePaiement" required>
+          <mat-option>-- Choisir dans la liste --</mat-option>
+          <mat-option *ngFor="let typePaiement of TypePaiement" [value]="typePaiement.name">{{ typePaiement.name
+            }}</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
