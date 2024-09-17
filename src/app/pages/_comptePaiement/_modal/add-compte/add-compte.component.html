@@ -1,48 +1,46 @@
-
-<h1 matDialogTitle>Ajouter un nouveau compte</h1>
+<h1 mat-dialog-title>Ajouter un nouveau compte</h1>
 <hr>
 
 <mat-dialog-content>
   <form [formGroup]="Compte">
+    <!-- Champ pour la référence du compte -->
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Reference</mat-label>
-        <input type="text" matInput placeholder="Ex : ...."
-          formControlName="reference">
+        <mat-label>Référence</mat-label>
+        <input type="text" matInput placeholder="Ex : ...." formControlName="reference">
       </mat-form-field>
     </div>
 
+    <!-- Champ pour la clé API du compte -->
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>ApiKey</mat-label>
-        <input type="text" matInput placeholder="Ex : ;;;"
-          formControlName="apiKey">
+        <input type="text" matInput placeholder="Ex : ;;;" formControlName="apiKey">
       </mat-form-field>
     </div>
 
+    <!-- Champ pour la description du compte -->
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Description </mat-label>
-        <input type="text" matInput placeholder="Ex : , ..."
-          formControlName="description">
+        <mat-label>Description</mat-label>
+        <input type="text" matInput placeholder="Ex : , ..." formControlName="description">
       </mat-form-field>
     </div>
 
+    <!-- Champ pour le numéro associé au compte -->
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Numero</mat-label>
-        <input type="number" matInput placeholder="Ex : 1,2,3"
-          formControlName="numero">
+        <mat-label>Numéro</mat-label>
+        <input type="number" matInput placeholder="Ex : 1,2,3" formControlName="numero">
       </mat-form-field>
     </div>
-   
-
-    
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
-  <button mat-stroked-button color="primary"
-    (click)="saveDataCompte()">Enregistrer le Compte</button>
+  <!-- Bouton pour annuler et fermer la boîte de dialogue -->
+  <button mat-stroked-button color="warn" mat-dialog-close>Abandonner</button>
+  
+  <!-- Bouton pour enregistrer les détails du compte -->
+  <button mat-stroked-button color="primary" (click)="saveDataCompte()">Enregistrer le Compte</button>
 </mat-dialog-actions>

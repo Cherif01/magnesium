@@ -52,7 +52,7 @@ export const AppRouting: Routes = [
             m => m.VenteModule
           )
       },
-     { path: 'comptePaiement',
+     { path: 'compte',
       loadChildren: () =>
         import('../app/pages/_comptePaiement/compte.module').then(
           m => m.CompteModule

@@ -5,18 +5,19 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTabsModule } from "@angular/material/tabs";
 import { RouterModule } from "@angular/router";
 import { DemoMaterialModule } from "src/demo-material-module";
-import { AccountBilanComponent } from "./_components/account-bilan/account-bilan.component";
-import { AccountListComponent } from "./_components/account-list/account-list.component";
 import { AddCompteComponent } from "./_modal/add-compte/add-compte.component";
 import { compteRouting } from "./compte.routing";
+import { ListComponent } from './_components/list/list.component';
+import { BilanComponent } from './_components/bilan/bilan.component';
 
 
 @NgModule({
     declarations: [
 
-      AccountListComponent,
-      AccountBilanComponent,
-      AddCompteComponent
+     
+      AddCompteComponent,
+      ListComponent,
+      BilanComponent
     ],
     imports: [
       CommonModule,
