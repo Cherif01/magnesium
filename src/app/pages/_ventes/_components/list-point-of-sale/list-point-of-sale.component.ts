@@ -9,6 +9,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
 import { AddEntrepotComponent } from 'src/app/home/_modal/add-entrepot/add-entrepot.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
 import { AddPosComponent } from '../../_modal/add-pos/add-pos.component';
+import { DeletePopupComponent } from 'src/app/public/_modal/delete/delete-popup/delete-popup.component';
 
 @Component({
   selector: 'app-list-point-of-sale',
@@ -97,6 +98,47 @@ export class ListPointOfSaleComponent implements OnInit {
           })
         }
       })
+  }
+
+  deleteFunction (_api: string, id: any) {
+    // console.log('id:', this.Id_achat);
+    this.dialog
+      .open(DeletePopupComponent, {
+        disableClose: true,
+        data: {
+          title: ' Suppression demander! ',
+          message: ' Voulez-vous vraiment supprimer ce entrepot ? ',
+          messageNo: 'Non ?',
+          messageYes: 'Oui, Confirmer !'
+        }
+      })
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          // console.log(data);
+          this.dataSource.data = []
+          this.service.delete(_api, 'delete', id).subscribe({
+            next: (reponse: any) => {
+              console.log('res : ', reponse)
+              this.snackBar.open(
+                'Suppression effectuer avec succès !',
+                'Okay',
+                {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                }
+              )
+            },
+            error: err => {
+              console.error('Error : ', err)
+            }
+          })
+          this.getPdv()
+        }
+      })
+    //Requete suppression sur la DB
   }
 
 }
