@@ -222,20 +222,16 @@ export class SidebarComponent implements OnInit {
             name: 'Gestion compte',
             icon: 'bi bi-cash',
             submenu: [
-              {
-                title: 'Nouveau',
-                icon: 'bi bi-pie-chart',
-                url: 'compte/add-account'
-              },
+             
               {
                 title: 'Liste des comptes',
                 icon: 'bi bi-pie-chart',
-                url: 'compte/account-list'
+                url: 'compte/list'
               },
               {
                 title: 'Bilan',
                 icon: 'bi bi-pie-chart',
-                url: 'compte/bilan-account'
+                url: 'compte/bilan'
               }
             ]
           },
