@@ -1,0 +1,47 @@
+<h1 matDialogTitle>Ajouter un nouveau Point de Vente</h1>
+<hr>
+
+<mat-dialog-content>
+  <form [formGroup]="Pos">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>NOM</mat-label>
+        <input type="text" matInput placeholder="Ex : Cherif"
+          formControlName="nom">
+      </mat-form-field>
+    </div>
+    <!-- Adresse  -->
+    <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>ADRESSE </mat-label>
+          <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
+            formControlName="adresse">
+        </mat-form-field>
+      </div>
+      <!-- reference -->
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>REFERENCE </mat-label>
+        <input type="text" matInput placeholder="Ex : VF-55"
+        formControlName="reference" >
+      </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>TYPE MAGASIN </mat-label>
+          <input type="text" matInput placeholder="Ex : RESTAURANT"
+         formControlName="typeMagasin"  >
+        </mat-form-field>
+      </div>
+
+    
+
+    
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button color="warn" matDialogClose>Abandonner</button>
+  <button mat-stroked-button color="primary"
+    (click)="saveDataPos()">Enregistrer le PDV</button>
+</mat-dialog-actions>

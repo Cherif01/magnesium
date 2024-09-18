@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { LINK_STATIC_FILES } from 'src/app/config'
 import { convertObjectInFormData } from 'src/app/app.component'
 import { Location } from '@angular/common'
+import { CredireComponent } from '../../_modal/credire/credire.component'
 
 @Component({
   selector: 'app-add-sale',
@@ -26,6 +27,7 @@ export class AddSaleComponent implements OnInit {
     quantite: [0],
     prixVente: []
   })
+ 
 
   constructor (
     private dialog: MatDialog,
@@ -263,6 +265,45 @@ export class AddSaleComponent implements OnInit {
     this.products = []
     this.getallProduit()
     this.initVerif()
+  }
+  telephone: any
+  openDialogCredit() {
+    this.dialog.open(CredireComponent, {
+    }).afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          console.log('Mon Formulaire :', result.data);
+         
+          this.service
+          .update('vente_init', 'crediter', this.idVente_init, result.data)
+          .subscribe({
+            next: (response: any) => {
+               console.log('Response : ', response)
+              this.snackBar.open('Vente terminer avec success', 'Okay', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+                panelClass: ['bg-success', 'text-white']
+              })
+              this.Facture = []
+              this.ListPanierEnCours()
+              this.state_overlay = true
+            },
+            error: (err: any) => {
+              console.log('Response : ', err)
+              this.snackBar.open('Erreur de reseaux', 'Error', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        this.products = []
+        this.getallProduit()
+        this.initVerif()
+      }
+      })
   }
 
   openDialog () {

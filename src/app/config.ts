@@ -1,18 +1,16 @@
 // Environnement de developpement
 import { environment } from 'src/environments/environment'
 // BASE_URL FOR IMAGES OR MOVIES...
-
- //export const LINK_STATIC_FILES: string = 'http://192.168.1.121:8080/photo/'
- export const LINK_STATIC_FILES: string = 'http://localhost:8085/photo/'
+export const LINK_STATIC_FILES: string = 'http://192.168.1.121:8080/photo/'
+// export const LINK_STATIC_FILES: string = 'http://localhost:8085/photo/'
 
 
 // LIEN POUR LES APIs
-//   const LINK_PROD: string = 'http://192.168.41.121:8080/api/'
-//  const LINK_DEVS: string = 'http://192.168.1.121:8080/api/'
+ const LINK_PROD: string = 'http://192.168.1.121:8080/api/'
+ const LINK_DEVS: string = 'http://192.168.1.121:8080/api/'
 
-
-const LINK_PROD: string = 'http://localhost:8085/api/'
-const LINK_DEVS: string = 'http://localhost:8085/api/'
+// const LINK_PROD: string = 'http://localhost:8085/api/'
+// const LINK_DEVS: string = 'http://localhost:8085/api/'
 
 
 
