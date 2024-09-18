@@ -93,10 +93,12 @@ export class ListComponent implements OnInit {
         this.montantTotal =reponse [0]['montantTotal']
         console.log('Info dashbord: ', this.dashboard )
       },
+     
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
       }
     })
+    this.getCaisse()
   }
 
 
@@ -118,7 +120,7 @@ export class ListComponent implements OnInit {
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getCaisse()
+            
             },
             error: (err) => {
               this.snackBar.open("Erreur, Veuillez reessayer!", "Okay", {
@@ -173,6 +175,7 @@ export class ListComponent implements OnInit {
             }
           })
           this.getCaisse()
+          this.getDashboard()
         }
       })
     //Requete suppression sur la DB

@@ -12,11 +12,11 @@ import { CaisseService } from '../../_services/caisse.service';
 export class AddCaisseComponent implements OnInit {
 
   // MISE A JOUR FIxiNG
- Caisse = new FormGroup({
-  typeOperation: new FormControl('',),
-  typePaiement: new FormControl(''),
-  montant: new FormControl(''),
-  motif: new FormControl(''),
+    Caisse = new FormGroup({
+    typeOperation: new FormControl('',),
+    typePaiement: new FormControl(''),
+    montant: new FormControl(''),
+    motif: new FormControl(''),
  
 })
 
