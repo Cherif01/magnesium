@@ -20,9 +20,11 @@ export class ListSaleComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
     'reference',
-    'montant',
+    'produit',
+    'montantTotal',
+    'quantite',
     'status',
-    'Action'
+    //'Action'
   ]
 
   @ViewChild(MatPaginator) paginator: MatPaginator = Object.create(null)
@@ -52,7 +54,7 @@ export class ListSaleComponent implements OnInit {
   }
 
   getVente () {
-    this.service.getall('vente_init', 'list').subscribe({
+    this.service.getall('vente', 'list').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
@@ -71,7 +73,7 @@ export class ListSaleComponent implements OnInit {
       case 1:
         return 'En cours'
       default:
-        return 'inconnus'
+        return 'Vendu'
     }
   }
 }

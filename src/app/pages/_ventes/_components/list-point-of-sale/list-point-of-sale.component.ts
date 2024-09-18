@@ -72,9 +72,7 @@ export class ListPointOfSaleComponent implements OnInit {
     }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-        //  const formData = convertObjectInFormData(result.data);
-        //  this.dataSource.data.splice(0, this.dataSource.data.length);
+        
           //Envoyer dans la Base
           this.service.create('pdv', 'add', result.data).subscribe({
             next: (response) => {
