@@ -11,6 +11,8 @@ import { ListPointOfSaleComponent } from './_components/list-point-of-sale/list-
 import { ListSaleComponent } from './_components/list-sale/list-sale.component';
 import { RetourVenteComponent } from './_components/retour-vente/retour-vente.component';
 import { ProformaComponent } from './_components/proforma/proforma.component';
+import { CredireComponent } from './_modal/credire/credire.component';
+import { AddPosComponent } from './_modal/add-pos/add-pos.component';
 
 
 
@@ -22,7 +24,9 @@ import { ProformaComponent } from './_components/proforma/proforma.component';
     ListPointOfSaleComponent,
     ListSaleComponent,
     RetourVenteComponent,
-    ProformaComponent
+    ProformaComponent,
+    CredireComponent,
+    AddPosComponent
   ],
   imports: [
     CommonModule,
