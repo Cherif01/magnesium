@@ -132,14 +132,14 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>
                           Pu.Achat </th>
                         <td mat-cell *matCellDef="let row">
-                          {{row.prixUniteAchat}}
+                          {{row.prixUniteAchat | currency: 'GNF: '}}
                         </td>
                       </ng-container>
                       <ng-container matColumnDef="prixUniteVente">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>
                           Pu.Vente</th>
                         <td mat-cell *matCellDef="let row">
-                          {{row.prixUniteVente}}
+                          {{row.prixUniteVente | currency: 'GNF: '}}
                         </td>
                       </ng-container>
 

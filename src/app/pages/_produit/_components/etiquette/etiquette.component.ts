@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { convertObjectInFormData } from 'src/app/app.component';
+import { convertObjectInFormData, imprimerDiv } from 'src/app/app.component';
 import { ContactServiceService } from 'src/app/pages/_contact/_services/contact-service.service';
 import { Location } from '@angular/common'
 import { AddEtiquetteComponent } from '../../_modal/add-etiquette/add-etiquette.component';
@@ -18,6 +18,8 @@ export class EtiquetteComponent implements OnInit {
 
  
   title = 'Liste des Etiquettes'
+  @ViewChild('divToPrint') divToPrint: ElementRef | any
+  @ViewChild('head') head: ElementRef | any
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
@@ -96,6 +98,10 @@ export class EtiquetteComponent implements OnInit {
           })
         }
       })
+  }
+
+  _printer (): void {
+    imprimerDiv(this.divToPrint.nativeElement.innerHTML)
   }
 
 }

@@ -97,14 +97,14 @@
                   <div class="col">
                     <div class="card mb-4 mb-md-0">
                       <div class="card-body">
-                        <p class="mb-4"><span class="text-primary font-italic me-1">Magasin</span> Modification
+                        <p class="mb-4"><span class="text-primary font-italic me-1">Entrepot</span> Modification
                         </p>
                         <mat-dialog-content>
                           <form [formGroup]="Entrepot">
                             <div class="col">
                               <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>NOM</mat-label>
-                                <input type="text" matInput placeholder="Ex : Cherif"
+                                <input type="text" class="text-primary fw-bold" matInput placeholder="Ex : Cherif"
                                 [value]="infoEntrepot.nom"        formControlName="nom">
                               </mat-form-field>
                             </div>
@@ -114,8 +114,10 @@
                            
                             <div class="col">
                               <mat-form-field class="w-100" appearance="outline">
-                                <mat-label>ADRESSE Entrepot</mat-label>
-                                <input type="text" matInput placeholder="Ex : C/Kaloum, ..."
+                                <mat-label>ADRESSE ENTREPOT
+                                  
+                                </mat-label>
+                                <input type="text" matInput class="text-primary fw-bold" placeholder="Ex : C/Kaloum, ..."
                                 [value]="infoEntrepot.adresse "  formControlName="adresse">
                               </mat-form-field>
                             </div>

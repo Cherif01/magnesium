@@ -64,13 +64,13 @@
                   <ng-container matColumnDef="prixUniteAchat">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       PRIX D'ACHAT </th>
-                    <td mat-cell *matCellDef="let row"> {{row.prixUniteAchat}}
+                    <td mat-cell *matCellDef="let row"> {{row.prixUniteAchat |currency:'GNF :'}}
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="prixUniteVente">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>
                       PRIX DE VENTE </th>
-                    <td mat-cell *matCellDef="let row"> {{row.prixUniteVente}}
+                    <td mat-cell *matCellDef="let row"> {{row.prixUniteVente |currency:'GNF :'}}
                     </td>
                   </ng-container>
   

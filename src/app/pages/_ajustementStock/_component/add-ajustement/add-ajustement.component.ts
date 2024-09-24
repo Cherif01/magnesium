@@ -132,40 +132,7 @@ titlle = 'Liste des ajustement stocks'
     // this.dataSource.data = objet
   }
 
-  openDialog () {
-    this.dialog
-      .open(AddAjustementStockComponent, {})
-      .afterClosed()
-      .subscribe(result => {
-        if (result?.event && result.event === 'insert') {
-          console.log(result.data)
-          //const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length)
-          //Envoyer dans la Base
-          this.service
-            .create('approvisionnement', 'add', result.data)
-            .subscribe({
-              next: response => {
-                this.snackBar.open('Achat enregistre avec succès !', 'Okay', {
-                  duration: 3000,
-                  horizontalPosition: 'right',
-                  verticalPosition: 'top',
-                  panelClass: ['bg-success', 'text-white']
-                })
-                this.getAjustementAchat()
-              },
-              error: err => {
-                this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {
-                  duration: 3000,
-                  horizontalPosition: 'left',
-                  verticalPosition: 'top',
-                  panelClass: ['bg-danger', 'text-white']
-                })
-              }
-            })
-        }
-      })
-  }
+  
 
   onSubmit (): void {
     if (this.AjustementStock.valid) {
@@ -181,7 +148,9 @@ titlle = 'Liste des ajustement stocks'
               verticalPosition: 'top',
               panelClass: ['bg-success', 'text-white']
             })
+            
             this.getAjustementAchat()
+            this.AjustementStock.reset()
           },
           error: err => {
             this.snackBar.open('Erreur, Veuillez reessayer!', 'Okay', {

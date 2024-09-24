@@ -9,9 +9,9 @@
             <h5 class="card-title text-primary" >Information de La Facture</h5>
             <ul class="list-group">
                 <li class="list-group-item list-group-item-light">REF : {{detailsFacture.reference}} </li>
-                <li class="list-group-item list-group-item-light">MONTANT : {{detailsFacture.montant}} </li>
-                <li class="list-group-item list-group-item-light">REGLER : {{detailsFacture.regler}} </li>
-                <li class="list-group-item list-group-item-light">RESTE : {{detailsFacture.reste}} </li>
+                <li class="list-group-item list-group-item-light">MONTANT : {{detailsFacture.montant |currency:'GNF :'}} </li>
+                <li class="list-group-item list-group-item-light">REGLER : {{detailsFacture.regler|currency:'GNF :'}} </li>
+                <li class="list-group-item list-group-item-light">RESTE : {{detailsFacture.reste |currency:'GNF :'}} </li>
                 <li class="list-group-item list-group-item-light">STATUS : {{detailsFacture.status}} </li>
               </ul>
        
@@ -69,7 +69,7 @@
                 <ng-container matColumnDef="montant">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
                   MONTANT   </th>
-                  <td mat-cell *matCellDef="let row"> {{row.montant}}
+                  <td mat-cell *matCellDef="let row"> {{row.montant | currency :'GNF :'}}
                   </td>
                 </ng-container>
                

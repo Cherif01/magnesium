@@ -154,7 +154,7 @@
                                 <mat-select formControlName="role" required
                                   (selectionChange)="getList($event.value)">
                                   <mat-option>-- Choisir dans la liste --</mat-option>
-                                  <mat-option *ngFor="let role of Role"  [value]="role.name">{{ role.name
+                                  <mat-option  *ngFor="let role of Role"  [value]="role.name">{{ role.name
                                     }}</mat-option>
                                 </mat-select>
                               </mat-form-field>

@@ -116,14 +116,14 @@
                             <div class="col me-1">
                               <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>NOM</mat-label>
-                                <input type="text" matInput placeholder="Ex : Cherif" [value]="infoClient.nom" class="text-primary fw-bold" formControlName="nom" class="form-control">
+                                <input type="text" matInput  placeholder="Ex : Cherif" [value]="infoClient.nom" class="text-primary fw-bold" formControlName="nom" class="form-control">
                               </mat-form-field>
                             </div>
 
                             <div class="col ms-1">
                               <mat-form-field class="w-100" appearance="outline">
                                 <mat-label>PRENOM</mat-label>
-                                <input type="text" matInput placeholder="Ex : Imran" [value]="infoClient.prenom" class="text-primary fw-bold" formControlName="prenom" class="form-control">
+                                <input type="text" matInput  placeholder="Ex : Imran" [value]="infoClient.prenom" class="text-primary fw-bold" formControlName="prenom" class="form-control">
                               </mat-form-field>
                             </div>
                           </div>
@@ -134,14 +134,15 @@
                           <div class="col">
                             <mat-form-field class="w-100" appearance="outline">
                               <mat-label>TELEPHONE</mat-label>
-                              <input type="number" matInput placeholder="Ex : 224 626 37 01 38" [value]="infoClient.telephone" class="text-primary fw-bold" formControlName="telephone" class="form-control">
+                              <input type="number" matInput  placeholder="Ex : 224 626 37 01 38" [value]="infoClient.telephone" class="text-primary fw-bold" formControlName="telephone" class="form-control">
                             </mat-form-field>
                           </div>
                           
                           <div class="col">
                             <mat-form-field class="w-100" appearance="outline">
                               <mat-label>ADRESSE </mat-label>
-                              <input type="text" matInput placeholder="Ex : C/Kaloum, ..." [value]="infoClient.adresse" class="text-primary fw-bold" formControlName="adresse" class="form-control">
+                              <input type="text" matInput 
+                               placeholder="Ex : C/Kaloum, ..." [value]="infoClient.adresse" class="text-primary fw-bold" formControlName="adresse" class="form-control">
                             </mat-form-field>
                           </div>
                           <button mat-raised-button color="primary"  (click)="confirmEditing(EditForm)">Terminer </button>
@@ -209,19 +210,19 @@
                 <ng-container matColumnDef="montant">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
                   MONTANT   </th>
-                  <td mat-cell *matCellDef="let row"> {{row.montant}}
+                  <td mat-cell *matCellDef="let row"> {{row.montant |currency:'GNF :' }}
                   </td>
                 </ng-container>
                 <ng-container matColumnDef="regler">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
                    PAYER  </th>
-                  <td mat-cell *matCellDef="let row"> {{row.regler}}
+                  <td mat-cell *matCellDef="let row"> {{row.regler |currency:'GNF :' }}
                   </td>
                 </ng-container>
                 <ng-container matColumnDef="reste">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
                   RESTE   </th>
-                  <td mat-cell *matCellDef="let row"> {{row.reste}}
+                  <td mat-cell *matCellDef="let row"> {{row.reste |currency:'GNF :'}}
                   </td>
                 </ng-container>
 

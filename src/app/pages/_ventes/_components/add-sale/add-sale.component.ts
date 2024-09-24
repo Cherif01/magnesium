@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { RecuPosComponent } from '../../_modal/__pos/recu-pos/recu-pos.component'
 import { VenteService } from 'src/app/pages/_ventes/_service/vente.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { LINK_STATIC_FILES } from 'src/app/config'
 import { convertObjectInFormData } from 'src/app/app.component'
 import { Location } from '@angular/common'
@@ -15,10 +15,12 @@ import { CredireComponent } from '../../_modal/credire/credire.component'
   styleUrls: ['./add-sale.component.scss']
 })
 export class AddSaleComponent implements OnInit {
+
   // code auto vente init
   formInit: FormGroup = this.fb.group({
     idClient: [1]
   })
+
 
   // AddPanierForm
   AddPanierForm: FormGroup = this.fb.group({
@@ -27,17 +29,19 @@ export class AddSaleComponent implements OnInit {
     quantite: [0],
     prixVente: []
   })
- 
 
-  constructor (
+
+
+
+  constructor(
     private dialog: MatDialog,
     public location: Location,
     private service: VenteService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.initVerif()
     this.getallProduit()
     this.ListPanierEnCours()
@@ -47,7 +51,7 @@ export class AddSaleComponent implements OnInit {
   ID_vente_init_en_cours: any
   idInit: any
   state: boolean = true
-  initVerif () {
+  initVerif() {
     this.service.getUniqueSansId('vente_init', 'getLastInitVente').subscribe({
       next: (response: any) => {
         // console.log('Info  Init : ', response)
@@ -65,17 +69,33 @@ export class AddSaleComponent implements OnInit {
     })
   }
 
-  addPanier (form: FormGroup, produit: any): void {
+  addPanier(form: FormGroup, produit: any): void {
+   
+    // if (form.value.prixVente < produit.prixUnitaire) {
+    //   this.snackBar.open('Prix trop bas..', 'Okay', {
+    //     duration: 3000,
+    //     horizontalPosition: 'right',
+    //     verticalPosition: 'top',
+    //     panelClass: ['bg-danger', 'text-white']
+    //   })
+    //   return
+    // }
+
     form.value.idProduit = produit.idProduit
-    if (this.ID_vente_init_en_cours == undefined)
+    if (this.ID_vente_init_en_cours == undefined) {
       this.snackBar.open('Veillez actualiser pour commencer...', 'Okay', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'top',
         panelClass: ['bg-warning', 'text-white']
       })
-    else form.value.venteInitId = this.ID_vente_init_en_cours
-    form.value.prixVente = produit.prixUnitaire
+    } else {
+      form.value.venteInitId = this.ID_vente_init_en_cours
+    }
+
+    if (form.value.prixVente == 0 || form.value.prixVente == undefined)
+      form.value.prixVente = produit.prixUnitaire
+
     // console.log('Panier : ', form.value)
     this.service.create('vente', 'add', form.value).subscribe({
       next: response => {
@@ -85,6 +105,7 @@ export class AddSaleComponent implements OnInit {
           verticalPosition: 'top',
           panelClass: ['bg-success', 'text-white']
         })
+        this.AddPanierForm.reset({ quantite: 0 });
         this.Facture = []
         this.ListPanierEnCours()
       },
@@ -105,14 +126,14 @@ export class AddSaleComponent implements OnInit {
   TotalFacture = 0
   NetAPayer = 0
   idVente_init: any
-  ListPanierEnCours (): void {
+  ListPanierEnCours(): void {
     this.service.getUniqueSansId('vente_init', 'getLastInitVente').subscribe({
       next: (response: any) => {
         // console.log('Info  Init : ', response)
         this.idVente_init = response.id
         this.service.getall('vente/venteEnCours', response.id).subscribe({
           next: response => {
-            // console.log('Panier : ', response)
+            console.log('Panier : ', response)
             this.Facture = response[0]
             this.TotalFacture = response[1]
             this.products = []
@@ -129,10 +150,10 @@ export class AddSaleComponent implements OnInit {
   // GET-ALL-PRODUCT
   linkImg: string = LINK_STATIC_FILES
   products: any[] = []
-  getallProduit () {
+  getallProduit() {
     this.service.getall('transfert', 'listProduit').subscribe({
       next: (response: any) => {
-        // console.log('Produit  List : ', response)
+        console.log('Produit  List : ', response)
         this.products = response
       },
       error: (err: any) => {
@@ -141,8 +162,9 @@ export class AddSaleComponent implements OnInit {
     })
   }
 
+
   // DELETE VENTE EN COURS
-  deleteVenteEnCours () {
+  deleteVenteEnCours() {
     // console.log(this.ID_vente_init_en_cours, ' => ID')
     this.service
       .delete('vente_init', 'delete', this.ID_vente_init_en_cours)
@@ -173,7 +195,7 @@ export class AddSaleComponent implements OnInit {
   }
 
   // DELETE VENTE EN COURS
-  deleteInPanier (id: any) {
+  deleteInPanier(id: any) {
     console.log('VENTE PANIER ID : ', id)
     this.service.delete('vente', 'delete', id).subscribe({
       next: (response: any) => {
@@ -203,7 +225,7 @@ export class AddSaleComponent implements OnInit {
   }
 
   // Méthode pour initier une nouvelle vente
-  initiateNewSale () {
+  initiateNewSale() {
     // Ajoutez ici tout autre code nécessaire pour initialiser une nouvelle vente
     this.generateAutoSaleCode()
     // console.log(this.formInit.value)
@@ -235,7 +257,7 @@ export class AddSaleComponent implements OnInit {
   }
 
   // DELETE VENTE EN COURS
-  confirmVente () {
+  confirmVente() {
     // console.log('VENTE PANIER : ', this.formUpdate.value)
     this.service
       .update('vente_init', 'updateStatus', this.idVente_init, 2)
@@ -273,48 +295,48 @@ export class AddSaleComponent implements OnInit {
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
           console.log('Mon Formulaire :', result.data);
-         
+
           this.service
-          .update('vente_init', 'crediter', this.idVente_init, result.data)
-          .subscribe({
-            next: (response: any) => {
-               console.log('Response : ', response)
-              this.snackBar.open('Vente terminer avec success', 'Okay', {
-                duration: 3000,
-                horizontalPosition: 'right',
-                verticalPosition: 'top',
-                panelClass: ['bg-success', 'text-white']
-              })
-              this.Facture = []
-              this.ListPanierEnCours()
-              this.state_overlay = true
-            },
-            error: (err: any) => {
-              console.log('Response : ', err)
-              this.snackBar.open('Erreur de reseaux', 'Error', {
-                duration: 3000,
-                horizontalPosition: 'right',
-                verticalPosition: 'top',
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
-        this.products = []
-        this.getallProduit()
-        this.initVerif()
-      }
+            .update('vente_init', 'crediter', this.idVente_init, result.data)
+            .subscribe({
+              next: (response: any) => {
+                console.log('Response : ', response)
+                this.snackBar.open('Vente terminer avec success', 'Okay', {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-success', 'text-white']
+                })
+                this.Facture = []
+                this.ListPanierEnCours()
+                this.state_overlay = true
+              },
+              error: (err: any) => {
+                console.log('Response : ', err)
+                this.snackBar.open('Erreur de reseaux', 'Error', {
+                  duration: 3000,
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top',
+                  panelClass: ['bg-danger', 'text-white']
+                })
+              }
+            })
+          this.products = []
+          this.getallProduit()
+          this.initVerif()
+        }
       })
   }
 
-  openDialog () {
+  openDialog() {
     this.dialog
       .open(RecuPosComponent, {})
       .afterClosed()
-      .subscribe(result => {})
+      .subscribe(result => { })
   }
 
   // Fonction pour générer un code de vente à 8 chiffres
-  generateAutoSaleCode (): void {
+  generateAutoSaleCode(): void {
     const saleCode =
       'VENTE - ' + Math.floor(10000000 + Math.random() * 90000000).toString() // Génère un nombre à 8 chiffres
     // Mettre à jour le champ 'reference' avec le code généré
