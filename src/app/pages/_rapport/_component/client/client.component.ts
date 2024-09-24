@@ -9,8 +9,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit {
-
   title = 'Journal des clients'
+  selectedDate: Date | null = null;
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])

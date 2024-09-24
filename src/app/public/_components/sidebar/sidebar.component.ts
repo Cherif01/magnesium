@@ -529,7 +529,7 @@ export class SidebarComponent implements OnInit {
               {
                 title: 'Pertes de products',
                 icon: 'bi bi-pie-chart',
-                url: 'rapport/rapport'
+                url: 'rapport/journal-perte'
               },
               {
                 title: 'Achats',
@@ -549,23 +549,19 @@ export class SidebarComponent implements OnInit {
               {
                 title: 'Fournisseurs',
                 icon: 'bi bi-pie-chart',
-                url: 'rapport/journal-fournisseur'
+                url: 'rapport/jouranl-fournisseur'
               },
               {
                 title: 'Caisse',
                 icon: 'bi bi-pie-chart',
-                url: 'rapport/journal'
+                url: 'rapport/journal-caisse'
               },
               {
-                title: 'D&#233;pense',
+                title: 'ComptePaiement',
                 icon: 'bi bi-pie-chart',
-                url: 'rapport/journal-depenses'
+                url: 'rapport/compte'
               },
-              {
-                title: 'Paiement des achats',
-                icon: 'bi bi-pie-chart',
-                url: 'rapport/paiement-achat'
-              },
+             
               {
                 title: 'Les Articles',
                 icon: 'bi bi-pie-chart',

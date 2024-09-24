@@ -7,13 +7,15 @@ import { VenteComponent } from './_component/vente/vente.component';
 import { ClientComponent } from './_component/client/client.component';
 import { FournisseurComponent } from './_component/fournisseur/fournisseur.component';
 import { CaisseComponent } from './_component/caisse/caisse.component';
-import { DepenseComponent } from './_component/depense/depense.component';
 import { PaiementAchatComponent } from './_component/paiement-achat/paiement-achat.component';
 import { ArticleComponent } from './_component/article/article.component';
 import { ParametreComponent } from './_component/parametre/parametre.component';
 import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from 'src/demo-material-module';
 import { rapportRouting } from './rapport.routing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -26,15 +28,17 @@ import { rapportRouting } from './rapport.routing';
     ClientComponent,
     FournisseurComponent,
     CaisseComponent,
-    DepenseComponent,
     PaiementAchatComponent,
     ArticleComponent,
     ParametreComponent
   ],
   imports: [
     CommonModule,
-    DemoMaterialModule,
-    RouterModule.forChild(rapportRouting)
+      DemoMaterialModule,
+      MatDialogModule,
+      MatFormFieldModule,
+      MatTabsModule,
+      RouterModule.forChild(rapportRouting)
   ]
 })
 export class RapportModule { }

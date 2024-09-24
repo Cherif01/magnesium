@@ -12,14 +12,32 @@
                 </ol>
               </nav>
             </div>
-            <div class="col text-end">
+            <!-- <div class="col text-end">
               <button mat-flat-button color="primary"><mat-icon>add</mat-icon>
                 Ajouter</button>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- List -->
          <hr>
+         <mat-card>
+          <mat-card-header>
+            <mat-card-title>Sélectionnez une date</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field appearance="fill">
+              <mat-label>Choisissez une date</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+            <p>Date sélectionnée : {{ selectedDate | date }}</p>
+          </mat-card-content>
+        </mat-card>
+        <hr>
+        
+
         <div class="main-box mb-30">
           <!-- AJOUT DU DATATABLE.. -->
           <mat-card class="p-3">

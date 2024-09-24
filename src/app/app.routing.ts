@@ -64,6 +64,13 @@ export const AppRouting: Routes = [
           m => m.CaisseModule
         )
      },
+    
+     { path: 'rapport',
+      loadChildren: () =>
+        import('../app/pages/_rapport/rapport.module').then(
+          m => m.RapportModule
+        )
+     },
      {
         path: '**',
         // redirectTo: '/home',

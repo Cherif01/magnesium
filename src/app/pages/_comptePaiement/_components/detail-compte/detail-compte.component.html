@@ -1,0 +1,148 @@
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+      <div class="page-header">
+        <div class="d-flex justify-content-between flex-wrap">
+          <div class="col-md-4">
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item fw-bold"><a href="#">Page</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> {{title}}</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col text-end">
+            <div class="text-start">
+              <button mat-stroked-button class="text-danger btn"
+                (click)="location.back()"><mat-icon>reply</mat-icon></button>
+            </div>
+            <div class="text-right">
+              <!-- <button mat-raised-button color="primary" class="mx-2"><mat-icon>add</mat-icon>
+                Nouveau fournisseur</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- List -->
+      <hr>
+      <div class="main-box mb-30">
+        <div class="p-3">
+          <mat-tab-group class="mat-elevation-z6">
+  
+            <mat-tab>
+              <ng-template mat-tab-label>MAJ DU PROFILE</ng-template>
+              <div class="row p-4">
+                <div class="col-lg-4">
+                  <div class="card mb-4">
+                    <div class="card-body text-center">
+                      <h5 class="my-3">{{infoCompte.refernce + ' ' + infoCompte.apiKey}}</h5>
+                      <p class="text-muted mb-1">{{infoCompte.description}}</p>
+                      <p class="text-muted mb-4">{{infoCompte.numero}}</p>
+                      <div class="d-flex justify-content-center mb-2">
+                        <a href="numero:{{infoCompte.numero}}" data-mdb-button-init data-mdb-ripple-init
+                          class="btn btn-primary">Appelez</a>
+                        <a href="mailto:{{infoCompte.email}}" data-mdb-button-init data-mdb-ripple-init
+                          class="btn btn-outline-primary ms-1">Message</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-lg-8">
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p class="mb-0">Reference</p>
+                        </div>
+                         <div class="col-sm-9">
+                          <p class="text-muted mb-0">{{infoCompte.reference }}</p>
+                         </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p class="mb-0">ApiKey</p>
+                        </div>
+                         <div class="col-sm-9">
+                          <p class="text-muted mb-0">{{infoCompte.apiKey }}</p>
+                         </div>
+                      </div>
+                      <hr>
+                      
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p class="mb-0">Description</p>
+                        </div>
+                        <div class="col-sm-9">
+                          <p class="text-muted mb-0">{{infoCompte.description}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p class="mb-0">Numero</p>
+                        </div>
+                        <div class="col-sm-9">
+                          <p class="text-muted mb-0">{{infoCompte.numero}}</p>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                          <p class="mb-4"><span class="text-primary font-italic me-1">COMPTE DE PAIEMENT</span> Modification
+                          </p>
+                          <form [formGroup]="EditForm">
+                            <div class="d-flex justify-content-between flex-wrap">
+                              <div class="col me-1">
+                                <mat-form-field class="w-100" appearance="outline">
+                                  <mat-label>REFERENCE</mat-label>
+                                  <input type="text" matInput placeholder="Ex : ...." [value]="infoCompte.reference"
+                                    class="text-primary fw-bold" formControlName="reference" class="form-control">
+                                </mat-form-field>
+                              </div>
+  
+                              <div class="col ms-1">
+                                <mat-form-field class="w-100" appearance="outline">
+                                  <mat-label>APIKEY</mat-label>
+                                  <input type="text" matInput placeholder="Ex : ....." [value]="infoCompte.apiKey"
+                                    class="text-primary fw-bold" formControlName="apiKey" class="form-control">
+                                </mat-form-field>
+                              </div>
+                            </div>
+  
+                            <div class="col">
+                              <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>DESCRIPTION </mat-label>
+                                <input type="text" matInput placeholder="Ex : ...., ..."
+                                  [value]="infoCompte.description" class="text-primary fw-bold" formControlName="description"
+                                  class="form-control">
+                              </mat-form-field>
+                            </div>
+  
+                            <div class="col">
+                              <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>NUMERO</mat-label>
+                                <input type="number" matInput placeholder="Ex : 224 626 37 01 38"
+                                  [value]="infoCompte.numero" class="text-primary fw-bold" formControlName="numero"
+                                  class="form-control">
+                              </mat-form-field>
+                            </div>
+               
+                            <button mat-raised-button color="primary" (click)="confirmEditing(EditForm)">Terminer</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -9,9 +9,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./stock.component.scss']
 })
 export class StockComponent implements OnInit {
-
-  
   title = 'Journal des Stocks'
+  selectedDate: Date | null = null;
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])

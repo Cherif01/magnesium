@@ -6,7 +6,6 @@ import { VenteComponent } from './_component/vente/vente.component'
 import { ClientComponent } from './_component/client/client.component'
 import { FournisseurComponent } from './_component/fournisseur/fournisseur.component'
 import { CaisseComponent } from './_component/caisse/caisse.component'
-import { DepenseComponent } from './_component/depense/depense.component'
 import { PaiementAchatComponent } from './_component/paiement-achat/paiement-achat.component'
 import { ArticleComponent } from './_component/article/article.component'
 import { ParametreComponent } from './_component/parametre/parametre.component'
@@ -20,7 +19,7 @@ export const rapportRouting: Routes = [
     canActivate: [GuardGuard]
   },
   {
-    path: 'rapport',
+    path: 'journal-perte',
     component: PerteProduitComponent,
     canActivate: [GuardGuard]
   },
@@ -45,15 +44,11 @@ export const rapportRouting: Routes = [
     canActivate: [GuardGuard]
   },
   {
-    path: 'journal',
+    path: 'journal-comptabilite',
     component: CaisseComponent,
     canActivate: [GuardGuard]
   },
-  {
-    path: 'journal-depenses',
-    component: DepenseComponent,
-    canActivate: [GuardGuard]
-  },
+  
   {
     path: 'journal-paiement-achat',
     component: PaiementAchatComponent,

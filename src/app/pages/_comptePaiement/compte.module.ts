@@ -9,6 +9,7 @@ import { AddCompteComponent } from "./_modal/add-compte/add-compte.component";
 import { compteRouting } from "./compte.routing";
 import { ListComponent } from './_components/list/list.component';
 import { BilanComponent } from './_components/bilan/bilan.component';
+import { DetailCompteComponent } from './_components/detail-compte/detail-compte.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BilanComponent } from './_components/bilan/bilan.component';
      
       AddCompteComponent,
       ListComponent,
-      BilanComponent
+      BilanComponent,
+      DetailCompteComponent
     ],
     imports: [
       CommonModule,

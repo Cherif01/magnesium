@@ -29,6 +29,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FooterComponent,
     SidebarComponent,
     TopbarComponent,
-    LoginComponent
+    LoginComponent,
+  
   ],
   imports: [
     BrowserModule,

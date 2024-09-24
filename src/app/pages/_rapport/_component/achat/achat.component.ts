@@ -9,8 +9,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./achat.component.scss']
 })
 export class AchatComponent implements OnInit {
-
   title = 'Journal des achats'
+  selectedDate: Date | null = null;
 
   // Assign the data to the data source for the table to render
   dataSource = new MatTableDataSource([])
