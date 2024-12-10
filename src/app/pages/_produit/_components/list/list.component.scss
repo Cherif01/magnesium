@@ -1,3 +1,70 @@
 td{
   text-transform: uppercase;
 }
+/* Style global */
+.main-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f7f9fc;
+  padding: 20px;
+}
+
+.mat-card-title {
+  font-size: 1.5rem;
+  color: #444;
+}
+
+/* Style pour le tableau */
+table.mat-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.mat-header-cell {
+  background-color: #0e71c8; /* Bleu clair */
+  color: #333; /* Couleur du texte */
+  font-weight: bold;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+
+/* Couleurs alternées pour les lignes du tableau */
+.mat-row:nth-child(odd) {
+  background-color: #f3f7fa;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #e8eef4;
+}
+
+/* Couleurs pour les en-têtes */
+.mat-header-cell {
+  background-color: #1f4e78;
+  color: white;
+  font-weight: bold;
+}
+
+/* Style pour les boutons */
+button[mat-raised-button] {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+button[mat-raised-button].mat-primary {
+  background-color: #4b9cd3;
+  color: white;
+}
+
+button[mat-raised-button].mat-warn {
+  background-color: #d9534f;
+  color: white;
+}
+
+/* Style pour la pagination */
+.mat-paginator {
+  color: #4b4b4b;
+}
