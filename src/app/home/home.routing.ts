@@ -8,7 +8,6 @@ import { ListUserComponent } from './_components/_user/list-user/list-user.compo
 import { EntrepotDetailsComponent } from './_details/entrepot-details/entrepot-details.component'
 import { MagasinDetailsComponent } from './_details/magasin-details/magasin-details.component'
 import { UserDetailsComponent } from './_details/user-details/user-details.component'
-
 // Les routes du modules
 export const homeRouting: Routes = [
   {
